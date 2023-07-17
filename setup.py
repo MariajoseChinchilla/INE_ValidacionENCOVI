@@ -1,26 +1,19 @@
 from setuptools import setup, find_packages
 setup(
     name='INEvalidador',
-    version='1.2.0',
-    author='Luis Alfredo Alvarado Rodríguez',
-    description='ETL para el informe mensual de IPC.',
+    version='0.1',
+    author='Mariajose Chinchilla Moran',
+    description='Validador de datos de criterios de encuestas estilo INE.',
     long_description='',
-    url='https://github.com/1u1s4/INE_IPC',
+    url='',# el repo de github (cuando se haga publico)
     keywords='development, setup, setuptools',
-    python_requires='>=3',
+    python_requires='>=3.7',
     packages=find_packages(),
     py_modules=['datosipc', 'descriptoripc', 'sqline'],
     install_requires=[
-        'fredapi',
-        'xlrd==2.0.1',
-        'xlsxwriter',
-        'pyodbc',
-        'requests',
-        'bs4',
-        'numpy',
-        'pandas',
-        'pyarrow',
-        'funcionesjo'
+        'openpyxl==3.1.2',
+        'pandas==2.0.3',
+        'pyreadstat==1.2.2'
     ],
     package_data={
         'ineipc': ['IPC CA RD Y MEX.xlsx', 'imputacion.feather', 'PRECIOS_EN_PERIODO_DE_ESPERA.xlsx'],
