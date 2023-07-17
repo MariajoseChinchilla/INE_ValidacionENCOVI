@@ -108,13 +108,19 @@ class Validador:
                 conditions = list(self.expresiones[(self.expresiones["Capítulo"] == capitulo) & (self.expresiones["Sección"] == seccion)]["Condición o Criterio"])
                 for condition in conditions:
                     try:
-                        Validacion = self.filter_base(condition)  # Aplicar filtro a la base de datos
-                        sheet_name = "S{}V{}".format(seccion, conditions.index(condition))  # Generar el nombre de la hoja
-                        filename = os.path.join(ruta_carpeta, "S{}.xlsx".format(seccion))  # Crea la ruta completa al archivo
-                        Validacion.to_excel(filename, sheet_name=sheet_name)  # Exportar subconjunto de datos a una hoja de Excel
+                        # Aplicar filtro a la base de datos
+                        Validacion = self.filter_base(condition)
+                        # Generar el nombre de la hoja
+                        sheet_name = "S{}V{}".format(seccion, conditions.index(condition))
+                        # Crea la ruta completa al archivo
+                        filename = os.path.join(ruta_carpeta, "S{}.xlsx".format(seccion))
+                        # Exportar subconjunto de datos a una hoja de Excel
+                        Validacion.to_excel(filename, sheet_name=sheet_name)
                     except Exception as e:
-                        logging.error(f"Error al procesar la expresión {condition}: {e}")  # Manejar error específico de una expresión
+                        # Manejar error específico de una expresión
+                        logging.error(f"Error al procesar la expresión {condition}: {e}")
                         pass
 
         except Exception as e:
-            logging.error(f"Error general: {e}")  # Manejar error general en caso de problemas durante el proceso
+            # Manejar error general en caso de problemas durante el proceso
+            logging.error(f"Error general: {e}")
