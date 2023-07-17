@@ -86,11 +86,15 @@ class Validador:
             # Crear lista con expresiones para filtrar
             tuplas_chap_sec = [(name[0], name[1]) for name, _ in grouped]
 
+            # Calcular el total de condiciones
+            total_conditions = sum([len(self.expresiones[(self.expresiones["Capítulo"] == chap_sec[0]) & (self.expresiones["Sección"] == chap_sec[1])]["Condición o Criterio"]) for chap_sec in tuplas_chap_sec])
+            
             # Crear carpeta para guardar los archivos de inconsistencias generales y guardar el log de errores
             marca_temp = datetime.now().strftime("%Y%m%d%H%M%S")
             carpeta_padre = f"Inconsistencias_{marca_temp}"
             if not os.path.exists(carpeta_padre):
                 os.mkdir(carpeta_padre)
+            
             # Configurar logging
             logging.basicConfig(
                 filename=os.path.join(carpeta_padre, f'app{marca_temp}.log'),
@@ -98,6 +102,10 @@ class Validador:
                 format='%(name)s - %(levelname)s - %(message)s',
                 level=logging.DEBUG
             )
+
+            # Inicializar la barra de progreso
+            pbar = tqdm(total=total_conditions, unit='condition')
+
             # Leer filtros y tomar subconjuntos de la base
             for capitulo, seccion in tuplas_chap_sec:
                 # Crear carpeta por capitulo
@@ -116,10 +124,15 @@ class Validador:
                         filename = os.path.join(ruta_carpeta, "S{}.xlsx".format(seccion))
                         # Exportar subconjunto de datos a una hoja de Excel
                         Validacion.to_excel(filename, sheet_name=sheet_name)
+                        # Actualizar la barra de progreso
+                        pbar.update()
                     except Exception as e:
                         # Manejar error específico de una expresión
                         logging.error(f"Error al procesar la expresión {condition}: {e}")
                         pass
+
+            # Cerrar la barra de progreso
+            pbar.close()
 
         except Exception as e:
             # Manejar error general en caso de problemas durante el proceso
