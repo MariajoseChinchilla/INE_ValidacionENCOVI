@@ -14,9 +14,5 @@ setup(
         'openpyxl==3.1.2',
         'pandas==2.0.3',
         'pyreadstat==1.2.2'
-    ],
-    package_data={
-        'ineipc': ['IPC CA RD Y MEX.xlsx', 'imputacion.feather', 'PRECIOS_EN_PERIODO_DE_ESPERA.xlsx'],
-    },
-    include_package_data=True,
+    ]
 )
