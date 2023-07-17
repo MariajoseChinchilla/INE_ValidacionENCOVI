@@ -1,7 +1,7 @@
 import pandas as pd
+import numpy as np
 import re
 import os
-import numpy as np
 
 df = pd.read_spss("BasePrueba.sav")
 expresiones = pd.read_excel("Expresiones.xlsx")
