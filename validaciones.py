@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from datetime import datetime
 import re
 import os
 
@@ -86,9 +87,11 @@ def process_general_data():
         tuplas_chap_sec = [(name[0], name[1]) for name, _ in grouped]
 
         # Leer filtros y tomar subconjuntos de la base
+        carpeta_padre = f"Inconsistencias_{datetime.strftime(datetime.now(), '%d_%m_%Y_%H_%_M_%S')}"
+        os.mkdir(carpeta_padre)
         for capitulo, seccion in tuplas_chap_sec:
             # Crear carpeta por capitulo
-            folder_name = "C{}".format(capitulo)
+            folder_name = f"{carpeta_padre}/C{capitulo}"
             ruta_carpeta = os.path.join(os.getcwd(), folder_name)
             if not os.path.exists(ruta_carpeta):
                 os.mkdir(ruta_carpeta)
