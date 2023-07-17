@@ -13,6 +13,7 @@ setup(
     install_requires=[
         'openpyxl==3.1.2',
         'pandas==2.0.3',
-        'pyreadstat==1.2.2'
+        'pyreadstat==1.2.2',
+        'tqdm==4.65.0'
     ]
 )
