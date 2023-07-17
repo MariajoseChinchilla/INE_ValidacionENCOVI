@@ -30,7 +30,7 @@ def leer_condicion(condition):
     condition = condition.replace(' es (vacío)', '=="NaN"')
     condition = condition.replace(' es vacío', '=="NaN"')
 
-    condition = condition.replace("NA", 'np.nan')
+    condition = condition.replace("NA", 'None')
 
     # Reemplaza las comparaciones entre variables para que sean legibles en Python
     condition = re.sub(r'(\w+)\s*(<=|>=|<|>|==|!=)\s*(\w+)', r'\1 \2 \3', condition)
@@ -107,6 +107,4 @@ def process_general_data():
 
 #leer_condicion("PPA03 < 7 y P09A01A es (vacío) | P09A01B es (vacío) |  P09A01C es (vacío) | P09A02A es (vacío) | P09A02B es (vacío) | P09A02C es vacío | P09A03A es vacío | P09A03B es (vacío) |  P09A03C es (vacío) | P09A04A es (vacío) | P09A04B es (vacío) | P09A04C es (vacío) | P09A05A es (vacío) | P09A05B es (vacío) | P09A05C es (vacío)")
 #filter_base("PPA03 < 7 y P09A01A es (vacío) | P09A01B es (vacío) |  P09A01C es (vacío) | P09A02A es (vacío) | P09A02B es (vacío) | P09A02C es vacío | P09A03A es vacío | P09A03B es (vacío) |  P09A03C es (vacío) | P09A04A es (vacío) | P09A04B es (vacío) | P09A04C es (vacío) | P09A05A es (vacío) | P09A05B es (vacío) | P09A05C es (vacío)")
-#process_general_data()
-
-filter_base('(P05D02 = 1) & (P05D03A <>NA )')
+process_general_data()
