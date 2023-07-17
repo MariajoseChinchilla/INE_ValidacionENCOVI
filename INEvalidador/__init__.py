@@ -1,1 +1,1 @@
-from . import validador
+from .validador import Validador
