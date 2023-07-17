@@ -1,6 +1,8 @@
+from datetime import datetime
+from tqdm import tqdm
 import pandas as pd
 import numpy as np
-from datetime import datetime
+import logging
 import re
 import os
 
@@ -84,10 +86,19 @@ class Validador:
             # Crear lista con expresiones para filtrar
             tuplas_chap_sec = [(name[0], name[1]) for name, _ in grouped]
 
-            # Leer filtros y tomar subconjuntos de la base
-            carpeta_padre = f"Inconsistencias_{datetime.strftime(datetime.now(), '%d_%m_%Y_%H_%M_%S')}"
+            # Crear carpeta para guardar los archivos de inconsistencias generales y guardar el log de errores
+            marca_temp = datetime.now().strftime("%Y%m%d%H%M%S")
+            carpeta_padre = f"Inconsistencias_{marca_temp}"
             if not os.path.exists(carpeta_padre):
                 os.mkdir(carpeta_padre)
+            # Configurar logging
+            logging.basicConfig(
+                filename=os.path.join(carpeta_padre, f'app{marca_temp}.log'),
+                filemode='w',
+                format='%(name)s - %(levelname)s - %(message)s',
+                level=logging.DEBUG
+            )
+            # Leer filtros y tomar subconjuntos de la base
             for capitulo, seccion in tuplas_chap_sec:
                 # Crear carpeta por capitulo
                 folder_name = f"C{capitulo}"
@@ -102,8 +113,8 @@ class Validador:
                         filename = os.path.join(ruta_carpeta, "S{}.xlsx".format(seccion))  # Crea la ruta completa al archivo
                         Validacion.to_excel(filename, sheet_name=sheet_name)  # Exportar subconjunto de datos a una hoja de Excel
                     except Exception as e:
+                        logging.error(f"Error al procesar la expresión {condition}: {e}")  # Manejar error específico de una expresión
                         pass
-                        #print(f"Error al procesar la expresión {condition}: {e}")  # Manejar error específico de una expresión
 
         except Exception as e:
-            print(f"Error general: {e}")  # Manejar error general en caso de problemas durante el proceso
+            logging.error(f"Error general: {e}")  # Manejar error general en caso de problemas durante el proceso
