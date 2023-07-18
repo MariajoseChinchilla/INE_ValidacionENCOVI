@@ -11,7 +11,7 @@ class Validador:
         self.df = pd.read_spss(ruta_base)
         self.expresiones = pd.read_excel(ruta_expresiones)
 
-    def leer_condicion(self, condition): # agregar tipos de datos
+    def leer_condicion(self, condition: str) -> str: # agregar tipos de datos
         # Para las columnas de texto, busca patrones del tipo 'variable = (vacío)' o 'variable no es (vacío)'
         text_var_pattern = r'(\w+)\s*(==|!=)\s*\((vacío|vacio)\)'
         text_var_matches = re.findall(text_var_pattern, condition)
@@ -50,7 +50,7 @@ class Validador:
         return condition
 
     # Función para filtrar base de datos dada una query
-    def filter_base(self, conditions):
+    def filter_base(self, conditions: str) -> pd.DataFrame:
         filter = self.leer_condicion(conditions)
         df_filtered = self.df[self.df.eval(filter)]
         return df_filtered
@@ -87,7 +87,7 @@ class Validador:
             tuplas_chap_sec = [(name[0], name[1]) for name, _ in grouped]
 
             # Calcular el total de condiciones
-            total_conditions = sum([len(self.expresiones[(self.expresiones["Capítulo"] == chap_sec[0]) & (self.expresiones["Sección"] == chap_sec[1])]["Condición o Criterio"]) for chap_sec in tuplas_chap_sec])
+            total_conditions = self.expresiones.shape[0]
             
             # Crear carpeta para guardar los archivos de inconsistencias generales y guardar el log de errores
             marca_temp = datetime.now().strftime("%Y%m%d%H%M%S")
@@ -99,12 +99,14 @@ class Validador:
             logging.basicConfig(
                 filename=os.path.join(carpeta_padre, f'app{marca_temp}.log'),
                 filemode='w',
-                format='%(name)s - %(levelname)s - %(message)s',
+                format='%(levelname)s - %(message)s',
                 level=logging.DEBUG
             )
+            logging.info("Inicio del proceso de validación de datos.")
+            logging.info("Se encontraron {} condiciones en {} secciones.".format(total_conditions, len(tuplas_chap_sec)))
 
             # Inicializar la barra de progreso
-            pbar = tqdm(total=total_conditions, unit='condition')
+            pbar = tqdm(total=total_conditions, unit='condicion')
 
             # Leer filtros y tomar subconjuntos de la base
             for capitulo, seccion in tuplas_chap_sec:
@@ -125,11 +127,12 @@ class Validador:
                         # Exportar subconjunto de datos a una hoja de Excel
                         Validacion.to_excel(filename, sheet_name=sheet_name)
                         # Actualizar la barra de progreso
-                        pbar.update()
                     except Exception as e:
                         # Manejar error específico de una expresión
-                        logging.error(f"Error al procesar la expresión {condition}: {e}")
+                        logging.error(f"{condition}: {e}")
                         pass
+                    finally:
+                        pbar.update()
 
             # Cerrar la barra de progreso
             pbar.close()
