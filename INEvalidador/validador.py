@@ -138,7 +138,7 @@ class Validador:
                 level=logging.DEBUG
             )
             logging.info("Inicio del proceso de validación de datos.")
-            logging.info("Se encontraron {} condiciones en {} secciones.".format(total_conditions, len(total_conditions)))
+            logging.info("Se encontraron {} condiciones.".format(total_conditions))
 
             # Inicializar la barra de progreso
             pbar = tqdm(total=total_conditions, unit='condicion')
@@ -160,11 +160,11 @@ class Validador:
                 finally:
                     # Actualizar barra de progreso
                     pbar.update()
+            print(dfs)
             df_exportacion = pd.concat(dfs, ignore_index=True)  # Concatenar todos los dataframes de la lista
             df_exportacion.to_excel(os.path.join(carpeta_padre, "Inconsistencias.xlsx"))
             # Cerrar la barra de progreso
             pbar.close()
-            print(dfs)
 
         except Exception as e:
             # Manejar error general en caso de problemas durante el proceso
@@ -195,3 +195,6 @@ class Validador:
         except Exception as e:
             print(f"Error general: {e}")  # Manejar error general en caso de problemas durante el proceso"""
 
+nuevo_validador = Validador()
+
+nuevo_validador.process_to_export(["DEPTO", "MUPIO"])
