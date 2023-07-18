@@ -50,36 +50,13 @@ class Validador:
         return condition
 
     # Función para filtrar base de datos dada una query
-    def filter_base(self, conditions: str) -> pd.DataFrame:
+    def filter_base(self, conditions: str, columnas: list) -> pd.DataFrame:
         filter = self.leer_condicion(conditions)
-        df_filtered = self.df[self.df.eval(filter)]
+        df_filtered = self.df[self.df.eval(filter)][columnas]
         return df_filtered
 
-    # Función para devolver inconsistencias dado un analista, capitulo, seccion en especifico
-    def process_specific_data(self, capitulo, seccion, analista):
-        try:        
-            # Crear lista con expresiones para filtrar
-            expressions = list(self.expresiones[(self.expresiones["Analista"] == analista) & (self.expresiones["Capítulo"] == capitulo) & (self.expresiones["Sección"] == seccion)]["Condición o Criterio"])
-            
-            # Crear archivo tipo ExcelWriter para exportar en diferentes pestañas
-            writer = pd.ExcelWriter("C{}S{}.xlsx".format(capitulo,seccion))
-            
-            # Leer filtros y tomar subconjuntos de la base
-            for i in range(len(expressions)):
-                try:
-                    Validacion = self.filter_base(expressions[i])  # Aplicar filtro a la base de datos
-                    sheet_name = "S{}V{}".format(capitulo, seccion, i)  # Generar el nombre de la hoja
-                    Validacion.to_excel(writer, sheet_name=sheet_name)  # Exportar subconjunto de datos a una hoja de Excel
-                except Exception as e:
-                    print(f"Error al procesar la expresión {expressions[i]}: {e}")  # Manejar error específico de una expresión
-
-            writer.save()  # Guardar el archivo de Excel con las hojas generadas
-            print("Proceso completado exitosamente.")  # Indicar que el proceso ha finalizado con éxito
-        
-        except Exception as e:
-            print(f"Error general: {e}")  # Manejar error general en caso de problemas durante el proceso
-
-    def process_general_data(self):
+    # Función para leer todos los criterios y exportar una carpeta por capítulo y un excel por sección 
+    def process_general_data(self,columnas):
         try:
             grouped = self.expresiones.groupby(["Capítulo", "Sección"])
 
@@ -119,7 +96,7 @@ class Validador:
                 for condition in conditions:
                     try:
                         # Aplicar filtro a la base de datos
-                        Validacion = self.filter_base(condition)
+                        Validacion = self.filter_base(condition,columnas)
                         # Generar el nombre de la hoja
                         sheet_name = "S{}V{}".format(seccion, conditions.index(condition))
                         # Crea la ruta completa al archivo
@@ -140,3 +117,80 @@ class Validador:
         except Exception as e:
             # Manejar error general en caso de problemas durante el proceso
             logging.error(f"Error general: {e}")
+
+    # Función para leer todos los criterios y exportar un solo excel con las columnas DEPTO, MUPIO, HOGAR, CP, CAPITULO, SECCION
+    def process_to_export(self,columnas):
+        try:
+            # Calcular el total de condiciones
+            total_conditions = self.expresiones.shape[0]
+            
+            # Crear carpeta para guardar los archivos de inconsistencias generales y guardar el log de errores
+            marca_temp = datetime.now().strftime("%Y%m%d%H%M%S")
+            carpeta_padre = f"Inconsistencias_{marca_temp}"
+            if not os.path.exists(carpeta_padre):
+                os.mkdir(carpeta_padre)
+            
+            # Configurar logging
+            logging.basicConfig(
+                filename=os.path.join(carpeta_padre, f'app{marca_temp}.log'),
+                filemode='w',
+                format='%(levelname)s - %(message)s',
+                level=logging.DEBUG
+            )
+            logging.info("Inicio del proceso de validación de datos.")
+            logging.info("Se encontraron {} condiciones en {} secciones.".format(total_conditions, len(total_conditions)))
+
+            # Inicializar la barra de progreso
+            pbar = tqdm(total=total_conditions, unit='condicion')
+
+            # Leer filtros y tomar subconjuntos de la base e ir uniendo las bases hasta generar una sola con las columnas solicitadas
+            conditions = list(self.expresiones["Condición o Criterio"])
+            
+            # Crear lista vacía para almacenar los dataframes resultantes
+            dfs = []
+            for condition in conditions:
+                try:
+                    # Aplicar filtro a la base de datos
+                    Validacion = self.filter_base(condition,columnas)
+                    dfs.append(Validacion)  # Agregar el dataframe a la lista de dataframes
+                except Exception as e:
+                    # Manejar error específico de una expresión
+                    logging.error(f"{condition}: {e}")
+                    pass
+                finally:
+                    # Actualizar barra de progreso
+                    pbar.update()
+            df_exportacion = pd.concat(dfs, ignore_index=True)  # Concatenar todos los dataframes de la lista
+            df_exportacion.to_excel(os.path.join(carpeta_padre, "Inconsistencias.xlsx"))
+            # Cerrar la barra de progreso
+            pbar.close()
+
+        except Exception as e:
+            # Manejar error general en caso de problemas durante el proceso
+            logging.error(f"Error general: {e}")
+
+
+"""  Función para devolver inconsistencias dado un analista, capitulo, seccion en especifico
+    def process_specific_data(self, capitulo, seccion, analista):
+        try:        
+            # Crear lista con expresiones para filtrar
+            expressions = list(self.expresiones[(self.expresiones["Analista"] == analista) & (self.expresiones["Capítulo"] == capitulo) & (self.expresiones["Sección"] == seccion)]["Condición o Criterio"])
+            
+            # Crear archivo tipo ExcelWriter para exportar en diferentes pestañas
+            writer = pd.ExcelWriter("C{}S{}.xlsx".format(capitulo,seccion))
+            
+            # Leer filtros y tomar subconjuntos de la base
+            for i in range(len(expressions)):
+                try:
+                    Validacion = self.filter_base(expressions[i])  # Aplicar filtro a la base de datos
+                    sheet_name = "S{}V{}".format(capitulo, seccion, i)  # Generar el nombre de la hoja
+                    Validacion.to_excel(writer, sheet_name=sheet_name)  # Exportar subconjunto de datos a una hoja de Excel
+                except Exception as e:
+                    print(f"Error al procesar la expresión {expressions[i]}: {e}")  # Manejar error específico de una expresión
+
+            writer.save()  # Guardar el archivo de Excel con las hojas generadas
+            print("Proceso completado exitosamente.")  # Indicar que el proceso ha finalizado con éxito
+        
+        except Exception as e:
+            print(f"Error general: {e}")  # Manejar error general en caso de problemas durante el proceso"""
+
