@@ -164,6 +164,7 @@ class Validador:
             df_exportacion.to_excel(os.path.join(carpeta_padre, "Inconsistencias.xlsx"))
             # Cerrar la barra de progreso
             pbar.close()
+            print(dfs)
 
         except Exception as e:
             # Manejar error general en caso de problemas durante el proceso
