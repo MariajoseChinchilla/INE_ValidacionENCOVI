@@ -160,7 +160,6 @@ class Validador:
                 finally:
                     # Actualizar barra de progreso
                     pbar.update()
-            print(dfs)
             df_exportacion = pd.concat(dfs, ignore_index=True)  # Concatenar todos los dataframes de la lista
             df_exportacion.to_excel(os.path.join(carpeta_padre, "Inconsistencias.xlsx"))
             # Cerrar la barra de progreso
