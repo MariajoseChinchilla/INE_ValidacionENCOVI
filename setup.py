@@ -9,7 +9,7 @@ setup(
     keywords='development, setup, setuptools',
     python_requires='>=3.7',
     packages=find_packages(),
-    py_modules=['datosipc', 'descriptoripc', 'sqline'],
+    py_modules=['validador'],
     install_requires=[
         'openpyxl==3.1.2',
         'pandas==2.0.3',
