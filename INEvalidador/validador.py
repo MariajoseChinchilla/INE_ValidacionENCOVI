@@ -10,6 +10,7 @@ class Validador:
     def __init__(self, ruta_base: str="BasePrueba.sav", ruta_expresiones: str="Expresiones.xlsx"):
         self.df = pd.read_spss(ruta_base)
         self.expresiones = pd.read_excel(ruta_expresiones)
+        self.columnas = ["DEPTO", "MUPIO","HOGAR", "CP"]
 
     def leer_condicion(self, condition: str) -> str: # agregar tipos de datos
         # Para las columnas de texto, busca patrones del tipo 'variable = (vacío)' o 'variable no es (vacío)'
@@ -119,7 +120,7 @@ class Validador:
             logging.error(f"Error general: {e}")
 
     # Función para leer todos los criterios y exportar un solo excel con las columnas DEPTO, MUPIO, HOGAR, CP, CAPITULO, SECCION
-    def process_to_export(self,columnas):
+    def process_to_export(self):
         try:
             # Calcular el total de condiciones
             total_conditions = self.expresiones.shape[0]
@@ -151,7 +152,7 @@ class Validador:
             for condition in conditions:
                 try:
                     # Aplicar filtro a la base de datos
-                    Validacion = self.filter_base(condition,columnas)
+                    Validacion = self.filter_base(condition,self.columnas)
                     dfs.append(Validacion)  # Agregar el dataframe a la lista de dataframes
                 except Exception as e:
                     # Manejar error específico de una expresión
