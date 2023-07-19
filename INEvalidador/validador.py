@@ -10,7 +10,7 @@ class Validador:
     def __init__(self, ruta_base: str="BasePrueba.sav", ruta_expresiones: str="Expresiones.xlsx"):
         self.df = pd.read_spss(ruta_base)
         self.expresiones = pd.read_excel(ruta_expresiones)
-        self.columnas = ["DEPTO", "MUPIO","HOGAR", "CP"]
+        self.columnas = ["DEPTO", "MUPIO","SECTOR", "HOGAR", "CP"]
 
     def leer_condicion(self, condition: str) -> str: # agregar tipos de datos
         # Para las columnas de texto, busca patrones del tipo 'variable = (vacío)' o 'variable no es (vacío)'
@@ -144,25 +144,34 @@ class Validador:
             # Inicializar la barra de progreso
             pbar = tqdm(total=total_conditions, unit='condicion')
 
-            # Leer filtros y tomar subconjuntos de la base e ir uniendo las bases hasta generar una sola con las columnas solicitadas
+            # Hacer cuadruplas con condicion, capitulo, seccion 
             conditions = list(self.expresiones["Condición o Criterio"])
-            
+            capitulos = list(self.expresiones["Capítulo"])
+            secciones = list(self.expresiones["Sección"])
+            descripcion_inconsistencia = list(self.expresiones["Definición de la Validación"])
+
+            cuadruplas_exportacion = list(zip(capitulos, secciones, descripcion_inconsistencia, conditions))
+
             # Crear lista vacía para almacenar los dataframes resultantes
             dfs = []
-            for condition in conditions:
+            # Leer filtros y tomar subconjuntos de la base e ir uniendo las bases hasta generar una sola con las columnas solicitadas
+            for i in range(len(cuadruplas_exportacion)):
                 try:
                     # Aplicar filtro a la base de datos
-                    Validacion = self.filter_base(condition,self.columnas)
+                    Validacion = self.filter_base(cuadruplas_exportacion[i][3],self.columnas)
+                    Validacion["CAPÍTULO"] = cuadruplas_exportacion[i][0]
+                    Validacion["SECCIÓN"] = cuadruplas_exportacion[i][1]
+                    Validacion["DEFINICIÓN DE INCONSISTENCIA"] = cuadruplas_exportacion[i][2]
                     dfs.append(Validacion)  # Agregar el dataframe a la lista de dataframes
                 except Exception as e:
                     # Manejar error específico de una expresión
-                    logging.error(f"{condition}: {e}")
+                    logging.error(f"{cuadruplas_exportacion[i][3]}: {e}")
                     pass
                 finally:
                     # Actualizar barra de progreso
                     pbar.update()
-            df_exportacion = pd.concat(dfs, ignore_index=True)  # Concatenar todos los dataframes de la lista
-            df_exportacion.to_excel(os.path.join(carpeta_padre, "Inconsistencias.xlsx"))
+            df_exportacion = pd.concat(dfs)  # Concatenar todos los dataframes de la lista
+            df_exportacion.to_excel(os.path.join(carpeta_padre, "Inconsistencias.xlsx"),index=False)
             # Cerrar la barra de progreso
             pbar.close()
 
