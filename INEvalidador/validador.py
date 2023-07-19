@@ -194,7 +194,3 @@ class Validador:
         
         except Exception as e:
             print(f"Error general: {e}")  # Manejar error general en caso de problemas durante el proceso"""
-
-nuevo_validador = Validador()
-
-nuevo_validador.process_to_export(["DEPTO", "MUPIO"])
