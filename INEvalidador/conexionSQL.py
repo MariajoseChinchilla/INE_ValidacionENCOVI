@@ -1,4 +1,4 @@
-import mysql.connector
+"""import mysql.connector
 import pandas as pd
 import os
 from sqlalchemy import create_engine
@@ -62,3 +62,4 @@ class baseSQL:
 
 p = baseSQL()
 p.tablas_a_feather()
+"""
