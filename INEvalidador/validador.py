@@ -7,10 +7,10 @@ import re
 import os
 
 class Validador:
-    def __init__(self, ruta_base: str="ENCOVI_PR_PERSONAS_PRUEBA.sav", ruta_expresiones: str="Expresiones.xlsx"):
+    def __init__(self, ruta_base: str="BasePrueba.sav", ruta_expresiones: str="Expresiones.xlsx"):
         self.df = pd.read_spss(ruta_base)
         self.expresiones = pd.read_excel(ruta_expresiones)
-        self.columnas = ["DEPTO", "MUPIO","SECTOR", "HOGAR", "CP", "ENCUESTADOR", "SUPERVISOR"]
+        self.columnas = ["DEPTO", "MUPIO","SECTOR", "HOGAR", "CP"]
 
     def leer_condicion(self, condition: str) -> str: # agregar tipos de datos
         # Para las columnas de texto, busca patrones del tipo 'variable = (vacío)' o 'variable no es (vacío)'
@@ -26,16 +26,16 @@ class Validador:
                 condition = condition.replace(f'{var} {op} (vacio)', f'{var} != ""')
 
         # Reemplaza los símbolos y frases con su equivalente en Python
-        condition = condition.replace('<=', '<=').replace("VACIO", "vacío").replace("VACÍO", "vacío")
+        condition = condition.replace('<=', '<=').replace("VACIO", "vacío").replace("VACÍO", "vacío").replace("ó","o").replace("Ó","o").replace("vacio", "vacío")
         condition = condition.replace('=', '==').replace('<>', '!=').replace(">==", ">=").replace("<==","<=").replace("Y", "y")
         condition = condition.replace(' y ', ' & ').replace(' o ', ' | ').replace('NO ESTA EN', 'not in').replace('no está en', 'not in')
-        condition = condition.replace('ESTA EN', 'in').replace('está en', 'in')
+        condition = condition.replace('ESTA EN', 'in').replace('está en', 'in').replace("no es vacio", "no es vacío")
 
         # Para las demás columnas, asume que son numéricas y reemplaza 'no es (vacío)' por '!= np.nan' y 'es (vacío)' por '== np.nan'
-        condition = condition.replace(' no es (vacío)', '!="NaN"')
-        condition = condition.replace(' no es vacío', '!="NaN"')
-        condition = condition.replace(' es (vacío)', '=="NaN"')
-        condition = condition.replace(' es vacío', '=="NaN"')
+        condition = condition.replace('no es (vacío)', '!="NaN"')
+        condition = condition.replace('no es vacío', '!="NaN"')
+        condition = condition.replace('es (vacío)', '=="NaN"')
+        condition = condition.replace('es vacío', '=="NaN"')
 
         condition = condition.replace("NA", 'None')
 
@@ -149,8 +149,9 @@ class Validador:
             capitulos = list(self.expresiones["Capítulo"])
             secciones = list(self.expresiones["Sección"])
             descripcion_inconsistencia = list(self.expresiones["Definición de la Validación"])
+            analista = list(self.expresiones["Analista"])
 
-            cuadruplas_exportacion = list(zip(capitulos, secciones, descripcion_inconsistencia, conditions))
+            cuadruplas_exportacion = list(zip(capitulos, secciones, descripcion_inconsistencia, conditions, analista))
 
             # Crear lista vacía para almacenar los dataframes resultantes
             dfs = []
@@ -165,7 +166,7 @@ class Validador:
                     dfs.append(Validacion)  # Agregar el dataframe a la lista de dataframes
                 except Exception as e:
                     # Manejar error específico de una expresión
-                    logging.error(f"{cuadruplas_exportacion[i][3]}: {e}")
+                    logging.error(f"{cuadruplas_exportacion[i][3]}: {e}. Error de {cuadruplas_exportacion[i][4]}")
                     pass
                 finally:
                     # Actualizar barra de progreso
