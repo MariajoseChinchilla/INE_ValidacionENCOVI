@@ -12,7 +12,7 @@ class Validador:
         self.expresiones = pd.read_excel(ruta_expresiones)
         self.columnas = ["DEPTO", "MUPIO","SECTOR", "HOGAR", "CP"]
 
-    def leer_condicion(self, condition: str) -> str: # agregar tipos de datos
+    def leer_condicion(self, condition: str) -> str: 
         # Para las columnas de texto, busca patrones del tipo 'variable = (vacío)' o 'variable no es (vacío)'
         text_var_pattern = r'(\w+)\s*(==|!=)\s*\((vacío|vacio)\)'
         text_var_matches = re.findall(text_var_pattern, condition)
@@ -26,16 +26,19 @@ class Validador:
                 condition = condition.replace(f'{var} {op} (vacio)', f'{var} != ""')
 
         # Reemplaza los símbolos y frases con su equivalente en Python
-        condition = condition.replace('<=', '<=').replace("VACIO", "vacío").replace("VACÍO", "vacío").replace("ó","o").replace("Ó","o").replace("vacio", "vacío")
-        condition = condition.replace('=', '==').replace('<>', '!=').replace(">==", ">=").replace("<==","<=").replace("Y", "y")
-        condition = condition.replace(' y ', ' & ').replace(' o ', ' | ').replace('NO ESTA EN', 'not in').replace('no está en', 'not in').replace("no esta en","not in")
-        condition = condition.replace('ESTA EN', 'in').replace('está en', 'in').replace("no es vacio", "no es vacío")
+        condition = condition.replace("NO ESTA EN","not in").replace('<=', '<=').replace("VACIO", "vacío").replace("VACÍO", "vacío").replace("ó","o").replace("Ó","o").replace("vacio", "vacío")
+        condition = condition.replace("NO","no").replace('=', '==').replace('<>', '!=').replace(">==", ">=").replace("<==","<=").replace("Y", "y")
+        condition = condition.replace(' y ', ' & ').replace(' o ', '|').replace('NO ESTA EN', 'not in').replace('no está en', 'not in').replace("no esta en","not in")
+        condition = condition.replace('ESTA EN', 'in').replace('está en', 'in').replace("no es vacio", "no es vacío").replace("\n"," ").replace("\r","")
+        condition = condition.replace("no  es vacio","no es vacío").replace("no es  vacio","no es vacío").replace("no  es vacío","no es vacío")
+        condition = condition.replace("no es  vacío","no es vacío").replace("no es  (vacio)","no es vacío").replace("no es  (vacío)","no es vacío")
+        condition = condition.replace("no  es (vacío)","no es vacío").replace("no  es (vacio)","no es vacío").replace("ES","es")
 
         # Para las demás columnas, asume que son numéricas y reemplaza 'no es (vacío)' por '!= np.nan' y 'es (vacío)' por '== np.nan'
-        condition = condition.replace('no es (vacío)', '!="NaN"')
-        condition = condition.replace('no es vacío', '!="NaN"')
-        condition = condition.replace('es (vacío)', '=="NaN"')
-        condition = condition.replace('es vacío', '=="NaN"')
+        condition = condition.replace('no es (vacío)', '!= ""')
+        condition = condition.replace('no es vacío', '!= ""')
+        condition = condition.replace('es (vacío)', '== ""')
+        condition = condition.replace('es vacío', '== ""')
 
         condition = condition.replace("NA", 'None')
 
