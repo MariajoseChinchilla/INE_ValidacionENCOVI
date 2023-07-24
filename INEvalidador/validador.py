@@ -6,11 +6,13 @@ import logging
 import re
 import os
 
+# AGREGAR BOLETA
+
 class Validador:
-    def __init__(self, ruta_base: str="BasePrueba.sav", ruta_expresiones: str="Expresiones.xlsx"):
+    def __init__(self, ruta_base: str="BD_PERSONAS_PILOTO.sav", ruta_expresiones: str="Expresiones.xlsx"):
         self.df = pd.read_spss(ruta_base)
         self.expresiones = pd.read_excel(ruta_expresiones)
-        self.columnas = ["DEPTO", "MUPIO","SECTOR", "HOGAR", "CP"]
+        self.columnas = ["DEPTO", "MUPIO","SECTOR","VIVIENDA","HOGAR", "CP"]
 
     def leer_condicion(self, condition: str) -> str: 
         # Para las columnas de texto, busca patrones del tipo 'variable = (vacío)' o 'variable no es (vacío)'
@@ -166,6 +168,7 @@ class Validador:
                     Validacion["CAPÍTULO"] = cuadruplas_exportacion[i][0]
                     Validacion["SECCIÓN"] = cuadruplas_exportacion[i][1]
                     Validacion["DEFINICIÓN DE INCONSISTENCIA"] = cuadruplas_exportacion[i][2]
+                    Validacion["Analista"] = cuadruplas_exportacion[i][4]
                     dfs.append(Validacion)  # Agregar el dataframe a la lista de dataframes
                 except Exception as e:
                     # Manejar error específico de una expresión
@@ -175,7 +178,7 @@ class Validador:
                     # Actualizar barra de progreso
                     pbar.update()
             df_exportacion = pd.concat(dfs)  # Concatenar todos los dataframes de la lista
-            df_exportacion.to_csv(os.path.join(carpeta_padre, "Inconsistencias.csv"),index=False)
+            df_exportacion.to_excel(os.path.join(carpeta_padre, "Inconsistencias.xlsx"),index=False)
             # Cerrar la barra de progreso
             pbar.close()
 
