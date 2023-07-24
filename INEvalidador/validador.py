@@ -6,18 +6,19 @@ import logging
 import re
 import os
 
-# AGREGAR BOLETA
 
 class Validador:
     def __init__(self, ruta_base: str="BD_PERSONAS_PILOTO.sav", ruta_expresiones: str="Expresiones.xlsx"):
-        self.df = pd.read_spss(ruta_base)
+        self.df = pd.read_spss(ruta_base, convert_categoricals=False)
+        self.df = self.df[self.df["PPA10"] == 1]
         self.expresiones = pd.read_excel(ruta_expresiones)
-        self.columnas = ["DEPTO", "MUPIO","SECTOR","VIVIENDA","HOGAR", "CP"]
+        self.columnas = ["DEPTO", "MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR", "CP"]
 
     def leer_condicion(self, condition: str) -> str: 
         # Para las columnas de texto, busca patrones del tipo 'variable = (vacío)' o 'variable no es (vacío)'
         text_var_pattern = r'(\w+)\s*(==|!=)\s*\((vacío|vacio)\)'
         text_var_matches = re.findall(text_var_pattern, condition)
+
 
         for var, op in text_var_matches:
             if op == '==':
@@ -31,10 +32,11 @@ class Validador:
         condition = condition.replace("NO ESTA EN","not in").replace('<=', '<=').replace("VACIO", "vacío").replace("VACÍO", "vacío").replace("ó","o").replace("Ó","o").replace("vacio", "vacío")
         condition = condition.replace("NO","no").replace('=', '==').replace('<>', '!=').replace(">==", ">=").replace("<==","<=").replace("Y", "y")
         condition = condition.replace(' y ', ' & ').replace(' o ', '|').replace('NO ESTA EN', 'not in').replace('no está en', 'not in').replace("no esta en","not in")
-        condition = condition.replace('ESTA EN', 'in').replace('está en', 'in').replace("no es vacio", "no es vacío").replace("\n"," ").replace("\r","")
+        condition = condition.replace('ESTA EN', 'in').replace('está en', 'in').replace("no es vacio", "no es vacío").replace("\n"," ").replace("\r","").replace("esta en","in")
         condition = condition.replace("no  es vacio","no es vacío").replace("no es  vacio","no es vacío").replace("no  es vacío","no es vacío")
         condition = condition.replace("no es  vacío","no es vacío").replace("no es  (vacio)","no es vacío").replace("no es  (vacío)","no es vacío")
         condition = condition.replace("no  es (vacío)","no es vacío").replace("no  es (vacio)","no es vacío").replace("ES","es")
+        condition = condition.replace("no esta  en","not in").replace("no  esta en","not in").replace("no está  en","not in").replace("no  está en","not in")
 
         # Para las demás columnas, asume que son numéricas y reemplaza 'no es (vacío)' por '!= np.nan' y 'es (vacío)' por '== np.nan'
         condition = condition.replace('no es (vacío)', '!= ""')
@@ -149,14 +151,15 @@ class Validador:
             # Inicializar la barra de progreso
             pbar = tqdm(total=total_conditions, unit='condicion')
 
-            # Hacer cuadruplas con condicion, capitulo, seccion 
+            # Hacer cuadruplas con condicion, capitulo, seccion, etc
             conditions = list(self.expresiones["Condición o Criterio"])
             capitulos = list(self.expresiones["Capítulo"])
             secciones = list(self.expresiones["Sección"])
             descripcion_inconsistencia = list(self.expresiones["Definición de la Validación"])
             analista = list(self.expresiones["Analista"])
+            codigo_error = list(self.expresiones["Código de Error"])
 
-            cuadruplas_exportacion = list(zip(capitulos, secciones, descripcion_inconsistencia, conditions, analista))
+            cuadruplas_exportacion = list(zip(capitulos, secciones, descripcion_inconsistencia, conditions, analista, codigo_error))
 
             # Crear lista vacía para almacenar los dataframes resultantes
             dfs = []
@@ -168,6 +171,7 @@ class Validador:
                     Validacion["CAPÍTULO"] = cuadruplas_exportacion[i][0]
                     Validacion["SECCIÓN"] = cuadruplas_exportacion[i][1]
                     Validacion["DEFINICIÓN DE INCONSISTENCIA"] = cuadruplas_exportacion[i][2]
+                    Validacion["Código error"] = cuadruplas_exportacion[i][5]
                     Validacion["Analista"] = cuadruplas_exportacion[i][4]
                     dfs.append(Validacion)  # Agregar el dataframe a la lista de dataframes
                 except Exception as e:
