@@ -38,11 +38,12 @@ class Validador:
         condition = condition.replace("no  es (vacío)","no es vacío").replace("no  es (vacio)","no es vacío").replace("ES","es")
         condition = condition.replace("no esta  en","not in").replace("no  esta en","not in").replace("no está  en","not in").replace("no  está en","not in")
 
-        # Para las demás columnas, asume que son numéricas y reemplaza 'no es (vacío)' por '!= np.nan' y 'es (vacío)' por '== np.nan'
-        condition = condition.replace('no es (vacío)', '!= ""')
-        condition = condition.replace('no es vacío', '!= ""')
-        condition = condition.replace('es (vacío)', '== ""')
-        condition = condition.replace('es vacío', '== ""')
+        # Para las demás columnas, asume que son numéricas y reemplaza 'no es (vacío)' por '!= None' y 'es (vacío)' por '== None'
+        condition = condition.replace('no es (vacío)', '!= None')
+        condition = condition.replace('no es vacío', '!= None')
+        condition = condition.replace('es (vacío)', '== None')
+        condition = condition.replace('es vacío', '== None')
+
 
         condition = condition.replace("NA", 'None')
 
@@ -59,9 +60,25 @@ class Validador:
 
     # Función para filtrar base de datos dada una query
     def filter_base(self, conditions: str, columnas: list) -> pd.DataFrame:
-        filter = self.leer_condicion(conditions)
-        df_filtered = self.df[self.df.eval(filter)][columnas]
-        return df_filtered
+        # Descomponemos la condición
+        conditions = conditions.split('&')
+
+        # Iniciamos con todos los datos
+        df_filtered = self.df
+
+        # Iteramos sobre las condiciones
+        for condition in conditions:
+            condition = condition.strip()  # Eliminamos los espacios en blanco alrededor
+            if 'no es (vacío)' in condition:
+                # Si la condición es 'no es (vacío)', usamos pd.notna()
+                col_name = condition.replace('no es (vacío)', '').strip()
+                df_filtered = df_filtered[pd.notna(df_filtered[col_name])]
+            else:
+                # Para todas las demás condiciones, utilizamos eval()
+                df_filtered = df_filtered[df_filtered.eval(self.leer_condicion(condition))]
+
+        return df_filtered[columnas]
+
 
     # Función para leer todos los criterios y exportar una carpeta por capítulo y un excel por sección 
     def process_general_data(self,columnas):
@@ -191,7 +208,7 @@ class Validador:
             logging.error(f"Error general: {e}")
 
 
-"""  Función para devolver inconsistencias dado un analista, capitulo, seccion en especifico
+    # Función para devolver inconsistencias dado un analista, capitulo, seccion en especifico
     def process_specific_data(self, capitulo, seccion, analista):
         try:        
             # Crear lista con expresiones para filtrar
@@ -213,4 +230,4 @@ class Validador:
             print("Proceso completado exitosamente.")  # Indicar que el proceso ha finalizado con éxito
         
         except Exception as e:
-            print(f"Error general: {e}")  # Manejar error general en caso de problemas durante el proceso"""
+            print(f"Error general: {e}")  # Manejar error general en caso de problemas durante el proceso
