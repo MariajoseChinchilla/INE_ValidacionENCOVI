@@ -6,7 +6,6 @@ import logging
 import re
 import os
 
-
 class Validador:
     def __init__(self, ruta_base: str="BD_PERSONAS_PILOTO.sav", ruta_expresiones: str="Expresiones.xlsx"):
         self.df = pd.read_spss(ruta_base, convert_categoricals=False)
@@ -18,7 +17,6 @@ class Validador:
         # Para las columnas de texto, busca patrones del tipo 'variable = (vacío)' o 'variable no es (vacío)'
         text_var_pattern = r'(\w+)\s*(==|!=)\s*\((vacío|vacio)\)'
         text_var_matches = re.findall(text_var_pattern, condition)
-
 
         for var, op in text_var_matches:
             if op == '==':
