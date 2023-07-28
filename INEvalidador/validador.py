@@ -2,6 +2,7 @@ from datetime import datetime
 from tqdm import tqdm
 import pandas as pd
 import numpy as np
+import unicodedata
 import logging
 import re
 import os
@@ -12,55 +13,69 @@ class Validador:
         self.df = self.df[self.df["PPA10"] == 1]
         self.expresiones = pd.read_excel(ruta_expresiones)
         self.columnas = ["DEPTO", "MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR", "CP"]
+        self.__replacements = {
+            '<>': 'no es vacio',
+            '<=': '<=',
+            '=': '==',
+            '<>': '!=',
+            '>==': '>=',
+            '<==': '<=',
+            'no esta en': 'not in',
+            'esta en': 'in',
+            '\n': ' ',
+            '\r': '',
+            'no es (vacio)': 'no es vacio',
+            'no es (vacio)': '!= None',
+            'no es vacio': '!= None',
+            'es (vacio)': '== None',
+            'es vacio': '== None',
+            'NA': 'None'
+        }
+        # Precompile the regular expression for efficiency
+        self.__patron = re.compile("|".join(map(re.escape, self.__replacements.keys())), flags=re.IGNORECASE)
 
-    def leer_condicion(self, condicion: str) -> str: 
-        # Para las columnas de texto, busca patrones del tipo 'variable = (vacío)' o 'variable no es (vacío)'
-        text_var_pattern = r'(\w+)\s*(==|!=)\s*\((vacío|vacio)\)'
-        text_var_matches = re.findall(text_var_pattern, condicion)
+    # Function to search and replace the matches
+    def __translate(self, match):
+        return self.__replacements[match.group(0)]
+
+    def quitar_tildes(self, cadena: str) -> str:
+        nfkd_form = unicodedata.normalize('NFKD', cadena)
+        return "".join([c for c in nfkd_form if not unicodedata.combining(c)])
+
+    def leer_condicion(self, condicion: str) -> str:
+        # Quitar espacios extras
+        condicion_convertida = ' '.join(condicion.split())
+        condicion_convertida = self.quitar_tildes(condicion_convertida)
+        # Para las columnas de texto, busca patrones del tipo 'variable = (vacio)' o 'variable no es (vacio)'
+        text_var_pattern = r'(\w+)\s*(==|!=)\s*\((vacio)\)'
+        text_var_matches = re.findall(text_var_pattern, condicion_convertida)
 
         for var, op in text_var_matches:
             if op == '==':
-                condicion = condicion.replace(f'{var} {op} (vacío)', f'{var} == ""')
-                condicion = condicion.replace(f'{var} {op} (vacio)', f'{var} == ""')
+                condicion_convertida = condicion_convertida.replace(f'{var} {op} (vacio)', f'{var} == ""')
             elif op == '!=':
-                condicion = condicion.replace(f'{var} {op} (vacío)', f'{var} != ""')
-                condicion = condicion.replace(f'{var} {op} (vacio)', f'{var} != ""')
+                condicion_convertida = condicion_convertida.replace(f'{var} {op} (vacio)', f'{var} != ""')
 
         # Reemplaza los símbolos y frases con su equivalente en Python
-        condicion = condicion.replace("<> ""","no es vacio")
-        condicion = condicion.replace("NO ESTA EN","not in").replace('<=', '<=').replace("VACIO", "vacío").replace("VACÍO", "vacío").replace("ó","o").replace("Ó","o").replace("vacio", "vacío")
-        condicion = condicion.replace("NO","no").replace('=', '==').replace('<>', '!=').replace(">==", ">=").replace("<==","<=").replace("Y", "y")
-        condicion = condicion.replace(' y ', ' & ').replace(' o ', '|').replace('NO ESTA EN', 'not in').replace('no está en', 'not in').replace("no esta en","not in")
-        condicion = condicion.replace('ESTA EN', 'in').replace('está en', 'in').replace("no es vacio", "no es vacío").replace("\n"," ").replace("\r","").replace("esta en","in")
-        condicion = condicion.replace("no  es vacio","no es vacío").replace("no es  vacio","no es vacío").replace("no  es vacío","no es vacío")
-        condicion = condicion.replace("no es  vacío","no es vacío").replace("no es  (vacio)","no es vacío").replace("no es  (vacío)","no es vacío")
-        condicion = condicion.replace("no  es (vacío)","no es vacío").replace("no  es (vacio)","no es vacío").replace("ES","es")
-        condicion = condicion.replace("no esta  en","not in").replace("no  esta en","not in").replace("no está  en","not in").replace("no  está en","not in")
-
-        # Para las demás columnas, asume que son numéricas y reemplaza 'no es (vacío)' por '!= None' y 'es (vacío)' por '== None'
-        condicion = condicion.replace('no es (vacío)', '!= None')
-        condicion = condicion.replace('no es vacío', '!= None')
-        condicion = condicion.replace('es (vacío)', '== None')
-        condicion = condicion.replace('es vacío', '== None')
-
-
-        condicion = condicion.replace("NA", 'None')
+        condicion_convertida = self.__patron.sub(self.__translate, condicion_convertida)
+        condicion_convertida = re.sub(r"\s+y\s+", " & ", condicion_convertida, flags=re.IGNORECASE)
+        condicion_convertida = re.sub(r"\s+o\s+", " | ", condicion_convertida, flags=re.IGNORECASE)
 
         # Reemplaza las comparaciones entre variables para que sean legibles en Python
-        condicion = re.sub(r'(\w+)\s*(<=|>=|<|>|==|!=)\s*(\w+)', r'\1 \2 \3', condicion)
+        condicion_convertida = re.sub(r'(\w+)\s*(<=|>=|<|>|==|!=)\s*(\w+)', r'\1 \2 \3', condicion_convertida)
 
         # Si "está en" se encuentra en la condición, lo reemplaza por la sintaxis correcta en Python
-        if "está en" in condicion:
-            condicion = re.sub(r'(\w+)\s+está en\s+(\(.*?\))', r'\1 in \2', condicion)
+        if "está en" in condicion_convertida:
+            condicion_convertida = re.sub(r'(\w+)\s+está en\s+(\(.*?\))', r'\1 in \2', condicion_convertida)
         
         # Agrega paréntesis alrededor de la condición
-        condicion = '(' + condicion + ')'
-        return condicion
+        condicion_convertida = '(' + condicion_convertida + ')'
+        return condicion_convertida
 
     # Función para filtrar base de datos dada una query
     def filter_base(self, conditions: str, columnas: list) -> pd.DataFrame:
         # Descomponemos la condición
-        conditions = conditions.split('&')
+        conditions = conditions.split('&') # no se debe considerar el caso de traer OR |
 
         # Iniciamos con todos los datos
         df_filtered = self.df
@@ -68,16 +83,16 @@ class Validador:
         # Iteramos sobre las condiciones
         for condition in conditions:
             condition = condition.strip()  # Eliminamos los espacios en blanco alrededor
-            if 'no es (vacío)' in condition:
-                # Si la condición es 'no es (vacío)', usamos pd.notna()
-                col_name = condition.replace('no es (vacío)', '').strip()
+            if 'no es (vacio)' in condition:
+                # Si la condición es 'no es (vacio)', usamos pd.notna()
+                col_name = condition.replace('no es (vacio)', '').strip()
                 df_filtered = df_filtered[pd.notna(df_filtered[col_name])]
             else:
                 # Para todas las demás condiciones, utilizamos eval()
-                df_filtered = df_filtered[df_filtered.eval(self.leer_condicion(condition))]
+                condicion_pandas = self.leer_condicion(condition)
+                df_filtered = df_filtered[df_filtered.eval(condicion_pandas)]
 
         return df_filtered[columnas]
-
 
     # Función para leer todos los criterios y exportar una carpeta por capítulo y un excel por sección 
     def process_general_data(self,columnas):
@@ -120,7 +135,7 @@ class Validador:
                 for condition in conditions:
                     try:
                         # Aplicar filtro a la base de datos
-                        Validacion = self.filter_base(condition,columnas)
+                        Validacion = self.filter_base(condition, columnas)
                         # Generar el nombre de la hoja
                         sheet_name = "S{}V{}".format(seccion, conditions.index(condition))
                         # Crea la ruta completa al archivo
@@ -230,3 +245,6 @@ class Validador:
         
         except Exception as e:
             print(f"Error general: {e}")  # Manejar error general en caso de problemas durante el proceso
+
+
+Validador().leer_condicion("P05D01 es vacio Y P05D02 está en (1,2)")
