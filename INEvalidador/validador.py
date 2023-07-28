@@ -16,9 +16,7 @@ class Validador:
         self.columnas = ["DEPTO", "MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR", "CP"]
         self._capturar_converciones = False
         self.__replacements = {
-            '<>': 'no es vacio',
             '<=': '<=',
-            '=': '==',
             '<>': '!=',
             '>==': '>=',
             '<==': '<=',
@@ -31,10 +29,19 @@ class Validador:
             'no es vacio': '!= ""',
             'es (vacio)': '== ""',
             'es vacio': '== ""',
-            'NA': 'None'
+            'NA': 'None',
+            '<>': '!=',
+            ' =': '==',
         }
         # Precompile the regular expression for efficiency
         self.__patron = re.compile("|".join(map(re.escape, self.__replacements.keys())), flags=re.IGNORECASE)
+
+    def convertir_a_entero(self):
+        columnas = self.df.columns
+        for columna in columnas:
+            if np.issubdtype(self.df[columna].dtype, np.floating):
+                self.df[columna] = self.df[columna].fillna(-1)
+                self.df[columna] = pd.to_numeric(self.df[columna], downcast='integer')
 
     def __configurar_logs(self, carpeta: str):
         # Configurar logging
@@ -97,31 +104,16 @@ class Validador:
         for col, tipo in self.columnas_condicion_nula(condicion_convertida):
             # Verificar si la columna es de tipo int o float
             if np.issubdtype(self.df[col].dtype, np.integer) or np.issubdtype(self.df[col].dtype, np.floating):
-                # Aquí va tu código si la columna es de tipo int o float
-                condicion_convertida = condicion_convertida.replace(f'{col} {tipo} ""', f'{col} {tipo} None')
+                # Sustituir cuando la columna sea de tipo numérica
+                if tipo == "==":
+                    condicion_convertida = condicion_convertida.replace(f'{col} {tipo} ""', f'{col} {tipo} -1')       #modificaciones para variables tipo numérica
+                if tipo == "!=":
+                    condicion_convertida = condicion_convertida.replace(f'{col} {tipo} ""', f'{col} {tipo} -1')       #modificaciones para variables tipo numérica
         return condicion_convertida
 
     # Función para filtrar base de datos dada una query
     def filter_base(self, conditions: str, columnas: list) -> pd.DataFrame:
-        # Descomponemos la condición
-        conditions = conditions.split('&') # no se debe considerar el caso de traer OR |
-
-        # Iniciamos con todos los datos
-        df_filtered = self.df
-
-        # Iteramos sobre las condiciones
-        for condition in conditions:
-            condition = condition.strip()  # Eliminamos los espacios en blanco alrededor
-            if 'no es (vacio)' in condition:
-                # Si la condición es 'no es (vacio)', usamos pd.notna()
-                col_name = condition.replace('no es (vacio)', '').strip()
-                df_filtered = df_filtered[pd.notna(df_filtered[col_name])]
-            else:
-                # Para todas las demás condiciones, utilizamos eval()
-                condicion_pandas = self.leer_condicion(condition)
-                df_filtered = df_filtered[df_filtered.eval(condicion_pandas)]
-
-        return df_filtered[columnas]
+        return self.df.query(self.leer_condicion(conditions))[columnas]
 
     # Función para leer todos los criterios y exportar una carpeta por capítulo y un excel por sección 
     def process_general_data(self,columnas):
