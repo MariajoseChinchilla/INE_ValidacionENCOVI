@@ -1,3 +1,4 @@
+from typing import List, Tuple
 from datetime import datetime
 from tqdm import tqdm
 import pandas as pd
@@ -92,6 +93,12 @@ class Validador:
         # Capturar convercion de cadena
         if self._capturar_converciones:
             self.logger_conv.info('{}  |--->  {}'.format(condicion, condicion_convertida))
+        
+        for col, tipo in self.columnas_condicion_nula(condicion_convertida):
+            # Verificar si la columna es de tipo int o float
+            if np.issubdtype(self.df[col].dtype, np.integer) or np.issubdtype(self.df[col].dtype, np.floating):
+                # Aquí va tu código si la columna es de tipo int o float
+                condicion_convertida = condicion_convertida.replace(f'{col} {tipo} ""', f'{col} {tipo} None')
         return condicion_convertida
 
     # Función para filtrar base de datos dada una query
@@ -258,4 +265,7 @@ class Validador:
         except Exception as e:
             print(f"Error general: {e}")  # Manejar error general en caso de problemas durante el proceso
 
-#Validador().process_to_export()
+    def columnas_condicion_nula(self, condicion: str) -> List[Tuple[str, str]]:
+        matches = [(m, '==') for m in re.findall(r'\b([A-Z0-9]+) == ""', condicion)]
+        matches.extend([(m, '!=') for m in re.findall(r'\b([A-Z0-9]+) != ""', condicion)])
+        return matches
