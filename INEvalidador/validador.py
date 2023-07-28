@@ -13,6 +13,7 @@ class Validador:
         self.df = self.df[self.df["PPA10"] == 1]
         self.expresiones = pd.read_excel(ruta_expresiones)
         self.columnas = ["DEPTO", "MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR", "CP"]
+        self._capturar_converciones = False
         self.__replacements = {
             '<>': 'no es vacio',
             '<=': '<=',
@@ -25,14 +26,32 @@ class Validador:
             '\n': ' ',
             '\r': '',
             'no es (vacio)': 'no es vacio',
-            'no es (vacio)': '!= None',
-            'no es vacio': '!= None',
-            'es (vacio)': '== None',
-            'es vacio': '== None',
+            'no es (vacio)': '!= ""',
+            'no es vacio': '!= ""',
+            'es (vacio)': '== ""',
+            'es vacio': '== ""',
             'NA': 'None'
         }
         # Precompile the regular expression for efficiency
         self.__patron = re.compile("|".join(map(re.escape, self.__replacements.keys())), flags=re.IGNORECASE)
+
+    def __configurar_logs(self, carpeta: str):
+        # Configurar logging
+        logging.basicConfig(
+            filename=os.path.join(carpeta, f'root.log'),
+            filemode='w',
+            format='%(levelname)s - %(message)s',
+            level=logging.DEBUG
+        )
+
+        # Crear un logger adicional para las conversiones de condiciones
+        self.logger_conv = logging.getLogger('Logger_conv')
+        handler1 = logging.FileHandler(os.path.join(carpeta, 'cond_conv.log'))
+        formatter1 = logging.Formatter('%(levelname)s - %(message)s')
+        handler1.setFormatter(formatter1)
+        self.logger_conv.addHandler(handler1)
+        self.logger_conv.setLevel(logging.DEBUG)
+        self.logger_conv.info('Log de condiciones convertidas a formato pandas')
 
     # Function to search and replace the matches
     def __translate(self, match):
@@ -70,6 +89,9 @@ class Validador:
         
         # Agrega paréntesis alrededor de la condición
         condicion_convertida = '(' + condicion_convertida + ')'
+        # Capturar convercion de cadena
+        if self._capturar_converciones:
+            self.logger_conv.info('{}  |--->  {}'.format(condicion, condicion_convertida))
         return condicion_convertida
 
     # Función para filtrar base de datos dada una query
@@ -96,6 +118,7 @@ class Validador:
 
     # Función para leer todos los criterios y exportar una carpeta por capítulo y un excel por sección 
     def process_general_data(self,columnas):
+        self._capturar_converciones = True
         try:
             grouped = self.expresiones.groupby(["Capítulo", "Sección"])
 
@@ -107,17 +130,11 @@ class Validador:
             
             # Crear carpeta para guardar los archivos de inconsistencias generales y guardar el log de errores
             marca_temp = datetime.now().strftime("%Y%m%d%H%M%S")
-            carpeta_padre = f"Inconsistencias_{marca_temp}"
+            carpeta_padre = "Inconsistencias_{}".format(marca_temp)
             if not os.path.exists(carpeta_padre):
                 os.mkdir(carpeta_padre)
-            
-            # Configurar logging
-            logging.basicConfig(
-                filename=os.path.join(carpeta_padre, f'app{marca_temp}.log'),
-                filemode='w',
-                format='%(levelname)s - %(message)s',
-                level=logging.DEBUG
-            )
+
+            self.__configurar_logs(carpeta_padre)
             logging.info("Inicio del proceso de validación de datos.")
             logging.info("Se encontraron {} condiciones en {} secciones.".format(total_conditions, len(tuplas_chap_sec)))
 
@@ -152,10 +169,10 @@ class Validador:
 
             # Cerrar la barra de progreso
             pbar.close()
-
         except Exception as e:
             # Manejar error general en caso de problemas durante el proceso
             logging.error(f"Error general: {e}")
+            self._capturar_converciones = False
 
     # Función para leer todos los criterios y exportar un solo excel con las columnas DEPTO, MUPIO, HOGAR, CP, CAPITULO, SECCION
     def process_to_export(self):
@@ -170,12 +187,7 @@ class Validador:
                 os.mkdir(carpeta_padre)
             
             # Configurar logging
-            logging.basicConfig(
-                filename=os.path.join(carpeta_padre, f'app{marca_temp}.log'),
-                filemode='w',
-                format='%(levelname)s - %(message)s',
-                level=logging.DEBUG
-            )
+            self.__configurar_logs(carpeta_padre)
             logging.info("Inicio del proceso de validación de datos.")
             logging.info("Se encontraron {} condiciones.".format(total_conditions))
 
@@ -246,5 +258,4 @@ class Validador:
         except Exception as e:
             print(f"Error general: {e}")  # Manejar error general en caso de problemas durante el proceso
 
-
-Validador().leer_condicion("P05D01 es vacio Y P05D02 está en (1,2)")
+#Validador().process_to_export()
