@@ -37,7 +37,7 @@ class Validador:
         self.__patron = re.compile("|".join(map(re.escape, self.__replacements.keys())), flags=re.IGNORECASE)
 
     def convertir_a_entero(self):
-        columnas = self.df.columns
+        columnas = list(self.df.columns)
         for columna in columnas:
             if np.issubdtype(self.df[columna].dtype, np.floating):
                 self.df[columna] = self.df[columna].fillna(-1)
@@ -106,9 +106,9 @@ class Validador:
             if np.issubdtype(self.df[col].dtype, np.integer) or np.issubdtype(self.df[col].dtype, np.floating):
                 # Sustituir cuando la columna sea de tipo numérica
                 if tipo == "==":
-                    condicion_convertida = condicion_convertida.replace(f'{col} {tipo} ""', f'{col} {tipo} -1')       #modificaciones para variables tipo numérica
+                    condicion_convertida = condicion_convertida.replace(f'{col} {tipo} ""', f'{col}.isnull()')       #modificaciones para variables tipo numérica
                 if tipo == "!=":
-                    condicion_convertida = condicion_convertida.replace(f'{col} {tipo} ""', f'{col} {tipo} -1')       #modificaciones para variables tipo numérica
+                    condicion_convertida = condicion_convertida.replace(f'{col} {tipo} ""', f'~{col}.isnull()')       #modificaciones para variables tipo numérica
         return condicion_convertida
 
     # Función para filtrar base de datos dada una query
