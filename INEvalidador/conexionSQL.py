@@ -44,12 +44,12 @@ class baseSQL:
         # Convertir cada tabla en un DataFrame y exportarlo en formato feather
         for tabla_nombre in tablas:
             try:
-                df = pd.read_sql(f'SELECT * FROM `{tabla_nombre}`', con=conexion)
+                df = pd.read_sql(text(f'SELECT * FROM {tabla_nombre}'), con=conexion)
 
                 # Crear el directorio de salida si no existe
                 if not os.path.exists(dir_salida):
                     os.makedirs(dir_salida)
-
+                df.reset_index(inplace=True)
                 # Exportar el DataFrame en formato feather
                 df.to_feather(os.path.join(dir_salida, f'{tabla_nombre}.feather'))
 
@@ -59,3 +59,6 @@ class baseSQL:
     def extraer_base(self):
         self.tablas_a_feather('PR', 'db/ronda_1')
         self.tablas_a_feather('SR', 'db/ronda_2')
+
+p = baseSQL()
+p.extraer_base()
