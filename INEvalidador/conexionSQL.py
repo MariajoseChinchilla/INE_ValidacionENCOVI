@@ -1,7 +1,7 @@
 import mysql.connector
 import pandas as pd
 import os
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 
 class baseSQL:
     def __init__(self):
@@ -20,7 +20,7 @@ class baseSQL:
     def info_tablas(self, tipo: str='PR'):
         conexion = self.__conexion_PR if tipo == 'PR' else self.__conexion_SR
 
-        resultado = conexion.execute("SHOW TABLES")
+        resultado = conexion.execute(text("SHOW TABLES"))
         tablas = [row[0] for row in resultado]
 
         # Obtener la forma de cada tabla
@@ -42,7 +42,7 @@ class baseSQL:
     def tablas_a_feather(self, tipo: str = 'PR', dir_salida: str = 'tablas'):
         conexion = self.__conexion_PR if tipo == 'PR' else self.__conexion_SR
 
-        resultado = conexion.execute("SHOW TABLES")
+        resultado = conexion.execute(text("SHOW TABLES"))
         tablas = [row[0] for row in resultado]
 
         # Convertir cada tabla en un DataFrame y exportarlo en formato feather
