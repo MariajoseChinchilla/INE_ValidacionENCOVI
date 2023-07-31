@@ -36,7 +36,7 @@ class baseSQL:
                     print(f'> Error "{e}" al obtener la forma de la tabla {tabla_nombre}')
 
 
-    def tablas_a_feather(self, tipo: str = 'PR', dir_salida: str = 'tablas'):
+    def tablas_a_feather(self, tipo: str = 'PR', dir_salida: str):
         conexion = self.__conexion_PR if tipo == 'PR' else self.__conexion_SR
 
         resultado = conexion.execute("SHOW TABLES")
@@ -56,6 +56,3 @@ class baseSQL:
 
             except Exception as e:
                 print(f'> Error al convertir la tabla {tabla_nombre} en un DataFrame y exportarlo: {str(e)}')
-
-p = baseSQL()
-p.info_tablas()
