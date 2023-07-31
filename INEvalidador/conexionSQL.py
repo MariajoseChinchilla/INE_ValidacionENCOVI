@@ -18,31 +18,28 @@ class baseSQL:
         self.__conexion_SR = engine_SR.connect()
 
     def info_tablas(self, tipo: str='PR'):
-        conexion = self.__conexion_PR if tipo == 'PR' else self.__conexion_SR
+            conexion = self.__conexion_PR if tipo == 'PR' else self.__conexion_SR
 
-        resultado = conexion.execute(text("SHOW TABLES"))
-        tablas = [row[0] for row in resultado]
+            resultado = conexion.execute(text("SHOW TABLES"))
+            tablas = [row[0] for row in resultado]
 
-        # Obtener la forma de cada tabla
-        i = 0
-        for tabla_nombre in tablas:
-            try:
-                # Obtener el número de filas
-                filas = conexion.execute(f"SELECT COUNT(*) FROM `{tabla_nombre}`").fetchone()[0]
+            i = 0
+            for tabla_nombre in tablas:
+                try:
+                    # Usar text en las consultas
+                    filas = conexion.execute(text(f"SELECT COUNT(*) FROM `{tabla_nombre}`")).fetchone()[0]
+                    columnas = conexion.execute(text(f"SELECT COUNT(*) FROM information_schema.columns WHERE table_name = '{tabla_nombre}'")).fetchone()[0]
 
-                # Obtener el número de columnas
-                columnas = conexion.execute(f"SELECT COUNT(*) FROM information_schema.columns WHERE table_name = '{tabla_nombre}'").fetchone()[0]
+                    i += 1
+                    print(f"> {tabla_nombre}({i})\n   Filas: {filas} - Columnas: {columnas}")
+                except Exception as e:
+                    print(f'> Error "{e}" al obtener la forma de la tabla {tabla_nombre}')
 
-                # Imprimir la forma de la tabla
-                i+=1
-                print(f"> {tabla_nombre}({i})\n   Filas: {filas} - Columnas: {columnas}")
-            except Exception as e:
-                print(f'> Error "{e}" al obtener la forma de la tabla {tabla_nombre}')
 
     def tablas_a_feather(self, tipo: str = 'PR', dir_salida: str = 'tablas'):
         conexion = self.__conexion_PR if tipo == 'PR' else self.__conexion_SR
 
-        resultado = conexion.execute(text("SHOW TABLES"))
+        resultado = conexion.execute("SHOW TABLES")
         tablas = [row[0] for row in resultado]
 
         # Convertir cada tabla en un DataFrame y exportarlo en formato feather
@@ -61,4 +58,4 @@ class baseSQL:
                 print(f'> Error al convertir la tabla {tabla_nombre} en un DataFrame y exportarlo: {str(e)}')
 
 p = baseSQL()
-p.tablas_a_feather()
+p.info_tablas()
