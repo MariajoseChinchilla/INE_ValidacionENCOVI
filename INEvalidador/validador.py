@@ -1,7 +1,9 @@
+from typing import List, Tuple
 from datetime import datetime
 from tqdm import tqdm
 import pandas as pd
 import numpy as np
+import unicodedata
 import logging
 import re
 import os
@@ -12,75 +14,110 @@ class Validador:
         self.df = self.df[self.df["PPA10"] == 1]
         self.expresiones = pd.read_excel(ruta_expresiones)
         self.columnas = ["DEPTO", "MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR", "CP"]
+        self._capturar_converciones = False
+        self.__replacements = {
+            '<=': '<=',
+            '<>': '!=',
+            '>==': '>=',
+            '<==': '<=',
+            'no esta en': 'not in',
+            'esta en': 'in',
+            '\n': ' ',
+            '\r': '',
+            'no es (vacio)': 'no es vacio',
+            'no es (vacio)': '!= ""',
+            'no es vacio': '!= ""',
+            'es (vacio)': '== ""',
+            'es vacio': '== ""',
+            'NA': 'None',
+            '<>': '!=',
+            ' =': '==',
+        }
+        # Precompile the regular expression for efficiency
+        self.__patron = re.compile("|".join(map(re.escape, self.__replacements.keys())), flags=re.IGNORECASE)
 
-    def leer_condicion(self, condition: str) -> str: 
-        # Para las columnas de texto, busca patrones del tipo 'variable = (vacío)' o 'variable no es (vacío)'
-        text_var_pattern = r'(\w+)\s*(==|!=)\s*\((vacío|vacio)\)'
-        text_var_matches = re.findall(text_var_pattern, condition)
+    def convertir_a_entero(self):
+        columnas = list(self.df.columns)
+        for columna in columnas:
+            if np.issubdtype(self.df[columna].dtype, np.floating):
+                self.df[columna] = self.df[columna].fillna(-1)
+                self.df[columna] = pd.to_numeric(self.df[columna], downcast='integer')
+
+    def __configurar_logs(self, carpeta: str):
+        # Configurar logging
+        logging.basicConfig(
+            filename=os.path.join(carpeta, f'root.log'),
+            filemode='w',
+            format='%(levelname)s - %(message)s',
+            level=logging.DEBUG
+        )
+
+        # Crear un logger adicional para las conversiones de condiciones
+        self.logger_conv = logging.getLogger('Logger_conv')
+        handler1 = logging.FileHandler(os.path.join(carpeta, 'cond_conv.log'))
+        formatter1 = logging.Formatter('%(levelname)s - %(message)s')
+        handler1.setFormatter(formatter1)
+        self.logger_conv.addHandler(handler1)
+        self.logger_conv.setLevel(logging.DEBUG)
+        self.logger_conv.info('Log de condiciones convertidas a formato pandas')
+
+    # Function to search and replace the matches
+    def __translate(self, match):
+        return self.__replacements[match.group(0)]
+
+    def quitar_tildes(self, cadena: str) -> str:
+        nfkd_form = unicodedata.normalize('NFKD', cadena)
+        return "".join([c for c in nfkd_form if not unicodedata.combining(c)])
+
+    def leer_condicion(self, condicion: str) -> str:
+        # Quitar espacios extras
+        condicion_convertida = ' '.join(condicion.split())
+        condicion_convertida = self.quitar_tildes(condicion_convertida)
+        # Para las columnas de texto, busca patrones del tipo 'variable = (vacio)' o 'variable no es (vacio)'
+        text_var_pattern = r'(\w+)\s*(==|!=)\s*\((vacio)\)'
+        text_var_matches = re.findall(text_var_pattern, condicion_convertida)
 
         for var, op in text_var_matches:
             if op == '==':
-                condition = condition.replace(f'{var} {op} (vacío)', f'{var} == ""')
-                condition = condition.replace(f'{var} {op} (vacio)', f'{var} == ""')
+                condicion_convertida = condicion_convertida.replace(f'{var} {op} (vacio)', f'{var} == ""')
             elif op == '!=':
-                condition = condition.replace(f'{var} {op} (vacío)', f'{var} != ""')
-                condition = condition.replace(f'{var} {op} (vacio)', f'{var} != ""')
+                condicion_convertida = condicion_convertida.replace(f'{var} {op} (vacio)', f'{var} != ""')
 
         # Reemplaza los símbolos y frases con su equivalente en Python
-        condition = condition.replace("<> ""","no es vacio")
-        condition = condition.replace("NO ESTA EN","not in").replace('<=', '<=').replace("VACIO", "vacío").replace("VACÍO", "vacío").replace("ó","o").replace("Ó","o").replace("vacio", "vacío")
-        condition = condition.replace("NO","no").replace('=', '==').replace('<>', '!=').replace(">==", ">=").replace("<==","<=").replace("Y", "y")
-        condition = condition.replace(' y ', ' & ').replace(' o ', '|').replace('NO ESTA EN', 'not in').replace('no está en', 'not in').replace("no esta en","not in")
-        condition = condition.replace('ESTA EN', 'in').replace('está en', 'in').replace("no es vacio", "no es vacío").replace("\n"," ").replace("\r","").replace("esta en","in")
-        condition = condition.replace("no  es vacio","no es vacío").replace("no es  vacio","no es vacío").replace("no  es vacío","no es vacío")
-        condition = condition.replace("no es  vacío","no es vacío").replace("no es  (vacio)","no es vacío").replace("no es  (vacío)","no es vacío")
-        condition = condition.replace("no  es (vacío)","no es vacío").replace("no  es (vacio)","no es vacío").replace("ES","es")
-        condition = condition.replace("no esta  en","not in").replace("no  esta en","not in").replace("no está  en","not in").replace("no  está en","not in")
-
-        # Para las demás columnas, asume que son numéricas y reemplaza 'no es (vacío)' por '!= None' y 'es (vacío)' por '== None'
-        condition = condition.replace('no es (vacío)', '!= None')
-        condition = condition.replace('no es vacío', '!= None')
-        condition = condition.replace('es (vacío)', '== None')
-        condition = condition.replace('es vacío', '== None')
-
-
-        condition = condition.replace("NA", 'None')
+        condicion_convertida = self.__patron.sub(self.__translate, condicion_convertida)
+        condicion_convertida = re.sub(r"\s+y\s+", " & ", condicion_convertida, flags=re.IGNORECASE)
+        condicion_convertida = re.sub(r"\s+o\s+", " | ", condicion_convertida, flags=re.IGNORECASE)
 
         # Reemplaza las comparaciones entre variables para que sean legibles en Python
-        condition = re.sub(r'(\w+)\s*(<=|>=|<|>|==|!=)\s*(\w+)', r'\1 \2 \3', condition)
+        condicion_convertida = re.sub(r'(\w+)\s*(<=|>=|<|>|==|!=)\s*(\w+)', r'\1 \2 \3', condicion_convertida)
 
         # Si "está en" se encuentra en la condición, lo reemplaza por la sintaxis correcta en Python
-        if "está en" in condition:
-            condition = re.sub(r'(\w+)\s+está en\s+(\(.*?\))', r'\1 in \2', condition)
+        if "está en" in condicion_convertida:
+            condicion_convertida = re.sub(r'(\w+)\s+está en\s+(\(.*?\))', r'\1 in \2', condicion_convertida)
         
         # Agrega paréntesis alrededor de la condición
-        condition = '(' + condition + ')'
-        return condition
+        condicion_convertida = '(' + condicion_convertida + ')'
+        # Capturar convercion de cadena
+        if self._capturar_converciones:
+            self.logger_conv.info('{}  |--->  {}'.format(condicion, condicion_convertida))
+        
+        for col, tipo in self.columnas_condicion_nula(condicion_convertida):
+            # Verificar si la columna es de tipo int o float
+            if np.issubdtype(self.df[col].dtype, np.integer) or np.issubdtype(self.df[col].dtype, np.floating):
+                # Sustituir cuando la columna sea de tipo numérica
+                if tipo == "==":
+                    condicion_convertida = condicion_convertida.replace(f'{col} {tipo} ""', f'{col}.isnull()')       #modificaciones para variables tipo numérica
+                if tipo == "!=":
+                    condicion_convertida = condicion_convertida.replace(f'{col} {tipo} ""', f'~{col}.isnull()')       #modificaciones para variables tipo numérica
+        return condicion_convertida
 
     # Función para filtrar base de datos dada una query
     def filter_base(self, conditions: str, columnas: list) -> pd.DataFrame:
-        # Descomponemos la condición
-        conditions = conditions.split('&')
-
-        # Iniciamos con todos los datos
-        df_filtered = self.df
-
-        # Iteramos sobre las condiciones
-        for condition in conditions:
-            condition = condition.strip()  # Eliminamos los espacios en blanco alrededor
-            if 'no es (vacío)' in condition:
-                # Si la condición es 'no es (vacío)', usamos pd.notna()
-                col_name = condition.replace('no es (vacío)', '').strip()
-                df_filtered = df_filtered[pd.notna(df_filtered[col_name])]
-            else:
-                # Para todas las demás condiciones, utilizamos eval()
-                df_filtered = df_filtered[df_filtered.eval(self.leer_condicion(condition))]
-
-        return df_filtered[columnas]
-
+        return self.df.query(self.leer_condicion(conditions))[columnas]
 
     # Función para leer todos los criterios y exportar una carpeta por capítulo y un excel por sección 
     def process_general_data(self,columnas):
+        self._capturar_converciones = True
         try:
             grouped = self.expresiones.groupby(["Capítulo", "Sección"])
 
@@ -92,17 +129,11 @@ class Validador:
             
             # Crear carpeta para guardar los archivos de inconsistencias generales y guardar el log de errores
             marca_temp = datetime.now().strftime("%Y%m%d%H%M%S")
-            carpeta_padre = f"Inconsistencias_{marca_temp}"
+            carpeta_padre = "Inconsistencias_{}".format(marca_temp)
             if not os.path.exists(carpeta_padre):
                 os.mkdir(carpeta_padre)
-            
-            # Configurar logging
-            logging.basicConfig(
-                filename=os.path.join(carpeta_padre, f'app{marca_temp}.log'),
-                filemode='w',
-                format='%(levelname)s - %(message)s',
-                level=logging.DEBUG
-            )
+
+            self.__configurar_logs(carpeta_padre)
             logging.info("Inicio del proceso de validación de datos.")
             logging.info("Se encontraron {} condiciones en {} secciones.".format(total_conditions, len(tuplas_chap_sec)))
 
@@ -120,7 +151,7 @@ class Validador:
                 for condition in conditions:
                     try:
                         # Aplicar filtro a la base de datos
-                        Validacion = self.filter_base(condition,columnas)
+                        Validacion = self.filter_base(condition, columnas)
                         # Generar el nombre de la hoja
                         sheet_name = "S{}V{}".format(seccion, conditions.index(condition))
                         # Crea la ruta completa al archivo
@@ -137,10 +168,10 @@ class Validador:
 
             # Cerrar la barra de progreso
             pbar.close()
-
         except Exception as e:
             # Manejar error general en caso de problemas durante el proceso
             logging.error(f"Error general: {e}")
+            self._capturar_converciones = False
 
     # Función para leer todos los criterios y exportar un solo excel con las columnas DEPTO, MUPIO, HOGAR, CP, CAPITULO, SECCION
     def process_to_export(self):
@@ -155,12 +186,7 @@ class Validador:
                 os.mkdir(carpeta_padre)
             
             # Configurar logging
-            logging.basicConfig(
-                filename=os.path.join(carpeta_padre, f'app{marca_temp}.log'),
-                filemode='w',
-                format='%(levelname)s - %(message)s',
-                level=logging.DEBUG
-            )
+            self.__configurar_logs(carpeta_padre)
             logging.info("Inicio del proceso de validación de datos.")
             logging.info("Se encontraron {} condiciones.".format(total_conditions))
 
@@ -230,3 +256,9 @@ class Validador:
         
         except Exception as e:
             print(f"Error general: {e}")  # Manejar error general en caso de problemas durante el proceso
+
+    def columnas_condicion_nula(self, condicion: str) -> List[Tuple[str, str]]:
+        matches = [(m, '==') for m in re.findall(r'\b([A-Z0-9]+) == ""', condicion)]
+        matches.extend([(m, '!=') for m in re.findall(r'\b([A-Z0-9]+) != ""', condicion)])
+        return matches
+
