@@ -261,3 +261,4 @@ class Validador:
         matches = [(m, '==') for m in re.findall(r'\b([A-Z0-9]+) == ""', condicion)]
         matches.extend([(m, '!=') for m in re.findall(r'\b([A-Z0-9]+) != ""', condicion)])
         return matches
+
