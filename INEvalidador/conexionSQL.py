@@ -36,10 +36,10 @@ class baseSQL:
                     print(f'> Error "{e}" al obtener la forma de la tabla {tabla_nombre}')
 
 
-    def tablas_a_feather(self, tipo: str = 'PR', dir_salida: str):
+    def tablas_a_feather(self, tipo: str = 'PR', dir_salida: str = 'output'):
         conexion = self.__conexion_PR if tipo == 'PR' else self.__conexion_SR
 
-        resultado = conexion.execute("SHOW TABLES")
+        resultado = conexion.execute(text("SHOW TABLES"))
         tablas = [row[0] for row in resultado]
 
         # Convertir cada tabla en un DataFrame y exportarlo en formato feather
@@ -48,7 +48,7 @@ class baseSQL:
                 df = pd.read_sql(f'SELECT * FROM `{tabla_nombre}`', con=conexion)
 
                 # Crear el directorio de salida si no existe
-                if dir_salida and not os.path.exists(dir_salida):
+                if not os.path.exists(dir_salida):
                     os.makedirs(dir_salida)
 
                 # Exportar el DataFrame en formato feather
@@ -56,3 +56,9 @@ class baseSQL:
 
             except Exception as e:
                 print(f'> Error al convertir la tabla {tabla_nombre} en un DataFrame y exportarlo: {str(e)}')
+        
+    def extraer_base(self):
+        self.tablas_a_feather('PR', 'ronda_1')
+        self.tablas_a_feather('SR', 'ronda_2')
+
+baseSQL().extraer_base()
