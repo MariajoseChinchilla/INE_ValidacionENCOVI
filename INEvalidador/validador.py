@@ -174,7 +174,7 @@ class Validador:
             self._capturar_converciones = False
 
     # Función para leer todos los criterios y exportar un solo excel con las columnas DEPTO, MUPIO, HOGAR, CP, CAPITULO, SECCION
-    def process_to_export(self):
+    def process_to_export(self,identificador):
         try:
             # Calcular el total de condiciones
             total_conditions = self.expresiones.shape[0]
@@ -224,7 +224,7 @@ class Validador:
                     # Actualizar barra de progreso
                     pbar.update()
             df_exportacion = pd.concat(dfs)  # Concatenar todos los dataframes de la lista
-            df_exportacion.to_excel(os.path.join(carpeta_padre, "Inconsistencias.xlsx"),index=False)
+            df_exportacion.to_excel(os.path.join(carpeta_padre, f'Inconsistencias{identificador}.xlsx'),index=False)
             # Cerrar la barra de progreso
             pbar.close()
 
@@ -261,4 +261,6 @@ class Validador:
         matches = [(m, '==') for m in re.findall(r'\b([A-Z0-9]+) == ""', condicion)]
         matches.extend([(m, '!=') for m in re.findall(r'\b([A-Z0-9]+) != ""', condicion)])
         return matches
+    
+
 

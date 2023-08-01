@@ -60,8 +60,33 @@ class baseSQL:
                 print(f'> Error al convertir la tabla {tabla_nombre} en un DataFrame y exportarlo: {str(e)}')
         
     def extraer_base(self):
-        self.tablas_a_feather('PR', 'db/ronda_1')
-        self.tablas_a_feather('SR', 'db/ronda_2')
+        self.tablas_a_feather('PR', 'Bases/Ronda1')
+        self.tablas_a_feather('SR', 'Bases/Ronda2')
 
-p = baseSQL()
-p.extraer_base()
+    # Función para hacer hacer las bases de datos con las que se trabajarán
+    def obtener_datos(self):
+        self.extraer_base()
+        ruta = "Bases/Ronda1" 
+        archivos = os.listdir(ruta)
+        bases = []
+        for arch in archivos:
+            if arch != 'audio_pr.feather' and arch != 'personas.feather':
+                bases.append(pd.read_feather(ruta + arch))
+        db_hogares1 = bases[0]
+        for base in bases[1:]:
+            db_hogares1.merge(db_hogares1, base, on='level-1-id', how='outer')
+        db_hogares1.to_feather("Bases/Ronda1/HogaresRonda1.feather")
+        db_personas1 = pd.read_feather("Bases/Ronda1/personas.feather")
+        db_personas1.name = "PersonasRonda1.feather"
+        ruta_2 = "Bases/Ronda2" 
+        archivos_2 = os.listdir(ruta)
+        bases_2 = []
+        for arch in archivos_2:
+            if arch != 'audios.feather' and arch != 'personas_sr.feather':
+                bases.append(pd.read_feather(ruta + arch))
+        db_hogares2 = bases[0]
+        for base in bases[1:]:
+            db_hogares2.merge(db_hogares2, base, on='level-1', how='outer')
+        db_hogares2.to_feather("Bases/Ronda2/HogaresRonda2.feather")
+        db_personas2 = pd.read_feather("Bases/Ronda2/personas_sr.feather")
+        db_personas2.name = "PersonasRonda2.feather"
