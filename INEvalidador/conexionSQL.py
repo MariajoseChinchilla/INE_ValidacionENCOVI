@@ -44,9 +44,12 @@ class baseSQL:
         # Convertir cada tabla en un DataFrame y exportarlo en formato feather
         for tabla_nombre in tablas:
             try:
-                df = pd.read_sql(text(f'SELECT * FROM {tabla_nombre}'), con=conexion)
+                # Formatear el nombre de la tabla correctamente con comillas invertidas
+                tabla_con_comillas = f'`{tabla_nombre}`'
+                df = pd.read_sql(text(f'SELECT * FROM {tabla_con_comillas}'), con=conexion)
 
-                # Crear el directorio de salida si no existe
+
+                # Crear el directorio de salida si no existe 
                 if not os.path.exists(dir_salida):
                     os.makedirs(dir_salida)
                 df.reset_index(inplace=True)
