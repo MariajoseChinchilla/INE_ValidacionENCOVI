@@ -2,6 +2,7 @@ import mysql.connector
 import pandas as pd
 import os
 from sqlalchemy import create_engine, text
+import dask.dataframe as dd
 
 class baseSQL:
     def __init__(self):
@@ -71,11 +72,12 @@ class baseSQL:
         bases = []
         for arch in archivos:
             if arch != 'audio_pr.feather' and arch != 'personas.feather' and arch != "cspro_meta.feather" and arch != "cspro_jobs.feather" and arch != "notes.feather" and arch != "cases.feather":
-                bases.append(pd.read_feather(ruta + "/" + arch))
+                df = pd.read_feather(ruta + "/" + arch)
+                bases.append(dd.from_pandas(df, npartitions=5))
         db_hogares1 = bases[0]
         for base in bases[1:]:
             db_hogares1 = db_hogares1.merge(base, on='level-1-id', how='outer')
-        db_hogares1.to_feather("Bases/Ronda1/HogaresRonda1.feather")
+        db_hogares1.compute().to_feather("Bases/Ronda1/HogaresRonda1.feather")
         db_personas1 = pd.read_feather("Bases/Ronda1/personas.feather")
         db_personas1.name = "PersonasRonda1.feather"
         ruta_2 = "Bases/Ronda2" 
@@ -83,10 +85,11 @@ class baseSQL:
         bases_2 = []
         for arch in archivos_2:
             if arch != 'audios.feather' and arch != 'personas_sr.feather' and arch != "cases.feather" and arch != "cspro_jobs.feather" and arch != "cspro_meta.feather" and arch != "notes.feather":
-                bases.append(pd.read_feather(ruta_2 + "/" + arch))
-        db_hogares2 = bases[0]
-        for base in bases[1:]:
-            db_hogares2.merge(base, on='level-1-id', how='outer')
-        db_hogares2.to_feather("Bases/Ronda2/HogaresRonda2.feather")
+                df = pd.read_feather(ruta_2 + "/" + arch)
+                bases_2.append(dd.from_pandas(df, npartitions=5))
+        db_hogares2 = bases_2[0]
+        for base in bases_2[1:]:
+            db_hogares2 = db_hogares2.merge(base, on='level-1-id', how='outer')
+        db_hogares2.compute().to_feather("Bases/Ronda2/HogaresRonda2.feather")
         db_personas2 = pd.read_feather("Bases/Ronda2/personas_sr.feather")
         db_personas2.name = "PersonasRonda2.feather"
