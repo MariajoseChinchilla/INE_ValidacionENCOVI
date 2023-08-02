@@ -70,23 +70,23 @@ class baseSQL:
         archivos = os.listdir(ruta)
         bases = []
         for arch in archivos:
-            if arch != 'audio_pr.feather' and arch != 'personas.feather':
-                bases.append(pd.read_feather(ruta + arch))
+            if arch != 'audio_pr.feather' and arch != 'personas.feather' and arch != "cspro_meta.feather" and arch != "cspro_jobs.feather" and arch != "notes.feather" and arch != "cases.feather":
+                bases.append(pd.read_feather(ruta + "/" + arch))
         db_hogares1 = bases[0]
         for base in bases[1:]:
-            db_hogares1.merge(db_hogares1, base, on='level-1-id', how='outer')
+            db_hogares1.merge(base, on='level-1-id', how='outer')
         db_hogares1.to_feather("Bases/Ronda1/HogaresRonda1.feather")
         db_personas1 = pd.read_feather("Bases/Ronda1/personas.feather")
         db_personas1.name = "PersonasRonda1.feather"
         ruta_2 = "Bases/Ronda2" 
-        archivos_2 = os.listdir(ruta)
+        archivos_2 = os.listdir(ruta_2)
         bases_2 = []
         for arch in archivos_2:
-            if arch != 'audios.feather' and arch != 'personas_sr.feather':
-                bases.append(pd.read_feather(ruta + arch))
+            if arch != 'audios.feather' and arch != 'personas_sr.feather' and arch != "cases.feather" and arch != "cspro_jobs.feather" and arch != "cspro_meta.feather" and arch != "notes.feather":
+                bases.append(pd.read_feather(ruta_2 + "/" + arch))
         db_hogares2 = bases[0]
         for base in bases[1:]:
-            db_hogares2.merge(db_hogares2, base, on='level-1', how='outer')
+            db_hogares2.merge(base, on='level-1-id', how='outer')
         db_hogares2.to_feather("Bases/Ronda2/HogaresRonda2.feather")
         db_personas2 = pd.read_feather("Bases/Ronda2/personas_sr.feather")
         db_personas2.name = "PersonasRonda2.feather"
