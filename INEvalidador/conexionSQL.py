@@ -4,6 +4,8 @@ import os
 from sqlalchemy import create_engine, text
 import dask.dataframe as dd
 
+from .utils import columnas_a_mayuscula
+
 class baseSQL:
     def __init__(self):
         # Parámetros de conexión
@@ -17,6 +19,33 @@ class baseSQL:
         engine_SR = create_engine(f'mysql+mysqlconnector://{usuario}:{contraseña}@{host}:{puerto}/ENCOVI_SR')
         self.__conexion_PR = engine_PR.connect()
         self.__conexion_SR = engine_SR.connect()
+        self.extraer_base()
+        # Diccionario para almacenar los nombres de los archivos y las columnas
+        self.base_df = {}
+        self.base_col = {}
+
+        # Recorre todos los archivos en el directorio especificado
+        for archivo in os.listdir('db'):
+            if archivo.endswith('.feather'):  # Verifica si el archivo es un archivo Feather
+                ruta_completa = os.path.join('db', archivo)
+                # Lee el archivo Feather
+                df = pd.read_feather(ruta_completa)
+                df = columnas_a_mayuscula(df)
+                # Agrega el nombre del archivo y las columnas al diccionario
+                nombre_df = archivo.replace('.feather', '')
+                self.base_df[nombre_df] = df
+                # Agregar columnas a base_col
+                columnas = df.columns.tolist()
+                try:
+                    columnas.remove('LEVEL-1-ID')
+                except:
+                    pass
+                try:
+                    columnas.remove('INDEX')
+                except:
+                    pass
+                for col in columnas:
+                    self.base_col[col] = nombre_df      
 
     def info_tablas(self, tipo: str='PR'):
             conexion = self.__conexion_PR if tipo == 'PR' else self.__conexion_SR
@@ -61,8 +90,8 @@ class baseSQL:
                 print(f'> Error al convertir la tabla {tabla_nombre} en un DataFrame y exportarlo: {str(e)}')
         
     def extraer_base(self):
-        self.tablas_a_feather('PR', 'Bases/Ronda1')
-        self.tablas_a_feather('SR', 'Bases/Ronda2')
+        self.tablas_a_feather('PR', 'db')
+        self.tablas_a_feather('SR', 'db')
 
     # Función para hacer hacer las bases de datos con las que se trabajarán
     def obtener_datos(self):
