@@ -74,7 +74,7 @@ class baseSQL:
                 bases.append(pd.read_feather(ruta + "/" + arch))
         db_hogares1 = bases[0]
         for base in bases[1:]:
-            db_hogares1.merge(base, on='level-1-id', how='outer')
+            db_hogares1 = db_hogares1.merge(base, on='level-1-id', how='outer')
         db_hogares1.to_feather("Bases/Ronda1/HogaresRonda1.feather")
         db_personas1 = pd.read_feather("Bases/Ronda1/personas.feather")
         db_personas1.name = "PersonasRonda1.feather"
