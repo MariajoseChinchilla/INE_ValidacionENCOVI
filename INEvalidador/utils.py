@@ -1,3 +1,4 @@
+import re
 import pandas as pd
 from typing import List
 
@@ -13,4 +14,7 @@ def columnas_a_mayuscula(df: pd.DataFrame):
     return df
 
 def condicion_a_variables(condicion: str) -> List[str]:
-    return condicion
+    # La expresión regular coincide con cualquier cadena que comience con una letra mayúscula seguida de números y letras mayúsculas
+    pattern = r'\b[A-Z][A-Z0-9]+\b'
+    # Utilizamos la función findall para encontrar todas las coincidencias en el texto
+    return tuple(set(re.findall(pattern, condicion)))
