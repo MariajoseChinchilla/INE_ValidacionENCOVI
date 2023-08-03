@@ -1,25 +1,22 @@
-import mysql.connector
+from sqlalchemy import create_engine, text
 import pandas as pd
 import os
-from sqlalchemy import create_engine, text
-import dask.dataframe as dd
 
 from .utils import columnas_a_mayuscula, condicion_a_variables
 
 class baseSQL:
     def __init__(self, descargar: bool=True):
-        # Parámetros de conexión
-        usuario = 'mchinchilla'
-        contraseña = 'mchinchilla$2023'
-        host = '20.10.8.4'
-        puerto = '3307'
-
-        # Crear la conexión de SQLAlchemy
-        engine_PR = create_engine(f'mysql+mysqlconnector://{usuario}:{contraseña}@{host}:{puerto}/ENCOVI_PR')
-        engine_SR = create_engine(f'mysql+mysqlconnector://{usuario}:{contraseña}@{host}:{puerto}/ENCOVI_SR')
-        self.__conexion_PR = engine_PR.connect()
-        self.__conexion_SR = engine_SR.connect()
         if descargar:
+            # Parámetros de conexión
+            usuario = 'mchinchilla'
+            contraseña = 'mchinchilla$2023'
+            host = '20.10.8.4'
+            puerto = '3307'
+            # Crear la conexión de SQLAlchemy
+            engine_PR = create_engine(f'mysql+mysqlconnector://{usuario}:{contraseña}@{host}:{puerto}/ENCOVI_PR')
+            engine_SR = create_engine(f'mysql+mysqlconnector://{usuario}:{contraseña}@{host}:{puerto}/ENCOVI_SR')
+            self.__conexion_PR = engine_PR.connect()
+            self.__conexion_SR = engine_SR.connect()
             self.extraer_base()
         # Diccionario para almacenar los nombres de los archivos y las columnas
         self.base_df = {}
