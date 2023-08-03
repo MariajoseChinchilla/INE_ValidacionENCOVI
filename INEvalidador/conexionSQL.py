@@ -2,12 +2,11 @@ import mysql.connector
 import pandas as pd
 import os
 from sqlalchemy import create_engine, text
-import dask.dataframe as dd
 
 from .utils import columnas_a_mayuscula, condicion_a_variables
 
 class baseSQL:
-    def __init__(self, descargar: bool=True):
+    def __init__(self):
         # Parámetros de conexión
         usuario = 'mchinchilla'
         contraseña = 'mchinchilla$2023'
@@ -19,8 +18,7 @@ class baseSQL:
         engine_SR = create_engine(f'mysql+mysqlconnector://{usuario}:{contraseña}@{host}:{puerto}/ENCOVI_SR')
         self.__conexion_PR = engine_PR.connect()
         self.__conexion_SR = engine_SR.connect()
-        if descargar:
-            self.extraer_base()
+        self.extraer_base()
         # Diccionario para almacenar los nombres de los archivos y las columnas
         self.base_df = {}
         self.base_col = {}
@@ -49,22 +47,18 @@ class baseSQL:
                     self.base_col[col] = nombre_df
 
     def df_para_condicion(self, condicion: str):
-        # PR, tomar primera ronda
         variables = condicion_a_variables(condicion)
 
         df_a_unir = [self.base_col.get(var) for var in variables]
-        tipo = df_a_unir[0][-2:] # devuelve SR o PR
-        
-        df_a_unir = [self.base_df.get(archivo) for archivo in df_a_unir] 
-
-        df_base = self.base_df.get(f'level-1_{tipo}')
+        if 'personas' not in df_a_unir:
+            df_a_unir.append('personas')
+        df_a_unir = list(set(df_a_unir))
+        df_a_unir = [self.base_df.get(base) for base in df_a_unir]
+        df_base = self.base_df.get('level-1')
         for df in df_a_unir:
             df = df.drop('INDEX', axis=1)
             df_base = pd.merge(df_base, df, on='LEVEL-1-ID', how='inner')
-        
-        df_cases = self.base_df.get(f'cases_{tipo}')
-        df_base = pd.merge(df_base, df_cases, left_on='CASE-ID', right_on='ID', how='inner')
-        df_base = df_base.query('DELETED == 0')
+        df_base = df_base.query('PPA10 == 1')
         return df_base
 
     def info_tablas(self, tipo: str='PR'):
@@ -104,7 +98,8 @@ class baseSQL:
                     os.makedirs(dir_salida)
                 df.reset_index(inplace=True)
                 # Exportar el DataFrame en formato feather
-                tabla_nombre = f"{tabla_nombre}_{tipo}"
+                if tabla_nombre == 'level-1':
+                    tabla_nombre = f'level_1_{tipo}'
                 df.to_feather(os.path.join(dir_salida, f'{tabla_nombre}.feather'))
 
             except Exception as e:
