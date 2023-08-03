@@ -10,8 +10,8 @@ class baseSQL:
     def __init__(self):
         # Parámetros de conexión
         usuario = 'mchinchilla'
-        contraseña = 'Mchinchilla$2023'
-        host = '10.0.0.90'
+        contraseña = 'mchinchilla$2023'
+        host = '20.10.8.4'
         puerto = '3307'
 
         # Crear la conexión de SQLAlchemy
