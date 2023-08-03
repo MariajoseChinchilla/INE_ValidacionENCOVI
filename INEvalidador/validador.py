@@ -11,9 +11,9 @@ import os
 from .conexionSQL import baseSQL
 
 class Validador:
-    def __init__(self, ruta_base: str="BD_PERSONAS_PILOTO.sav", ruta_expresiones: str="Expresiones.xlsx"):
+    def __init__(self, ruta_expresiones: str="Expresiones.xlsx", descargar: bool=True):
         # nuevo
-        self.sql = baseSQL()
+        self.sql = baseSQL(descargar)
         # viejo
         #self.df = pd.read_spss(ruta_base, convert_categoricals=False)
         #self.df = self.df[self.df["PPA10"] == 1]
