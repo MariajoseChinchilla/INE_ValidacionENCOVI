@@ -4,7 +4,7 @@ import os
 from sqlalchemy import create_engine, text
 import dask.dataframe as dd
 
-from .utils import columnas_a_mayuscula
+from .utils import columnas_a_mayuscula, condicion_a_variables
 
 class baseSQL:
     def __init__(self):
@@ -45,7 +45,18 @@ class baseSQL:
                 except:
                     pass
                 for col in columnas:
-                    self.base_col[col] = nombre_df      
+                    self.base_col[col] = nombre_df
+
+    def df_para_condicion(self, condicion: str):
+        variables = condicion_a_variables(condicion)
+
+        df_a_unir = [self.base_df.get(self.base_col.get(var)) for var in variables]
+        df_a_unir.append(self.base_df.get('personas'))
+        df_base = self.base_df.get('level-1')
+        for df in df_a_unir:
+            df_base = pd.merge(df_base, df, on='LEVEL-1-ID', how='inner')
+        df_base = df_base.query('PPA10 == 1')
+        return df_base
 
     def info_tablas(self, tipo: str='PR'):
             conexion = self.__conexion_PR if tipo == 'PR' else self.__conexion_SR
