@@ -49,14 +49,22 @@ class baseSQL:
                     self.base_col[col] = nombre_df
 
     def df_para_condicion(self, condicion: str):
+        # PR, tomar primera ronda
         variables = condicion_a_variables(condicion)
 
-        df_a_unir = [self.base_df.get(self.base_col.get(var)) for var in variables]
-        df_a_unir.append(self.base_df.get('personas'))
-        df_base = self.base_df.get('level-1')
+        df_a_unir = [self.base_col.get(var) for var in variables]
+        tipo = df_a_unir[0][-2:] # devuelve SR o PR
+        
+        df_a_unir = [self.base_df.get(archivo) for archivo in df_a_unir] 
+
+        df_base = self.base_df.get(f'level-1_{tipo}')
         for df in df_a_unir:
+            df = df.drop('INDEX', axis=1)
             df_base = pd.merge(df_base, df, on='LEVEL-1-ID', how='inner')
-        df_base = df_base.query('PPA10 == 1')
+        
+        df_cases = self.base_df.get(f'cases_{tipo}')
+        df_base = pd.merge(df_base, df_cases, left_on='CASE-ID', right_on='ID', how='inner')
+        df_base = df_base.query('DELETED == 0')
         return df_base
 
     def info_tablas(self, tipo: str='PR'):
@@ -96,6 +104,7 @@ class baseSQL:
                     os.makedirs(dir_salida)
                 df.reset_index(inplace=True)
                 # Exportar el DataFrame en formato feather
+                tabla_nombre = f"{tabla_nombre}_{tipo}"
                 df.to_feather(os.path.join(dir_salida, f'{tabla_nombre}.feather'))
 
             except Exception as e:
