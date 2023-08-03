@@ -119,7 +119,7 @@ class Validador:
     # Función para filtrar base de datos dada una query
     def filter_base(self, condicion: str, columnas: list) -> pd.DataFrame:
         df_temp = self.sql.df_para_condicion(condicion)
-        return df_temp.query(self.leer_condicion(condicion))[columnas] 
+        return df_temp.query(self.leer_condicion(condicion))[columnas]
 
     # Función para leer todos los criterios y exportar una carpeta por capítulo y un excel por sección 
     def process_general_data(self,columnas):
