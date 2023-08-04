@@ -1,25 +1,23 @@
-import mysql.connector
+from sqlalchemy import create_engine, text
 import pandas as pd
 import os
-from sqlalchemy import create_engine, text
-import dask.dataframe as dd
 
-from .utils import columnas_a_mayuscula
+from .utils import columnas_a_mayuscula, condicion_a_variables
 
 class baseSQL:
-    def __init__(self):
-        # Parámetros de conexión
-        usuario = 'mchinchilla'
-        contraseña = 'Mchinchilla$2023'
-        host = '10.0.0.90'
-        puerto = '3307'
-
-        # Crear la conexión de SQLAlchemy
-        engine_PR = create_engine(f'mysql+mysqlconnector://{usuario}:{contraseña}@{host}:{puerto}/ENCOVI_PR')
-        engine_SR = create_engine(f'mysql+mysqlconnector://{usuario}:{contraseña}@{host}:{puerto}/ENCOVI_SR')
-        self.__conexion_PR = engine_PR.connect()
-        self.__conexion_SR = engine_SR.connect()
-        self.extraer_base()
+    def __init__(self, descargar: bool=True):
+        if descargar:
+            # Parámetros de conexión
+            usuario = 'mchinchilla'
+            contraseña = 'mchinchilla$2023'
+            host = '20.10.8.4'
+            puerto = '3307'
+            # Crear la conexión de SQLAlchemy
+            engine_PR = create_engine(f'mysql+mysqlconnector://{usuario}:{contraseña}@{host}:{puerto}/ENCOVI_PR')
+            engine_SR = create_engine(f'mysql+mysqlconnector://{usuario}:{contraseña}@{host}:{puerto}/ENCOVI_SR')
+            self.__conexion_PR = engine_PR.connect()
+            self.__conexion_SR = engine_SR.connect()
+            self.extraer_base()
         # Diccionario para almacenar los nombres de los archivos y las columnas
         self.base_df = {}
         self.base_col = {}
@@ -45,7 +43,51 @@ class baseSQL:
                 except:
                     pass
                 for col in columnas:
-                    self.base_col[col] = nombre_df      
+                    self.base_col[col] = nombre_df
+
+    def df_para_condicion(self, condicion: str):
+        # PR, tomar primera ronda
+        variables = condicion_a_variables(condicion)
+
+        df_a_unir = list(set([self.base_col.get(var) for var in variables]))
+        tipo = df_a_unir[0][-2:] # devuelve SR o PR
+        
+        df_a_unir = [self.base_df.get(archivo) for archivo in df_a_unir] 
+
+        df_base = self.base_df.get(f'level-1_{tipo}')
+        for df in df_a_unir:
+            df = df.drop('INDEX', axis=1)
+            df_base = pd.merge(df_base, df, on='LEVEL-1-ID', how='inner')
+
+        df_cases = self.base_df.get(f'cases_{tipo}')
+        df_base = pd.merge(df_base, df_cases, left_on='CASE-ID', right_on='ID', how='inner')
+        df_base = df_base.query('DELETED == 0')
+
+        # Si tipo es "PR", agregamos el dataframe "caratula_PR.feather"
+        if tipo == 'PR':
+            caratula_pr_df = pd.read_feather('db/caratula_PR.feather')
+            caratula_pr_df = columnas_a_mayuscula(caratula_pr_df)
+            df_base = pd.merge(df_base, caratula_pr_df, on='LEVEL-1-ID', how='inner')  # Unión por 'LEVEL-1-ID'
+        
+        # Si tipo es "SR", agregamos el dataframe "estado_de_boleta_SR.feather"
+        if tipo == 'SR':
+            estado_boleta_df = pd.read_feather('db/estado_de_boleta_SR.feather')
+            estado_boleta_df = columnas_a_mayuscula(estado_boleta_df)
+            df_base = pd.merge(df_base, estado_boleta_df, on='LEVEL-1-ID', how='inner')  # Unión por 'LEVEL-1-ID'
+
+        # Validar solo las encuestas terminadas
+        if "PPA10" in df_base.columns:      
+            df_base = df_base[df_base["PPA10"] == 1]
+        if "ESTADO_SR" in df_base.columns:
+            df_base = df_base[df_base["ESTADO_SR"] == 1]
+        if "ESTADO_PR" in df_base.columns:
+            df_base = df_base[df_base["ESTADO_PR"] == 1]
+
+        if "CP" not in df_base.columns:
+            df_base["CP"] = 0
+
+        return df_base
+
 
     def info_tablas(self, tipo: str='PR'):
             conexion = self.__conexion_PR if tipo == 'PR' else self.__conexion_SR
@@ -84,6 +126,7 @@ class baseSQL:
                     os.makedirs(dir_salida)
                 df.reset_index(inplace=True)
                 # Exportar el DataFrame en formato feather
+                tabla_nombre = f"{tabla_nombre}_{tipo}"
                 df.to_feather(os.path.join(dir_salida, f'{tabla_nombre}.feather'))
 
             except Exception as e:
@@ -92,33 +135,3 @@ class baseSQL:
     def extraer_base(self):
         self.tablas_a_feather('PR', 'db')
         self.tablas_a_feather('SR', 'db')
-
-    # Función para hacer hacer las bases de datos con las que se trabajarán
-    def obtener_datos(self):
-        self.extraer_base()
-        ruta = "Bases/Ronda1" 
-        archivos = os.listdir(ruta)
-        bases = []
-        for arch in archivos:
-            if arch != 'audio_pr.feather' and arch != 'personas.feather' and arch != "cspro_meta.feather" and arch != "cspro_jobs.feather" and arch != "notes.feather" and arch != "cases.feather":
-                df = pd.read_feather(ruta + "/" + arch)
-                bases.append(dd.from_pandas(df, npartitions=5))
-        db_hogares1 = bases[0]
-        for base in bases[1:]:
-            db_hogares1 = db_hogares1.merge(base, on='level-1-id', how='outer')
-        db_hogares1.compute().to_feather("Bases/Ronda1/HogaresRonda1.feather")
-        db_personas1 = pd.read_feather("Bases/Ronda1/personas.feather")
-        db_personas1.name = "PersonasRonda1.feather"
-        ruta_2 = "Bases/Ronda2" 
-        archivos_2 = os.listdir(ruta_2)
-        bases_2 = []
-        for arch in archivos_2:
-            if arch != 'audios.feather' and arch != 'personas_sr.feather' and arch != "cases.feather" and arch != "cspro_jobs.feather" and arch != "cspro_meta.feather" and arch != "notes.feather":
-                df = pd.read_feather(ruta_2 + "/" + arch)
-                bases_2.append(dd.from_pandas(df, npartitions=5))
-        db_hogares2 = bases_2[0]
-        for base in bases_2[1:]:
-            db_hogares2 = db_hogares2.merge(base, on='level-1-id', how='outer')
-        db_hogares2.compute().to_feather("Bases/Ronda2/HogaresRonda2.feather")
-        db_personas2 = pd.read_feather("Bases/Ronda2/personas_sr.feather")
-        db_personas2.name = "PersonasRonda2.feather"

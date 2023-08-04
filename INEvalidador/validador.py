@@ -8,10 +8,13 @@ import logging
 import re
 import os
 
+from .conexionSQL import baseSQL
+
 class Validador:
-    def __init__(self, ruta_base: str="BD_PERSONAS_PILOTO.sav", ruta_expresiones: str="Expresiones.xlsx"):
-        self.df = pd.read_spss(ruta_base, convert_categoricals=False)
-        self.df = self.df[self.df["PPA10"] == 1]
+    def __init__(self, ruta_expresiones: str="Expresiones.xlsx", descargar: bool=True):
+        # nuevo
+        self.sql = baseSQL(descargar)
+        self.df = pd.DataFrame
         self.expresiones = pd.read_excel(ruta_expresiones)
         self.columnas = ["DEPTO", "MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR", "CP"]
         self._capturar_converciones = False
@@ -112,8 +115,9 @@ class Validador:
         return condicion_convertida
 
     # Función para filtrar base de datos dada una query
-    def filter_base(self, conditions: str, columnas: list) -> pd.DataFrame:
-        return self.df.query(self.leer_condicion(conditions))[columnas]
+    def filter_base(self, condicion: str, columnas: list) -> pd.DataFrame:
+        self.df = self.sql.df_para_condicion(condicion)
+        return self.df.query(self.leer_condicion(condicion))[columnas]
 
     # Función para leer todos los criterios y exportar una carpeta por capítulo y un excel por sección 
     def process_general_data(self,columnas):
@@ -174,7 +178,7 @@ class Validador:
             self._capturar_converciones = False
 
     # Función para leer todos los criterios y exportar un solo excel con las columnas DEPTO, MUPIO, HOGAR, CP, CAPITULO, SECCION
-    def process_to_export(self,identificador):
+    def process_to_export(self):
         try:
             # Calcular el total de condiciones
             total_conditions = self.expresiones.shape[0]
@@ -197,11 +201,11 @@ class Validador:
             conditions = list(self.expresiones["Condición o Criterio"])
             capitulos = list(self.expresiones["Capítulo"])
             secciones = list(self.expresiones["Sección"])
+            pregunta = list(self.expresiones["Pregunta"])
             descripcion_inconsistencia = list(self.expresiones["Definición de la Validación"])
-            analista = list(self.expresiones["Analista"])
             codigo_error = list(self.expresiones["Código de Error"])
 
-            cuadruplas_exportacion = list(zip(capitulos, secciones, descripcion_inconsistencia, conditions, analista, codigo_error))
+            cuadruplas_exportacion = list(zip(capitulos, secciones, descripcion_inconsistencia, conditions, pregunta, codigo_error))
 
             # Crear lista vacía para almacenar los dataframes resultantes
             dfs = []
@@ -212,9 +216,9 @@ class Validador:
                     Validacion = self.filter_base(cuadruplas_exportacion[i][3],self.columnas)
                     Validacion["CAPÍTULO"] = cuadruplas_exportacion[i][0]
                     Validacion["SECCIÓN"] = cuadruplas_exportacion[i][1]
+                    Validacion["Pregunta"] = cuadruplas_exportacion[i][4]
                     Validacion["DEFINICIÓN DE INCONSISTENCIA"] = cuadruplas_exportacion[i][2]
                     Validacion["Código error"] = cuadruplas_exportacion[i][5]
-                    Validacion["Analista"] = cuadruplas_exportacion[i][4]
                     dfs.append(Validacion)  # Agregar el dataframe a la lista de dataframes
                 except Exception as e:
                     # Manejar error específico de una expresión
@@ -223,8 +227,9 @@ class Validador:
                 finally:
                     # Actualizar barra de progreso
                     pbar.update()
-            df_exportacion = pd.concat(dfs)  # Concatenar todos los dataframes de la lista
-            df_exportacion.to_excel(os.path.join(carpeta_padre, f'Inconsistencias{identificador}.xlsx'),index=False)
+            df_supervisores = pd.concat(dfs) # Hacer copia de los dfs para exportar por supervisor luego
+            df_supervisores.to_excel(os.path.join(carpeta_padre, 'Inconsistencias.xlsx'), index=False)
+            df_supervisores.to_csv(os.path.join(carpeta_padre, 'Inconsistencias.csv'), index=False)
             # Cerrar la barra de progreso
             pbar.close()
 
@@ -262,5 +267,3 @@ class Validador:
         matches.extend([(m, '!=') for m in re.findall(r'\b([A-Z0-9]+) != ""', condicion)])
         return matches
     
-
-
