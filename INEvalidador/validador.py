@@ -10,6 +10,7 @@ import os
 
 from .conexionSQL import baseSQL
 
+
 class Validador:
     def __init__(self, ruta_expresiones: str="Expresiones.xlsx", descargar: bool=True):
         # nuevo
@@ -39,6 +40,47 @@ class Validador:
         # Precompile the regular expression for efficiency
         self.__patron = re.compile("|".join(map(re.escape, self.__replacements.keys())), flags=re.IGNORECASE)
 
+        self.dic_upms = {
+            'GRUPO1': [29, 220, 395, 575, 767, 966, 1532, 1733, 1883, 1925],
+            'GRUPO2': [2611, 2774, 2924, 3081, 3227, 3307, 3478, 3686, 3780, 6096],
+            'GRUPO3': [0, 2423, 2233, 3857, 1159, 1345, 2198, 5815, 5734, 5758, 5781],
+            'GRUPO4': [4021, 4252, 4567, 4723, 4873, 4409, 4990, 5203, 5233, 5368],
+            'GRUPO5': [19256, 5537, 5485, 5502, 5508, 5693, 5705, 5574, 5577, 5600],
+            'GRUPO6': [6310, 6332, 6241, 6263, 6282, 6211, 6234, 5932, 5953, 5955],
+            'GRUPO7': [5838, 5859, 5885, 5901, 6176, 6116, 6139, 6164, 6064, 6086],
+            'GRUPO8': [5989, 6012, 6023, 6582, 6593, 6646, 6378, 6433, 6481, 6517],
+            'GRUPO9': [7105, 7128, 7201, 6737, 6795, 7013, 7037, 6951, 6809, 6876],
+            'GRUPO10': [7950, 8013, 8034, 8104, 7769, 7542, 7826, 7860, 8205, 8270],
+            'GRUPO11': [8343, 8380, 7286, 7349, 7410, 7476, 9071, 9148, 8957, 9009],
+            'GRUPO12': [8591, 8619, 8688, 8720, 9220, 8786, 8843, 8859, 24731, 24185],
+            'GRUPO13': [9442, 9382, 9320, 9370, 9713, 9749, 9846, 9911, 9980, 9827],
+            'GRUPO14': [9525, 9541, 9592, 9657, 8461, 8475, 8535, 7559, 7618, 7702],
+            'GRUPO15': [10233,10289,10361,10375,10454,10474,10528,10585,10657,11048],
+            'GRUPO16': [10738,10807,10876,10952,11012,11518,10002,10061,10103,10161],
+            'GRUPO17': [11525,12049,11337,11395,12093,11196,11270,13179,11980,11792],
+            'GRUPO18': [12448,13215, 13282, 13294, 13329,12314,12372,12384,12501,12939],
+            'GRUPO19': [12131,12181,12200,12249,12554,12568,12644,12700,12721,12771],
+            'GRUPO20': [12991,13028,13059,13101,13146,11835,11904,13425,13384,13502],
+            'GRUPO21': [14180,14320,14441,13938,14054,15312,13543,13594,13699,13783],
+            'GRUPO22': [14585,14649,14731,14853,15019,15173,11637,11679,12840,12856],
+            'GRUPO23': [17096,16469,16615,16165,16935,15701,18457,17301,17326,17426],
+            'GRUPO24': [16362,16306,15976,15835,17243,15417,15534,15555,16774,11175],
+            'GRUPO25': [18573,18345,17550,17946,18022,18084,18227,17843,17653,17744],
+            'GRUPO26': [19197,19013,19053,19065,19151,19111,18927,18951,18810,18850],
+            'GRUPO27': [18686,21061,20769,20808,20927,20653,20279,20390,20503,19350],
+            'GRUPO28': [19423,19549,19678,19851,19923,20019,20143,19270,19306,18892],
+            'GRUPO29': [22012,22025,21175,21198,21606,21416,21480,21539,21890,21946],
+            'GRUPO30': [21294,21315,21623,21684,21745,21817,22388,22439,22502,22567],
+            'GRUPO31': [22487,22158,22202,22248,22262,22309,22649,22699,22748,22797],
+            'GRUPO32': [22851,22903,23387,23419,23172,23210,23246,23098,23109,23143],
+            'GRUPO33': [23288, 23319, 23344, 22926, 22961, 23009, 23044, 5680, 5620, 5643],
+            'GRUPO34': [22976,23457,23523,23534,23590,23726,23786,23845,23905,23995],
+            'GRUPO35': [24063, 24113, 23655, 24570, 24598, 24666, 24677, 24785, 25042, 25056],
+            'GRUPO36': [24835, 24882,24935,24989,25708,25455,25524,25570,25589,25639],
+            'GRUPO37': [24223,24265,24284,24324,24364,24407,24450,24495,24537,25184],
+            'GRUPO38': [25130, 25199, 25261, 25347, 25400, 25315, 8947]
+            }
+        
     def convertir_a_entero(self):
         columnas = list(self.df.columns)
         for columna in columnas:
@@ -227,9 +269,17 @@ class Validador:
                 finally:
                     # Actualizar barra de progreso
                     pbar.update()
-            df_supervisores = pd.concat(dfs) # Hacer copia de los dfs para exportar por supervisor luego
-            df_supervisores.to_excel(os.path.join(carpeta_padre, 'Inconsistencias.xlsx'), index=False)
-            df_supervisores.to_csv(os.path.join(carpeta_padre, 'Inconsistencias.csv'), index=False)
+                    
+            df_power = pd.concat(dfs) # Hacer copia de los dfs para exportar por supervisor luego
+            df_power.to_csv(os.path.join(carpeta_padre, 'InconsistenciasPowerBi.csv'), index=False)
+
+            for upm, sectors in self.dic_upms.items():
+                # Filtra las filas donde la columna "SECTOR" está en los valores de la UPM actual
+                filtered_df = df_power[df_power['SECTOR'].isin(sectors)]
+
+                # Exporta el DataFrame filtrado a un archivo Excel
+                filtered_df.to_excel(os.path.join(carpeta_padre, f'Inconsistencias{upm}.xlsx'), index=False)
+
             # Cerrar la barra de progreso
             pbar.close()
 
