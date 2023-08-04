@@ -49,7 +49,7 @@ class baseSQL:
         # PR, tomar primera ronda
         variables = condicion_a_variables(condicion)
 
-        df_a_unir = [self.base_col.get(var) for var in variables] 
+        df_a_unir = list(set([self.base_col.get(var) for var in variables]))
         tipo = df_a_unir[0][-2:] # devuelve SR o PR
         
         df_a_unir = [self.base_df.get(archivo) for archivo in df_a_unir] 

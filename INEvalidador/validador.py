@@ -14,9 +14,7 @@ class Validador:
     def __init__(self, ruta_expresiones: str="Expresiones.xlsx", descargar: bool=True):
         # nuevo
         self.sql = baseSQL(descargar)
-        # viejo
-        #self.df = pd.read_spss(ruta_base, convert_categoricals=False)
-        #self.df = self.df[self.df["PPA10"] == 1]
+        self.df = pd.DataFrame
         self.expresiones = pd.read_excel(ruta_expresiones)
         self.columnas = ["DEPTO", "MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR", "CP"]
         self._capturar_converciones = False
@@ -118,8 +116,8 @@ class Validador:
 
     # Función para filtrar base de datos dada una query
     def filter_base(self, condicion: str, columnas: list) -> pd.DataFrame:
-        df_temp = self.sql.df_para_condicion(condicion)
-        return df_temp.query(self.leer_condicion(condicion))[columnas]
+        self.df = self.sql.df_para_condicion(condicion)
+        return self.df.query(self.leer_condicion(condicion))[columnas]
 
     # Función para leer todos los criterios y exportar una carpeta por capítulo y un excel por sección 
     def process_general_data(self,columnas):
@@ -180,7 +178,7 @@ class Validador:
             self._capturar_converciones = False
 
     # Función para leer todos los criterios y exportar un solo excel con las columnas DEPTO, MUPIO, HOGAR, CP, CAPITULO, SECCION
-    def process_to_export(self,identificador):
+    def process_to_export(self):
         try:
             # Calcular el total de condiciones
             total_conditions = self.expresiones.shape[0]
@@ -230,7 +228,7 @@ class Validador:
                     # Actualizar barra de progreso
                     pbar.update()
             df_exportacion = pd.concat(dfs)  # Concatenar todos los dataframes de la lista
-            df_exportacion.to_excel(os.path.join(carpeta_padre, f'Inconsistencias{identificador}.xlsx'),index=False)
+            df_exportacion.to_excel(os.path.join(carpeta_padre, 'Inconsistencias.xlsx'), index=False)
             # Cerrar la barra de progreso
             pbar.close()
 
