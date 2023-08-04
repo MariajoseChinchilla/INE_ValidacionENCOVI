@@ -58,11 +58,36 @@ class baseSQL:
         for df in df_a_unir:
             df = df.drop('INDEX', axis=1)
             df_base = pd.merge(df_base, df, on='LEVEL-1-ID', how='inner')
-        
+
         df_cases = self.base_df.get(f'cases_{tipo}')
         df_base = pd.merge(df_base, df_cases, left_on='CASE-ID', right_on='ID', how='inner')
         df_base = df_base.query('DELETED == 0')
+
+        # Si tipo es "PR", agregamos el dataframe "caratula_PR.feather"
+        if tipo == 'PR':
+            caratula_pr_df = pd.read_feather('db/caratula_PR.feather')
+            caratula_pr_df = columnas_a_mayuscula(caratula_pr_df)
+            df_base = pd.merge(df_base, caratula_pr_df, on='LEVEL-1-ID', how='inner')  # Unión por 'LEVEL-1-ID'
+        
+        # Si tipo es "SR", agregamos el dataframe "estado_de_boleta_SR.feather"
+        if tipo == 'SR':
+            estado_boleta_df = pd.read_feather('db/estado_de_boleta_SR.feather')
+            estado_boleta_df = columnas_a_mayuscula(estado_boleta_df)
+            df_base = pd.merge(df_base, estado_boleta_df, on='LEVEL-1-ID', how='inner')  # Unión por 'LEVEL-1-ID'
+
+        # Validar solo las encuestas terminadas
+        if "PPA10" in df_base.columns:      
+            df_base = df_base[df_base["PPA10"] == 1]
+        if "ESTADO_SR" in df_base.columns:
+            df_base = df_base[df_base["ESTADO_SR"] == 1]
+        if "ESTADO_PR" in df_base.columns:
+            df_base = df_base[df_base["ESTADO_PR"] == 1]
+
+        if "CP" not in df_base.columns:
+            df_base["CP"] = 0
+
         return df_base
+
 
     def info_tablas(self, tipo: str='PR'):
             conexion = self.__conexion_PR if tipo == 'PR' else self.__conexion_SR

@@ -201,11 +201,11 @@ class Validador:
             conditions = list(self.expresiones["Condición o Criterio"])
             capitulos = list(self.expresiones["Capítulo"])
             secciones = list(self.expresiones["Sección"])
+            pregunta = list(self.expresiones["Pregunta"])
             descripcion_inconsistencia = list(self.expresiones["Definición de la Validación"])
-            analista = list(self.expresiones["Analista"])
             codigo_error = list(self.expresiones["Código de Error"])
 
-            cuadruplas_exportacion = list(zip(capitulos, secciones, descripcion_inconsistencia, conditions, analista, codigo_error))
+            cuadruplas_exportacion = list(zip(capitulos, secciones, descripcion_inconsistencia, conditions, pregunta, codigo_error))
 
             # Crear lista vacía para almacenar los dataframes resultantes
             dfs = []
@@ -216,9 +216,9 @@ class Validador:
                     Validacion = self.filter_base(cuadruplas_exportacion[i][3],self.columnas)
                     Validacion["CAPÍTULO"] = cuadruplas_exportacion[i][0]
                     Validacion["SECCIÓN"] = cuadruplas_exportacion[i][1]
+                    Validacion["Pregunta"] = cuadruplas_exportacion[i][4]
                     Validacion["DEFINICIÓN DE INCONSISTENCIA"] = cuadruplas_exportacion[i][2]
                     Validacion["Código error"] = cuadruplas_exportacion[i][5]
-                    Validacion["Analista"] = cuadruplas_exportacion[i][4]
                     dfs.append(Validacion)  # Agregar el dataframe a la lista de dataframes
                 except Exception as e:
                     # Manejar error específico de una expresión
@@ -227,8 +227,9 @@ class Validador:
                 finally:
                     # Actualizar barra de progreso
                     pbar.update()
-            df_exportacion = pd.concat(dfs)  # Concatenar todos los dataframes de la lista
-            df_exportacion.to_excel(os.path.join(carpeta_padre, 'Inconsistencias.xlsx'), index=False)
+            df_supervisores = pd.concat(dfs) # Hacer copia de los dfs para exportar por supervisor luego
+            df_supervisores.to_excel(os.path.join(carpeta_padre, 'Inconsistencias.xlsx'), index=False)
+            df_supervisores.to_csv(os.path.join(carpeta_padre, 'Inconsistencias.csv'), index=False)
             # Cerrar la barra de progreso
             pbar.close()
 
