@@ -220,7 +220,7 @@ class Validador:
             self._capturar_converciones = False
 
     # Función para leer todos los criterios y exportar un solo excel con las columnas DEPTO, MUPIO, HOGAR, CP, CAPITULO, SECCION
-    def process_to_export(self):
+    def process_to_export(self,columna_upm):
         try:
             # Calcular el total de condiciones
             total_conditions = self.expresiones.shape[0]
@@ -275,7 +275,7 @@ class Validador:
 
             for upm, sectors in self.dic_upms.items():
                 # Filtra las filas donde la columna "SECTOR" está en los valores de la UPM actual
-                filtered_df = df_power[df_power['SECTOR'].isin(sectors)]
+                filtered_df = df_power[df_power[columna_upm].isin(sectors)]
 
                 # Exporta el DataFrame filtrado a un archivo Excel
                 filtered_df.to_excel(os.path.join(carpeta_padre, f'Inconsistencias{upm}.xlsx'), index=False)
