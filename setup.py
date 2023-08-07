@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 setup(
     name='INEvalidador',
-    version='1.0',
+    version='1.1',
     author='Mariajose Chinchilla Moran',
     description='Validador de datos de criterios de encuestas estilo INE.',
     long_description='',
@@ -16,6 +16,7 @@ setup(
         'pyreadstat==1.2.2',
         'tqdm==4.65.0',
         'mysql-connector-python==8.1.0',
-        'sqlalchemy==2.0.19'
+        'sqlalchemy==2.0.19',
+        'pyarrow'
     ]
 )
