@@ -1,3 +1,4 @@
+import pkg_resources
 import re
 import pandas as pd
 from typing import List
@@ -25,7 +26,8 @@ def extract_number(s):
 
 def extraer_UPMS():
     # Crear un diccionario vacío para almacenar los resultados
-    df = pd.read_excel('UPMS.xlsx')
+    archivo_UPMS= pkg_resources.resource_filename(__name__, 'extras/UPMS.xlsx')
+    df = pd.read_excel(archivo_UPMS)
     dic_upms = {}
 
     # Agrupar por 'GRUPO' y recorrer cada grupo
