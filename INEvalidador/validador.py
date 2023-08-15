@@ -202,7 +202,7 @@ class Validador:
             pbar = tqdm(total=total_conditions, unit='condicion')
 
             # Hacer cuadruplas con condicion, capitulo, seccion, etc
-            conditions = list(self.expresiones["Condición o Criterio"])
+            conditions = set(self.expresiones["Condición o Criterio"])
             capitulos = list(self.expresiones["Capítulo"])
             secciones = list(self.expresiones["Sección"])
             pregunta = list(self.expresiones["Pregunta"])
