@@ -119,8 +119,8 @@ class Validador:
         return condicion_convertida
 
     # Función para filtrar base de datos dada una query
-    def filter_base(self, condicion: str, columnas: list) -> pd.DataFrame:
-        self.df = self.sql.df_para_condicion(condicion)
+    def filter_base(self, condicion: str, columnas: list, fecha_inicio, fecha_final) -> pd.DataFrame:
+        self.df = self.sql.df_para_condicion(condicion, fecha_inicio, fecha_final)
         return self.df.query(self.leer_condicion(condicion))[columnas]
 
     # Función para leer todos los criterios y exportar una carpeta por capítulo y un excel por sección 
@@ -182,7 +182,7 @@ class Validador:
             self._capturar_converciones = False
 
     # Función para leer todos los criterios y exportar un solo excel con las columnas DEPTO, MUPIO, HOGAR, CP, CAPITULO, SECCION
-    def process_to_export(self,columna_upm):
+    def process_to_export(self,columna_upm, fecha_inicio: datetime, fecha_final: datetime):
         try:
             # Calcular el total de condiciones
             total_conditions = self.expresiones.shape[0]
@@ -217,13 +217,14 @@ class Validador:
             for i in range(len(cuadruplas_exportacion)):
                 try:
                     # Aplicar filtro a la base de datos
-                    Validacion = self.filter_base(cuadruplas_exportacion[i][3],self.columnas)
+                    Validacion = self.filter_base(cuadruplas_exportacion[i][3], self.columnas, fecha_inicio, fecha_final)
                     Validacion["CAPÍTULO"] = cuadruplas_exportacion[i][0]
                     Validacion["SECCIÓN"] = cuadruplas_exportacion[i][1]
                     Validacion["PREGUNTA"] = cuadruplas_exportacion[i][4]
                     Validacion["DEFINICIÓN DE INCONSISTENCIA"] = cuadruplas_exportacion[i][2]
                     Validacion["CÓDIGO ERROR"] = cuadruplas_exportacion[i][5]
-                    Validacion = Validacion[["ENCUESTADOR","CÓDIGO ERROR","DEFINICIÓN DE INCONSISTENCIA","CAPÍTULO","SECCIÓN","PREGUNTA","DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP"]]
+                    Validacion["COMENTARIOS"] = None
+                    Validacion = Validacion[["ENCUESTADOR","DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP","CAPÍTULO","SECCIÓN","PREGUNTA","DEFINICIÓN DE INCONSISTENCIA","CÓDIGO ERROR","COMENTARIOS"]]
                     dfs.append(Validacion)  # Agregar el dataframe a la lista de dataframes
                 except Exception as e:
                     # Manejar error específico de una expresión
@@ -236,12 +237,17 @@ class Validador:
             df_power = pd.concat(dfs) # Hacer copia de los dfs para exportar por supervisor luego
             df_power.to_csv(os.path.join(carpeta_padre, 'InconsistenciasPowerBi.csv'), index=False)
 
+            fecha_actual = datetime.now()
+            dia_actual = fecha_actual.day
+            mes_actual = fecha_actual.month
+            año_actual = fecha_actual.year
+
             for upm, sectors in self.dic_upms.items():
                 # Filtra las filas donde la columna "SECTOR" está en los valores de la UPM actual
                 filtered_df = df_power[df_power[columna_upm].isin(sectors)]
 
                 # Exporta el DataFrame filtrado a un archivo Excel
-                filtered_df.to_excel(os.path.join(carpeta_padre, f'Inconsistencias{upm}.xlsx'), index=False)
+                filtered_df.to_excel(os.path.join(carpeta_padre, f'Inconsistencias{upm}_{dia_actual}-{mes_actual}-{año_actual}.xlsx'), index=False)
 
             # Cerrar la barra de progreso
             pbar.close()
