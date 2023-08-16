@@ -19,8 +19,8 @@ class baseSQL:
             self.__conexion_SR = engine_SR.connect()
             self.extraer_base()
         # Diccionario para almacenar los nombres de los archivos y las columnas
-        self.base_df = {}
-        self.base_col = {}
+        self.base_df = {}   # Diccionario que asocia nombre de df con el df
+        self.base_col = {}  # Diciconario que asocia variable con el nombre del df
 
         # Recorre todos los archivos en el directorio especificado
         for archivo in os.listdir('db'):

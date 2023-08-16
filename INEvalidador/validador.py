@@ -18,7 +18,7 @@ class Validador:
         self.sql = baseSQL(descargar)
         self.df = pd.DataFrame
         self.expresiones = pd.read_excel(ruta_expresiones)
-        self.columnas = ["DEPTO", "MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR", "CP"]
+        self.columnas = ["DEPTO", "MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR", "CP","ENCUESTADOR"]
         self._capturar_converciones = False
         self.__replacements = {
             '<=': '<=',
@@ -220,9 +220,10 @@ class Validador:
                     Validacion = self.filter_base(cuadruplas_exportacion[i][3],self.columnas)
                     Validacion["CAPÍTULO"] = cuadruplas_exportacion[i][0]
                     Validacion["SECCIÓN"] = cuadruplas_exportacion[i][1]
-                    Validacion["Pregunta"] = cuadruplas_exportacion[i][4]
+                    Validacion["PREGUNTA"] = cuadruplas_exportacion[i][4]
                     Validacion["DEFINICIÓN DE INCONSISTENCIA"] = cuadruplas_exportacion[i][2]
-                    Validacion["Código error"] = cuadruplas_exportacion[i][5]
+                    Validacion["CÓDIGO ERROR"] = cuadruplas_exportacion[i][5]
+                    Validacion = Validacion[["ENCUESTADOR","CÓDIGO ERROR","DEFINICIÓN DE INCONSISTENCIA","CAPÍTULO","SECCIÓN","PREGUNTA","DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP"]]
                     dfs.append(Validacion)  # Agregar el dataframe a la lista de dataframes
                 except Exception as e:
                     # Manejar error específico de una expresión
