@@ -214,21 +214,21 @@ class Validador:
             # Crear lista vacía para almacenar los dataframes resultantes
             dfs = []
             # Leer filtros y tomar subconjuntos de la base e ir uniendo las bases hasta generar una sola con las columnas solicitadas
-            for i in range(len(cuadruplas_exportacion)):
+            for cap, sec, desc, cond, preg, cod in cuadruplas_exportacion:
                 try:
                     # Aplicar filtro a la base de datos
-                    Validacion = self.filter_base(cuadruplas_exportacion[i][3], self.columnas, fecha_inicio, fecha_final)
-                    Validacion["CAPÍTULO"] = cuadruplas_exportacion[i][0]
-                    Validacion["SECCIÓN"] = cuadruplas_exportacion[i][1]
-                    Validacion["PREGUNTA"] = cuadruplas_exportacion[i][4]
-                    Validacion["DEFINICIÓN DE INCONSISTENCIA"] = cuadruplas_exportacion[i][2]
-                    Validacion["CÓDIGO ERROR"] = cuadruplas_exportacion[i][5]
+                    Validacion = self.filter_base(cond, self.columnas, fecha_inicio, fecha_final)
+                    Validacion["CAPÍTULO"] = cap
+                    Validacion["SECCIÓN"] = sec
+                    Validacion["PREGUNTA"] = preg
+                    Validacion["DEFINICIÓN DE INCONSISTENCIA"] = desc
+                    Validacion["CÓDIGO ERROR"] = cod
                     Validacion["COMENTARIOS"] = None
                     Validacion = Validacion[["ENCUESTADOR","DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP","CAPÍTULO","SECCIÓN","PREGUNTA","DEFINICIÓN DE INCONSISTENCIA","CÓDIGO ERROR","COMENTARIOS"]]
                     dfs.append(Validacion)  # Agregar el dataframe a la lista de dataframes
                 except Exception as e:
                     # Manejar error específico de una expresión
-                    logging.error(f"{cuadruplas_exportacion[i][3]}: {e}. Error de {cuadruplas_exportacion[i][4]}")
+                    logging.error(f"{cond}: {e}. Error de {preg}")
                     pass
                 finally:
                     # Actualizar barra de progreso
