@@ -120,8 +120,8 @@ class Validador:
 
     # Función para filtrar base de datos dada una query
     def filter_base(self, condicion: str, columnas: list, fecha_inicio, fecha_final) -> pd.DataFrame:
-        self.df = self.sql.df_para_condicion(condicion, fecha_inicio, fecha_final)
-        return self.df.query(self.leer_condicion(condicion))[columnas]
+        self.df_filtrada = self.sql.df_para_condicion(condicion, fecha_inicio, fecha_final)
+        return self.df_filtrada.query(self.leer_condicion(condicion))[columnas]
 
     # Función para leer todos los criterios y exportar una carpeta por capítulo y un excel por sección 
     def process_general_data(self,columnas):
@@ -202,7 +202,7 @@ class Validador:
             pbar = tqdm(total=total_conditions, unit='condicion')
 
             # Hacer cuadruplas con condicion, capitulo, seccion, etc
-            conditions = set(self.expresiones["Condición o Criterio"])
+            conditions = list(self.expresiones["Condición o Criterio"])
             capitulos = list(self.expresiones["Capítulo"])
             secciones = list(self.expresiones["Sección"])
             pregunta = list(self.expresiones["Pregunta"])
@@ -229,7 +229,7 @@ class Validador:
                 except Exception as e:
                     # Manejar error específico de una expresión
                     logging.error(f"{cond}: {e}. Error de {preg}")
-                    pass
+                    continue
                 finally:
                     # Actualizar barra de progreso
                     pbar.update()

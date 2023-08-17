@@ -46,6 +46,12 @@ class baseSQL:
                 for col in columnas:
                     self.base_col[col] = nombre_df
 
+    def df_equals_in_list(self,target_df, df_list):
+        for df in df_list:
+            if df.equals(target_df):
+                return True
+        return False
+
     def df_para_condicion(self, condicion: str, fecha_inicio, fecha_final):
         # PR, tomar primera ronda
         variables = condicion_a_variables(condicion)
@@ -74,7 +80,7 @@ class baseSQL:
             tiempo_pr_df = columnas_a_mayuscula(tiempo_pr_df)
             # Unir a base raiz
             df_base = pd.merge(df_base, tiempo_pr_df, on="LEVEL-1-ID", how="inner")
-            df_base = df_base.drop("INDEX",axis=1)
+            df_base = df_base.drop("INDEX_x",axis=1)
             df_base = pd.merge(df_base, caratula_pr_df, on='LEVEL-1-ID', how='inner')  # Unión por 'LEVEL-1-ID'
         
         # Si tipo es "SR", agregamos el dataframe "estado_de_boleta_SR.feather"
@@ -87,7 +93,7 @@ class baseSQL:
             tiempo_sr_df = columnas_a_mayuscula(tiempo_sr_df)
             # Unir a base raiz
             df_base = pd.merge(df_base, tiempo_sr_df, on="LEVEL-1-ID", how="inner")
-            df_base = df_base.drop("INDEX",axis=1)
+            df_base = df_base.drop("INDEX_x",axis=1)
             df_base = pd.merge(df_base, estado_boleta_df, on='LEVEL-1-ID', how='inner')  # Unión por 'LEVEL-1-ID'
 
         # Validar solo las encuestas terminadas
