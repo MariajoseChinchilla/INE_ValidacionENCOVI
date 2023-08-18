@@ -80,7 +80,7 @@ class baseSQL:
             tiempo_pr_df = columnas_a_mayuscula(tiempo_pr_df)
             # Unir a base raiz
             df_base = pd.merge(df_base, tiempo_pr_df, on="LEVEL-1-ID", how="inner")
-            df_base = df_base.drop("INDEX_x",axis=1)
+            df_base = df_base.drop("INDEX",axis=1)
             df_base = pd.merge(df_base, caratula_pr_df, on='LEVEL-1-ID', how='inner')  # Unión por 'LEVEL-1-ID'
         
         # Si tipo es "SR", agregamos el dataframe "estado_de_boleta_SR.feather"
@@ -93,7 +93,7 @@ class baseSQL:
             tiempo_sr_df = columnas_a_mayuscula(tiempo_sr_df)
             # Unir a base raiz
             df_base = pd.merge(df_base, tiempo_sr_df, on="LEVEL-1-ID", how="inner")
-            df_base = df_base.drop("INDEX_x",axis=1)
+            df_base = df_base.drop("INDEX",axis=1)
             df_base = pd.merge(df_base, estado_boleta_df, on='LEVEL-1-ID', how='inner')  # Unión por 'LEVEL-1-ID'
 
         # Validar solo las encuestas terminadas
@@ -115,6 +115,12 @@ class baseSQL:
         if "FECHA_INICIO_CAPXIIIA" in df_base.columns:
             df_base["FECHA_INICIO_CAPXIIIA"] = pd.to_datetime(df_base["FECHA_INICIO_CAPXIIIA"])
             df_base = df_base[(df_base["FECHA_INICIO_CAPXIIIA"] >= fecha_inicio) & (df_base["FECHA_INICIO_CAPXIIIA"] <= fecha_final)]
+
+        for columna in df_base.columns:
+            if columna[-2:] == "_y":
+                df_base.drop(columns=columna, inplace=True)
+            if columna[-2:] == "_x":
+                df_base.rename(columns={columna : columna[0:-2]}, inplace=True)
 
         return df_base
 
