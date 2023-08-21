@@ -120,8 +120,8 @@ class Validador:
 
     # Función para filtrar base de datos dada una query
     def filter_base(self, condicion: str, columnas: list, fecha_inicio, fecha_final) -> pd.DataFrame:
-        self.df_filtrada = self.sql.df_para_condicion(condicion, fecha_inicio, fecha_final)
-        return self.df_filtrada.query(self.leer_condicion(condicion))[columnas]
+        self.df = self.sql.df_para_condicion(condicion, fecha_inicio, fecha_final)
+        return self.df.query(self.leer_condicion(condicion))[columnas]
 
     # Función para leer todos los criterios y exportar una carpeta por capítulo y un excel por sección 
     def process_general_data(self,columnas):
@@ -202,7 +202,7 @@ class Validador:
             pbar = tqdm(total=total_conditions, unit='condicion')
 
             # Hacer cuadruplas con condicion, capitulo, seccion, etc
-            conditions = list(self.expresiones["Condición o Criterio"])
+            conditions = set(self.expresiones["Condición o Criterio"])
             capitulos = list(self.expresiones["Capítulo"])
             secciones = list(self.expresiones["Sección"])
             pregunta = list(self.expresiones["Pregunta"])
@@ -237,17 +237,12 @@ class Validador:
             df_power = pd.concat(dfs) # Hacer copia de los dfs para exportar por supervisor luego
             df_power.to_csv(os.path.join(carpeta_padre, 'InconsistenciasPowerBi.csv'), index=False)
 
-            fecha_actual = datetime.now()
-            dia_actual = fecha_actual.day
-            mes_actual = fecha_actual.month
-            año_actual = fecha_actual.year
-
             for upm, sectors in self.dic_upms.items():
                 # Filtra las filas donde la columna "SECTOR" está en los valores de la UPM actual
                 filtered_df = df_power[df_power[columna_upm].isin(sectors)]
 
                 # Exporta el DataFrame filtrado a un archivo Excel
-                filtered_df.to_excel(os.path.join(carpeta_padre, f'Inconsistencias{upm}_{dia_actual}-{mes_actual}-{año_actual}.xlsx'), index=False)
+                filtered_df.to_excel(os.path.join(carpeta_padre, f'Inconsistencias{upm}.xlsx'), index=False)
 
             # Cerrar la barra de progreso
             pbar.close()
