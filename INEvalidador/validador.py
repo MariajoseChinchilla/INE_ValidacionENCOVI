@@ -14,6 +14,7 @@ from .conexionSQL import baseSQL
 
 class Validador:
     def __init__(self, ruta_expresiones: str="Expresiones.xlsx", descargar: bool=True):
+        self.df_ = pd.DataFrame
         # nuevo
         self.sql = baseSQL(descargar)
         self.df = pd.DataFrame
@@ -192,7 +193,7 @@ class Validador:
             carpeta_padre = f"Inconsistencias_{marca_temp}"
             if not os.path.exists(carpeta_padre):
                 os.mkdir(carpeta_padre)
-            
+
             # Configurar logging
             self.__configurar_logs(carpeta_padre)
             logging.info("Inicio del proceso de validación de datos.")
@@ -202,40 +203,45 @@ class Validador:
             pbar = tqdm(total=total_conditions, unit='condicion')
 
             # Hacer cuadruplas con condicion, capitulo, seccion, etc
-            conditions = set(self.expresiones["Condición o Criterio"])
+            conditions = list(self.expresiones["Condición o Criterio"])
             capitulos = list(self.expresiones["Capítulo"])
             secciones = list(self.expresiones["Sección"])
             pregunta = list(self.expresiones["Pregunta"])
             descripcion_inconsistencia = list(self.expresiones["Definición de la Validación"])
             codigo_error = list(self.expresiones["Código de Error"])
+            analista = list(self.expresiones["Analista"])
 
-            cuadruplas_exportacion = list(zip(capitulos, secciones, descripcion_inconsistencia, conditions, pregunta, codigo_error))
+            cuadruplas_exportacion = list(zip(capitulos, secciones, descripcion_inconsistencia, conditions, pregunta, codigo_error, analista))
 
             # Crear lista vacía para almacenar los dataframes resultantes
             dfs = []
             # Leer filtros y tomar subconjuntos de la base e ir uniendo las bases hasta generar una sola con las columnas solicitadas
-            for cap, sec, desc, cond, preg, cod in cuadruplas_exportacion:
+            for cap, sec, desc, cond, preg, cod, analista in cuadruplas_exportacion:
                 try:
                     # Aplicar filtro a la base de datos
                     Validacion = self.filter_base(cond, self.columnas, fecha_inicio, fecha_final)
+                    if Validacion.shape[0] == 0:
+                        continue
                     Validacion["CAPÍTULO"] = cap
                     Validacion["SECCIÓN"] = sec
                     Validacion["PREGUNTA"] = preg
                     Validacion["DEFINICIÓN DE INCONSISTENCIA"] = desc
                     Validacion["CÓDIGO ERROR"] = cod
                     Validacion["COMENTARIOS"] = None
-                    Validacion = Validacion[["ENCUESTADOR","DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP","CAPÍTULO","SECCIÓN","PREGUNTA","DEFINICIÓN DE INCONSISTENCIA","CÓDIGO ERROR","COMENTARIOS"]]
+                    Validacion["CONDICIÓN"] = cond
+                    Validacion = Validacion[["CONDICIÓN","ENCUESTADOR","DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP","CAPÍTULO","SECCIÓN","PREGUNTA","DEFINICIÓN DE INCONSISTENCIA","CÓDIGO ERROR","COMENTARIOS"]]
                     dfs.append(Validacion)  # Agregar el dataframe a la lista de dataframes
                 except Exception as e:
                     # Manejar error específico de una expresión
-                    logging.error(f"{cond}: {e}. Error de {preg}")
-                    continue
+                    logging.error(f"{cond}: {e}. Error de {analista}")
+                    continue 
                 finally:
                     # Actualizar barra de progreso
                     pbar.update()
                     
+            self.df_ = dfs
             df_power = pd.concat(dfs) # Hacer copia de los dfs para exportar por supervisor luego
-            df_power.to_csv(os.path.join(carpeta_padre, 'InconsistenciasPowerBi.csv'), index=False)
+            df_power.to_excel(os.path.join(carpeta_padre, 'InconsistenciasPowerBi.xlsx'), index=False)
 
             for upm, sectors in self.dic_upms.items():
                 # Filtra las filas donde la columna "SECTOR" está en los valores de la UPM actual
