@@ -203,10 +203,10 @@ class Validador:
             pbar = tqdm(total=total_conditions, unit='condicion')
 
             # Hacer cuadruplas con condicion, capitulo, seccion, etc
-            conditions = list(self.expresiones["Condición o Criterio"])
+            conditions = list(self.expresiones["Condición o Criterio"]) 
             capitulos = list(self.expresiones["Capítulo"])
             secciones = list(self.expresiones["Sección"])
-            pregunta = list(self.expresiones["Pregunta"])
+            pregunta = list(self.expresiones["Pregunta"]) 
             descripcion_inconsistencia = list(self.expresiones["Definición de la Validación"])
             codigo_error = list(self.expresiones["Código de Error"])
             analista = list(self.expresiones["Analista"])
@@ -221,7 +221,7 @@ class Validador:
                     # Aplicar filtro a la base de datos
                     Validacion = self.filter_base(cond, self.columnas, fecha_inicio, fecha_final)
                     if Validacion.shape[0] == 0:
-                        continue
+                        continue 
                     Validacion["CAPÍTULO"] = cap
                     Validacion["SECCIÓN"] = sec
                     Validacion["PREGUNTA"] = preg
