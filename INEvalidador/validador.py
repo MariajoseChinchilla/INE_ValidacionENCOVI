@@ -6,7 +6,9 @@ import numpy as np
 import unicodedata
 import logging
 import re
+import copy
 import os
+from INEvalidador.automarizador_drive import upload_files_to_google_drive
 
 from .utils import extraer_UPMS
 from .conexionSQL import baseSQL
@@ -119,10 +121,10 @@ class Validador:
                     condicion_convertida = condicion_convertida.replace(f'{col} {tipo} ""', f'~{col}.isnull()')       #modificaciones para variables tipo numérica
         return condicion_convertida
 
-    # Función para filtrar base de datos dada una query
     def filter_base(self, condicion: str, columnas: list, fecha_inicio, fecha_final) -> pd.DataFrame:
         self.df = self.sql.df_para_condicion(condicion, fecha_inicio, fecha_final)
-        return self.df.query(self.leer_condicion(condicion))[columnas]
+        filtered_df = self.df.query(self.leer_condicion(condicion))[columnas]
+        return copy.deepcopy(filtered_df)
 
     # Función para leer todos los criterios y exportar una carpeta por capítulo y un excel por sección 
     def process_general_data(self,columnas):
@@ -183,7 +185,7 @@ class Validador:
             self._capturar_converciones = False
 
     # Función para leer todos los criterios y exportar un solo excel con las columnas DEPTO, MUPIO, HOGAR, CP, CAPITULO, SECCION
-    def process_to_export(self,columna_upm, fecha_inicio: datetime, fecha_final: datetime):
+    def process_to_export(self,columna_upm, fecha_inicio: datetime, fecha_final: datetime, exportar:bool=False):
         try:
             # Calcular el total de condiciones
             total_conditions = self.expresiones.shape[0]
@@ -229,7 +231,7 @@ class Validador:
                     Validacion["CÓDIGO ERROR"] = cod
                     Validacion["COMENTARIOS"] = None
                     Validacion["CONDICIÓN"] = cond
-                    Validacion = Validacion[["CONDICIÓN","ENCUESTADOR","DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP","CAPÍTULO","SECCIÓN","PREGUNTA","DEFINICIÓN DE INCONSISTENCIA","CÓDIGO ERROR","COMENTARIOS"]]
+                    Validacion = Validacion[["ENCUESTADOR","DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP","CAPÍTULO","SECCIÓN","PREGUNTA","DEFINICIÓN DE INCONSISTENCIA","CÓDIGO ERROR","COMENTARIOS"]]
                     dfs.append(Validacion)  # Agregar el dataframe a la lista de dataframes
                 except Exception as e:
                     # Manejar error específico de una expresión
@@ -239,17 +241,25 @@ class Validador:
                     # Actualizar barra de progreso
                     pbar.update()
                     
+            dia = datetime.now().day
+            mes = datetime.now().month
+            año = datetime.now().year
+
             self.df_ = dfs
             df_power = pd.concat(dfs) # Hacer copia de los dfs para exportar por supervisor luego
-            df_power.to_excel(os.path.join(carpeta_padre, 'InconsistenciasPowerBi.xlsx'), index=False)
+            df_power.to_csv(os.path.join(carpeta_padre, f'InconsistenciasPowerBi_{dia}-{mes}-{año}.csv'), index=False)
 
             for upm, sectors in self.dic_upms.items():
                 # Filtra las filas donde la columna "SECTOR" está en los valores de la UPM actual
                 filtered_df = df_power[df_power[columna_upm].isin(sectors)]
 
                 # Exporta el DataFrame filtrado a un archivo Excel
-                filtered_df.to_excel(os.path.join(carpeta_padre, f'Inconsistencias{upm}.xlsx'), index=False)
+                filtered_df.to_excel(os.path.join(carpeta_padre, f'Inconsistencias{upm}_{dia}-{mes}-{año}.xlsx'), index=False)
 
+            # Subir archivos al drive si el parámetro exportar es verdadero
+            if exportar == True:
+                upload_files_to_google_drive(carpeta_padre)
+                
             # Cerrar la barra de progreso
             pbar.close()
 
