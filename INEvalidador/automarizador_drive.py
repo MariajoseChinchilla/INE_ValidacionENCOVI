@@ -8,7 +8,7 @@ from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaFileUpload
 from datetime import datetime
 
-def upload_files_to_google_drive(path):
+def subir_a_drive(path):
     dia = datetime.now().day
     mes = datetime.now().month
     año = datetime.now().year
@@ -22,7 +22,7 @@ def upload_files_to_google_drive(path):
             creds = pickle.load(token)
 
     if not creds or not creds.valid:
-        flow = InstalledAppFlow.from_client_secrets_file('client_secret.json', SCOPES)
+        flow = InstalledAppFlow.from_client_secrets_file('client_secret_915678628628-e8vekd1kcmhi008jphhrs6dsaflmfia2.apps.googleusercontent.com.json', SCOPES)
         creds = flow.run_local_server(port=0)
         with open('token.pickle', 'wb') as token:
             pickle.dump(creds, token)
@@ -33,7 +33,7 @@ def upload_files_to_google_drive(path):
     def upload_to_folder(folder_id, filename):
         df = pd.read_excel(filename)
         if df.empty:
-            print(f"El archivo {filename} está vacío y no se subirá.")
+            # print(f"El archivo {filename} está vacío y no se subirá.")
             return
 
         media = MediaFileUpload(filename)
@@ -53,12 +53,6 @@ def upload_files_to_google_drive(path):
 
     # Ordenar la lista de archivos
     files = list(sorted(files, key=lambda x: int(re.search(r'GRUPO(\d+)', x).group(1)) if re.search(r'GRUPO(\d+)', x) else float('inf')))
-    
-    # Mover "InconsistenciasPowerBi" al final si está en la lista
-    power_bi_file = os.path.join(path, "InconsistenciasPowerBi.xlsx")
-    if power_bi_file in files:
-        files.remove(power_bi_file)
-        files.append(power_bi_file)
 
     folder_ids = ["1PVrC64OpF4lLUTn7GB78NDk4tVHKt_9p","1BCUo3eRu4keGA1BxRaDQz7MpD-9Kybam","124JJ2lqUViTPccSSDmX5BaCnwSh0VTTL","1SaOktnsV36R_zUB-_i3LBTmZVhwcVsps",
               "1cL7VHAHUwsRymHoRS35uqfkSAY443yG_","1uKxCkBWQUrhsYi3TPJvDsGgOpbjPG7iS","19mX4lM2KpJH4BtxOgux9C3OcmyfBbTPX",
@@ -74,7 +68,7 @@ def upload_files_to_google_drive(path):
               "1uWIq6hM3BNjtXOFQ2g4ifwufZGBDvHUf","1vSyw6zjJ3iMBNealEETEaOvmFKfo6OA0","15NVXVv5LFQ7vs-d-YmVptUBnx3ZxrxKx",
               "1qB5f-R2XEyfiEwpJH_9U3gTQfJRUwf5N","1NmLZNNgnZA3jaXx4td0tITiPaMlvD_3m","1DvvWSgpLFmLnpH4Yv074gPqebKjyaBo3",
               "1FRz1FK4ogxvzcFSQUjIiMaBPjUqH7lvA","1IdZdQ6Y8ExDs4XhdQmDJjnyp1JrnrRFW"]
+    
 
     for file, folder_id in zip(files, folder_ids):
         upload_to_folder(folder_id, file)
-
