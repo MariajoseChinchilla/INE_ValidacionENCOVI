@@ -204,13 +204,13 @@ class Validador:
                     Validacion = self.filter_base(cond, self.columnas, fecha_inicio, fecha_final)
                     if Validacion.shape[0] == 0:
                         continue 
-                    Validacion["CAPÍTULO"] = cap
-                    Validacion["SECCIÓN"] = sec
+                    Validacion["CAPITULO"] = cap
+                    Validacion["SECCION"] = sec
                     Validacion["PREGUNTA"] = preg
-                    Validacion["DEFINICIÓN DE INCONSISTENCIA"] = desc
-                    Validacion["CÓDIGO ERROR"] = cod
+                    Validacion["DEFINICION DE INCONSISTENCIA"] = desc
+                    Validacion["CODIGO ERROR"] = cod
                     Validacion["COMENTARIOS"] = None
-                    Validacion["CONDICIÓN"] = cond
+                    Validacion["CONDICION"] = cond
                     Validacion = Validacion[["ENCUESTADOR","DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP","CAPÍTULO","SECCIÓN","PREGUNTA","DEFINICIÓN DE INCONSISTENCIA","CÓDIGO ERROR","COMENTARIOS"]]
                     dfs.append(Validacion)  # Agregar el dataframe a la lista de dataframes
                 except Exception as e:
@@ -294,7 +294,7 @@ class Validador:
                 df2 = pd.read_excel(folder2_file)
 
                 # Guardar el DataFrame en output_folder
-                output_file = f"{self.ruta_salida_final}/InconsistenciasGRUPO{group_number}.xlsx"
+                output_file = f"{self.ruta_salida_final}/InconsistenciasGRUPO{group_number}_{date_str}.xlsx"
                 df2.to_excel(output_file, index=False)
         else:
             for folder1_file in folder1_files:
@@ -316,16 +316,17 @@ class Validador:
                     df_concatenated = df1
 
                 # Guardar el DataFrame combinado en output_folder
-                output_file = f"{self.ruta_salida_final}/InconsistenciasGRUPO{group_number}.xlsx"
+                output_file = f"{self.ruta_salida_final}/InconsistenciasGRUPO{group_number}_{date_str}.xlsx"
                 df_concatenated.to_excel(output_file, index=False)
 
-    def subir_a_drive(self):
+    def subir_a_drive(self, ruta):
         dia = datetime.now().day
         mes = datetime.now().month
         año = datetime.now().year
 
         SCOPES = ['https://www.googleapis.com/auth/drive']
 
+        ruta_archivos_exportar = self.obtener_carpeta_mas_reciente("Salidas_Finales")
         # Autenticación
         creds = None
         if os.path.exists('token.pickle'):
@@ -345,7 +346,7 @@ class Validador:
             df = pd.read_excel(filename)
             if df.empty:
                 # print(f"El archivo {filename} está vacío y no se subirá.")
-                return
+                pass
 
             media = MediaFileUpload(filename)
             request = service.files().create(media_body=media, body={
@@ -359,11 +360,19 @@ class Validador:
             except HttpError as error:
                 print(f'Ha ocurrido un error al subir el archivo {filename}: {str(error)}')
 
-        # Lista de archivos sin ordenar
-        files = [os.path.join(self.ruta_salida_final, f) for f in os.listdir(self.ruta_salida_final) if os.path.isfile(os.path.join(self.ruta_salida_final, f))]
+         # Lista de archivos sin ordenar
+        files = [os.path.join(ruta, f) for f in os.listdir(ruta) if os.path.isfile(os.path.join(ruta, f))]
 
         # Ordenar la lista de archivos
-        files = list(sorted(files, key=lambda x: int(re.search(r'GRUPO(\d+)', x).group(1)) if re.search(r'GRUPO(\d+)', x) else float('inf')))
+        files = [f for f in os.listdir(ruta) if os.path.isfile(os.path.join(ruta, f))]
+
+        # Creamos un diccionario para almacenar archivos según su número de grupo
+        files_dict = {}
+        for f in files:
+            match = re.search(r'GRUPO(\d+)', f)
+            if match:
+                group_number = int(match.group(1))
+                files_dict[group_number] = f
 
         folder_ids = ["1PVrC64OpF4lLUTn7GB78NDk4tVHKt_9p","1BCUo3eRu4keGA1BxRaDQz7MpD-9Kybam","124JJ2lqUViTPccSSDmX5BaCnwSh0VTTL","1SaOktnsV36R_zUB-_i3LBTmZVhwcVsps",
                 "1cL7VHAHUwsRymHoRS35uqfkSAY443yG_","1uKxCkBWQUrhsYi3TPJvDsGgOpbjPG7iS","19mX4lM2KpJH4BtxOgux9C3OcmyfBbTPX",
@@ -381,5 +390,12 @@ class Validador:
                 "1FRz1FK4ogxvzcFSQUjIiMaBPjUqH7lvA","1IdZdQ6Y8ExDs4XhdQmDJjnyp1JrnrRFW"]
         
 
-        for file, folder_id in zip(files, folder_ids):
-            upload_to_folder(folder_id, file)
+            # Recorremos la lista de IDs de carpeta
+        for i, folder_id in enumerate(folder_ids):
+                # Buscamos si hay un archivo que corresponde al número de grupo actual (i + 1)
+                filename = files_dict.get(i + 1)
+                
+                if filename:  # Si hay un archivo, lo subimos
+                    upload_to_folder(folder_id, os.path.join(ruta, filename))
+                else:
+                    print(f"No se encontró archivo para el grupo {i + 1}. Pasando al siguiente grupo.")

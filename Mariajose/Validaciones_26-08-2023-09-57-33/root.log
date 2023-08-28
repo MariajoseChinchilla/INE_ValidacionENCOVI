@@ -1,0 +1,84 @@
+INFO - Log de condiciones convertidas a formato pandas
+INFO - Inicio del proceso de validación de datos.
+INFO - Se encontraron 478 condiciones.
+ERROR - P02A01 = 2 y (P02A04A>0|P02A04B esta en (1,2,3,4,5,6,7,8,9,10,11,12,13,98): ('EOF in multi-line statement', (2, 0)). Error de nan
+ERROR - PPA03  > 2 Y (P05A04 >=1 o P05A04<=10 o P05A04=98): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de AS
+ERROR - PPA03 <= 6 y(P05B05A = 2 y P05B05B no es vacío): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de AS
+ERROR - PPA03 >= 6 y P05C01 está en (1,2) o P05C02 está en (1,2,3,4,5,6,98) o P05C03 está en (1,2) o P05C04 está en (1,2,3,4,98) o P05C05 está en (1,2,3,4,5,6,7,8,9,98) o P05C06 está en (1,2,3,4,5,6,7,8,9,10,11,12,98) o P05C07A no es vacío o P05C07B no es vacío o P05C08A está en (1,2,3,4,5,6,7,8,9,10,11,12,98) o P05C08B está en (1,2,3,4,5,6,7,8,9,10,11,12,98) o P05C09A no es vacío o P05C09B no es vacío o P05C09C no es vacío o P05C09D no es vacío o P05C09E no es vacío o P05C09F no es vacío o P05C09G no es vacío o P05C010 está en (1,2): 'NoneType' object is not subscriptable. Error de VO
+ERROR - P05D07 <= 9| P05D07 = 98) & P05D08A es (vacio) & P05D08B es (vacio): ('EOF in multi-line statement', (2, 0)). Error de LA
+ERROR -  P05D12A = 1 & P05D12B es (vacio)) : ('EOF in multi-line statement', (2, 0)). Error de LA
+ERROR - (P06A09A esta en (1,2,3) & (P06A09B <= 0): ('EOF in multi-line statement', (2, 0)). Error de MC
+ERROR - P10A03=1 y P10A04 está en (1,2): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de PH
+ERROR - P10A04=1 y P10A05 está en (1,2): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de PH
+ERROR - P10A06 = 2 y (P10A07 está en (1,2,3,4,5,6,7,8,9,10,11,12,13,14,98) : ('EOF in multi-line statement', (2, 0)). Error de MP
+ERROR - P10A05=1 y P10A06 está en (1,2): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de PH
+ERROR - PPA03 >= 7 Y (P10B01=1 y P10B03 no está en (1,2,3,4,5,6,7,8,9,10,11,12,13)): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de MP
+ERROR - PPA03 >= 7 Y (P10B01=2 & (P10B04>0)): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de MP
+ERROR - PC10C21<5 y P10C22 no es vacio: 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C21 < 4 P10C41 no esta en (1, 2): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de PH
+ERROR - (P10C21 esta en (5,6,7,8)) y P10C51A no está en (1): only list-like objects are allowed to be passed to isin(), you passed a [int]. Error de PH
+ERROR - PPD06 es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LG
+ERROR - PPD06 = 0: "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LG
+ERROR - (PPD06 > 25 y PPD06 < 98) o PPD06 > 98: "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LG
+ERROR - PPD07 es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LG
+ERROR - PPD07 = 0: "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LG
+ERROR - (PPD07 > 25 y PPD07 < 98) o PPD07 > 98: "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LG
+ERROR - PPD08 es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LG
+ERROR - PPD08 = 0: "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LG
+ERROR - PPD08 > 2: "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LG
+WARNING - R[write to console]: Loading required package: DBI
+
+WARNING - R[write to console]: Total de inconsistencias: 143
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO9.xlsx -> 12
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO22.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO26.xlsx -> 13
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO23.xlsx -> 7
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO13.xlsx -> 12
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO5.xlsx -> 21
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO29.xlsx -> 6
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO38.xlsx -> 13
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO11.xlsx -> 7
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO25.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO10.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO30.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO16.xlsx -> 3
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO28.xlsx -> 5
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO34.xlsx -> 2
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO12.xlsx -> 2
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO21.xlsx -> 2
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO17.xlsx -> 5
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO6.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO24.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO33.xlsx -> 1
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO3.xlsx -> 3
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO8.xlsx -> 2
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO20.xlsx -> 1
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO32.xlsx -> 1
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO27.xlsx -> 1
+

@@ -18,9 +18,9 @@ grupos <- "Grupos.xlsx"
 sql <- 
 "
 SELECT encuestador ENCUESTADOR, depto DEPTO, mupio MUPIO, sector SECTOR, estructura ESTRUCTURA, vivienda VIVIENDA, hogar HOGAR, p.cp CP, 
-	10 CAPÍTULO, 'C' SECCIÓN, 2 PREGUNTA,
-	'P10C02 Ocupación principal falta o insuficientemente descrita' AS 'DEFINICIÓN DE INCONSISTENCIA',
-	'10C00251' AS 'CÓDIGO ERROR', '' OBSERVACIONES,
+	10 CAPITULO, 'C' SECCION, 2 PREGUNTA,
+	'P10C02 Ocupación principal falta o insuficientemente descrita' AS 'DEFINICION DE INCONSISTENCIA',
+	'10C00251' AS 'CODIGO ERROR', '' COMENTARIOS,
 	p.p10c02 VALOR
 FROM `level-1` l
 	INNER JOIN cases c ON c.id=l.`case-id`
@@ -30,9 +30,9 @@ WHERE c.deleted=0 AND p.p10c01>=1 AND r.estado_pr=1 AND (LENGTH(IFNULL(p.p10c02,
 	DATEDIFF(CURDATE(),(SELECT STR_TO_DATE(MAX(v.r1_fecha_inicial),'%d/%m/%y') FROM registro_de_visitas_pr v WHERE v.`level-1-id`=l.`level-1-id`))<=4
 UNION
 SELECT encuestador ENCUESTADOR, depto DEPTO, mupio MUPIO, sector SECTOR, estructura ESTRUCTURA, vivienda VIVIENDA, hogar HOGAR, p.cp CP, 
-	10 CAPÍTULO, 'C' SECCIÓN, 3 PREGUNTA,
-	'P10C03 Actividad principal falta o insuficientemente descrita' AS 'DEFINICIÓN DE INCONSISTENCIA',
-	'10C00351' AS 'CÓDIGO ERROR', '' OBSERVACIONES,
+	10 CAPITULO, 'C' SECCION, 3 PREGUNTA,
+	'P10C03 Actividad principal falta o insuficientemente descrita' AS 'DEFINICION DE INCONSISTENCIA',
+	'10C00351' AS 'CODIGO ERROR', '' COMENTARIOS,
 	p.p10c03 VALOR
 FROM `level-1` l
 	INNER JOIN cases c ON c.id=l.`case-id`
@@ -42,9 +42,9 @@ WHERE c.deleted=0 AND p.p10c01>=1 AND r.estado_pr=1 AND (LENGTH(IFNULL(p.p10c03,
 	DATEDIFF(CURDATE(),(SELECT STR_TO_DATE(MAX(v.r1_fecha_inicial),'%d/%m/%y') FROM registro_de_visitas_pr v WHERE v.`level-1-id`=l.`level-1-id`))<=4
 UNION
 SELECT encuestador ENCUESTADOR, depto DEPTO, mupio MUPIO, sector SECTOR, estructura ESTRUCTURA, vivienda VIVIENDA, hogar HOGAR, p.cp CP, 
-	10 CAPÍTULO, 'C' SECCIÓN, 4 PREGUNTA,
-	'P10C04 Empresa falta o insuficientemente descrita' AS 'DEFINICIÓN DE INCONSISTENCIA',
-	'10C00451' AS 'CÓDIGO ERROR', '' OBSERVACIONES,
+	10 CAPITULO, 'C' SECCION, 4 PREGUNTA,
+	'P10C04 Empresa falta o insuficientemente descrita' AS 'DEFINICION DE INCONSISTENCIA',
+	'10C00451' AS 'CODIGO ERROR', '' COMENTARIOS,
 	p.p10c04 VALOR
 FROM `level-1` l
 	INNER JOIN cases c ON c.id=l.`case-id`
@@ -54,9 +54,9 @@ WHERE c.deleted=0 AND p.p10c01>=1 AND r.estado_pr=1 AND (LENGTH(IFNULL(p.p10c04,
 	DATEDIFF(CURDATE(),(SELECT STR_TO_DATE(MAX(v.r1_fecha_inicial),'%d/%m/%y') FROM registro_de_visitas_pr v WHERE v.`level-1-id`=l.`level-1-id`))<=4
 UNION
 SELECT encuestador ENCUESTADOR, depto DEPTO, mupio MUPIO, sector SECTOR, estructura ESTRUCTURA, vivienda VIVIENDA, hogar HOGAR, p.cp CP, 
-	10 CAPÍTULO, 'C' SECCIÓN, 7 PREGUNTA,
-	'P10C07 Productos falta o insuficientemente descrita' AS 'DEFINICIÓN DE INCONSISTENCIA',
-	'10C00751' AS 'CÓDIGO ERROR', '' OBSERVACIONES,
+	10 CAPITULO, 'C' SECCION, 7 PREGUNTA,
+	'P10C07 Productos falta o insuficientemente descrita' AS 'DEFINICION DE INCONSISTENCIA',
+	'10C00751' AS 'CODIGO ERROR', '' COMENTARIOS,
 	p.p10c07 VALOR
 FROM `level-1` l
 	INNER JOIN cases c ON c.id=l.`case-id`
