@@ -22,7 +22,7 @@ from .conexionSQL import baseSQL
 
 
 class Validador:
-    def __init__(self, ruta_expresiones: str="Expresiones.xlsx", descargar: bool=True):
+    def __init__(self, ruta_expresiones: str="Expresiones_prueba.xlsx", descargar: bool=True):
         self.df_ = pd.DataFrame
         # nuevo
         self.sql = baseSQL(descargar)
@@ -211,7 +211,7 @@ class Validador:
                     Validacion["CODIGO ERROR"] = cod
                     Validacion["COMENTARIOS"] = None
                     Validacion["CONDICION"] = cond
-                    Validacion = Validacion[["ENCUESTADOR","DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP","CAPÍTULO","SECCIÓN","PREGUNTA","DEFINICIÓN DE INCONSISTENCIA","CÓDIGO ERROR","COMENTARIOS"]]
+                    Validacion = Validacion[["ENCUESTADOR","DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP","CAPITULO","SECCION","PREGUNTA","DEFINICION DE INCONSISTENCIA","CODIGO ERROR","COMENTARIOS"]]
                     dfs.append(Validacion)  # Agregar el dataframe a la lista de dataframes
                 except Exception as e:
                     # Manejar error específico de una expresión
@@ -248,14 +248,6 @@ class Validador:
     def validar_encuesta(self, fecha_inicio: datetime, fecha_final: datetime):
         # Procesar datos para validar con validaciones originales
         self.process_to_export(fecha_inicio, fecha_final)
-
-        # Hacer carpeta de Validaciones para almacenar las salidas finales
-        marca_temp = datetime.now().strftime("%d-%m-%Y")
-        carpeta_salida = f"Validaciones_Finales{marca_temp}"
-
-        if not os.path.exists(carpeta_salida):
-            os.mkdir(carpeta_salida)
-
         # Ejecutar el scrip de Mario
         robjects.r.source("InconsistenciasOP.R")
 
