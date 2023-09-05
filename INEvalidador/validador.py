@@ -22,7 +22,7 @@ from .conexionSQL import baseSQL
 
 
 class Validador:
-    def __init__(self, ruta_expresiones: str="Expresiones_prueba.xlsx", descargar: bool=True):
+    def __init__(self, ruta_expresiones: str="Expresiones.xlsx", descargar: bool=True):
         self.df_ = pd.DataFrame
         # nuevo
         self.sql = baseSQL(descargar)

@@ -97,12 +97,13 @@ class baseSQL:
             df_base = pd.merge(df_base, estado_boleta_df, on='LEVEL-1-ID', how='inner')  # Unión por 'LEVEL-1-ID'
 
         # Validar solo las encuestas terminadas
-        if "PPA10" in df_base.columns:      
+        if "PPA10" in df_base.columns and "ESTADO_PR" in df_base.columns:      
             df_base = df_base[df_base["PPA10"] == 1]
         if "ESTADO_SR" in df_base.columns:
             df_base = df_base[df_base["ESTADO_SR"] == 1]
-        if "ESTADO_PR" in df_base.columns:
+        if "ESTADO_PR" in df_base.columns and "PPA10" not in df_base.columns:
             df_base = df_base[df_base["ESTADO_PR"] == 1]
+        # Se eliminó el filtro de estado_pr
 
         # Agregar código CP = 0 para las validaciones de hogares
         if "CP" not in df_base.columns:
