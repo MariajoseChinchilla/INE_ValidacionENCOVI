@@ -1,0 +1,59 @@
+INFO - Log de condiciones convertidas a formato pandas
+INFO - Inicio del proceso de validación de datos.
+INFO - Se encontraron 1 condiciones.
+ERROR - P01A01 = 5 y P01A04 no esta en (4,7,98): time data '08/08/23' does not match format '%d/%m/%Y' (match). Error de MR
+ERROR - Error general: No objects to concatenate
+WARNING - R[write to console]: Loading required package: DBI
+
+WARNING - R[write to console]: Total de inconsistencias: 206
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO9.xlsx -> 8
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO22.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO23.xlsx -> 7
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO13.xlsx -> 19
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO5.xlsx -> 24
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO11.xlsx -> 7
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO10.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO30.xlsx -> 20
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO16.xlsx -> 3
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO38.xlsx -> 13
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO15.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO25.xlsx -> 8
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO29.xlsx -> 5
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO26.xlsx -> 13
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO28.xlsx -> 26
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO35.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO6.xlsx -> 7
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO24.xlsx -> 8
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO7.xlsx -> 8
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO21.xlsx -> 2
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO3.xlsx -> 3
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO17.xlsx -> 5
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO34.xlsx -> 2
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO20.xlsx -> 1
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO27.xlsx -> 1
+

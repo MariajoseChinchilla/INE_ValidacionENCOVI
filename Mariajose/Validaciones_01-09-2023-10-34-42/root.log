@@ -1,0 +1,253 @@
+INFO - Log de condiciones convertidas a formato pandas
+INFO - Inicio del proceso de validación de datos.
+INFO - Se encontraron 892 condiciones.
+ERROR - P02A01 = 2 y (P02A04A>0|P02A04B esta en (1,2,3,4,5,6,7,8,9,10,11,12,13,98): ('EOF in multi-line statement', (2, 0)). Error de nan
+ERROR - PPA03  > 2 Y (P05A04 >=1 o P05A04<=10 o P05A04=98): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de AS
+ERROR - PPA03 <= 6 y(P05B05A = 2 y P05B05B no es vacío): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de AS
+ERROR - PPA03 >= 6 y P05C01 está en (1,2) o P05C02 está en (1,2,3,4,5,6,98) o P05C03 está en (1,2) o P05C04 está en (1,2,3,4,98) o P05C05 está en (1,2,3,4,5,6,7,8,9,98) o P05C06 está en (1,2,3,4,5,6,7,8,9,10,11,12,98) o P05C07A no es vacío o P05C07B no es vacío o P05C08A está en (1,2,3,4,5,6,7,8,9,10,11,12,98) o P05C08B está en (1,2,3,4,5,6,7,8,9,10,11,12,98) o P05C09A no es vacío o P05C09B no es vacío o P05C09C no es vacío o P05C09D no es vacío o P05C09E no es vacío o P05C09F no es vacío o P05C09G no es vacío o P05C010 está en (1,2): 'NoneType' object is not subscriptable. Error de VO
+ERROR - P05D07 <= 9| P05D07 = 98) & P05D08A es (vacio) & P05D08B es (vacio): ('EOF in multi-line statement', (2, 0)). Error de LA
+ERROR -  P05D12A = 1 & P05D12B es (vacio)) : ('EOF in multi-line statement', (2, 0)). Error de LA
+ERROR - (P06A09A esta en (1,2,3) & (P06A09B <= 0): ('EOF in multi-line statement', (2, 0)). Error de MC
+ERROR - P09F01A = 1 y ((P09F01B es (vacio) y P09F01C es vacio) o (P09F01B = 0) y P09F01C = 0)): ('EOF in multi-line statement', (2, 0)). Error de DT
+ERROR - P09F02A = 1 y ((P09F02B es (vacio) y P09F02C es vacio) o (P09F02B = 0) y P09F02C = 0)): 'NoneType' object is not subscriptable. Error de DT
+ERROR - P09F02A = 2 y (P09F02B > 0 | P09F02C > 0): 'NoneType' object is not subscriptable. Error de DT
+ERROR - P09F03A = 1 y ((P09F03B es (vacio) y P09F03C es vacio) o (P09F03B = 0) y P09F03C = 0)): ('EOF in multi-line statement', (2, 0)). Error de DT
+ERROR - P09F04A = 1 y ((P09F04B es (vacio) y P09F04C es vacio) o (P09F04B = 0) y P09F04C = 0)): ('EOF in multi-line statement', (2, 0)). Error de DT
+ERROR - P09F05A = 1 y ((P09F05B es (vacio) y P09F05C es vacio) o (P09F05B = 0) y P09F05C = 0)): ('EOF in multi-line statement', (2, 0)). Error de DT
+ERROR - P09F06A = 1 y ((P09F06B es (vacio) y P09F06C es vacio) o (P09F06B = 0) y P09F06C = 0)): ('EOF in multi-line statement', (2, 0)). Error de DT
+ERROR - P09F07A = 1 y ((P09F07B es (vacio) y P09F07C es vacio) o (P09F07B = 0) y P09F07C = 0)): ('EOF in multi-line statement', (2, 0)). Error de DT
+ERROR - P09F08A = 1 y ((P09F08B es (vacio) y P09F08C es vacio) o (P09F08B = 0) y P09F08C = 0)): ('EOF in multi-line statement', (2, 0)). Error de DT
+ERROR - P09F09A = 1 y ((P09F09B es (vacio) y P09F09C es vacio) o (P09F09B = 0) y P09F09C = 0)): ('EOF in multi-line statement', (2, 0)). Error de DT
+ERROR - PPA03>6 y P10A03=2 y P10A04 no está en (1,2) : Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de PH
+ERROR - P10A03=1 y P10A04 está en (1,2): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de PH
+ERROR - PPA03>6 y P10A03=2 y P10A04=2 y P10A05 no está en (1,2): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de PH
+ERROR - P10A04=1 y P10A05 está en (1,2): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de PH
+ERROR - P10A06 = 2 y (P10A07 está en (1,2,3,4,5,6,7,8,9,10,11,12,13,14,98) : ('EOF in multi-line statement', (2, 0)). Error de MP
+ERROR - P10A05=1 y P10A06 está en (1,2): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de PH
+ERROR - P10A06=1 Y P10A07 no esta en (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 98): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de PH
+ERROR - P10A06=2 y P10A07 está en (1,2,3,4,5,6,7,8,9,10,11,12,13,14,98): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de PH
+ERROR - P10A08=1 y P10A09 está en (1,2,3,4,5,6): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de PH
+ERROR - P10A08=2 y P10A09 no está en (1,2,3,4,5,6): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de PH
+ERROR - PPA03 >= 7 Y (P10B01=1 y P10B03 no está en (1,2,3,4,5,6,7,8,9,10,11,12,13)): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de MP
+ERROR - PPA03 >= 7 Y (P10B01=2 & P10B03 está en (1,2,3,4,5,6,7,8,9,10,11,12,13)): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de MP
+ERROR - PPA03 >= 7 Y (P10B01=1 & (P10B04<0 o P10B04>97)): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de MP
+ERROR - PPA03 >= 7 Y (P10B01=2 & (P10B04>0)): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de MP
+ERROR - P10C01 no está en (1,2,3) y (P10C12A >=0 o P10C12B > =0): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de PH
+ERROR - P10C01está en (1,2,3) y P10C13 no está en (1,2,3,4,5,6): "P10C01in" is not a supported function. Error de PH
+ERROR - PC10C01>0 y P10C15 no esta en (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,14, 98): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C16A ESTÁ EN (1,2,) Y P10C16B no esta en (1, 2): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C16B ESTÁ EN (1,2) Y P10C16C no esta en (1, 2): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C16C ESTÁ EN (1,2) Y P10C16D no esta en (1, 2): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C16D ESTÁ EN (1,2) Y P10C16E no esta en (1, 2): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C16E ESTÁ EN (1,2) Y P10C17A no esta en (1, 2): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C17A ESTÁ EN (1,2) Y P10C17B no esta en (1, 2): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C17B ESTÁ EN (1,2) Y P10C17C no esta en (1, 2): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C17C ESTÁ EN (1,2) Y P10C17D no esta en (1, 2): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C17D ESTÁ EN (1,2) Y P10C17E no esta en (1, 2): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C17E ESTÁ EN (1,2) Y P10C17F no esta en (1, 2): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C17G ESTÁ EN (1,2) Y P10C18 no esta en (1, 2): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C21=9 y P10C22 no esta en (1, 2): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de PH
+ERROR - PC10C21<5 y P10C22 no es vacio: 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C23=1 y P10C24A no esta en (1, 2): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de PH
+ERROR - P10C25A = 1 y P10C25B no está (1,2): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de VO
+ERROR - P10C21 ESTÁ EN (5,6,7,8) y P10C27 >= 1: 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C21 ESTÁ EN (5,6,7,8) y P10C29A ESTÁ EN (1,2): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C21 ESTÁ EN (5,6,7,8) y P10C30A ESTÁ EN (1,2): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C21 ESTÁ EN (5,6,7,8) y (P10C31A ESTÁ EN (1,2) o P10C31B >= 1): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C21 ESTÁ EN (5,6,7,8) y (P10C33A está en (1,2) o P10C33B >= 1): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C21 ESTÁ EN (5,6,7,8) y (P10C34A está en (1,2) o P10C34B >= 1): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C21 ESTÁ EN (5,6,7,8) y (P10C35A está en (1,2) o P10C35B >= 1): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C21 ESTÁ EN (5,6,7,8) y (P10C36A está en (1,2) o P10C36B >= 1): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C21 ESTÁ EN (5,6,7,8) y (P10C37A está en (1,2) o P10C37B >= 1): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C21 ESTÁ EN (5,6,7,8) y (P10C38A está en (1,2) o P10C38B >= 1): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C21 ESTÁ EN (5,6,7,8) y (P10C39A está en (1,2) o P10C39B >= 1): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C21 ESTÁ EN (5,6,7,8) y (P10C40A está en (1,2) o P10C40B >= 1): 'NoneType' object is not subscriptable. Error de PH
+ERROR - P10C21 < 4 P10C41 no esta en (1, 2): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de PH
+ERROR -  (P10C21 esta en (5,6,7,8)) y P10C51A no está en (1): only list-like objects are allowed to be passed to isin(), you passed a [int]. Error de PH
+ERROR - (P13A04C = 1) & (P13A05 < 1 | P13A05 > 12): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de EG
+ERROR - P13B02A = 1 & P13B02B  es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LA
+ERROR - P13B02A = 2 & P13B02B es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LA
+ERROR - P13B03 = 1 & (P13B04 es (vacio) o P13B04 = 0 ): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LA
+ERROR - P13B03 = 2 & P13B04 > 0: "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LA
+ERROR - P13B05 = 1 & (P13B06 es (vacio) o P13B06  = 0 ): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LA
+ERROR - P13B05 = 2 & P13B06 > 0: "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LA
+ERROR - P13B07 = 1 & (P13B08 es (vacio) o P13B08 = 0): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LA
+ERROR - P13B07 = 2 & (P13B08 no es (vacio) o P13B08  = 0 ): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LA
+ERROR - (P10C21 esta en (5,6) o P10D07 esta en (5,6)) y P14A01 es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 no esta en (1,2): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A02A es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 2 y P14A02A no es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A03A es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 2 y P14A03A no es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A03A no es (vacio) y P14A03B es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A03A es (vacio) y P14A03B no es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A04 es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 2 y P14A04 no es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A05 es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 2 y P14A05 no es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A06 es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 2 y P14A06 no es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A06 no esta en (1,2,3,4,5,6): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A07A es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 2 y P14A07A no es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A07A no esta en (1,2,3,4,5,6,7,8,9,98): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 2 y P14A08 no es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A08 es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A09 es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 2 y P14A09 no es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A10 es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 2 y P14A10 no es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A09 = 0 y P14A10 <> 0: "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A09 = 0 y P14A11 es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A11 es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 2 y P14A11 no es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A12 es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 2 y P14A12 no es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A13 es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 2 y P14A13 no es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A14 es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 2 y P14A14 no es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A14 no esta en (1,2): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A14 = 2 y (P14A15 no es (vacio) y P14A15 <> 0 ): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A15 es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 2 y P14A15 no es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y P14A14 = 2 y P14A16 es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 2 y P14A16 no es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P14A01 = 1 y (P14A16 <> ((P14A13 + P14A15) - (P14A10 + P14A11 + P14A12)) y P14A16 no es vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de DB
+ERROR - P15A01A = 1 & P15A01B es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LA
+ERROR - P15A01A = 2 & ( P15A01B no es (vacio) | P15A01B no es (vacio) | P15A02A no es (vacio) | P15A02B no es (vacio) | P15A03 no es (vacio) | P15A04A no es (vacio) | P15A04B no es (vacio) | P15A05A no es (vacio) | P15A05B no es (vacio) | P15A06 no es (vacio) | P15A07 no es (vacio) | P15A08 no es (vacio) | P15A09 no es (vacio) | P15A10 no es (vacio) | P15A11Z no es (vacio) | P15A12 no es (vacio) | P15A13 no es (vacio) ): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LA
+ERROR - P15A02A = 1 & P15A02B es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LA
+ERROR - P15A02A = 2 & P15A02B: "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LA
+ERROR - PPD06 es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LG
+ERROR - PPD06 = 0: "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LG
+ERROR - (PPD06 > 25 y PPD06 < 98) o PPD06 > 98: "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LG
+ERROR - PPD07 es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LG
+ERROR - PPD07 = 0: "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LG
+ERROR - (PPD07 > 25 y PPD07 < 98) o PPD07 > 98: "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LG
+ERROR - PPD08 es (vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LG
+ERROR - PPD08 = 0: "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LG
+ERROR - PPD08 > 2: "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de LG
+WARNING - R[write to console]: Loading required package: DBI
+
+WARNING - R[write to console]: Total de inconsistencias: 232
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO25.xlsx -> 9
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO38.xlsx -> 12
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO9.xlsx -> 9
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO27.xlsx -> 7
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO10.xlsx -> 5
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO17.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO22.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO21.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO30.xlsx -> 26
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO14.xlsx -> 6
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO26.xlsx -> 13
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO4.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO19.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO23.xlsx -> 9
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO13.xlsx -> 19
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO29.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO5.xlsx -> 27
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO33.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO16.xlsx -> 6
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO24.xlsx -> 12
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO2.xlsx -> 3
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO20.xlsx -> 5
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO6.xlsx -> 9
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO12.xlsx -> 1
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO15.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO34.xlsx -> 6
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO7.xlsx -> 7
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO3.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO28.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO32.xlsx -> 1
+
+DEBUG - Generated new state 3gAXNIbwF5U3kY3stSc6ySfELv1YJj.
+INFO - "GET /?state=3gAXNIbwF5U3kY3stSc6ySfELv1YJj&code=4/0Adeu5BVKn_1VjNpRNK9pyULJmTvYfpMkcEAF2Hjg_QUVlkVXjEgjUWQEx1xSzUFTz60pBw&scope=https://www.googleapis.com/auth/drive HTTP/1.1" 200 65
+DEBUG - Encoding `client_id` "915678628628-e8vekd1kcmhi008jphhrs6dsaflmfia2.apps.googleusercontent.com" with `client_secret` as Basic auth credentials.
+DEBUG - Requesting url https://oauth2.googleapis.com/token using method POST.
+DEBUG - Supplying headers {'Accept': 'application/json', 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'} and data {'grant_type': 'authorization_code', 'code': '4/0Adeu5BVKn_1VjNpRNK9pyULJmTvYfpMkcEAF2Hjg_QUVlkVXjEgjUWQEx1xSzUFTz60pBw', 'redirect_uri': 'http://localhost:57168/'}
+DEBUG - Passing through key word arguments {'timeout': None, 'auth': <requests.auth.HTTPBasicAuth object at 0x000001E65EA26450>, 'verify': True, 'proxies': None, 'cert': None}.
+DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+DEBUG - Request to fetch token completed with status 200.
+DEBUG - Request url was https://oauth2.googleapis.com/token
+DEBUG - Request headers were {'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8', 'Content-Length': '157', 'Authorization': 'Basic OTE1Njc4NjI4NjI4LWU4dmVrZDFrY21oaTAwOGpwaGhyczZkc2FmbG1maWEyLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tOkdPQ1NQWC1IbGZ1czJ0LWZtbzBYNWx0UlNiMUVzXzRCSk1p'}
+DEBUG - Request body was grant_type=authorization_code&code=4%2F0Adeu5BVKn_1VjNpRNK9pyULJmTvYfpMkcEAF2Hjg_QUVlkVXjEgjUWQEx1xSzUFTz60pBw&redirect_uri=http%3A%2F%2Flocalhost%3A57168%2F
+DEBUG - Response headers were {'Date': 'Fri, 01 Sep 2023 17:51:50 GMT', 'Pragma': 'no-cache', 'Expires': 'Mon, 01 Jan 1990 00:00:00 GMT', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/json; charset=utf-8', 'Vary': 'Origin, X-Origin, Referer', 'Content-Encoding': 'gzip', 'Server': 'scaffolding on HTTPServer2', 'X-XSS-Protection': '0', 'X-Frame-Options': 'SAMEORIGIN', 'X-Content-Type-Options': 'nosniff', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'Transfer-Encoding': 'chunked'} and content {
+  "access_token": "ya29.a0AfB_byAcQJZRAywwUCSSF9_gWI0BEoJrhbovYyyP2rgVHxVAGscjvPkmrUhxdGerEj9odYKlZyUI_RXzCCI9FsNQBdSz9lQ6gYTd4yWCCYXrUgmmxFxF58fah43STaMZt0RMjnrhAd4nIhJeniFbphnmuijIYpCiad1WsAaCgYKATUSARISFQHsvYlsejK9THK32VWitTl6VVHkQA0173",
+  "expires_in": 3599,
+  "refresh_token": "1//05AruMf-yLDEICgYIARAAGAUSNgF-L9IrH8BthknWG11kNOf6bHAIPV8z4K-cIKZ4mVVtimXjp9yeZkrI0K6FJ5Svw13gMULGzQ",
+  "scope": "https://www.googleapis.com/auth/drive",
+  "token_type": "Bearer"
+}.
+DEBUG - Invoking 0 token response hooks.
+DEBUG - Obtained token {'access_token': 'ya29.a0AfB_byAcQJZRAywwUCSSF9_gWI0BEoJrhbovYyyP2rgVHxVAGscjvPkmrUhxdGerEj9odYKlZyUI_RXzCCI9FsNQBdSz9lQ6gYTd4yWCCYXrUgmmxFxF58fah43STaMZt0RMjnrhAd4nIhJeniFbphnmuijIYpCiad1WsAaCgYKATUSARISFQHsvYlsejK9THK32VWitTl6VVHkQA0173', 'expires_in': 3599, 'refresh_token': '1//05AruMf-yLDEICgYIARAAGAUSNgF-L9IrH8BthknWG11kNOf6bHAIPV8z4K-cIKZ4mVVtimXjp9yeZkrI0K6FJ5Svw13gMULGzQ', 'scope': ['https://www.googleapis.com/auth/drive'], 'token_type': 'Bearer', 'expires_at': 1693594459.112553}.
+INFO - file_cache is only supported with oauth2client<4.0.0
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart
+DEBUG - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?alt=json&uploadType=multipart

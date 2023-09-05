@@ -1,0 +1,170 @@
+ENCUESTADOR;DEPTO;MUPIO;SECTOR;ESTRUCTURA;VIVIENDA;HOGAR;CP;CAPÍTULO;SECCIÓN;PREGUNTA;DEFINICIÓN DE INCONSISTENCIA;CÓDIGO ERROR;COMENTARIOS;CODIGOS
+3006.0;1.0;23.0;1888.0;115.0;96.0;5.0;0.0;1;A;1;Si vive en un cuarto de vecindad no podría vivir en una casa propia y pagada, propia y pagándola a;01A00105;;01A00105
+3099.0;16.0;15.0;21061.0;16.0;15.0;1.0;0.0;1;A;1;El tipo de vivienda es Casa Formal Con Techo de paja, palma o similar;01A00109;;01A00109
+3053.0;16.0;17.0;20927.0;13.0;11.0;1.0;0.0;1;A;1;El tipo de vivienda es Casa Formal Con Techo de paja, palma o similar;01A00109;;01C00101
+3082.0;15.0;3.0;19053.0;70.0;59.0;4.0;0.0;1;C;1;Selecciono que realizó alguna mejoras a su vivienda, pero no contesto si en los últimos doce meses lo realizaron;01C00101;;01D00602
+3140.0;21.0;1.0;24364.0;91.0;66.0;1.0;0.0;1;C;1;Selecciono que realizó alguna mejoras a su vivienda, pero no contesto si en los últimos doce meses lo realizaron;01C00101;;01D01502
+3043.0;7.0;3.0;9442.0;7.0;3.0;1.0;0.0;1;C;1;Selecciono que realizó alguna mejoras a su vivienda, pero no contesto si en los últimos doce meses lo realizaron;01C00101;;01D01701
+3013.0;8.0;5.0;10585.0;105.0;45.0;7.0;0.0;1;D;6;"Si selecciona una opcion de rango (3:7,98) en pregunta sobre ""De dónde obtienen principalmente el agua para consumo"", se verifica que el resto de preguntas sean distinto a vacio hasta la pregunta 12";01D00602;;01D02501
+3075.0;11.0;3.0;13215.0;213.0;176.0;9.0;0.0;1;D;15;No compró agua de sisterna, pero si reporta cuanto pago;01D01502;;01D02603
+3063.0;17.0;1.0;21175.0;87.0;59.0;4.0;0.0;1;D;17;Tiene inodoro conectado a red de drenajes, pero su hogar no esta conectada a una red de drenajes;01D01701;;01D02901
+3086.0;20.0;2.0;23655.0;57.0;31.0;3.0;0.0;1;D;17;Tiene inodoro conectado a red de drenajes, pero su hogar no esta conectada a una red de drenajes;01D01701;;01D03104
+3107.0;19.0;11.0;22961.0;138.0;99.0;1.0;0.0;1;D;17;Tiene inodoro conectado a red de drenajes, pero su hogar no esta conectada a una red de drenajes;01D01701;;01D03201
+3084.0;13.0;8.0;16165.0;141.0;76.0;10.0;0.0;1;D;17;Tiene inodoro conectado a red de drenajes, pero su hogar no esta conectada a una red de drenajes;01D01701;;04A00201
+3036.0;20.0;7.0;23995.0;72.0;42.0;1.0;0.0;1;D;17;Tiene inodoro conectado a red de drenajes, pero su hogar no esta conectada a una red de drenajes;01D01701;;04A00301
+3102.0;1.0;29.0;3307.0;129.0;132.0;9.0;0.0;1;D;17;Tiene inodoro conectado a red de drenajes, pero su hogar no esta conectada a una red de drenajes;01D01701;;05A00403
+3024.0;2.0;3.0;5600.0;102.0;83.0;4.0;0.0;1;D;25;Se indico NO en la pregunta P01D24 y P01D25 no es vacia;01D02501;;05C00201
+3002.0;4.0;3.0;6582.0;23.0;19.0;2.0;0.0;1;D;26;"Se indico ""00"" en la pregunta P01D25 y P01D26 no es vacia";01D02603;;05D00102
+3060.0;12.0;10.0;14441.0;81.0;41.0;4.0;0.0;1;D;26;"Se indico ""00"" en la pregunta P01D25 y P01D26 no es vacia";01D02603;;08A00203
+3115.0;11.0;1.0;13101.0;138.0;106.0;1.0;0.0;1;D;29;"Se indico ""No"" en la pregunta P01D28 y P01D29 no es vacia";01D02901;;10A00301
+3082.0;15.0;3.0;19053.0;29.0;24.0;2.0;0.0;1;D;31;"Se indico ""00"" en la pregunta P01D31A y P01D31C no es vacia";01D03104;;10A00304
+3046.0;5.0;1.0;7286.0;188.0;197.0;9.0;0.0;1;D;31;"Se indico ""00"" en la pregunta P01D31A y P01D31C no es vacia";01D03104;;10A00312
+3082.0;15.0;3.0;19053.0;29.0;24.0;2.0;0.0;1;D;32;Si indico que NO uso leña el mes pasado O si registro 0 en la distancia en mt y responde que medio utiliza para transportar la leña;01D03201;;10A00401
+3046.0;5.0;1.0;7286.0;188.0;197.0;9.0;0.0;1;D;32;Si indico que NO uso leña el mes pasado O si registro 0 en la distancia en mt y responde que medio utiliza para transportar la leña;01D03201;;10A00403
+3094.0;17.0;7.0;21198.0;35.0;15.0;1.0;3.0;4;A;2;Responder nivel educativo del padre cuando la respuesta sea SI en la pregunta 1;04A00201;;10A00501
+3094.0;17.0;7.0;21198.0;35.0;15.0;1.0;3.0;4;A;3;Responder cualquier idioma que habla el padre cuando la respuesta sea SI en la pregunta 1;04A00301;;10B00103
+3064.0;16.0;4.0;19851.0;114.0;97.0;1.0;3.0;5;A;4;Respondió cual fue la razón principal por la que dejó de darle pecho,  pero en la pregunta anterior respondío que todavía le esta dando pecho.;05A00403;;10B00501
+3049.0;15.0;3.0;19053.0;7.0;6.0;1.0;4.0;5;C;2;La respuesta a tuvo diarrea es No y tiene datos en que le dieron principalmente para la diarrea;05C00201;;10B00802
+3071.0;13.0;17.0;16615.0;52.0;38.0;8.0;5.0;5;D;1;Verificacion cuando la persona si se enfermo;05D00102;;10B00901
+3026.0;18.0;1.0;22309.0;60.0;53.0;4.0;1.0;5;D;1;Verificacion cuando la persona si se enfermo;05D00102;;10B01001
+3103.0;17.0;1.0;21175.0;114.0;77.0;5.0;4.0;5;D;1;Verificacion cuando la persona si se enfermo;05D00102;;10B01101
+3071.0;13.0;17.0;16615.0;116.0;84.0;7.0;2.0;5;D;1;Verificacion cuando la persona si se enfermo;05D00102;;10B01102
+3049.0;15.0;3.0;19053.0;134.0;113.0;7.0;3.0;5;D;1;Verificacion cuando la persona si se enfermo;05D00102;;10B01103
+3001.0;4.0;14.0;7201.0;154.0;95.0;7.0;1.0;5;D;1;Verificacion cuando la persona si se enfermo;05D00102;;10B01104
+3009.0;5.0;7.0;8034.0;76.0;54.0;3.0;5.0;5;D;1;Verificacion cuando la persona si se enfermo;05D00102;;10B01105
+3146.0;22.0;3.0;25130.0;76.0;40.0;5.0;3.0;5;D;1;Verificacion cuando la persona si se enfermo;05D00102;;10B01106
+3083.0;12.0;16.0;14853.0;124.0;95.0;1.0;3.0;5;D;1;Verificacion cuando la persona si se enfermo;05D00102;;10B01107
+3004.0;14.0;13.0;18227.0;36.0;27.0;2.0;3.0;5;D;1;Verificacion cuando la persona si se enfermo;05D00102;;10B01108
+3059.0;7.0;3.0;9442.0;133.0;89.0;8.0;3.0;5;D;1;Verificacion cuando la persona si se enfermo;05D00102;;10B01109
+3148.0;22.0;1.0;24989.0;18.0;10.0;10.0;1.0;8;A;2;Indicó que nació en otro país, pero también declaró que ha vivido en el mismo lugar toda su vida.;08A00203;;10B01110
+3023.0;4.0;14.0;7201.0;185.0;119.0;1.0;1.0;10;A;3;el encuestado debe pasar a la sección C después de confirmar que trabajó al menos una hora (P10A03 = 1), pero aún proporciona respuestas para las preguntas posteriores en la sección A.;10A00301;;10C00826
+3004.0;14.0;13.0;18227.0;18.0;12.0;1.0;1.0;10;A;3;Si el encuestado indicó que no trabajó la semana pasada (P10A03 = 2), pero también informó que recibió salario durante su ausencia (P10A08 = 1).;10A00304;;10C01666
+3042.0;20.0;6.0;23905.0;68.0;47.0;5.0;1.0;10;A;3;Códigos que  no tenían que pasar;10A00312;;10C017101
+3026.0;18.0;1.0;22309.0;77.0;68.0;5.0;1.0;10;A;3;Códigos que  no tenían que pasar;10A00312;;10C02001
+3026.0;18.0;1.0;22309.0;77.0;68.0;5.0;2.0;10;A;3;Códigos que  no tenían que pasar;10A00312;;10C02101
+3014.0;1.0;29.0;3227.0;15.0;14.0;1.0;1.0;10;A;3;Códigos que  no tenían que pasar;10A00312;;10C02104
+3004.0;14.0;13.0;18227.0;79.0;57.0;4.0;2.0;10;A;3;Códigos que  no tenían que pasar;10A00312;;10C02105
+3059.0;7.0;3.0;9442.0;99.0;64.0;6.0;1.0;10;A;3;Códigos que  no tenían que pasar;10A00312;;10C02203
+3059.0;7.0;3.0;9442.0;133.0;89.0;8.0;2.0;10;A;3;Códigos que  no tenían que pasar;10A00312;;10C02204
+3065.0;19.0;9.0;23387.0;43.0;43.0;3.0;5.0;10;A;4;el encuestado debe pasar a la sección C después de confirmar que trabajó al menos una hora (P10A04 = 1), pero aún proporciona respuestas para las preguntas posteriores en la sección A.;10A00401;;10C03803
+3149.0;22.0;1.0;24835.0;129.0;87.0;129.0;2.0;10;A;4;el encuestado debe pasar a la sección C después de confirmar que trabajó al menos una hora (P10A04 = 1), pero aún proporciona respuestas para las preguntas posteriores en la sección A.;10A00401;;10C03903
+3036.0;20.0;7.0;23995.0;170.0;92.0;1.0;1.0;10;A;4;el encuestado debe pasar a la sección C después de confirmar que trabajó al menos una hora (P10A04 = 1), pero aún proporciona respuestas para las preguntas posteriores en la sección A.;10A00401;;10C04003
+3023.0;4.0;14.0;7201.0;185.0;119.0;1.0;1.0;10;A;4;El encuestado indicó que realizó cuidado de niños, adultos o enfermos por un pago la semana pasada (P10A04 = 1), pero también informó que no trabajó (P10A03 = 2).;10A00403;;10C04004
+3109.0;3.0;4.0;6023.0;55.0;46.0;3.0;2.0;10;A;5;el encuestado debe pasar a la sección C después de confirmar que trabajó al menos una hora (P10A05 = 1), pero aún proporciona respuestas para las preguntas posteriores en la sección A.;10A00501;;10C04403
+3065.0;19.0;9.0;23387.0;43.0;43.0;3.0;5.0;10;B;1;"Se indicó NO en pregunta ausentes en el trabajo y ""buscó trabajo"" está vacía";10B00103;;10C04504
+3109.0;3.0;4.0;6023.0;55.0;46.0;3.0;2.0;10;B;1;"Se indicó NO en pregunta ausentes en el trabajo y ""buscó trabajo"" está vacía";10B00103;;10C05104
+3149.0;22.0;1.0;24835.0;129.0;87.0;129.0;2.0;10;B;5;Debe haber información en razón principal de no hacer trámites, según pregunta buscó trabajo=2;10B00501;;10C05202
+3082.0;15.0;3.0;19053.0;211.0;166.0;10.0;1.0;10;B;5;Debe haber información en razón principal de no hacer trámites, según pregunta buscó trabajo=2;10B00501;;10C05204
+3149.0;22.0;1.0;24835.0;129.0;87.0;129.0;2.0;10;B;8;Valores dirente a 1,2,3,4 o 5 en disponibilidad;10B00802;;10D00104
+3082.0;15.0;3.0;19053.0;211.0;166.0;10.0;1.0;10;B;8;Valores dirente a 1,2,3,4 o 5 en disponibilidad;10B00802;;12A00302
+3149.0;22.0;1.0;24835.0;129.0;87.0;129.0;2.0;10;B;9;Debería de haber información según pregunta buscó trabajo;10B00901;;
+3082.0;15.0;3.0;19053.0;211.0;166.0;10.0;1.0;10;B;9;Debería de haber información según pregunta buscó trabajo;10B00901;;
+3059.0;7.0;3.0;9442.0;65.0;40.0;4.0;3.0;10;B;10;"No debe haber información en pregunta ha trabajado se respondió 2 en ""ha trabajado""";10B01001;;
+3059.0;7.0;3.0;9442.0;65.0;40.0;4.0;4.0;10;B;10;"No debe haber información en pregunta ha trabajado se respondió 2 en ""ha trabajado""";10B01001;;
+3149.0;22.0;1.0;24835.0;129.0;87.0;129.0;2.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01101;;
+3082.0;15.0;3.0;19053.0;211.0;166.0;10.0;1.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01101;;
+3149.0;22.0;1.0;24835.0;129.0;87.0;129.0;2.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01102;;
+3082.0;15.0;3.0;19053.0;211.0;166.0;10.0;1.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01102;;
+3149.0;22.0;1.0;24835.0;129.0;87.0;129.0;2.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01103;;
+3082.0;15.0;3.0;19053.0;211.0;166.0;10.0;1.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01103;;
+3149.0;22.0;1.0;24835.0;129.0;87.0;129.0;2.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01104;;
+3082.0;15.0;3.0;19053.0;211.0;166.0;10.0;1.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01104;;
+3149.0;22.0;1.0;24835.0;129.0;87.0;129.0;2.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01105;;
+3082.0;15.0;3.0;19053.0;211.0;166.0;10.0;1.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01105;;
+3149.0;22.0;1.0;24835.0;129.0;87.0;129.0;2.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01106;;
+3082.0;15.0;3.0;19053.0;211.0;166.0;10.0;1.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01106;;
+3149.0;22.0;1.0;24835.0;129.0;87.0;129.0;2.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01107;;
+3082.0;15.0;3.0;19053.0;211.0;166.0;10.0;1.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01107;;
+3149.0;22.0;1.0;24835.0;129.0;87.0;129.0;2.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01108;;
+3082.0;15.0;3.0;19053.0;211.0;166.0;10.0;1.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01108;;
+3149.0;22.0;1.0;24835.0;129.0;87.0;129.0;2.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01109;;
+3082.0;15.0;3.0;19053.0;211.0;166.0;10.0;1.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01109;;
+3149.0;22.0;1.0;24835.0;129.0;87.0;129.0;2.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01110;;
+3082.0;15.0;3.0;19053.0;211.0;166.0;10.0;1.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01110;;
+3024.0;2.0;3.0;5600.0;153.0;112.0;3.0;1.0;10;C;8;Es valor perdido;10C00826;;
+3064.0;16.0;4.0;19851.0;114.0;97.0;1.0;2.0;10;C;16;Es valor perdido;10C01666;;
+3097.0;19.0;9.0;23387.0;199.0;163.0;10.0;1.0;10;C;16;Es valor perdido;10C01666;;
+3086.0;20.0;2.0;23655.0;78.0;46.0;4.0;2.0;10;C;16;Es valor perdido;10C01666;;
+3065.0;19.0;9.0;23387.0;43.0;43.0;3.0;1.0;10;C;16;Es valor perdido;10C01666;;
+3128.0;16.0;6.0;19923.0;128.0;96.0;1.0;4.0;10;C;16;Es valor perdido;10C01666;;
+3145.0;22.0;3.0;25130.0;107.0;56.0;7.0;1.0;10;C;16;Es valor perdido;10C01666;;
+3107.0;19.0;11.0;22961.0;177.0;129.0;1.0;3.0;10;C;16;Es valor perdido;10C01666;;
+3146.0;22.0;3.0;25130.0;76.0;40.0;5.0;3.0;10;C;16;Es valor perdido;10C01666;;
+3076.0;3.0;1.0;5901.0;18.0;19.0;1.0;9.0;10;C;16;Es valor perdido;10C01666;;
+3081.0;9.0;1.0;10876.0;23.0;16.0;1.0;1.0;10;C;16;Es valor perdido;10C01666;;
+3051.0;20.0;7.0;23995.0;118.0;72.0;2.0;1.0;10;C;16;Es valor perdido;10C01666;;
+3115.0;11.0;1.0;13101.0;208.0;168.0;1.0;3.0;10;C;16;Es valor perdido;10C01666;;
+3078.0;11.0;3.0;13215.0;96.0;70.0;4.0;1.0;10;C;16;Es valor perdido;10C01666;;
+3117.0;11.0;6.0;13294.0;12.0;4.0;1.0;3.0;10;C;16;Es valor perdido;10C01666;;
+3064.0;16.0;4.0;19851.0;114.0;97.0;1.0;2.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;
+3097.0;19.0;9.0;23387.0;199.0;163.0;10.0;1.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;
+3086.0;20.0;2.0;23655.0;78.0;46.0;4.0;2.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;
+3065.0;19.0;9.0;23387.0;43.0;43.0;3.0;1.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;
+3128.0;16.0;6.0;19923.0;128.0;96.0;1.0;4.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;
+3145.0;22.0;3.0;25130.0;107.0;56.0;7.0;1.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;
+3107.0;19.0;11.0;22961.0;177.0;129.0;1.0;3.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;
+3146.0;22.0;3.0;25130.0;76.0;40.0;5.0;3.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;
+3076.0;3.0;1.0;5901.0;18.0;19.0;1.0;9.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;
+3081.0;9.0;1.0;10876.0;23.0;16.0;1.0;1.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;
+3051.0;20.0;7.0;23995.0;118.0;72.0;2.0;1.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;
+3115.0;11.0;1.0;13101.0;208.0;168.0;1.0;3.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;
+3078.0;11.0;3.0;13215.0;96.0;70.0;4.0;1.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;
+3117.0;11.0;6.0;13294.0;12.0;4.0;1.0;3.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;
+3072.0;7.0;18.0;9911.0;107.0;59.0;8.0;1.0;10;C;20;Indica que su trabajo es no remunerado (P10C21 = 9) pero se proporciona una fuente de ingresos (P10C20 != 7).;10C02001;;
+3111.0;7.0;18.0;9911.0;81.0;43.0;6.0;4.0;10;C;20;Indica que su trabajo es no remunerado (P10C21 = 9) pero se proporciona una fuente de ingresos (P10C20 != 7).;10C02001;;
+3111.0;7.0;18.0;9911.0;81.0;43.0;6.0;5.0;10;C;20;Indica que su trabajo es no remunerado (P10C21 = 9) pero se proporciona una fuente de ingresos (P10C20 != 7).;10C02001;;
+3036.0;20.0;7.0;23995.0;170.0;92.0;1.0;2.0;10;C;20;Indica que su trabajo es no remunerado (P10C21 = 9) pero se proporciona una fuente de ingresos (P10C20 != 7).;10C02001;;
+3129.0;9.0;1.0;10807.0;114.0;100.0;3.0;4.0;10;C;20;Indica que su trabajo es no remunerado (P10C21 = 9) pero se proporciona una fuente de ingresos (P10C20 != 7).;10C02001;;
+3053.0;16.0;17.0;20927.0;94.0;71.0;1.0;6.0;10;C;20;Indica que su trabajo es no remunerado (P10C21 = 9) pero se proporciona una fuente de ingresos (P10C20 != 7).;10C02001;;
+3059.0;7.0;3.0;9442.0;65.0;40.0;4.0;4.0;10;C;20;Indica que su trabajo es no remunerado (P10C21 = 9) pero se proporciona una fuente de ingresos (P10C20 != 7).;10C02001;;
+3059.0;7.0;3.0;9442.0;133.0;89.0;8.0;1.0;10;C;20;Indica que su trabajo es no remunerado (P10C21 = 9) pero se proporciona una fuente de ingresos (P10C20 != 7).;10C02001;;
+3109.0;3.0;4.0;6023.0;37.0;29.0;2.0;2.0;10;C;21;Indicó que dedicó más horas de trabajo la semana pasado, pero no indicó que era del gobierno, privada, jornalero o servicio doméstico;10C02101;;
+3064.0;16.0;4.0;19851.0;114.0;97.0;1.0;2.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;
+3097.0;19.0;9.0;23387.0;199.0;163.0;10.0;1.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;
+3086.0;20.0;2.0;23655.0;78.0;46.0;4.0;2.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;
+3065.0;19.0;9.0;23387.0;43.0;43.0;3.0;1.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;
+3128.0;16.0;6.0;19923.0;128.0;96.0;1.0;4.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;
+3145.0;22.0;3.0;25130.0;107.0;56.0;7.0;1.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;
+3107.0;19.0;11.0;22961.0;177.0;129.0;1.0;3.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;
+3146.0;22.0;3.0;25130.0;76.0;40.0;5.0;3.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;
+3076.0;3.0;1.0;5901.0;18.0;19.0;1.0;9.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;
+3081.0;9.0;1.0;10876.0;23.0;16.0;1.0;1.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;
+3051.0;20.0;7.0;23995.0;118.0;72.0;2.0;1.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;
+3115.0;11.0;1.0;13101.0;208.0;168.0;1.0;3.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;
+3078.0;11.0;3.0;13215.0;96.0;70.0;4.0;1.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;
+3117.0;11.0;6.0;13294.0;12.0;4.0;1.0;3.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;
+3064.0;16.0;4.0;19851.0;114.0;97.0;1.0;2.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;
+3097.0;19.0;9.0;23387.0;199.0;163.0;10.0;1.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;
+3086.0;20.0;2.0;23655.0;78.0;46.0;4.0;2.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;
+3065.0;19.0;9.0;23387.0;43.0;43.0;3.0;1.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;
+3128.0;16.0;6.0;19923.0;128.0;96.0;1.0;4.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;
+3145.0;22.0;3.0;25130.0;107.0;56.0;7.0;1.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;
+3107.0;19.0;11.0;22961.0;177.0;129.0;1.0;3.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;
+3146.0;22.0;3.0;25130.0;76.0;40.0;5.0;3.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;
+3076.0;3.0;1.0;5901.0;18.0;19.0;1.0;9.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;
+3081.0;9.0;1.0;10876.0;23.0;16.0;1.0;1.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;
+3051.0;20.0;7.0;23995.0;118.0;72.0;2.0;1.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;
+3115.0;11.0;1.0;13101.0;208.0;168.0;1.0;3.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;
+3078.0;11.0;3.0;13215.0;96.0;70.0;4.0;1.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;
+3117.0;11.0;6.0;13294.0;12.0;4.0;1.0;3.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;
+3117.0;11.0;6.0;13294.0;77.0;58.0;4.0;2.0;10;C;22;Hay valores perdidos cuando tiene que haber información;10C02203;;
+3109.0;3.0;4.0;6023.0;37.0;29.0;2.0;2.0;10;C;22;No tiene que tener información porque es no remunerado y tiene;10C02204;;
+3043.0;7.0;3.0;9442.0;27.0;15.0;2.0;1.0;10;C;22;No tiene que tener información porque es no remunerado y tiene;10C02204;;
+3109.0;3.0;4.0;6023.0;37.0;29.0;2.0;2.0;10;C;38;Asalariados y valores fuera de rango en la variable bono de productividad (p10c38a);10C03803;;
+3109.0;3.0;4.0;6023.0;37.0;29.0;2.0;2.0;10;C;39;Asalariados y valores fuera de rango en la variable indemnización accidente (p10c39a);10C03903;;
+3109.0;3.0;4.0;6023.0;37.0;29.0;2.0;2.0;10;C;40;Asalariados y valores perdidos en p10c40a;10C04003;;
+3109.0;3.0;4.0;6023.0;37.0;29.0;2.0;2.0;10;C;40;Asalariados y valores fuera de rango en la variable indemnización por despido (p10c40a);10C04004;;
+3102.0;1.0;29.0;3307.0;43.0;39.0;3.0;2.0;10;C;44;Menores de 7 años, empleado de gobierno o empleo doméstico y hay información en la variable p10c44;10C04403;;
+3042.0;20.0;6.0;23905.0;129.0;80.0;8.0;3.0;10;C;44;Menores de 7 años, empleado de gobierno o empleo doméstico y hay información en la variable p10c44;10C04403;;
+3102.0;1.0;29.0;3307.0;43.0;39.0;3.0;2.0;10;C;45;Menores de 7 años, empleado de gobierno o empleo doméstico y hay información en la variable p10c45;10C04504;;
+3111.0;7.0;18.0;9911.0;81.0;43.0;6.0;3.0;10;C;51;Hay información en la variable número de empleados y no debe tener porque son asalariados;10C05104;;
+3059.0;7.0;3.0;9442.0;133.0;89.0;8.0;1.0;10;C;52;Trabajadores sin remuneración y contestaron la p10c52a;10C05202;;
+3089.0;9.0;14.0;11525.0;186.0;156.0;3.0;1.0;10;C;52;Revisar cuenta propia e indica que han tenido empleado remunerado p10c52a;10C05204;;
+3140.0;21.0;1.0;24364.0;91.0;66.0;1.0;1.0;10;C;52;Revisar cuenta propia e indica que han tenido empleado remunerado p10c52a;10C05204;;
+3087.0;19.0;11.0;22961.0;33.0;23.0;1.0;2.0;10;C;52;Revisar cuenta propia e indica que han tenido empleado remunerado p10c52a;10C05204;;
+3059.0;7.0;3.0;9442.0;133.0;89.0;8.0;2.0;10;C;52;Revisar cuenta propia e indica que han tenido empleado remunerado p10c52a;10C05204;;
+3043.0;7.0;3.0;9442.0;150.0;101.0;9.0;1.0;10;C;52;Revisar cuenta propia e indica que han tenido empleado remunerado p10c52a;10C05204;;
+3086.0;20.0;2.0;23655.0;78.0;46.0;4.0;2.0;10;D;1;"Valores fuera del rango ""1 y 2"" de respuesta, respuestas invalidas, Verifique sección D pregunta 1.";10D00104;;
+3124.0;2.0;3.0;5574.0;104.0;61.0;1.0;3.0;12;A;3;No usa celular (P12A01) o no usa Smartphone (P12A02) y aparecen respuestas en lo usa para llamadas (P12A03A) o para aplicaciones (P12A03B), revise respuestas A01, A02,A03A y A03B;12A00302;;
+3052.0;13.0;6.0;15976.0;175.0;113.0;2.0;1.0;12;A;3;No usa celular (P12A01) o no usa Smartphone (P12A02) y aparecen respuestas en lo usa para llamadas (P12A03A) o para aplicaciones (P12A03B), revise respuestas A01, A02,A03A y A03B;12A00302;;
+3101.0;6.0;2.0;8720.0;57.0;39.0;3.0;3.0;12;A;3;No usa celular (P12A01) o no usa Smartphone (P12A02) y aparecen respuestas en lo usa para llamadas (P12A03A) o para aplicaciones (P12A03B), revise respuestas A01, A02,A03A y A03B;12A00302;;
