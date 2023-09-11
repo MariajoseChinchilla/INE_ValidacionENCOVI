@@ -28,7 +28,7 @@ class Validador:
         self.sql = baseSQL(descargar)
         self.df = pd.DataFrame
         self.expresiones = pd.read_excel(ruta_expresiones)
-        self.columnas = ["DEPTO", "MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR", "CP","ENCUESTADOR"]
+        self.columnas = ["DEPTO", "MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR", "CP","ENCUESTADOR", "FECHA"]
         self._capturar_converciones = False
         self.__replacements = {
             '<=': '<=',
@@ -211,7 +211,7 @@ class Validador:
                     Validacion["CODIGO ERROR"] = cod
                     Validacion["COMENTARIOS"] = None
                     Validacion["CONDICION"] = cond
-                    Validacion = Validacion[["ENCUESTADOR","DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP","CAPITULO","SECCION","PREGUNTA","DEFINICION DE INCONSISTENCIA","CODIGO ERROR","COMENTARIOS"]]
+                    Validacion = Validacion[["FECHA", "ENCUESTADOR","DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP","CAPITULO","SECCION","PREGUNTA","DEFINICION DE INCONSISTENCIA","CODIGO ERROR","COMENTARIOS"]]
                     dfs.append(Validacion)  # Agregar el dataframe a la lista de dataframes
                 except Exception as e:
                     # Manejar error específico de una expresión
