@@ -1,8 +1,0 @@
-INFO - Log de condiciones convertidas a formato pandas
-INFO - Inicio del proceso de validación de datos.
-INFO - Se encontraron 2 condiciones.
-ERROR - PPA01A no es vacio y PPA03 >= 18 Y (P10C21 esta en (7,8) o P10D07 esta en (7,8)) y (P16A01 = 2 O P16A01 es vacio): "['DEPTO', 'MUPIO', 'SECTOR', 'ESTRUCTURA', 'VIVIENDA', 'HOGAR', 'ENCUESTADOR'] not in index". Error de L
-WARNING - R[write to console]: Loading required package: DBI
-
-WARNING - R[write to console]: No se recuperó información
-

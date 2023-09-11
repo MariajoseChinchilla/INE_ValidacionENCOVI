@@ -22,7 +22,7 @@ from .conexionSQL import baseSQL
 
 
 class Validador:
-    def __init__(self, ruta_expresiones: str="Expresiones.xlsx", descargar: bool=True):
+    def __init__(self, ruta_expresiones: str="Validaciones Luis.xlsx", descargar: bool=True):
         self.df_ = pd.DataFrame
         # nuevo
         self.sql = baseSQL(descargar)
@@ -211,7 +211,7 @@ class Validador:
                     Validacion["CODIGO ERROR"] = cod
                     Validacion["COMENTARIOS"] = None
                     Validacion["CONDICION"] = cond
-                    Validacion = Validacion[["FECHA", "ENCUESTADOR","DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP","CAPITULO","SECCION","PREGUNTA","DEFINICION DE INCONSISTENCIA","CODIGO ERROR","COMENTARIOS"]]
+                    Validacion = Validacion[["FECHA","ENCUESTADOR","DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP","CAPITULO","SECCION","PREGUNTA","DEFINICION DE INCONSISTENCIA","CODIGO ERROR","COMENTARIOS"]]
                     dfs.append(Validacion)  # Agregar el dataframe a la lista de dataframes
                 except Exception as e:
                     # Manejar error específico de una expresión

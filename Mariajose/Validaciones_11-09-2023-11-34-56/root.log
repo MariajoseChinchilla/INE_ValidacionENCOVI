@@ -1,0 +1,7 @@
+INFO - Log de condiciones convertidas a formato pandas
+INFO - Inicio del proceso de validación de datos.
+INFO - Se encontraron 894 condiciones.
+ERROR - P02A01 = 2 y (P02A04A>0|P02A04B esta en (1,2,3,4,5,6,7,8,9,10,11,12,13,98): ('EOF in multi-line statement', (2, 0)). Error de nan
+ERROR - PPA03  > 2 Y (P05A04 >=1 o P05A04<=10 o P05A04=98): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de AS
+ERROR - PPA03 <= 6 y(P05B05A = 2 y P05B05B no es vacío): Python keyword not valid identifier in numexpr query (<unknown>, line 1). Error de AS
+ERROR - PPA03 >= 6 y P05C01 está en (1,2) o P05C02 está en (1,2,3,4,5,6,98) o P05C03 está en (1,2) o P05C04 está en (1,2,3,4,98) o P05C05 está en (1,2,3,4,5,6,7,8,9,98) o P05C06 está en (1,2,3,4,5,6,7,8,9,10,11,12,98) o P05C07A no es vacío o P05C07B no es vacío o P05C08A está en (1,2,3,4,5,6,7,8,9,10,11,12,98) o P05C08B está en (1,2,3,4,5,6,7,8,9,10,11,12,98) o P05C09A no es vacío o P05C09B no es vacío o P05C09C no es vacío o P05C09D no es vacío o P05C09E no es vacío o P05C09F no es vacío o P05C09G no es vacío o P05C010 está en (1,2): 'NoneType' object is not subscriptable. Error de VO

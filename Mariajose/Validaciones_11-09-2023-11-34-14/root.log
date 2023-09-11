@@ -1,0 +1,7 @@
+INFO - Log de condiciones convertidas a formato pandas
+INFO - Inicio del proceso de validación de datos.
+INFO - Se encontraron 53 condiciones.
+WARNING - R[write to console]: Loading required package: DBI
+
+WARNING - R[write to console]: No se recuperó información
+

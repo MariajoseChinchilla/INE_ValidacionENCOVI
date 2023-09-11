@@ -62,6 +62,7 @@ class baseSQL:
             tipo = df_a_unir[i][-2:] # devuelve SR o PR
             tipos.append(tipo)
         tipos = list(set(tipos))
+        tipo = tipos[0]
 
         
         df_a_unir = [self.base_df.get(archivo) for archivo in df_a_unir] 
@@ -89,7 +90,7 @@ class baseSQL:
             df_base = pd.merge(df_base, caratula_pr_df, on='LEVEL-1-ID', how='inner')  # Unión por 'LEVEL-1-ID'
         
         # Si tipo es "SR", agregamos el dataframe "estado_de_boleta_SR.feather"
-        if len(tipos) == 1 and tipos[0] == 'SR':
+        elif len(tipos) == 1 and tipos[0] == 'SR':
             # Agregar dataframe estado boleta
             estado_boleta_df = pd.read_feather('db/estado_de_boleta_SR.feather')
             estado_boleta_df = columnas_a_mayuscula(estado_boleta_df)
@@ -102,7 +103,7 @@ class baseSQL:
             df_base = pd.merge(df_base, estado_boleta_df, on='LEVEL-1-ID', how='inner')  # Unión por 'LEVEL-1-ID'
 
         # Si es validacion entre rondas, agregar tablas pertinentes
-        if len(tipos) == 2:
+        elif len(tipos) == 2:
             # Agregar dataframe estado boleta
             estado_boleta_df = pd.read_feather('db/estado_de_boleta_SR.feather')
             estado_boleta_df = columnas_a_mayuscula(estado_boleta_df)
@@ -127,12 +128,12 @@ class baseSQL:
         # Validar solo las encuestas terminadas
         if "PPA10" in df_base.columns and "ESTADO_PR" in df_base.columns:      
             df_base = df_base[df_base["PPA10"] == 1]
-        if "ESTADO_SR" in df_base.columns:
+        elif "ESTADO_SR" in df_base.columns:
             df_base = df_base[df_base["ESTADO_SR"] == 1]
-        if "ESTADO_PR" in df_base.columns and "PPA10" not in df_base.columns:
+        elif "ESTADO_PR" in df_base.columns and "PPA10" not in df_base.columns:
             df_base = df_base[df_base["ESTADO_PR"] == 1]
         # Validar ambas rondas terminadas en caso de validacion entre rondas para persona
-        if "ESTADO_PR" in df_base.columns and "PPA10" in df_base.columns and "ESTADO_SR" in df_base.columns:
+        elif "ESTADO_PR" in df_base.columns and "PPA10" in df_base.columns and "ESTADO_SR" in df_base.columns:
             df_base = df_base[(df_base["PPA10"] == 1 and df_base["ESTADO_SR"] == 1)]
 
         # Agregar código CP = 0 para las validaciones de hogares
@@ -140,14 +141,16 @@ class baseSQL:
             df_base["CP"] = 0
 
         # Agregar filtrado por fecha tomando el capítulo 1 como inicio de la encuesta
-        if "FECHA_INICIO_CAP_1" in df_base.columns:
-            df_base["FECHA_INICIO_CAP_1"] = pd.to_datetime(df_base["FECHA_INICIO_CAP_1"])
-            df_base = df_base[(df_base["FECHA_INICIO_CAP_1"] >= fecha_inicio) & (df_base["FECHA_INICIO_CAP_1"] <= fecha_final)]
-            df_base["FECHA"] = df_base["FECHA_INICIO_CAP_1"]
-        if "FECHA_INICIO_CAPXIIIA" in df_base.columns:
-            df_base["FECHA_INICIO_CAPXIIIA"] = pd.to_datetime(df_base["FECHA_INICIO_CAPXIIIA"])
-            df_base = df_base[(df_base["FECHA_INICIO_CAPXIIIA"] >= fecha_inicio) & (df_base["FECHA_INICIO_CAPXIIIA"] <= fecha_final)]
-            df_base["FECHA"] = df_base["FECHA_INICIO_CAPXIIIA"]
+        if "R1_FECHA_INICIAL" in df_base.columns:
+            df_base["R1_FECHA_INICIAL"] = pd.to_datetime(df_base["R1_FECHA_INICIAL"])
+            df_base = df_base[(df_base["R1_FECHA_INICIAL"] >= fecha_inicio) & (df_base["R1_FECHA_INICIAL"] <= fecha_final)]
+            df_base["FECHA"] = df_base["R1_FECHA_INICIAL"]
+            
+        if "FECHA_INICIAL" in df_base.columns:
+            df_base["FECHA_INICIAL"] = pd.to_datetime(df_base["FECHA_INICIAL"])
+            df_base = df_base[(df_base["FECHA_INICIAL"] >= fecha_inicio) & (df_base["FECHA_INICIAL"] <= fecha_final)]
+            df_base["FECHA"] = df_base["FECHA_INICIAL"]
+            
 
         for columna in df_base.columns:
             if columna[-2:] == "_y":
@@ -158,7 +161,6 @@ class baseSQL:
                 df_base.rename(columns={columna : columna[0:-3]}, inplace=True)
             if columna[-3:] == "_PR":
                 df_base.rename(columns={columna : columna[0:-3]}, inplace=True)
-
 
         return df_base
 
