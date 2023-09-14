@@ -1,0 +1,3 @@
+FECHA,ENCUESTADOR,DEPTO,MUPIO,SECTOR,ESTRUCTURA,VIVIENDA,HOGAR,CP,CAPITULO,SECCION,PREGUNTA,DEFINICION DE INCONSISTENCIA,CODIGO ERROR,COMENTARIOS
+2023-09-13,3133.0,9.0,11.0,11414.0,105.0,70.0,8.0,1.0,6,B,2,Verifique sección B pregunta 2. No sabe leer y escribir en un idioma indígena e indica uno de los idiomas,06B00201,
+2023-09-13,3133.0,9.0,11.0,11414.0,105.0,70.0,8.0,1.0,10,A,8,"Valores perdidos en la variable ""recibió salario, ganancia o ingreso durante el tiempo que se ausentó en el trabajo"" y debieron pasar según edad y saltos anteriores. ",10A00827,

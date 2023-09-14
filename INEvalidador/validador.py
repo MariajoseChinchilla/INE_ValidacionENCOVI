@@ -22,7 +22,7 @@ from .conexionSQL import baseSQL
 
 
 class Validador:
-    def __init__(self, ruta_expresiones: str="Validaciones Luis.xlsx", descargar: bool=True):
+    def __init__(self, ruta_expresiones: str="Expresiones.xlsx", descargar: bool=True):
         self.df_ = pd.DataFrame
         # nuevo
         self.sql = baseSQL(descargar)
@@ -227,6 +227,7 @@ class Validador:
 
             self.df_ = dfs
             df_power = pd.concat(dfs) # Hacer copia de los dfs para exportar por supervisor luego
+            df_power = df_power.drop_duplicates(keep="first")
             df_power.to_csv(os.path.join(carpeta_padre, f'InconsistenciasPowerBi_{dia}-{mes}-{año}.csv'), index=False)
 
             for upm, sectors in self.dic_upms.items():

@@ -13,7 +13,7 @@ rm(list = ls())
 cat('\014')
 
 ruta <- "Mario"
-grupos <- "Grupos.xlsx"
+grupos <- "GruposC2.xlsx"
 
 sql <- 
 "
