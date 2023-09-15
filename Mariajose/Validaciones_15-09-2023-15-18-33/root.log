@@ -1,0 +1,40 @@
+INFO - Log de condiciones convertidas a formato pandas
+INFO - Inicio del proceso de validación de datos.
+INFO - Se encontraron 53 condiciones.
+ERROR - Error general: 'DEFINICION INCONSISTENCIA'
+WARNING - R[write to console]: Loading required package: DBI
+
+WARNING - R[write to console]: Total de inconsistencias: 57
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO2.xlsx -> 8
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO18.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO24.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO31.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO7.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO34.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO15.xlsx -> 15
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO29.xlsx -> 3
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO12.xlsx -> 1
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO8.xlsx -> 2
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO4.xlsx -> 1
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO37.xlsx -> 2
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO20.xlsx -> 1
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO36.xlsx -> 1
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO35.xlsx -> 2
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO38.xlsx -> 1
+

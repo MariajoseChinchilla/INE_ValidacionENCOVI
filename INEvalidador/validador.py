@@ -229,6 +229,10 @@ class Validador:
             df_power = pd.concat(dfs) # Hacer copia de los dfs para exportar por supervisor luego
             df_power = df_power.drop_duplicates(keep="first")
             df_power.to_csv(os.path.join(carpeta_padre, f'InconsistenciasPowerBi_{dia}-{mes}-{año}.csv'), index=False)
+            reporte_codigo = df_power.groupby(["CODIGO ERROR", "DEFINICION INCONSISTENCIA"]).size().reset_index(name="FRECUENCIA")
+            reporte_encuestador = df_power.groupby(["ENCUESTADOR"]).size().reset_index(name="FRECUENCIA")
+            reporte_codigo.to_excel(os.path.join(carpeta_padre, f'Frecuencias_por_codigo_{dia}-{mes}-{año}.xlsx'), index=False)
+            reporte_encuestador.to_excel(os.path.join(carpeta_padre, f'Frecuencias_por_encuestador_{dia}-{mes}-{año}.xlsx'), index=False)
 
             for upm, sectors in self.dic_upms.items():
                 # Filtra las filas donde la columna "SECTOR" está en los valores de la UPM actual
