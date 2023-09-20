@@ -142,14 +142,14 @@ class baseSQL:
 
         # Agregar filtrado por fecha tomando el capítulo 1 como inicio de la encuesta
         if "R1_FECHA_INICIAL" in df_base.columns:
-            df_base["R1_FECHA_INICIAL"] = pd.to_datetime(df_base["R1_FECHA_INICIAL"])
+            df_base["R1_FECHA_INICIAL"] = pd.to_datetime(df_base["R1_FECHA_INICIAL"], format="%d/%m/%y")
             df_base = df_base[(df_base["R1_FECHA_INICIAL"] >= fecha_inicio) & (df_base["R1_FECHA_INICIAL"] <= fecha_final)]
-            df_base["FECHA"] = df_base["R1_FECHA_INICIAL"]
+            # df_base["FECHA"] = df_base["R1_FECHA_INICIAL"]
             
         if "FECHA_INICIAL" in df_base.columns:
-            df_base["FECHA_INICIAL"] = pd.to_datetime(df_base["FECHA_INICIAL"])
+            df_base["FECHA_INICIAL"] = pd.to_datetime(df_base["FECHA_INICIAL"], format="%d/%m/%y")
             df_base = df_base[(df_base["FECHA_INICIAL"] >= fecha_inicio) & (df_base["FECHA_INICIAL"] <= fecha_final)]
-            df_base["FECHA"] = df_base["FECHA_INICIAL"]
+            # df_base["FECHA"] = df_base["FECHA_INICIAL"]
             
 
         for columna in df_base.columns:

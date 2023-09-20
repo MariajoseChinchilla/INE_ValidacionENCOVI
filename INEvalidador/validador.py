@@ -22,13 +22,13 @@ from .conexionSQL import baseSQL
 
 
 class Validador:
-    def __init__(self, ruta_expresiones: str="Expresiones_prueba.xlsx", descargar: bool=True):
+    def __init__(self, ruta_expresiones: str="Expresiones.xlsx", descargar: bool=True):
         self.df_ = pd.DataFrame
         # nuevo
         self.sql = baseSQL(descargar)
         self.df = pd.DataFrame
         self.expresiones = pd.read_excel(ruta_expresiones)
-        self.columnas = ["DEPTO", "MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR", "CP","ENCUESTADOR", "FECHA"]
+        self.columnas = ["DEPTO", "MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR", "CP","ENCUESTADOR"]
         self._capturar_converciones = False
         self.__replacements = {
             '<=': '<=',
@@ -150,6 +150,11 @@ class Validador:
                     condicion_convertida = condicion_convertida.replace(f'{col} {tipo} ""', f'{col}.isnull()')       #modificaciones para variables tipo numérica
                 if tipo == "!=":
                     condicion_convertida = condicion_convertida.replace(f'{col} {tipo} ""', f'~{col}.isnull()')       #modificaciones para variables tipo numérica
+            else:
+                if tipo == "==":
+                    condicion_convertida = condicion_convertida.replace(f'{col} {tipo} ""', f'({col}.isna() | {col} == "")')       #modificaciones para variables tipo numérica
+                if tipo == "!=":
+                    condicion_convertida = condicion_convertida.replace(f'{col} {tipo} ""', f'~{col}.isna() & {col} != ""')  
         return condicion_convertida
 
     def filter_base(self, condicion: str, columnas: list, fecha_inicio, fecha_final) -> pd.DataFrame:
@@ -211,7 +216,7 @@ class Validador:
                     Validacion["CODIGO ERROR"] = cod
                     Validacion["COMENTARIOS"] = None
                     Validacion["CONDICION"] = cond
-                    Validacion = Validacion[["FECHA","ENCUESTADOR","DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP","CAPITULO","SECCION","PREGUNTA","DEFINICION DE INCONSISTENCIA","CODIGO ERROR","COMENTARIOS"]]
+                    Validacion = Validacion[["ENCUESTADOR","DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP","CAPITULO","SECCION","PREGUNTA","DEFINICION DE INCONSISTENCIA","CODIGO ERROR","COMENTARIOS"]]
                     dfs.append(Validacion)  # Agregar el dataframe a la lista de dataframes
                 except Exception as e:
                     # Manejar error específico de una expresión
