@@ -1,0 +1,1250 @@
+ENCUESTADOR;DEPTO;MUPIO;SECTOR;ESTRUCTURA;VIVIENDA;HOGAR;CP;CAPITULO;SECCION;PREGUNTA;DEFINICION DE INCONSISTENCIA;CODIGO ERROR;COMENTARIOS;;
+3044.0;1.0;37.0;5025.0;127.0;137.0;7.0;0.0;1;A;1;Si vive en un cuarto en casa de vecindad, no debería preguntar cuantos cuartos tiene ese hogar, ya que no hay mas cuartos disponibles;01A00104;;;
+3056.0;1.0;18.0;1394.0;156.0;181.0;8.0;0.0;1;A;1;Si vive en un cuarto en casa de vecindad, no debería preguntar cuantos cuartos tiene ese hogar, ya que no hay mas cuartos disponibles;01A00104;;;
+3044.0;1.0;37.0;5025.0;127.0;137.0;7.0;0.0;1;A;1;Si vive en un cuarto de vecindad no podría vivir en una casa propia y pagada, propia y pagándola a;01A00104;;;
+3028.0;2.0;3.0;5603.0;37.0;26.0;3.0;0.0;1;A;1;El tipo de vivienda es Casa Formal Con Techo de paja, palma o similar;01A00109;;;
+3047.0;2.0;3.0;5603.0;121.0;95.0;9.0;0.0;1;A;1;El tipo de vivienda es Casa Formal Con Techo de paja, palma o similar;01A00109;;;
+3089.0;11.0;1.0;13038.0;94.0;92.0;1.0;0.0;1;A;1;Casa Improvisada y Es Pagada a Plazos o Alquilada;01A00112;;01A00104;3
+3133.0;12.0;15.0;14759.0;112.0;63.0;6.0;0.0;1;A;5;No Tiene Distribución de Energía Eléctrica y Tiene Contador de Electricidad;01A00502;;01A00109;2
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;0.0;1;A;5;No Tiene Distribución de Energía Eléctrica y Tiene Contador de Electricidad;01A00502;;01A00112;1
+3028.0;2.0;3.0;5603.0;37.0;26.0;3.0;0.0;1;A;5;No Tiene Distribución de Energía Eléctrica y Tiene Contador de Electricidad;01A00502;;01A00502;4
+3097.0;3.0;6.0;6100.0;157.0;106.0;7.0;0.0;1;A;5;No Tiene Distribución de Energía Eléctrica y Tiene Contador de Electricidad;01A00502;;01C00101;6
+3159.0;18.0;3.0;22531.0;209.0;175.0;10.0;0.0;1;C;1;Selecciono que realizó alguna mejoras a su vivienda, pero no contesto si en los últimos doce meses lo realizaron;01C00101;;01D00602;3
+3000.0;12.0;1.0;13569.0;65.0;32.0;3.0;0.0;1;C;1;Selecciono que realizó alguna mejoras a su vivienda, pero no contesto si en los últimos doce meses lo realizaron;01C00101;;01D00901;5
+3066.0;15.0;4.0;19163.0;54.0;40.0;5.0;0.0;1;C;1;Selecciono que realizó alguna mejoras a su vivienda, pero no contesto si en los últimos doce meses lo realizaron;01C00101;;01D01201;1
+3044.0;1.0;36.0;4914.0;101.0;112.0;6.0;0.0;1;C;1;Selecciono que realizó alguna mejoras a su vivienda, pero no contesto si en los últimos doce meses lo realizaron;01C00101;;01D01701;5
+3019.0;10.0;2.0;12279.0;4.0;5.0;1.0;0.0;1;C;1;Selecciono que realizó alguna mejoras a su vivienda, pero no contesto si en los últimos doce meses lo realizaron;01C00101;;01D02002;3
+3148.0;3.0;6.0;6100.0;82.0;54.0;4.0;0.0;1;C;1;Selecciono que realizó alguna mejoras a su vivienda, pero no contesto si en los últimos doce meses lo realizaron;01C00101;;01D02201;1
+3057.0;11.0;9.0;13539.0;26.0;20.0;2.0;0.0;1;D;6;"Si selecciona una opcion de rango (3:7,98) en pregunta sobre ""De dónde obtienen principalmente el agua para consumo"", se verifica que el resto de preguntas sean distinto a vacio hasta la pregunta 12";01D00602;;01D02603;1
+3097.0;3.0;6.0;6100.0;137.0;89.0;6.0;0.0;1;D;6;"Si selecciona una opcion de rango (3:7,98) en pregunta sobre ""De dónde obtienen principalmente el agua para consumo"", se verifica que el resto de preguntas sean distinto a vacio hasta la pregunta 12";01D00602;;01D02702;1
+3068.0;18.0;5.0;22865.0;14.0;11.0;1.0;0.0;1;D;6;"Si selecciona una opcion de rango (3:7,98) en pregunta sobre ""De dónde obtienen principalmente el agua para consumo"", se verifica que el resto de preguntas sean distinto a vacio hasta la pregunta 12";01D00602;;01D02901;1
+3151.0;22.0;13.0;25540.0;70.0;55.0;3.0;0.0;1;D;9;El servicio de agua es privada o de comité, debe pagar una cuota determinada;01D00901;;01D03001;1
+3161.0;20.0;3.0;23667.0;19.0;8.0;2.0;0.0;1;D;9;El servicio de agua es privada o de comité, debe pagar una cuota determinada;01D00901;;01D03103;3
+3097.0;3.0;6.0;6100.0;137.0;89.0;6.0;0.0;1;D;9;El servicio de agua es privada o de comité, debe pagar una cuota determinada;01D00901;;01D03104;4
+3020.0;1.0;24.0;1968.0;128.0;102.0;7.0;0.0;1;D;9;El servicio de agua es privada o de comité, debe pagar una cuota determinada;01D00901;;01D03201;7
+3068.0;18.0;5.0;22865.0;14.0;11.0;1.0;0.0;1;D;9;El servicio de agua es privada o de comité, debe pagar una cuota determinada;01D00901;;01D03202;7
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;0.0;1;D;12;Si la distancia es mayor a 0 no debió haber respondido las preguntas 13 y 14;01D01201;;01D03301;1
+3086.0;1.0;36.0;4914.0;9.0;7.0;1.0;0.0;1;D;17;Tiene inodoro conectado a red de drenajes, pero su hogar no esta conectada a una red de drenajes;01D01701;;01D03401;1
+3068.0;18.0;5.0;22865.0;114.0;70.0;8.0;0.0;1;D;17;Tiene inodoro conectado a red de drenajes, pero su hogar no esta conectada a una red de drenajes;01D01701;;01I00401;2
+3059.0;7.0;19.0;9923.0;75.0;46.0;6.0;0.0;1;D;17;Tiene inodoro conectado a red de drenajes, pero su hogar no esta conectada a una red de drenajes;01D01701;;01J10104;9
+3059.0;7.0;19.0;9923.0;75.0;46.0;6.0;0.0;1;D;17;Tiene inodoro conectado a red de drenajes, pero su hogar no esta conectada a una red de drenajes;01D01701;;01J20104;4
+3087.0;18.0;1.0;22276.0;27.0;19.0;1.0;0.0;1;D;17;Tiene inodoro conectado a red de drenajes, pero su hogar no esta conectada a una red de drenajes;01D01701;;01J30104;4
+3029.0;1.0;24.0;2027.0;24.0;22.0;1.0;0.0;1;D;20;Indico que el hogar si tiene telefono fijo y no reporta cuanto pago;01D02002;;01J40104;4
+3018.0;18.0;1.0;22323.0;33.0;24.0;2.0;0.0;1;D;20;Indico que el hogar si tiene telefono fijo y no reporta cuanto pago;01D02002;;02A00701;6
+3091.0;22.0;15.0;25643.0;214.0;132.0;8.0;0.0;1;D;20;Indico que el hogar si tiene telefono fijo y no reporta cuanto pago;01D02002;;02B00301;1
+3103.0;6.0;4.0;8811.0;29.0;22.0;2.0;0.0;1;D;22;Si la respuesta esta un rango de (3:7,98) la siguiente pregunta no es vacia;01D02201;;02B00401;1
+3084.0;14.0;13.0;18253.0;100.0;61.0;5.0;0.0;1;D;26;"Se indico ""00"" en la pregunta P01D25 y P01D26 no es vacia";01D02603;;02B00501;1
+3032.0;1.0;29.0;2656.0;149.0;146.0;9.0;0.0;1;D;27;"Se indico ""00"" en la pregunta P01D25 y P01D27 no es vacio";01D02702;;04A00101;2
+3084.0;14.0;13.0;18253.0;11.0;9.0;1.0;0.0;1;D;29;"Se indico ""No"" en la pregunta P01D28 y P01D29 no es vacia";01D02901;;04A00201;1
+3084.0;14.0;13.0;18253.0;11.0;9.0;1.0;0.0;1;D;30;"Se indico ""No"" en la pregunta P01D28 y P01D30 no es vacia";01D03001;;04A00301;1
+3026.0;18.0;3.0;22531.0;83.0;67.0;4.0;0.0;1;D;31;"Se indico ""00"" en la pregunta P01D31A y P01D31B no es vacia";01D03103;;04A00401;2
+3026.0;18.0;3.0;22531.0;106.0;86.0;5.0;0.0;1;D;31;"Se indico ""00"" en la pregunta P01D31A y P01D31B no es vacia";01D03103;;04A00501;3
+3007.0;9.0;2.0;11057.0;210.0;90.0;9.0;0.0;1;D;31;"Se indico ""00"" en la pregunta P01D31A y P01D31B no es vacia";01D03103;;04A00701;2
+3026.0;18.0;3.0;22531.0;33.0;30.0;2.0;0.0;1;D;31;"Se indico ""00"" en la pregunta P01D31A y P01D31C no es vacia";01D03104;;04A00902;2
+3057.0;11.0;9.0;13539.0;51.0;35.0;3.0;0.0;1;D;31;"Se indico ""00"" en la pregunta P01D31A y P01D31C no es vacia";01D03104;;04A01101;3
+3074.0;12.0;12.0;14491.0;71.0;54.0;1.0;0.0;1;D;31;"Se indico ""00"" en la pregunta P01D31A y P01D31C no es vacia";01D03104;;04A01201;1
+3026.0;18.0;1.0;22323.0;144.0;120.0;8.0;0.0;1;D;31;"Se indico ""00"" en la pregunta P01D31A y P01D31C no es vacia";01D03104;;04A01203;2
+3026.0;18.0;3.0;22531.0;33.0;30.0;2.0;0.0;1;D;32;Si indico que NO uso leña el mes pasado O si registro 0 en la distancia en mt y responde que medio utiliza para transportar la leña;01D03201;;04A01301;1
+3026.0;18.0;3.0;22531.0;83.0;67.0;4.0;0.0;1;D;32;Si indico que NO uso leña el mes pasado O si registro 0 en la distancia en mt y responde que medio utiliza para transportar la leña;01D03201;;05A00403;1
+3026.0;18.0;3.0;22531.0;106.0;86.0;5.0;0.0;1;D;32;Si indico que NO uso leña el mes pasado O si registro 0 en la distancia en mt y responde que medio utiliza para transportar la leña;01D03201;;05B00302;1
+3057.0;11.0;9.0;13539.0;51.0;35.0;3.0;0.0;1;D;32;Si indico que NO uso leña el mes pasado O si registro 0 en la distancia en mt y responde que medio utiliza para transportar la leña;01D03201;;05D00102;8
+3074.0;12.0;12.0;14491.0;71.0;54.0;1.0;0.0;1;D;32;Si indico que NO uso leña el mes pasado O si registro 0 en la distancia en mt y responde que medio utiliza para transportar la leña;01D03201;;05D00201;2
+3026.0;18.0;1.0;22323.0;144.0;120.0;8.0;0.0;1;D;32;Si indico que NO uso leña el mes pasado O si registro 0 en la distancia en mt y responde que medio utiliza para transportar la leña;01D03201;;05D00203;21
+3007.0;9.0;2.0;11057.0;210.0;90.0;9.0;0.0;1;D;32;Si indico que NO uso leña el mes pasado O si registro 0 en la distancia en mt y responde que medio utiliza para transportar la leña;01D03201;;05D00301;5
+3026.0;18.0;3.0;22531.0;33.0;30.0;2.0;0.0;1;D;32;Si la leña está a una distancia cero, no necesita un medio para transportarla;01D03202;;05D00303;1
+3026.0;18.0;3.0;22531.0;83.0;67.0;4.0;0.0;1;D;32;Si la leña está a una distancia cero, no necesita un medio para transportarla;01D03202;;05D00304;5
+3026.0;18.0;3.0;22531.0;106.0;86.0;5.0;0.0;1;D;32;Si la leña está a una distancia cero, no necesita un medio para transportarla;01D03202;;05D00401;2
+3057.0;11.0;9.0;13539.0;51.0;35.0;3.0;0.0;1;D;32;Si la leña está a una distancia cero, no necesita un medio para transportarla;01D03202;;05D00402;1
+3074.0;12.0;12.0;14491.0;71.0;54.0;1.0;0.0;1;D;32;Si la leña está a una distancia cero, no necesita un medio para transportarla;01D03202;;05D00403;2
+3026.0;18.0;1.0;22323.0;144.0;120.0;8.0;0.0;1;D;32;Si la leña está a una distancia cero, no necesita un medio para transportarla;01D03202;;05D00405;2
+3007.0;9.0;2.0;11057.0;210.0;90.0;9.0;0.0;1;D;32;Si la leña está a una distancia cero, no necesita un medio para transportarla;01D03202;;05D00603;1
+3084.0;14.0;13.0;18253.0;11.0;9.0;1.0;0.0;1;D;33;Si indico que NO uso leña el mes pasado y responde si hay o no una chimenea o escape de humo;01D03301;;05D00802;1
+3084.0;14.0;13.0;18253.0;11.0;9.0;1.0;0.0;1;D;34;"Se indico ""No"" en la pregunta P01D28 y P01D34 no es vacia";01D03401;;05D01702;1
+3110.0;13.0;11.0;16336.0;8.0;7.0;1.0;0.0;1;I;4;"Verifique seccion: I, pregunta: 4. El valor asignado en la respuesta de la pregunta ""en que año se fue"" es menor de 2018 o se asigno un valor distinto de 00";01I00401;;05D01703;1
+3150.0;21.0;6.0;24686.0;106.0;73.0;6.0;0.0;1;I;4;"Verifique seccion: I, pregunta: 4. El valor asignado en la respuesta de la pregunta ""en que año se fue"" es menor de 2018 o se asigno un valor distinto de 00";01I00401;;05D01804;1
+3060.0;12.0;1.0;13569.0;185.0;94.0;1.0;0.0;1;J1;1;"Verifique seccion: J1, pregunta: 1. Indica ""no"" a ""El hogar posee, tiene o cuenta con"" y se asigno un valor en la respuesta de al menos en uno de los articulos y tiene informacion en una de las siguentes preguntas: ¿Cuántos(as) (...) tiene este hogar?, ¿Cuántos años tiene el/la (...)?, ¿El artículo adquirido era:, Si fuera a vender el/la (...) el día de hoy, ¿en cuánto lo vendería?.";01J10104;;06A00204;1
+3152.0;19.0;1.0;23052.0;54.0;36.0;1.0;0.0;1;J1;1;"Verifique seccion: J1, pregunta: 1. Indica ""no"" a ""El hogar posee, tiene o cuenta con"" y se asigno un valor en la respuesta de al menos en uno de los articulos y tiene informacion en una de las siguentes preguntas: ¿Cuántos(as) (...) tiene este hogar?, ¿Cuántos años tiene el/la (...)?, ¿El artículo adquirido era:, Si fuera a vender el/la (...) el día de hoy, ¿en cuánto lo vendería?.";01J10104;;06A00206;1
+3110.0;13.0;11.0;16336.0;8.0;7.0;1.0;0.0;1;J1;1;"Verifique seccion: J1, pregunta: 1. Indica ""no"" a ""El hogar posee, tiene o cuenta con"" y se asigno un valor en la respuesta de al menos en uno de los articulos y tiene informacion en una de las siguentes preguntas: ¿Cuántos(as) (...) tiene este hogar?, ¿Cuántos años tiene el/la (...)?, ¿El artículo adquirido era:, Si fuera a vender el/la (...) el día de hoy, ¿en cuánto lo vendería?.";01J10104;;06B00101;4
+3084.0;14.0;13.0;18253.0;100.0;61.0;5.0;0.0;1;J1;1;"Verifique seccion: J1, pregunta: 1. Indica ""no"" a ""El hogar posee, tiene o cuenta con"" y se asigno un valor en la respuesta de al menos en uno de los articulos y tiene informacion en una de las siguentes preguntas: ¿Cuántos(as) (...) tiene este hogar?, ¿Cuántos años tiene el/la (...)?, ¿El artículo adquirido era:, Si fuera a vender el/la (...) el día de hoy, ¿en cuánto lo vendería?.";01J10104;;06B00201;2
+3105.0;12.0;12.0;14491.0;194.0;134.0;7.0;0.0;1;J1;1;"Verifique seccion: J1, pregunta: 1. Indica ""no"" a ""El hogar posee, tiene o cuenta con"" y se asigno un valor en la respuesta de al menos en uno de los articulos y tiene informacion en una de las siguentes preguntas: ¿Cuántos(as) (...) tiene este hogar?, ¿Cuántos años tiene el/la (...)?, ¿El artículo adquirido era:, Si fuera a vender el/la (...) el día de hoy, ¿en cuánto lo vendería?.";01J10104;;06B00202;2
+3015.0;14.0;13.0;18253.0;35.0;22.0;2.0;0.0;1;J1;1;"Verifique seccion: J1, pregunta: 1. Indica ""no"" a ""El hogar posee, tiene o cuenta con"" y se asigno un valor en la respuesta de al menos en uno de los articulos y tiene informacion en una de las siguentes preguntas: ¿Cuántos(as) (...) tiene este hogar?, ¿Cuántos años tiene el/la (...)?, ¿El artículo adquirido era:, Si fuera a vender el/la (...) el día de hoy, ¿en cuánto lo vendería?.";01J10104;;06B00301;2
+3124.0;2.0;1.0;5490.0;79.0;38.0;3.0;0.0;1;J1;1;"Verifique seccion: J1, pregunta: 1. Indica ""no"" a ""El hogar posee, tiene o cuenta con"" y se asigno un valor en la respuesta de al menos en uno de los articulos y tiene informacion en una de las siguentes preguntas: ¿Cuántos(as) (...) tiene este hogar?, ¿Cuántos años tiene el/la (...)?, ¿El artículo adquirido era:, Si fuera a vender el/la (...) el día de hoy, ¿en cuánto lo vendería?.";01J10104;;06B00501;5
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;0.0;1;J1;1;"Verifique seccion: J1, pregunta: 1. Indica ""no"" a ""El hogar posee, tiene o cuenta con"" y se asigno un valor en la respuesta de al menos en uno de los articulos y tiene informacion en una de las siguentes preguntas: ¿Cuántos(as) (...) tiene este hogar?, ¿Cuántos años tiene el/la (...)?, ¿El artículo adquirido era:, Si fuera a vender el/la (...) el día de hoy, ¿en cuánto lo vendería?.";01J10104;;06B01101;1
+3148.0;3.0;6.0;6100.0;6.0;2.0;1.0;0.0;1;J1;1;"Verifique seccion: J1, pregunta: 1. Indica ""no"" a ""El hogar posee, tiene o cuenta con"" y se asigno un valor en la respuesta de al menos en uno de los articulos y tiene informacion en una de las siguentes preguntas: ¿Cuántos(as) (...) tiene este hogar?, ¿Cuántos años tiene el/la (...)?, ¿El artículo adquirido era:, Si fuera a vender el/la (...) el día de hoy, ¿en cuánto lo vendería?.";01J10104;;06B01402;1
+3105.0;12.0;12.0;14491.0;194.0;134.0;7.0;0.0;1;J2;1;"Verifique seccion: J2, pregunta: 1. Indica ""no"" a ""El hogar posee, tiene o cuenta con"" y se asigno un valor en la respuesta de al menos una de las siguentes preguntas: ¿Cuántos(as) (...) tiene este hogar?, ¿Cuántos años tiene el/la (...)?, ¿El artículo adquirido era:, Si fuera a vender el/la (...) el día de hoy, ¿en cuánto lo vendería?.";01J20104;;06B01602;3
+3018.0;18.0;1.0;22323.0;96.0;72.0;5.0;0.0;1;J2;1;"Verifique seccion: J2, pregunta: 1. Indica ""no"" a ""El hogar posee, tiene o cuenta con"" y se asigno un valor en la respuesta de al menos una de las siguentes preguntas: ¿Cuántos(as) (...) tiene este hogar?, ¿Cuántos años tiene el/la (...)?, ¿El artículo adquirido era:, Si fuera a vender el/la (...) el día de hoy, ¿en cuánto lo vendería?.";01J20104;;06B01701;4
+3056.0;1.0;18.0;1394.0;17.0;15.0;1.0;0.0;1;J2;1;"Verifique seccion: J2, pregunta: 1. Indica ""no"" a ""El hogar posee, tiene o cuenta con"" y se asigno un valor en la respuesta de al menos una de las siguentes preguntas: ¿Cuántos(as) (...) tiene este hogar?, ¿Cuántos años tiene el/la (...)?, ¿El artículo adquirido era:, Si fuera a vender el/la (...) el día de hoy, ¿en cuánto lo vendería?.";01J20104;;06B02101;11
+3044.0;1.0;36.0;4914.0;101.0;112.0;6.0;0.0;1;J2;1;"Verifique seccion: J2, pregunta: 1. Indica ""no"" a ""El hogar posee, tiene o cuenta con"" y se asigno un valor en la respuesta de al menos una de las siguentes preguntas: ¿Cuántos(as) (...) tiene este hogar?, ¿Cuántos años tiene el/la (...)?, ¿El artículo adquirido era:, Si fuera a vender el/la (...) el día de hoy, ¿en cuánto lo vendería?.";01J20104;;06B02302;2
+3067.0;17.0;5.0;21433.0;90.0;63.0;4.0;0.0;1;J3;1;"Verifique seccion: J3, pregunta: 1. Indica ""no"" a ""El hogar posee, tiene o cuenta con"" y se asigno un valor en la respuesta de al menos una de las siguentes preguntas: ¿Cuántos(as) (...) tiene este hogar?, ¿Cuántos años tiene el/la (...)?, ¿El artículo adquirido era:, Si fuera a vender el/la (...) el día de hoy, ¿en cuánto lo vendería?.";01J30104;;06B02402;2
+3086.0;1.0;37.0;5025.0;51.0;52.0;3.0;0.0;1;J3;1;"Verifique seccion: J3, pregunta: 1. Indica ""no"" a ""El hogar posee, tiene o cuenta con"" y se asigno un valor en la respuesta de al menos una de las siguentes preguntas: ¿Cuántos(as) (...) tiene este hogar?, ¿Cuántos años tiene el/la (...)?, ¿El artículo adquirido era:, Si fuera a vender el/la (...) el día de hoy, ¿en cuánto lo vendería?.";01J30104;;06B02501;3
+3028.0;2.0;1.0;5514.0;61.0;51.0;4.0;0.0;1;J3;1;"Verifique seccion: J3, pregunta: 1. Indica ""no"" a ""El hogar posee, tiene o cuenta con"" y se asigno un valor en la respuesta de al menos una de las siguentes preguntas: ¿Cuántos(as) (...) tiene este hogar?, ¿Cuántos años tiene el/la (...)?, ¿El artículo adquirido era:, Si fuera a vender el/la (...) el día de hoy, ¿en cuánto lo vendería?.";01J30104;;06B02602;4
+3056.0;1.0;18.0;1394.0;17.0;15.0;1.0;0.0;1;J3;1;"Verifique seccion: J3, pregunta: 1. Indica ""no"" a ""El hogar posee, tiene o cuenta con"" y se asigno un valor en la respuesta de al menos una de las siguentes preguntas: ¿Cuántos(as) (...) tiene este hogar?, ¿Cuántos años tiene el/la (...)?, ¿El artículo adquirido era:, Si fuera a vender el/la (...) el día de hoy, ¿en cuánto lo vendería?.";01J30104;;06B02607;1
+3041.0;1.0;29.0;2811.0;151.0;153.0;8.0;0.0;1;J4;1;"Verifique seccion: J4, pregunta: 1. Indica ""no"" a ""El hogar posee, tiene o cuenta con"" y se asigno un valor en la respuesta de al menos una de las siguentes preguntas: ¿Cuántos(as) (...) tiene este hogar?, ¿Cuántos años tiene el/la (...)?, ¿El artículo adquirido era:, Si fuera a vender el/la (...) el día de hoy, ¿en cuánto lo vendería?.";01J40104;;06B02608;4
+3015.0;14.0;13.0;18253.0;35.0;22.0;2.0;0.0;1;J4;1;"Verifique seccion: J4, pregunta: 1. Indica ""no"" a ""El hogar posee, tiene o cuenta con"" y se asigno un valor en la respuesta de al menos una de las siguentes preguntas: ¿Cuántos(as) (...) tiene este hogar?, ¿Cuántos años tiene el/la (...)?, ¿El artículo adquirido era:, Si fuera a vender el/la (...) el día de hoy, ¿en cuánto lo vendería?.";01J40104;;06B02702;3
+3080.0;13.0;9.0;16201.0;14.0;9.0;1.0;0.0;1;J4;1;"Verifique seccion: J4, pregunta: 1. Indica ""no"" a ""El hogar posee, tiene o cuenta con"" y se asigno un valor en la respuesta de al menos una de las siguentes preguntas: ¿Cuántos(as) (...) tiene este hogar?, ¿Cuántos años tiene el/la (...)?, ¿El artículo adquirido era:, Si fuera a vender el/la (...) el día de hoy, ¿en cuánto lo vendería?.";01J40104;;07A00103;1
+3091.0;22.0;15.0;25643.0;130.0;78.0;5.0;0.0;1;J4;1;"Verifique seccion: J4, pregunta: 1. Indica ""no"" a ""El hogar posee, tiene o cuenta con"" y se asigno un valor en la respuesta de al menos una de las siguentes preguntas: ¿Cuántos(as) (...) tiene este hogar?, ¿Cuántos años tiene el/la (...)?, ¿El artículo adquirido era:, Si fuera a vender el/la (...) el día de hoy, ¿en cuánto lo vendería?.";01J40104;;08A00201;13
+3135.0;3.0;1.0;5845.0;28.0;25.0;2.0;0.0;2;A;7;Las respuestas fueron de la 2-98 y si hay información en pregunta razón principal de no presentar denuncia;02A00701;;08A00203;1
+3029.0;1.0;24.0;2027.0;100.0;70.0;3.0;0.0;2;A;7;Las respuestas fueron de la 2-98 y si hay información en pregunta razón principal de no presentar denuncia;02A00701;;08A00301;13
+3030.0;1.0;28.0;2457.0;103.0;98.0;6.0;0.0;2;A;7;Las respuestas fueron de la 2-98 y si hay información en pregunta razón principal de no presentar denuncia;02A00701;;08A00302;13
+3124.0;2.0;1.0;5490.0;46.0;23.0;2.0;0.0;2;A;7;Las respuestas fueron de la 2-98 y si hay información en pregunta razón principal de no presentar denuncia;02A00701;;09A00101;2
+3102.0;1.0;30.0;3369.0;20.0;21.0;2.0;0.0;2;A;7;Las respuestas fueron de la 2-98 y si hay información en pregunta razón principal de no presentar denuncia;02A00701;;09B00101;2
+3087.0;18.0;1.0;22276.0;27.0;19.0;1.0;0.0;2;A;7;Las respuestas fueron de la 2-98 y si hay información en pregunta razón principal de no presentar denuncia;02A00701;;09C00101;3
+3150.0;21.0;6.0;24686.0;194.0;123.0;10.0;0.0;2;B;3;Si la respuesta fue 2, y las  pregunta 03B, 03C, 03D, 03E, 03F, 03G no tienen informacion;02B00301;;09G00104;14
+3150.0;21.0;6.0;24686.0;194.0;123.0;10.0;0.0;2;B;4;Si la respueta fue 1, la siguientes variables tienen informacion;02B00401;;09H00101;2
+3052.0;13.0;20.0;16805.0;116.0;68.0;6.0;0.0;2;B;5;Esta pregunta debe estar llena si la pregunta 3 y 4 tiene informacion;02B00501;;09I00101;2
+3028.0;2.0;1.0;5514.0;207.0;151.0;10.0;;4;A;1;"La respuesta esta fuera de rango, y no hay una respuesta ""si"" o ""no"" es decir diferente de 1 y 2";04A00101;;10A00201;6
+3044.0;1.0;36.0;4914.0;23.0;28.0;2.0;;4;A;1;"La respuesta esta fuera de rango, y no hay una respuesta ""si"" o ""no"" es decir diferente de 1 y 2";04A00101;;10A00203;2
+3021.0;4.0;4.0;6710.0;75.0;55.0;7.0;2.0;4;A;2;Responder nivel educativo del padre cuando la respuesta sea SI en la pregunta 1;04A00201;;10A00301;4
+3021.0;4.0;4.0;6710.0;75.0;55.0;7.0;2.0;4;A;3;Responder cualquier idioma que habla el padre cuando la respuesta sea SI en la pregunta 1;04A00301;;10A00312;6
+3028.0;2.0;1.0;5514.0;207.0;151.0;10.0;;4;A;4;"La respuesta esta fuera de rango, y no hay una respuesta ""si"" o ""no"" es decir diferente de 1 y 2";04A00401;;10A00401;3
+3044.0;1.0;36.0;4914.0;23.0;28.0;2.0;;4;A;4;"La respuesta esta fuera de rango, y no hay una respuesta ""si"" o ""no"" es decir diferente de 1 y 2";04A00401;;10A00403;4
+3029.0;1.0;24.0;2027.0;100.0;70.0;3.0;3.0;4;A;5;Responder nivel educativo de la madre cuando la respuesta sea SI en la pregunta 4;04A00501;;10B00501;2
+3042.0;13.0;25.0;16972.0;80.0;33.0;3.0;3.0;4;A;5;Responder nivel educativo de la madre cuando la respuesta sea SI en la pregunta 4;04A00501;;10B00701;1
+3042.0;13.0;25.0;16972.0;80.0;33.0;3.0;3.0;4;A;5;Responder nivel educativo de la madre cuando la respuesta sea SI en la pregunta 4;04A00501;;10B00802;3
+3028.0;2.0;1.0;5514.0;207.0;151.0;10.0;;4;A;7;Responder un pueblo de origen fuera de rango diferente de 1 hasta 6;04A00701;;10B00901;3
+3044.0;1.0;36.0;4914.0;23.0;28.0;2.0;;4;A;7;Responder un pueblo de origen fuera de rango diferente de 1 hasta 6;04A00701;;10B00903;1
+3013.0;14.0;13.0;18161.0;180.0;119.0;8.0;2.0;4;A;9;"Responder ""SI o NO"" si se utiliza vestimenta maya, garífuna, afrodescendiente o xinka, si el pueblo NO corresponde a los ya mencionados";04A00902;;10B01001;1
+3013.0;14.0;13.0;18161.0;180.0;119.0;8.0;9.0;4;A;9;"Responder ""SI o NO"" si se utiliza vestimenta maya, garífuna, afrodescendiente o xinka, si el pueblo NO corresponde a los ya mencionados";04A00902;;10B01101;4
+3160.0;19.0;9.0;23395.0;25.0;22.0;2.0;3.0;4;A;11;Pregunta que otro idioma habla cuando en el idioma materno tiene una discapacidad;04A01101;;10B01102;4
+3020.0;1.0;24.0;1968.0;128.0;102.0;7.0;4.0;4;A;11;Pregunta que otro idioma habla cuando en el idioma materno tiene una discapacidad;04A01101;;10B01103;4
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;5.0;4;A;11;Pregunta que otro idioma habla cuando en el idioma materno tiene una discapacidad;04A01101;;10B01104;4
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;5.0;4;A;12;Pregunta que idioma habla con mas frecuencia cuando en el idioma materno tiene una discapacidad;04A01201;;10B01105;4
+3026.0;18.0;3.0;22531.0;14.0;11.0;1.0;4.0;4;A;12;Se respondió a la pregunta de que idioma habla con mas frecuencia cuando solo habla un idioma (ningún otro idioma);04A01203;;10B01106;4
+3093.0;14.0;2.0;17456.0;50.0;34.0;3.0;5.0;4;A;12;Se respondió a la pregunta de que idioma habla con mas frecuencia cuando solo habla un idioma (ningún otro idioma);04A01203;;10B01107;4
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;5.0;4;A;13;Se respondio a la pregunta con quien aprendio a hablar el idioma que mas habla cuando se tiene una discapacidad para hablar;04A01301;;10B01108;4
+3084.0;14.0;13.0;18253.0;144.0;87.0;7.0;4.0;5;A;4;Verifique Sección A Pregunta 4. Reportó respuesta a la pregunta de cual fue la razón principal por la que dejó de darle pecho,  pero en la pregunta 3 respondío que todavía le esta dando pecho. Tuvo que haber hecho un salto de la pregunta 3 a la pregunta 5.;05A00403;;10B01109;4
+3041.0;1.0;29.0;2811.0;151.0;153.0;8.0;6.0;5;B;3;Verifique Sección B Pregunta 3. Respondió la cantidad de dosis que recibió de la vacuna Pentavalente cuando en la pregunta anterior respondió que no recibió la vacuna. ;05B00302;;10B01110;4
+3086.0;1.0;36.0;4914.0;9.0;7.0;1.0;1.0;5;D;1;Verificacion cuando la persona si se enfermo;05D00102;;10C00617;12
+3130.0;14.0;13.0;18161.0;210.0;134.0;9.0;2.0;5;D;1;Verificacion cuando la persona si se enfermo;05D00102;;10C00822;11
+3160.0;19.0;9.0;23395.0;25.0;22.0;2.0;3.0;5;D;1;Verificacion cuando la persona si se enfermo;05D00102;;10C00826;3
+3146.0;22.0;5.0;25226.0;56.0;31.0;3.0;3.0;5;D;1;Verificacion cuando la persona si se enfermo;05D00102;;10C00930;11
+3015.0;14.0;13.0;18253.0;35.0;22.0;2.0;5.0;5;D;1;Verificacion cuando la persona si se enfermo;05D00102;;10C01036;11
+3160.0;19.0;9.0;23395.0;9.0;9.0;1.0;2.0;5;D;1;Verificacion cuando la persona si se enfermo;05D00102;;10C01356;11
+3039.0;1.0;36.0;4914.0;159.0;175.0;9.0;3.0;5;D;1;Verificacion cuando la persona si se enfermo;05D00102;;10C01357;1
+3039.0;1.0;36.0;4914.0;159.0;175.0;9.0;3.0;5;D;1;Verificacion cuando la persona si se enfermo;05D00102;;10C01458;11
+3150.0;21.0;6.0;24686.0;145.0;97.0;8.0;1.0;5;D;2;si fue al medico no debe responder si falto a su trabajo ;05D00201;;10C01666;11
+3029.0;1.0;24.0;2027.0;24.0;22.0;1.0;1.0;5;D;2;si fue al medico no debe responder si falto a su trabajo ;05D00201;;10C01669;11
+3086.0;1.0;36.0;4914.0;9.0;7.0;1.0;1.0;5;D;2;Verificar si no fue al medico que no indique las otras preguntas del capitulo;05D00203;;10C01672;11
+3107.0;5.0;2.0;7717.0;81.0;72.0;6.0;2.0;5;D;2;Verificar si no fue al medico que no indique las otras preguntas del capitulo;05D00203;;10C01675;11
+3159.0;18.0;3.0;22531.0;161.0;138.0;8.0;4.0;5;D;2;Verificar si no fue al medico que no indique las otras preguntas del capitulo;05D00203;;10C01678;11
+3150.0;21.0;6.0;24686.0;145.0;97.0;8.0;5.0;5;D;2;Verificar si no fue al medico que no indique las otras preguntas del capitulo;05D00203;;10C017101;11
+3130.0;14.0;13.0;18161.0;210.0;134.0;9.0;2.0;5;D;2;Verificar si no fue al medico que no indique las otras preguntas del capitulo;05D00203;;10C01781;11
+3110.0;13.0;11.0;16336.0;8.0;7.0;1.0;1.0;5;D;2;Verificar si no fue al medico que no indique las otras preguntas del capitulo;05D00203;;10C01784;11
+3160.0;19.0;9.0;23395.0;25.0;22.0;2.0;3.0;5;D;2;Verificar si no fue al medico que no indique las otras preguntas del capitulo;05D00203;;10C01787;11
+3049.0;15.0;4.0;19076.0;65.0;30.0;3.0;2.0;5;D;2;Verificar si no fue al medico que no indique las otras preguntas del capitulo;05D00203;;10C01790;11
+3146.0;22.0;5.0;25226.0;56.0;31.0;3.0;3.0;5;D;2;Verificar si no fue al medico que no indique las otras preguntas del capitulo;05D00203;;10C01793;11
+3146.0;22.0;5.0;25226.0;20.0;11.0;1.0;2.0;5;D;2;Verificar si no fue al medico que no indique las otras preguntas del capitulo;05D00203;;10C01796;11
+3117.0;9.0;20.0;11811.0;72.0;67.0;4.0;1.0;5;D;2;Verificar si no fue al medico que no indique las otras preguntas del capitulo;05D00203;;10C01799;11
+3096.0;5.0;2.0;7633.0;115.0;101.0;8.0;1.0;5;D;2;Verificar si no fue al medico que no indique las otras preguntas del capitulo;05D00203;;10C01801;3
+3015.0;14.0;13.0;18253.0;35.0;22.0;2.0;5.0;5;D;2;Verificar si no fue al medico que no indique las otras preguntas del capitulo;05D00203;;0;0
+3153.0;21.0;1.0;24277.0;204.0;151.0;10.0;4.0;5;D;2;Verificar si no fue al medico que no indique las otras preguntas del capitulo;05D00203;;10C01803;11
+3160.0;19.0;9.0;23395.0;9.0;9.0;1.0;2.0;5;D;2;Verificar si no fue al medico que no indique las otras preguntas del capitulo;05D00203;;10C02001;1
+3038.0;3.0;1.0;5845.0;103.0;77.0;6.0;4.0;5;D;2;Verificar si no fue al medico que no indique las otras preguntas del capitulo;05D00203;;10C02002;11
+3039.0;1.0;36.0;4914.0;159.0;175.0;9.0;3.0;5;D;2;Verificar si no fue al medico que no indique las otras preguntas del capitulo;05D00203;;10C02104;11
+3039.0;1.0;36.0;4914.0;159.0;175.0;9.0;3.0;5;D;2;Verificar si no fue al medico que no indique las otras preguntas del capitulo;05D00203;;10C02105;11
+3013.0;14.0;13.0;18161.0;180.0;119.0;8.0;2.0;5;D;2;Verificar si no fue al medico que no indique las otras preguntas del capitulo;05D00203;;10C02107;2
+3160.0;19.0;9.0;23395.0;36.0;32.0;3.0;1.0;5;D;2;Verificar si no fue al medico que no indique las otras preguntas del capitulo;05D00203;;10C02304;5
+3008.0;14.0;2.0;17456.0;65.0;46.0;4.0;3.0;5;D;2;Verificar si no fue al medico que no indique las otras preguntas del capitulo;05D00203;;10C02306;2
+3107.0;5.0;2.0;7717.0;81.0;72.0;6.0;2.0;5;D;3;verificar que si falto indique cuantos dias falto ;05D00301;;10C02507;3
+3150.0;21.0;6.0;24686.0;145.0;97.0;8.0;1.0;5;D;3;verificar que si falto indique cuantos dias falto ;05D00301;;10C02511;2
+3150.0;21.0;6.0;24686.0;145.0;97.0;8.0;5.0;5;D;3;verificar que si falto indique cuantos dias falto ;05D00301;;10C02602;3
+3029.0;1.0;24.0;2027.0;24.0;22.0;1.0;1.0;5;D;3;verificar que si falto indique cuantos dias falto ;05D00301;;10C02605;3
+3049.0;15.0;4.0;19076.0;65.0;30.0;3.0;2.0;5;D;3;verificar que si falto indique cuantos dias falto ;05D00301;;10C02611;2
+3030.0;1.0;28.0;2457.0;123.0;116.0;7.0;3.0;5;D;3;verificar que si no falto que no indique los dias ;05D00303;;10C02620;2
+3159.0;18.0;3.0;22531.0;161.0;138.0;8.0;4.0;5;D;3;verificar que si no falto por enfermedad que indique cuantas veces fue al medico ;05D00304;;10C02626;2
+3110.0;13.0;11.0;16336.0;8.0;7.0;1.0;1.0;5;D;3;verificar que si no falto por enfermedad que indique cuantas veces fue al medico ;05D00304;;10C02629;2
+3146.0;22.0;5.0;25226.0;20.0;11.0;1.0;2.0;5;D;3;verificar que si no falto por enfermedad que indique cuantas veces fue al medico ;05D00304;;10C02704;2
+3117.0;9.0;20.0;11811.0;72.0;67.0;4.0;1.0;5;D;3;verificar que si no falto por enfermedad que indique cuantas veces fue al medico ;05D00304;;10C02705;2
+3013.0;14.0;13.0;18161.0;180.0;119.0;8.0;2.0;5;D;3;verificar que si no falto por enfermedad que indique cuantas veces fue al medico ;05D00304;;10C02803;2
+3038.0;3.0;1.0;5845.0;103.0;77.0;6.0;4.0;5;D;4;verificar que si elige las 5 primeras opciones debe indicar cuantas veces asistio ;05D00401;;10C02911;2
+3008.0;14.0;2.0;17456.0;65.0;46.0;4.0;3.0;5;D;4;verificar que si elige las 5 primeras opciones debe indicar cuantas veces asistio ;05D00401;;10C03007;2
+3092.0;15.0;4.0;19163.0;41.0;31.0;4.0;1.0;5;D;4;verificar que si elige las 5 primeras opciones debe indicar donde lo atendieron y saltar las preguntas anteriores ;05D00402;;10C03010;2
+3038.0;3.0;1.0;5845.0;103.0;77.0;6.0;4.0;5;D;4;verificar que si elige las 5 primeras opciones debe llevar datos en donde lo antendieron;05D00403;;10C03109;2
+3008.0;14.0;2.0;17456.0;65.0;46.0;4.0;3.0;5;D;4;verificar que si elige las 5 primeras opciones debe llevar datos en donde lo antendieron;05D00403;;10C03205;1
+3153.0;21.0;1.0;24277.0;204.0;151.0;10.0;4.0;5;D;4;Verificar si la variable tiene el codigo 6-9 o 98  debe estar lleno por que no consulto a un medico ;05D00405;;10C03209;2
+3160.0;19.0;9.0;23395.0;36.0;32.0;3.0;1.0;5;D;4;Verificar si la variable tiene el codigo 6-9 o 98  debe estar lleno por que no consulto a un medico ;05D00405;;10C03308;2
+3092.0;15.0;4.0;19163.0;41.0;31.0;4.0;1.0;5;D;6;Verificar si gasto o no y pasar a ultima pregunta del capitulo ;05D00603;;10C03405;1
+3096.0;5.0;2.0;7633.0;115.0;101.0;8.0;1.0;5;D;8;Verificar si la variable tiene las validaciones correspondientes y tiene datos la sigueinte pregunta correspondiente;05D00802;;10C03408;2
+3148.0;3.0;6.0;6100.0;6.0;2.0;1.0;2.0;5;D;17;Verificar si no lo hospitalizaron que no indique los dias ;05D01702;;10C03508;2
+3148.0;3.0;6.0;6100.0;6.0;2.0;1.0;2.0;5;D;17;Verificar si no lo hospitalizaron que no indique los dias y que tampoco indique los servicios de hospitalizacion ;05D01703;;10C03608;2
+3148.0;3.0;6.0;6100.0;6.0;2.0;1.0;2.0;5;D;18;Verificar si no pago dinero de hospitalizacion no debe llevar montos de servicios ;05D01804;;10C03705;1
+3097.0;3.0;6.0;6100.0;157.0;106.0;7.0;4.0;6;A;2;el encuestado informó que inscribió a la persona en una ONG (P06A02 = 7) y está pagando colegiatura (P06A06A = 1).;06A00204;;10C03708;2
+3081.0;8.0;6.0;10615.0;76.0;54.0;6.0;5.0;6;A;2;el encuestado informó que inscribió al estudiante en una institución pública, otra institución de gobierno central o comunitaria (P06A02 = 1, 2, 5) pero indicó que pagó por la inscripción o matrícula (P06A03A = 1).;06A00206;;10C03808;2
+3064.0;16.0;8.0;20171.0;96.0;85.0;7.0;6.0;6;B;1;"Verifique sección B pregunta 1. Variable ""Edad"" menor a 7 ";06B00101;;10C03908;2
+3155.0;21.0;1.0;24417.0;7.0;7.0;1.0;9.0;6;B;1;"Verifique sección B pregunta 1. Variable ""Edad"" menor a 7 ";06B00101;;10C04009;2
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;6;B;1;"Verifique sección B pregunta 1. Variable ""Edad"" menor a 7 ";06B00101;;10C04106;2
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;6;B;1;"Verifique sección B pregunta 1. Variable ""Edad"" menor a 7 ";06B00101;;10C04403;2
+3130.0;14.0;13.0;18161.0;210.0;134.0;9.0;3.0;6;B;2;Verifique sección B pregunta 2. No sabe leer y escribir en un idioma indígena e indica uno de los idiomas;06B00201;;10C04608;2
+3148.0;3.0;6.0;6100.0;82.0;54.0;4.0;1.0;6;B;2;Verifique sección B pregunta 2. No sabe leer y escribir en un idioma indígena e indica uno de los idiomas;06B00201;;10C04706;2
+3159.0;18.0;3.0;22531.0;144.0;122.0;7.0;5.0;6;B;2;Verifique sección B pregunta 2. Ingreso de idioma diferente al rango;06B00202;;10C05001;4
+3039.0;1.0;36.0;4914.0;61.0;70.0;4.0;3.0;6;B;2;Verifique sección B pregunta 2. Ingreso de idioma diferente al rango;06B00202;;10C05022;2
+3159.0;18.0;3.0;22531.0;161.0;138.0;8.0;1.0;6;B;3;Verifique sección B pregunta 3. Reportó que nunca se ha inscrito en primaria y reporta que el nivel en el que se inscribió es primaria;06B00301;;10C05003;1
+3068.0;18.0;5.0;22865.0;114.0;70.0;8.0;4.0;6;B;3;Verifique sección B pregunta 3. Reportó que nunca se ha inscrito en primaria y reporta que el nivel en el que se inscribió es primaria;06B00301;;10C05104;2
+3060.0;12.0;1.0;13569.0;124.0;63.0;7.0;4.0;6;B;5;Verifique sección B pregunta 5. No se inscribió en algún plantel educativo y reporta nivel y grado inscrito;06B00501;;10C05204;1
+3060.0;12.0;3.0;13817.0;67.0;46.0;5.0;1.0;6;B;5;Verifique sección B pregunta 5. No se inscribió en algún plantel educativo y reporta nivel y grado inscrito;06B00501;;10D00103;2
+3110.0;13.0;11.0;16336.0;8.0;7.0;1.0;3.0;6;B;5;Verifique sección B pregunta 5. No se inscribió en algún plantel educativo y reporta nivel y grado inscrito;06B00501;;10D01405;1
+3041.0;1.0;29.0;2656.0;80.0;78.0;5.0;2.0;6;B;5;Verifique sección B pregunta 5. No se inscribió en algún plantel educativo y reporta nivel y grado inscrito;06B00501;;10D01502;1
+3125.0;3.0;14.0;6315.0;198.0;188.0;9.0;4.0;6;B;5;Verifique sección B pregunta 5. No se inscribió en algún plantel educativo y reporta nivel y grado inscrito;06B00501;;1E+102;11
+3110.0;13.0;11.0;16336.0;8.0;7.0;1.0;3.0;6;B;11;Verifique sección B pregunta 11. Reporta que se  inscribió a un plantel educativo y no registra medio de transporte;06B01101;;10E00501;1
+3155.0;21.0;1.0;24417.0;7.0;7.0;1.0;7.0;6;B;14;Verifique sección B pregunta 14. Registra  que no compra o alquila libros pero detalla monto;06B01402;;10E00801;1
+3026.0;18.0;3.0;22531.0;83.0;67.0;4.0;7.0;6;B;16;Verifique sección B pregunta 16. Registró que no compró cuadernos y/o materiales escolares y detalla monto;06B01602;;10E00902;1
+3085.0;5.0;5.0;7877.0;102.0;75.0;6.0;4.0;6;B;16;Verifique sección B pregunta 16. Registró que no compró cuadernos y/o materiales escolares y detalla monto;06B01602;;10E010G01;42
+3085.0;5.0;5.0;7877.0;102.0;75.0;6.0;4.0;6;B;16;Verifique sección B pregunta 16. Registró que no compró cuadernos y/o materiales escolares y detalla monto;06B01602;;10E010H01;78
+3060.0;12.0;1.0;13569.0;103.0;53.0;6.0;4.0;6;B;17;Verifique sección B pregunta 17. No compró cuadernos y detalla la manera en la que los obtuvo;06B01701;;11C00502;1
+3158.0;8.0;8.0;10720.0;31.0;17.0;2.0;3.0;6;B;17;Verifique sección B pregunta 17. No compró cuadernos y detalla la manera en la que los obtuvo;06B01701;;12A00101;2
+3160.0;19.0;9.0;23395.0;9.0;9.0;1.0;8.0;6;B;17;Verifique sección B pregunta 17. No compró cuadernos y detalla la manera en la que los obtuvo;06B01701;;12A00201;2
+3148.0;3.0;6.0;6100.0;6.0;2.0;1.0;5.0;6;B;17;Verifique sección B pregunta 17. No compró cuadernos y detalla la manera en la que los obtuvo;06B01701;;12A00202;1
+3057.0;11.0;9.0;13539.0;51.0;35.0;3.0;5.0;6;B;21;Verifique sección B pregunta 21. Indica que recibe seguro a través del MINEDUC y reporta pago;06B02101;;12A00302;3
+3047.0;2.0;3.0;5603.0;121.0;95.0;9.0;3.0;6;B;21;Verifique sección B pregunta 21. Indica que recibe seguro a través del MINEDUC y reporta pago;06B02101;;12A00502;3
+3014.0;1.0;30.0;3369.0;42.0;48.0;4.0;5.0;6;B;21;Verifique sección B pregunta 21. Indica que recibe seguro a través del MINEDUC y reporta pago;06B02101;;12A00602;3
+3081.0;8.0;6.0;10615.0;76.0;54.0;6.0;2.0;6;B;21;Verifique sección B pregunta 21. Indica que recibe seguro a través del MINEDUC y reporta pago;06B02101;;12A00603;2
+3081.0;8.0;6.0;10615.0;76.0;54.0;6.0;3.0;6;B;21;Verifique sección B pregunta 21. Indica que recibe seguro a través del MINEDUC y reporta pago;06B02101;;12A01201;4
+3081.0;8.0;6.0;10615.0;76.0;54.0;6.0;4.0;6;B;21;Verifique sección B pregunta 21. Indica que recibe seguro a través del MINEDUC y reporta pago;06B02101;;13B00401;5
+3102.0;1.0;30.0;3369.0;20.0;21.0;2.0;5.0;6;B;21;Verifique sección B pregunta 21. Indica que recibe seguro a través del MINEDUC y reporta pago;06B02101;;13B00701;1
+3102.0;1.0;30.0;3369.0;153.0;117.0;9.0;3.0;6;B;21;Verifique sección B pregunta 21. Indica que recibe seguro a través del MINEDUC y reporta pago;06B02101;;14B01501;2
+3102.0;1.0;30.0;3369.0;153.0;117.0;9.0;4.0;6;B;21;Verifique sección B pregunta 21. Indica que recibe seguro a través del MINEDUC y reporta pago;06B02101;;15A00102;4
+3055.0;21.0;6.0;24686.0;165.0;110.0;9.0;4.0;6;B;21;Verifique sección B pregunta 21. Indica que recibe seguro a través del MINEDUC y reporta pago;06B02101;;15A00403;24
+3055.0;21.0;6.0;24686.0;165.0;110.0;9.0;5.0;6;B;21;Verifique sección B pregunta 21. Indica que recibe seguro a través del MINEDUC y reporta pago;06B02101;;15A00503;24
+3158.0;8.0;8.0;10720.0;31.0;17.0;2.0;3.0;6;B;23;Verifique sección B pregunta 23. Indica que no dejó de asistir por abandono y contiene valores en preguntas 24 y 25;06B02302;;16A00102;1
+3023.0;3.0;4.0;6028.0;154.0;123.0;6.0;6.0;6;B;23;Verifique sección B pregunta 23. Indica que no dejó de asistir por abandono y contiene valores en preguntas 24 y 25;06B02302;;16F00101;16
+3030.0;1.0;28.0;2457.0;123.0;116.0;7.0;4.0;6;B;24;Verifique sección B pregunta 24. Respondió a pregunta 24 y contiene valores en pregunta 25;06B02402;;16F00201;1
+3148.0;3.0;6.0;6100.0;6.0;2.0;1.0;5.0;6;B;24;Verifique sección B pregunta 24. Respondió a pregunta 24 y contiene valores en pregunta 25;06B02402;;16F00301;1
+3158.0;8.0;8.0;10720.0;31.0;17.0;2.0;3.0;6;B;25;Verifique sección B pregunta 25. Indica inscripción en el presente año escolar y en este campo indica razón por la que no está inscrito;06B02501;;16G00101;16
+3030.0;1.0;28.0;2457.0;123.0;116.0;7.0;4.0;6;B;25;Verifique sección B pregunta 25. Indica inscripción en el presente año escolar y en este campo indica razón por la que no está inscrito;06B02501;;16H00101;16
+3148.0;3.0;6.0;6100.0;6.0;2.0;1.0;5.0;6;B;25;Verifique sección B pregunta 25. Indica inscripción en el presente año escolar y en este campo indica razón por la que no está inscrito;06B02501;;16I0101;16
+3060.0;12.0;1.0;13569.0;185.0;94.0;1.0;3.0;6;B;26;Verifique sección B pregunta 26. Indica que nunca se ha inscrito en el nivel educativo de primaria e indica haber aprobado el nivel igual o mayor a primaria;06B02602;;17A00101;14
+3159.0;18.0;3.0;22531.0;161.0;138.0;8.0;1.0;6;B;26;Verifique sección B pregunta 26. Indica que nunca se ha inscrito en el nivel educativo de primaria e indica haber aprobado el nivel igual o mayor a primaria;06B02602;;17A00201;69
+3068.0;18.0;5.0;22865.0;114.0;70.0;8.0;4.0;6;B;26;Verifique sección B pregunta 26. Indica que nunca se ha inscrito en el nivel educativo de primaria e indica haber aprobado el nivel igual o mayor a primaria;06B02602;;17A00301;13
+3148.0;3.0;6.0;6100.0;6.0;2.0;1.0;1.0;6;B;26;Verifique sección B pregunta 26. Indica que nunca se ha inscrito en el nivel educativo de primaria e indica haber aprobado el nivel igual o mayor a primaria;06B02602;;17A00401;2
+3161.0;20.0;3.0;23667.0;19.0;8.0;2.0;3.0;6;B;26;Verifique sección B pregunta 26. Indica tener aprobado el nivel preprimaria e indica grado escolar mayor a cero;06B02607;;17A00901;12
+3092.0;15.0;4.0;19163.0;22.0;15.0;2.0;3.0;6;B;26;Verifique sección B pregunta 26. Valor diferente a los rangos de grado para primaria, básico y divesificado;06B02608;;17A01101;12
+3092.0;15.0;4.0;19163.0;41.0;31.0;4.0;2.0;6;B;26;Verifique sección B pregunta 26. Valor diferente a los rangos de grado para primaria, básico y divesificado;06B02608;;17A01201;14
+3138.0;17.0;11.0;22042.0;212.0;137.0;10.0;3.0;6;B;26;Verifique sección B pregunta 26. Valor diferente a los rangos de grado para primaria, básico y divesificado;06B02608;;17A01403;14
+3039.0;1.0;36.0;4914.0;141.0;154.0;8.0;4.0;6;B;26;Verifique sección B pregunta 26. Valor diferente a los rangos de grado para primaria, básico y divesificado;06B02608;;17A01701;13
+3015.0;14.0;13.0;18253.0;35.0;22.0;2.0;6.0;6;B;27;Verifique sección B pregunta 27. Indica no tener un título o diploma y registró respuesta a pregunta 28A;06B02702;;CCB00101;18
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;6.0;6;B;27;Verifique sección B pregunta 27. Indica no tener un título o diploma y registró respuesta a pregunta 28A;06B02702;;CCB00205;1
+3091.0;22.0;15.0;25643.0;214.0;132.0;8.0;3.0;6;B;27;Verifique sección B pregunta 27. Indica no tener un título o diploma y registró respuesta a pregunta 28A;06B02702;;CCB00305;1
+3030.0;1.0;24.0;2027.0;280.0;212.0;9.0;4.0;7;A;1;Indica que no asistió a un curso de capacitación pero proporcionó detalles del curso;07A00103;;CCC00201;20
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;8;A;2;Indicó que ha vivido en el mismo lugar durante toda su vida, pero declaró que vivía en un lugar diferente en 2018.;08A00201;;CCD00601;10
+3024.0;13.0;4.0;15868.0;84.0;43.0;5.0;1.0;8;A;2;Indicó que ha vivido en el mismo lugar durante toda su vida, pero declaró que vivía en un lugar diferente en 2018.;08A00201;;CCD00701;10
+3024.0;13.0;4.0;15868.0;84.0;43.0;5.0;2.0;8;A;2;Indicó que ha vivido en el mismo lugar durante toda su vida, pero declaró que vivía en un lugar diferente en 2018.;08A00201;;CCD00801;10
+3155.0;21.0;1.0;24417.0;88.0;77.0;4.0;2.0;8;A;2;Indicó que ha vivido en el mismo lugar durante toda su vida, pero declaró que vivía en un lugar diferente en 2018.;08A00201;;CPA00403;2
+3154.0;21.0;1.0;24417.0;241.0;195.0;10.0;1.0;8;A;2;Indicó que ha vivido en el mismo lugar durante toda su vida, pero declaró que vivía en un lugar diferente en 2018.;08A00201;;CPA00507;2
+3080.0;13.0;9.0;16201.0;14.0;9.0;1.0;5.0;8;A;2;Indicó que ha vivido en el mismo lugar durante toda su vida, pero declaró que vivía en un lugar diferente en 2018.;08A00201;;CPA00509;2
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;2.0;8;A;2;Indicó que ha vivido en el mismo lugar durante toda su vida, pero declaró que vivía en un lugar diferente en 2018.;08A00201;;CPA00701;1
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;3.0;8;A;2;Indicó que ha vivido en el mismo lugar durante toda su vida, pero declaró que vivía en un lugar diferente en 2018.;08A00201;;CPA00702;1
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;4.0;8;A;2;Indicó que ha vivido en el mismo lugar durante toda su vida, pero declaró que vivía en un lugar diferente en 2018.;08A00201;;CPA00706;1
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;5.0;8;A;2;Indicó que ha vivido en el mismo lugar durante toda su vida, pero declaró que vivía en un lugar diferente en 2018.;08A00201;;CPA00803;2
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;6.0;8;A;2;Indicó que ha vivido en el mismo lugar durante toda su vida, pero declaró que vivía en un lugar diferente en 2018.;08A00201;;CPA00805;3
+3039.0;1.0;36.0;4756.0;2.0;2.0;1.0;3.0;8;A;2;Indicó que ha vivido en el mismo lugar durante toda su vida, pero declaró que vivía en un lugar diferente en 2018.;08A00201;;CPA00902;3
+3039.0;1.0;36.0;4756.0;83.0;86.0;5.0;2.0;8;A;2;Indicó que ha vivido en el mismo lugar durante toda su vida, pero declaró que vivía en un lugar diferente en 2018.;08A00201;;;0
+3068.0;18.0;5.0;22865.0;14.0;11.0;2.0;4.0;8;A;2;Indicó que nació en otro país, pero también declaró que ha vivido en el mismo lugar toda su vida.;08A00203;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;8;A;3;La respuesta a años seguidos viviendo en ese lugar es toda la vida pero no hizo el salto a capítulo IX.;08A00301;;;0
+3024.0;13.0;4.0;15868.0;84.0;43.0;5.0;1.0;8;A;3;La respuesta a años seguidos viviendo en ese lugar es toda la vida pero no hizo el salto a capítulo IX.;08A00301;;;0
+3024.0;13.0;4.0;15868.0;84.0;43.0;5.0;2.0;8;A;3;La respuesta a años seguidos viviendo en ese lugar es toda la vida pero no hizo el salto a capítulo IX.;08A00301;;;0
+3155.0;21.0;1.0;24417.0;88.0;77.0;4.0;2.0;8;A;3;La respuesta a años seguidos viviendo en ese lugar es toda la vida pero no hizo el salto a capítulo IX.;08A00301;;;0
+3154.0;21.0;1.0;24417.0;241.0;195.0;10.0;1.0;8;A;3;La respuesta a años seguidos viviendo en ese lugar es toda la vida pero no hizo el salto a capítulo IX.;08A00301;;;0
+3080.0;13.0;9.0;16201.0;14.0;9.0;1.0;5.0;8;A;3;La respuesta a años seguidos viviendo en ese lugar es toda la vida pero no hizo el salto a capítulo IX.;08A00301;;;0
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;2.0;8;A;3;La respuesta a años seguidos viviendo en ese lugar es toda la vida pero no hizo el salto a capítulo IX.;08A00301;;;0
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;3.0;8;A;3;La respuesta a años seguidos viviendo en ese lugar es toda la vida pero no hizo el salto a capítulo IX.;08A00301;;;0
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;4.0;8;A;3;La respuesta a años seguidos viviendo en ese lugar es toda la vida pero no hizo el salto a capítulo IX.;08A00301;;;0
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;5.0;8;A;3;La respuesta a años seguidos viviendo en ese lugar es toda la vida pero no hizo el salto a capítulo IX.;08A00301;;;0
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;6.0;8;A;3;La respuesta a años seguidos viviendo en ese lugar es toda la vida pero no hizo el salto a capítulo IX.;08A00301;;;0
+3039.0;1.0;36.0;4756.0;2.0;2.0;1.0;3.0;8;A;3;La respuesta a años seguidos viviendo en ese lugar es toda la vida pero no hizo el salto a capítulo IX.;08A00301;;;0
+3039.0;1.0;36.0;4756.0;83.0;86.0;5.0;2.0;8;A;3;La respuesta a años seguidos viviendo en ese lugar es toda la vida pero no hizo el salto a capítulo IX.;08A00301;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;8;A;3;El número de años viviendo en el lugar es menor a la cantidad de años desde 2018 hasta la fecha de la encuesta, pero indica que vivía en el mismo lugar en 2018.;08A00302;;;0
+3024.0;13.0;4.0;15868.0;84.0;43.0;5.0;1.0;8;A;3;El número de años viviendo en el lugar es menor a la cantidad de años desde 2018 hasta la fecha de la encuesta, pero indica que vivía en el mismo lugar en 2018.;08A00302;;;0
+3024.0;13.0;4.0;15868.0;84.0;43.0;5.0;2.0;8;A;3;El número de años viviendo en el lugar es menor a la cantidad de años desde 2018 hasta la fecha de la encuesta, pero indica que vivía en el mismo lugar en 2018.;08A00302;;;0
+3155.0;21.0;1.0;24417.0;88.0;77.0;4.0;2.0;8;A;3;El número de años viviendo en el lugar es menor a la cantidad de años desde 2018 hasta la fecha de la encuesta, pero indica que vivía en el mismo lugar en 2018.;08A00302;;;0
+3154.0;21.0;1.0;24417.0;241.0;195.0;10.0;1.0;8;A;3;El número de años viviendo en el lugar es menor a la cantidad de años desde 2018 hasta la fecha de la encuesta, pero indica que vivía en el mismo lugar en 2018.;08A00302;;;0
+3080.0;13.0;9.0;16201.0;14.0;9.0;1.0;5.0;8;A;3;El número de años viviendo en el lugar es menor a la cantidad de años desde 2018 hasta la fecha de la encuesta, pero indica que vivía en el mismo lugar en 2018.;08A00302;;;0
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;2.0;8;A;3;El número de años viviendo en el lugar es menor a la cantidad de años desde 2018 hasta la fecha de la encuesta, pero indica que vivía en el mismo lugar en 2018.;08A00302;;;0
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;3.0;8;A;3;El número de años viviendo en el lugar es menor a la cantidad de años desde 2018 hasta la fecha de la encuesta, pero indica que vivía en el mismo lugar en 2018.;08A00302;;;0
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;4.0;8;A;3;El número de años viviendo en el lugar es menor a la cantidad de años desde 2018 hasta la fecha de la encuesta, pero indica que vivía en el mismo lugar en 2018.;08A00302;;;0
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;5.0;8;A;3;El número de años viviendo en el lugar es menor a la cantidad de años desde 2018 hasta la fecha de la encuesta, pero indica que vivía en el mismo lugar en 2018.;08A00302;;;0
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;6.0;8;A;3;El número de años viviendo en el lugar es menor a la cantidad de años desde 2018 hasta la fecha de la encuesta, pero indica que vivía en el mismo lugar en 2018.;08A00302;;;0
+3039.0;1.0;36.0;4756.0;2.0;2.0;1.0;3.0;8;A;3;El número de años viviendo en el lugar es menor a la cantidad de años desde 2018 hasta la fecha de la encuesta, pero indica que vivía en el mismo lugar en 2018.;08A00302;;;0
+3039.0;1.0;36.0;4756.0;83.0;86.0;5.0;2.0;8;A;3;El número de años viviendo en el lugar es menor a la cantidad de años desde 2018 hasta la fecha de la encuesta, pero indica que vivía en el mismo lugar en 2018.;08A00302;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;9;A;1;Personas a las que se les registró edad menor a siete años y que tienen respuesta positiva en la variables de uso de tiempo en trabajo remunerado y/o trabajo no remunerado ;09A00101;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;9;A;1;Personas a las que se les registró edad menor a siete años y que tienen respuesta positiva en la variables de uso de tiempo en trabajo remunerado y/o trabajo no remunerado ;09A00101;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;9;B;1;Personas a las que se les registro edad menor a siete años y que tienen respuesta positiva en la variables de uso de tiempo en actividades de estudio ;09B00101;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;9;B;1;Personas a las que se les registro edad menor a siete años y que tienen respuesta positiva en la variables de uso de tiempo en actividades de estudio ;09B00101;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;9;C;1;Personas a las que se les registro edad menor a siete años y que tienen respuesta positiva en la variables de uso de tiempo en actividades para el mantenimiento del hogar, aún si esta respuesta es un tiempo cero, no corresponde responder acá;09C00101;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;9;C;1;Personas a las que se les registro edad menor a siete años y que tienen respuesta positiva en la variables de uso de tiempo en actividades para el mantenimiento del hogar, aún si esta respuesta es un tiempo cero, no corresponde responder acá;09C00101;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;9;E;1;Personas a las que se les registro edad menor a siete años y que tienen respuesta positiva en la variables de uso de tiempo para realizar compras y pagos ;09C00101;;;0
+3127.0;3.0;4.0;6028.0;41.0;34.0;2.0;2.0;9;G;1;La suma del total de horas usadas en todas las actividades excede las 24 horas que se tienen en un día y no reporta actividades paralelas o bien, reporta actividades paralelas y excede de 28 horas;09G00104;;;0
+3024.0;13.0;20.0;16805.0;3.0;2.0;1.0;1.0;9;G;1;La suma del total de horas usadas en todas las actividades excede las 24 horas que se tienen en un día y no reporta actividades paralelas o bien, reporta actividades paralelas y excede de 28 horas;09G00104;;;0
+3029.0;1.0;24.0;2027.0;100.0;70.0;3.0;4.0;9;G;1;La suma del total de horas usadas en todas las actividades excede las 24 horas que se tienen en un día y no reporta actividades paralelas o bien, reporta actividades paralelas y excede de 28 horas;09G00104;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;1.0;9;G;1;La suma del total de horas usadas en todas las actividades excede las 24 horas que se tienen en un día y no reporta actividades paralelas o bien, reporta actividades paralelas y excede de 28 horas;09G00104;;;0
+3097.0;3.0;6.0;6100.0;157.0;106.0;7.0;2.0;9;G;1;La suma del total de horas usadas en todas las actividades excede las 24 horas que se tienen en un día y no reporta actividades paralelas o bien, reporta actividades paralelas y excede de 28 horas;09G00104;;;0
+3124.0;2.0;3.0;5558.0;152.0;139.0;8.0;1.0;9;G;1;La suma del total de horas usadas en todas las actividades excede las 24 horas que se tienen en un día y no reporta actividades paralelas o bien, reporta actividades paralelas y excede de 28 horas;09G00104;;;0
+3124.0;2.0;3.0;5558.0;152.0;139.0;8.0;2.0;9;G;1;La suma del total de horas usadas en todas las actividades excede las 24 horas que se tienen en un día y no reporta actividades paralelas o bien, reporta actividades paralelas y excede de 28 horas;09G00104;;;0
+3065.0;19.0;4.0;23180.0;7.0;8.0;1.0;4.0;9;G;1;La suma del total de horas usadas en todas las actividades excede las 24 horas que se tienen en un día y no reporta actividades paralelas o bien, reporta actividades paralelas y excede de 28 horas;09G00104;;;0
+3138.0;17.0;11.0;22042.0;212.0;137.0;10.0;2.0;9;G;1;La suma del total de horas usadas en todas las actividades excede las 24 horas que se tienen en un día y no reporta actividades paralelas o bien, reporta actividades paralelas y excede de 28 horas;09G00104;;;0
+3138.0;17.0;11.0;22042.0;212.0;137.0;10.0;4.0;9;G;1;La suma del total de horas usadas en todas las actividades excede las 24 horas que se tienen en un día y no reporta actividades paralelas o bien, reporta actividades paralelas y excede de 28 horas;09G00104;;;0
+3017.0;6.0;14.0;9295.0;88.0;56.0;1.0;1.0;9;G;1;La suma del total de horas usadas en todas las actividades excede las 24 horas que se tienen en un día y no reporta actividades paralelas o bien, reporta actividades paralelas y excede de 28 horas;09G00104;;;0
+3119.0;1.0;18.0;1206.0;7.0;4.0;1.0;3.0;9;G;1;La suma del total de horas usadas en todas las actividades excede las 24 horas que se tienen en un día y no reporta actividades paralelas o bien, reporta actividades paralelas y excede de 28 horas;09G00104;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;2.0;9;G;1;La suma del total de horas usadas en todas las actividades excede las 24 horas que se tienen en un día y no reporta actividades paralelas o bien, reporta actividades paralelas y excede de 28 horas;09G00104;;;0
+3148.0;3.0;6.0;6100.0;6.0;2.0;1.0;1.0;9;G;1;La suma del total de horas usadas en todas las actividades excede las 24 horas que se tienen en un día y no reporta actividades paralelas o bien, reporta actividades paralelas y excede de 28 horas;09G00104;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;9;H;1;Personas a las que se les registró edad menor a siete años y que tienen información en las variables de realización de actividades paralelas ;09H00101;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;9;H;1;Personas a las que se les registró edad menor a siete años y que tienen información en las variables de realización de actividades paralelas ;09H00101;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;9;I;1;Personas a las que se les registró edad menor a siete años y que tienen información en las variables de día, mes y año que se realizó la entrevista ;09I00101;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;9;I;1;Personas a las que se les registró edad menor a siete años y que tienen información en las variables de día, mes y año que se realizó la entrevista ;09I00101;;;0
+3026.0;18.0;3.0;22531.0;63.0;49.0;3.0;1.0;10;A;2;Indica que tuvo activiadad principal ;10A00201;;;0
+3159.0;18.0;3.0;22531.0;124.0;103.0;1.0;1.0;10;A;2;Indica que tuvo activiadad principal ;10A00201;;;0
+3052.0;13.0;20.0;16805.0;134.0;82.0;7.0;1.0;10;A;2;Indica que tuvo activiadad principal ;10A00201;;;0
+3020.0;1.0;24.0;1968.0;148.0;117.0;8.0;1.0;10;A;2;Indica que tuvo activiadad principal ;10A00201;;;0
+3102.0;1.0;30.0;3369.0;20.0;21.0;2.0;7.0;10;A;2;Indica que tuvo activiadad principal ;10A00201;;;0
+3102.0;1.0;30.0;3369.0;153.0;117.0;9.0;1.0;10;A;2;Indica que tuvo activiadad principal ;10A00201;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;A;2;Por la edad no pasan a esta sección;10A00203;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;A;2;Por la edad no pasan a esta sección;10A00203;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;3.0;10;A;3;el encuestado debe pasar a la sección C después de confirmar que trabajó al menos una hora (P10A03 = 1), pero aún proporciona respuestas para las preguntas posteriores en la sección A.;10A00301;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;3.0;10;A;3;el encuestado debe pasar a la sección C después de confirmar que trabajó al menos una hora (P10A03 = 1), pero aún proporciona respuestas para las preguntas posteriores en la sección A.;10A00301;;;0
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;4.0;10;A;3;el encuestado debe pasar a la sección C después de confirmar que trabajó al menos una hora (P10A03 = 1), pero aún proporciona respuestas para las preguntas posteriores en la sección A.;10A00301;;;0
+3005.0;22.0;15.0;25643.0;185.0;114.0;7.0;3.0;10;A;3;el encuestado debe pasar a la sección C después de confirmar que trabajó al menos una hora (P10A03 = 1), pero aún proporciona respuestas para las preguntas posteriores en la sección A.;10A00301;;;0
+3026.0;18.0;3.0;22531.0;63.0;49.0;3.0;1.0;10;A;3;Códigos que  no tenían que pasar;10A00312;;;0
+3159.0;18.0;3.0;22531.0;124.0;103.0;1.0;1.0;10;A;3;Códigos que  no tenían que pasar;10A00312;;;0
+3052.0;13.0;20.0;16805.0;134.0;82.0;7.0;1.0;10;A;3;Códigos que  no tenían que pasar;10A00312;;;0
+3020.0;1.0;24.0;1968.0;148.0;117.0;8.0;1.0;10;A;3;Códigos que  no tenían que pasar;10A00312;;;0
+3102.0;1.0;30.0;3369.0;20.0;21.0;2.0;7.0;10;A;3;Códigos que  no tenían que pasar;10A00312;;;0
+3102.0;1.0;30.0;3369.0;153.0;117.0;9.0;1.0;10;A;3;Códigos que  no tenían que pasar;10A00312;;;0
+3026.0;18.0;3.0;22531.0;63.0;49.0;3.0;2.0;10;A;4;el encuestado debe pasar a la sección C después de confirmar que trabajó al menos una hora (P10A04 = 1), pero aún proporciona respuestas para las preguntas posteriores en la sección A.;10A00401;;;0
+3150.0;21.0;6.0;24686.0;145.0;97.0;8.0;1.0;10;A;4;el encuestado debe pasar a la sección C después de confirmar que trabajó al menos una hora (P10A04 = 1), pero aún proporciona respuestas para las preguntas posteriores en la sección A.;10A00401;;;0
+3157.0;22.0;5.0;25270.0;149.0;113.0;10.0;1.0;10;A;4;el encuestado debe pasar a la sección C después de confirmar que trabajó al menos una hora (P10A04 = 1), pero aún proporciona respuestas para las preguntas posteriores en la sección A.;10A00401;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;3.0;10;A;4;Debió pasar a sección C y tiene información en ¿qué hizo la semana pasada...;10A00403;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;3.0;10;A;4;Debió pasar a sección C y tiene información en ¿qué hizo la semana pasada...;10A00403;;;0
+3081.0;8.0;6.0;10615.0;139.0;95.0;10.0;4.0;10;A;4;Debió pasar a sección C y tiene información en ¿qué hizo la semana pasada...;10A00403;;;0
+3005.0;22.0;15.0;25643.0;185.0;114.0;7.0;3.0;10;A;4;Debió pasar a sección C y tiene información en ¿qué hizo la semana pasada...;10A00403;;;0
+3026.0;18.0;3.0;22531.0;63.0;49.0;3.0;2.0;10;B;5;Debe haber información en razón principal de no hacer trámites, según pregunta buscó trabajo=2;10B00501;;;0
+3052.0;13.0;20.0;16805.0;134.0;82.0;7.0;1.0;10;B;5;Debe haber información en razón principal de no hacer trámites, según pregunta buscó trabajo=2;10B00501;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;3.0;10;B;7;Debieron responder conforme a pregunta razón principal de no hacer trámites;10B00701;;;0
+3026.0;18.0;3.0;22531.0;63.0;49.0;3.0;2.0;10;B;8;Valores dirente a 1,2,3,4 o 5 en disponibilidad;10B00802;;;0
+3052.0;13.0;20.0;16805.0;134.0;82.0;7.0;1.0;10;B;8;Valores dirente a 1,2,3,4 o 5 en disponibilidad;10B00802;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;3.0;10;B;8;Valores dirente a 1,2,3,4 o 5 en disponibilidad;10B00802;;;0
+3026.0;18.0;3.0;22531.0;63.0;49.0;3.0;2.0;10;B;9;Debería de haber información según pregunta buscó trabajo;10B00901;;;0
+3052.0;13.0;20.0;16805.0;134.0;82.0;7.0;1.0;10;B;9;Debería de haber información según pregunta buscó trabajo;10B00901;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;3.0;10;B;9;Debería de haber información según pregunta buscó trabajo;10B00901;;;0
+3005.0;22.0;15.0;25643.0;185.0;114.0;7.0;3.0;10;B;9;Valores pérdidos y si debieron responder último trabajo;10B00903;;;0
+3015.0;14.0;13.0;18253.0;35.0;22.0;2.0;2.0;10;B;10;"No debe haber información en pregunta ha trabajado se respondió 2 en ""ha trabajado""";10B01001;;;0
+3026.0;18.0;3.0;22531.0;63.0;49.0;3.0;2.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01101;;;0
+3052.0;13.0;20.0;16805.0;134.0;82.0;7.0;1.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01101;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;3.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01101;;;0
+3005.0;22.0;15.0;25643.0;185.0;114.0;7.0;3.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01101;;;0
+3026.0;18.0;3.0;22531.0;63.0;49.0;3.0;2.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01102;;;0
+3052.0;13.0;20.0;16805.0;134.0;82.0;7.0;1.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01102;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;3.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01102;;;0
+3005.0;22.0;15.0;25643.0;185.0;114.0;7.0;3.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01102;;;0
+3026.0;18.0;3.0;22531.0;63.0;49.0;3.0;2.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01103;;;0
+3052.0;13.0;20.0;16805.0;134.0;82.0;7.0;1.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01103;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;3.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01103;;;0
+3005.0;22.0;15.0;25643.0;185.0;114.0;7.0;3.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01103;;;0
+3026.0;18.0;3.0;22531.0;63.0;49.0;3.0;2.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01104;;;0
+3052.0;13.0;20.0;16805.0;134.0;82.0;7.0;1.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01104;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;3.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01104;;;0
+3005.0;22.0;15.0;25643.0;185.0;114.0;7.0;3.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01104;;;0
+3026.0;18.0;3.0;22531.0;63.0;49.0;3.0;2.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01105;;;0
+3052.0;13.0;20.0;16805.0;134.0;82.0;7.0;1.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01105;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;3.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01105;;;0
+3005.0;22.0;15.0;25643.0;185.0;114.0;7.0;3.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01105;;;0
+3026.0;18.0;3.0;22531.0;63.0;49.0;3.0;2.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01106;;;0
+3052.0;13.0;20.0;16805.0;134.0;82.0;7.0;1.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01106;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;3.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01106;;;0
+3005.0;22.0;15.0;25643.0;185.0;114.0;7.0;3.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01106;;;0
+3026.0;18.0;3.0;22531.0;63.0;49.0;3.0;2.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01107;;;0
+3052.0;13.0;20.0;16805.0;134.0;82.0;7.0;1.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01107;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;3.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01107;;;0
+3005.0;22.0;15.0;25643.0;185.0;114.0;7.0;3.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01107;;;0
+3026.0;18.0;3.0;22531.0;63.0;49.0;3.0;2.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01108;;;0
+3052.0;13.0;20.0;16805.0;134.0;82.0;7.0;1.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01108;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;3.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01108;;;0
+3005.0;22.0;15.0;25643.0;185.0;114.0;7.0;3.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01108;;;0
+3026.0;18.0;3.0;22531.0;63.0;49.0;3.0;2.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01109;;;0
+3052.0;13.0;20.0;16805.0;134.0;82.0;7.0;1.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01109;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;3.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01109;;;0
+3005.0;22.0;15.0;25643.0;185.0;114.0;7.0;3.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01109;;;0
+3026.0;18.0;3.0;22531.0;63.0;49.0;3.0;2.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01110;;;0
+3052.0;13.0;20.0;16805.0;134.0;82.0;7.0;1.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01110;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;3.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01110;;;0
+3005.0;22.0;15.0;25643.0;185.0;114.0;7.0;3.0;10;B;11;Debe haber información, conforme a pregunta P10B01;10B01110;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;1;Es valor perdido;10C00617;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;1;Es valor perdido;10C00617;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;6;Es valor perdido;10C00617;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;6;Es valor perdido;10C00617;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;6;Es valor perdido;10C00617;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;6;Es valor perdido;10C00617;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;6;Es valor perdido;10C00617;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;6;Es valor perdido;10C00617;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;6;Es valor perdido;10C00617;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;6;Es valor perdido;10C00617;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;6;Es valor perdido;10C00617;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;6;Es valor perdido;10C00617;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;8;Es valor perdido;10C00822;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;8;Es valor perdido;10C00822;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;8;Es valor perdido;10C00822;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;8;Es valor perdido;10C00822;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;8;Es valor perdido;10C00822;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;8;Es valor perdido;10C00822;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;8;Es valor perdido;10C00822;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;8;Es valor perdido;10C00822;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;8;Es valor perdido;10C00822;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;8;Es valor perdido;10C00822;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;8;Es valor perdido;10C00822;;;0
+3117.0;9.0;20.0;11811.0;137.0;127.0;7.0;2.0;10;C;8;Es valor perdido;10C00826;;;0
+3019.0;10.0;2.0;12279.0;21.0;20.0;2.0;1.0;10;C;8;Es valor perdido;10C00826;;;0
+3013.0;14.0;13.0;18161.0;21.0;15.0;1.0;1.0;10;C;8;Es valor perdido;10C00826;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;9;Es valor perdido;10C00930;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;9;Es valor perdido;10C00930;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;9;Es valor perdido;10C00930;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;9;Es valor perdido;10C00930;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;9;Es valor perdido;10C00930;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;9;Es valor perdido;10C00930;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;9;Es valor perdido;10C00930;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;9;Es valor perdido;10C00930;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;9;Es valor perdido;10C00930;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;9;Es valor perdido;10C00930;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;9;Es valor perdido;10C00930;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;10;Es valor perdido o con cero;10C01036;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;10;Es valor perdido o con cero;10C01036;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;10;Es valor perdido o con cero;10C01036;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;10;Es valor perdido o con cero;10C01036;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;10;Es valor perdido o con cero;10C01036;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;10;Es valor perdido o con cero;10C01036;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;10;Es valor perdido o con cero;10C01036;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;10;Es valor perdido o con cero;10C01036;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;10;Es valor perdido o con cero;10C01036;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;10;Es valor perdido o con cero;10C01036;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;10;Es valor perdido o con cero;10C01036;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;13;Códigos fuera de rango;10C01356;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;13;Códigos fuera de rango;10C01356;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;13;Códigos fuera de rango;10C01356;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;13;Códigos fuera de rango;10C01356;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;13;Códigos fuera de rango;10C01356;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;13;Códigos fuera de rango;10C01356;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;13;Códigos fuera de rango;10C01356;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;13;Códigos fuera de rango;10C01356;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;13;Códigos fuera de rango;10C01356;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;13;Códigos fuera de rango;10C01356;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;13;Códigos fuera de rango;10C01356;;;0
+3013.0;14.0;13.0;18161.0;21.0;15.0;1.0;5.0;10;C;13;Jornadas que no se pueden llevar por la categoría ocupacional;10C01357;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;14;Es valor perdido;10C01458;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;14;Es valor perdido;10C01458;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;14;Es valor perdido;10C01458;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;14;Es valor perdido;10C01458;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;14;Es valor perdido;10C01458;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;14;Es valor perdido;10C01458;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;14;Es valor perdido;10C01458;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;14;Es valor perdido;10C01458;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;14;Es valor perdido;10C01458;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;14;Es valor perdido;10C01458;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;14;Es valor perdido;10C01458;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;16;Es valor perdido;10C01666;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;16;Es valor perdido;10C01666;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;16;Es valor perdido;10C01666;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;16;Es valor perdido;10C01666;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;16;Es valor perdido;10C01666;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;16;Es valor perdido;10C01666;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;16;Es valor perdido;10C01666;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;16;Es valor perdido;10C01666;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;16;Es valor perdido;10C01666;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;16;Es valor perdido;10C01666;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;16;Es valor perdido;10C01666;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;16;Es valor perdido;10C01669;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;16;Es valor perdido;10C01669;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;16;Es valor perdido;10C01669;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;16;Es valor perdido;10C01669;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;16;Es valor perdido;10C01669;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;16;Es valor perdido;10C01669;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;16;Es valor perdido;10C01669;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;16;Es valor perdido;10C01669;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;16;Es valor perdido;10C01669;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;16;Es valor perdido;10C01669;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;16;Es valor perdido;10C01669;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;16;Es valor perdido;10C01672;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;16;Es valor perdido;10C01672;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;16;Es valor perdido;10C01672;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;16;Es valor perdido;10C01672;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;16;Es valor perdido;10C01672;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;16;Es valor perdido;10C01672;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;16;Es valor perdido;10C01672;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;16;Es valor perdido;10C01672;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;16;Es valor perdido;10C01672;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;16;Es valor perdido;10C01672;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;16;Es valor perdido;10C01672;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;16;Es valor perdido;10C01675;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;16;Es valor perdido;10C01675;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;16;Es valor perdido;10C01675;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;16;Es valor perdido;10C01675;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;16;Es valor perdido;10C01675;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;16;Es valor perdido;10C01675;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;16;Es valor perdido;10C01675;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;16;Es valor perdido;10C01675;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;16;Es valor perdido;10C01675;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;16;Es valor perdido;10C01675;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;16;Es valor perdido;10C01675;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;16;Es valor perdido;10C01678;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;16;Es valor perdido;10C01678;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;16;Es valor perdido;10C01678;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;16;Es valor perdido;10C01678;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;16;Es valor perdido;10C01678;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;16;Es valor perdido;10C01678;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;16;Es valor perdido;10C01678;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;16;Es valor perdido;10C01678;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;16;Es valor perdido;10C01678;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;16;Es valor perdido;10C01678;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;16;Es valor perdido;10C01678;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;17;Códigos fuera de rango de ocupados en la variable factores de riesgos humo y polvo (P10C17G);10C017101;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;17;Es valor perdido;10C01781;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;17;Es valor perdido;10C01781;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;17;Es valor perdido;10C01781;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;17;Es valor perdido;10C01781;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;17;Es valor perdido;10C01781;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;17;Es valor perdido;10C01781;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;17;Es valor perdido;10C01781;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;17;Es valor perdido;10C01781;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;17;Es valor perdido;10C01781;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;17;Es valor perdido;10C01781;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;17;Es valor perdido;10C01781;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;17;expuesto a Humedad? sin valor  y tiene que tener información;10C01784;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;17;expuesto a Humedad? sin valor  y tiene que tener información;10C01784;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;17;expuesto a Humedad? sin valor  y tiene que tener información;10C01784;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;17;expuesto a Humedad? sin valor  y tiene que tener información;10C01784;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;17;expuesto a Humedad? sin valor  y tiene que tener información;10C01784;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;17;expuesto a Humedad? sin valor  y tiene que tener información;10C01784;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;17;expuesto a Humedad? sin valor  y tiene que tener información;10C01784;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;17;expuesto a Humedad? sin valor  y tiene que tener información;10C01784;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;17;expuesto a Humedad? sin valor  y tiene que tener información;10C01784;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;17;expuesto a Humedad? sin valor  y tiene que tener información;10C01784;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;17;expuesto a Humedad? sin valor  y tiene que tener información;10C01784;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;17;Expuesto a Ruido? sin valor  y tiene que tener información;10C01787;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;17;Expuesto a Ruido? sin valor  y tiene que tener información;10C01787;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;17;Expuesto a Ruido? sin valor  y tiene que tener información;10C01787;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;17;Expuesto a Ruido? sin valor  y tiene que tener información;10C01787;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;17;Expuesto a Ruido? sin valor  y tiene que tener información;10C01787;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;17;Expuesto a Ruido? sin valor  y tiene que tener información;10C01787;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;17;Expuesto a Ruido? sin valor  y tiene que tener información;10C01787;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;17;Expuesto a Ruido? sin valor  y tiene que tener información;10C01787;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;17;Expuesto a Ruido? sin valor  y tiene que tener información;10C01787;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;17;Expuesto a Ruido? sin valor  y tiene que tener información;10C01787;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;17;Expuesto a Ruido? sin valor  y tiene que tener información;10C01787;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;17;Es valor perdido;10C01790;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;17;Es valor perdido;10C01790;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;17;Es valor perdido;10C01790;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;17;Es valor perdido;10C01790;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;17;Es valor perdido;10C01790;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;17;Es valor perdido;10C01790;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;17;Es valor perdido;10C01790;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;17;Es valor perdido;10C01790;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;17;Es valor perdido;10C01790;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;17;Es valor perdido;10C01790;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;17;Es valor perdido;10C01790;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;17;Es valor perdido;10C01793;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;17;Es valor perdido;10C01793;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;17;Es valor perdido;10C01793;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;17;Es valor perdido;10C01793;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;17;Es valor perdido;10C01793;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;17;Es valor perdido;10C01793;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;17;Es valor perdido;10C01793;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;17;Es valor perdido;10C01793;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;17;Es valor perdido;10C01793;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;17;Es valor perdido;10C01793;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;17;Es valor perdido;10C01793;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;17;Es valor perdido;10C01796;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;17;Es valor perdido;10C01796;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;17;Es valor perdido;10C01796;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;17;Es valor perdido;10C01796;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;17;Es valor perdido;10C01796;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;17;Es valor perdido;10C01796;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;17;Es valor perdido;10C01796;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;17;Es valor perdido;10C01796;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;17;Es valor perdido;10C01796;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;17;Es valor perdido;10C01796;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;17;Es valor perdido;10C01796;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;17;Es valor perdido;10C01799;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;17;Es valor perdido;10C01799;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;17;Es valor perdido;10C01799;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;17;Es valor perdido;10C01799;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;17;Es valor perdido;10C01799;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;17;Es valor perdido;10C01799;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;17;Es valor perdido;10C01799;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;17;Es valor perdido;10C01799;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;17;Es valor perdido;10C01799;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;17;Es valor perdido;10C01799;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;17;Es valor perdido;10C01799;;;0
+3015.0;14.0;13.0;18253.0;35.0;22.0;2.0;5.0;10;C;18; Indica que no necesita equipo de protección (P10C18 = 2) pero proporcionó detalles sobre estos equipos (P10C19 !es vacio).;10C01801;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;1.0;10;C;18; Indica que no necesita equipo de protección (P10C18 = 2) pero proporcionó detalles sobre estos equipos (P10C19 !es vacio).;10C01801;;;0
+3005.0;22.0;15.0;25643.0;40.0;25.0;2.0;1.0;10;C;18; Indica que no necesita equipo de protección (P10C18 = 2) pero proporcionó detalles sobre estos equipos (P10C19 !es vacio).;10C01801;;;0
+3015.0;14.0;13.0;18253.0;35.0;22.0;2.0;5.0;10;C;18;Verifique Sección C, pregunta 18;;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;1.0;10;C;18;Verifique Sección C, pregunta 18;;;;0
+3005.0;22.0;15.0;25643.0;40.0;25.0;2.0;1.0;10;C;18;Verifique Sección C, pregunta 18;;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;18;Debe haber valor y no hay en P10C18;10C01803;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;18;Debe haber valor y no hay en P10C18;10C01803;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;18;Debe haber valor y no hay en P10C18;10C01803;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;18;Debe haber valor y no hay en P10C18;10C01803;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;18;Debe haber valor y no hay en P10C18;10C01803;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;18;Debe haber valor y no hay en P10C18;10C01803;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;18;Debe haber valor y no hay en P10C18;10C01803;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;18;Debe haber valor y no hay en P10C18;10C01803;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;18;Debe haber valor y no hay en P10C18;10C01803;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;18;Debe haber valor y no hay en P10C18;10C01803;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;18;Debe haber valor y no hay en P10C18;10C01803;;;0
+3037.0;3.0;1.0;5862.0;18.0;7.0;6.0;1.0;10;C;20;Indica que su trabajo es no remunerado (P10C21 = 9) pero se proporciona una fuente de ingresos (P10C20 != 7).;10C02001;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;20;No tiene información y debe haber información en P10C20;10C02002;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;20;No tiene información y debe haber información en P10C20;10C02002;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;20;No tiene información y debe haber información en P10C20;10C02002;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;20;No tiene información y debe haber información en P10C20;10C02002;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;20;No tiene información y debe haber información en P10C20;10C02002;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;20;No tiene información y debe haber información en P10C20;10C02002;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;20;No tiene información y debe haber información en P10C20;10C02002;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;20;No tiene información y debe haber información en P10C20;10C02002;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;20;No tiene información y debe haber información en P10C20;10C02002;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;20;No tiene información y debe haber información en P10C20;10C02002;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;20;No tiene información y debe haber información en P10C20;10C02002;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;21;Hay valores perdidos en categoría ocupacional y tiene que tener información;10C02104;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;C;21;Códigos fuera de rango para los ocupados en la variable categoría ocupacional (P10C21);10C02105;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;21;Menores de 7 años y hay información;10C02107;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;21;Menores de 7 años y hay información;10C02107;;;0
+3000.0;12.0;1.0;13569.0;140.0;73.0;8.0;5.0;10;C;23;No tiene contrato y es del gobierno;10C02304;;;0
+3061.0;16.0;14.0;20965.0;58.0;46.0;5.0;4.0;10;C;23;No tiene contrato y es del gobierno;10C02304;;;0
+3130.0;14.0;13.0;18161.0;210.0;134.0;9.0;2.0;10;C;23;No tiene contrato y es del gobierno;10C02304;;;0
+3156.0;22.0;5.0;25270.0;5.0;1.0;1.0;4.0;10;C;23;No tiene contrato y es del gobierno;10C02304;;;0
+3019.0;10.0;2.0;12279.0;21.0;20.0;2.0;3.0;10;C;23;No tiene contrato y es del gobierno;10C02304;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;23;Las personas menores de 7 años no deben pasar y hay información;10C02306;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;23;Las personas menores de 7 años no deben pasar y hay información;10C02306;;;0
+3067.0;17.0;5.0;21433.0;176.0;130.0;8.0;2.0;10;C;25;No deben responder la P10C25B, porque indicaron no en la anterior;10C02507;;;0
+3041.0;1.0;29.0;2811.0;151.0;153.0;8.0;7.0;10;C;25;No deben responder la P10C25B, porque indicaron no en la anterior;10C02507;;;0
+3040.0;3.0;1.0;5907.0;160.0;120.0;2.0;2.0;10;C;25;No deben responder la P10C25B, porque indicaron no en la anterior;10C02507;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;25;Menores de 7 años y hay información;10C02511;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;25;Menores de 7 años y hay información;10C02511;;;0
+3060.0;12.0;1.0;13569.0;124.0;63.0;7.0;3.0;10;C;26;Hay información y no debe haber;10C02602;;;0
+3060.0;12.0;3.0;13817.0;67.0;46.0;5.0;1.0;10;C;26;Hay información y no debe haber;10C02602;;;0
+3043.0;7.0;19.0;9958.0;281.0;189.0;10.0;2.0;10;C;26;Hay información y no debe haber;10C02602;;;0
+3060.0;12.0;1.0;13569.0;124.0;63.0;7.0;3.0;10;C;26;Hay información y no debe haber;10C02605;;;0
+3060.0;12.0;3.0;13817.0;67.0;46.0;5.0;1.0;10;C;26;Hay información y no debe haber;10C02605;;;0
+3043.0;7.0;19.0;9958.0;281.0;189.0;10.0;2.0;10;C;26;Hay información y no debe haber;10C02605;;;0
+3060.0;12.0;3.0;13817.0;67.0;46.0;5.0;1.0;10;C;26;Hay información y no debe haber;10C02611;;;0
+3043.0;7.0;19.0;9958.0;281.0;189.0;10.0;2.0;10;C;26;Hay información y no debe haber;10C02611;;;0
+3060.0;12.0;3.0;13817.0;67.0;46.0;5.0;1.0;10;C;26;Hay información y no debe haber;10C02620;;;0
+3043.0;7.0;19.0;9958.0;281.0;189.0;10.0;2.0;10;C;26;Hay información y no debe haber;10C02620;;;0
+3060.0;12.0;3.0;13817.0;67.0;46.0;5.0;1.0;10;C;26;Hay información y no debe haber;10C02626;;;0
+3043.0;7.0;19.0;9958.0;281.0;189.0;10.0;2.0;10;C;26;Hay información y no debe haber;10C02626;;;0
+3060.0;12.0;3.0;13817.0;67.0;46.0;5.0;1.0;10;C;26;Hay información y no debe haber;10C02629;;;0
+3043.0;7.0;19.0;9958.0;281.0;189.0;10.0;2.0;10;C;26;Hay información y no debe haber;10C02629;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;27;En la variable hay información y no debe haber porque son niños de 6 años o menos;10C02704;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;27;En la variable hay información y no debe haber porque son niños de 6 años o menos;10C02704;;;0
+3001.0;4.0;4.0;6751.0;21.0;16.0;1.0;1.0;10;C;27;Asalariados y tienen valor cero en la variable y eso no puede ser;10C02705;;;0
+3019.0;10.0;2.0;12279.0;21.0;20.0;2.0;1.0;10;C;27;Asalariados y tienen valor cero en la variable y eso no puede ser;10C02705;;;0
+3060.0;12.0;3.0;13817.0;67.0;46.0;5.0;1.0;10;C;28;La persona no es asalariada, no debería responder algo sobre horas extra;10C02803;;;0
+3043.0;7.0;19.0;9958.0;281.0;189.0;10.0;2.0;10;C;28;La persona no es asalariada, no debería responder algo sobre horas extra;10C02803;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;29;Se buscan personas menores de 7 años y tenga información;10C02911;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;29;Se buscan personas menores de 7 años y tenga información;10C02911;;;0
+3023.0;3.0;4.0;6028.0;234.0;189.0;9.0;1.0;10;C;30;"En p10c30a respondieron ""no"" y hay valores en p10c30b";10C03007;;;0
+3117.0;9.0;20.0;11811.0;137.0;127.0;7.0;2.0;10;C;30;"En p10c30a respondieron ""no"" y hay valores en p10c30b";10C03007;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;30;P10c29b menores de 7 años y hay información p10c30;10C03010;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;30;P10c29b menores de 7 años y hay información p10c30;10C03010;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;31;Menores de 7 años y hay información en la variable p10c31b;10C03109;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;31;Menores de 7 años y hay información en la variable p10c31b;10C03109;;;0
+3101.0;6.0;14.0;9295.0;64.0;38.0;2.0;1.0;10;C;32;"Respondieron ""no"" en p10c32a y hay información en p10c32b";10C03205;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;32;Menores de 7 años y hay información en la variable;10C03209;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;32;Menores de 7 años y hay información en la variable;10C03209;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;33;Menor de 7 años y hay información en la variable;10C03308;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;33;Menor de 7 años y hay información en la variable;10C03308;;;0
+3000.0;12.0;1.0;13569.0;65.0;32.0;3.0;1.0;10;C;34;Respondieron no en p10c34a pero hay información en p10c34b;10C03405;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;34;Menores de 7 años y hay información en la variable;10C03408;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;34;Menores de 7 años y hay información en la variable;10C03408;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;35;Menor de 7 años y hay información en las variables;10C03508;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;35;Menor de 7 años y hay información en las variables;10C03508;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;36;Menor de 7 años y hay información en las variables p10c36;10C03608;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;36;Menor de 7 años y hay información en las variables p10c36;10C03608;;;0
+3035.0;11.0;1.0;13038.0;115.0;113.0;6.0;3.0;10;C;37;Respondieron no en p10c37a y hay información en p10c37b;10C03705;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;37;Menor de 7 años y hay información en las variables p10c37;10C03708;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;37;Menor de 7 años y hay información en las variables p10c37;10C03708;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;38;Menor de 7 años y hay información en las variables p10c38;10C03808;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;38;Menor de 7 años y hay información en las variables p10c38;10C03808;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;39;Menor de 7 años y hay información en las variables p10c3;10C03908;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;39;Menor de 7 años y hay información en las variables p10c3;10C03908;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;40;Menor de 7 años y tiene información;10C04009;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;40;Menor de 7 años y tiene información;10C04009;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;41;Menores de 7 años y hay información en la variable p10c41;10C04106;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;41;Menores de 7 años y hay información en la variable p10c41;10C04106;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;44;Menores de 7 años trabajando;10C04403;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;44;Menores de 7 años trabajando;10C04403;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;46;Menores de 7 años y tienen información en la variable p10c46;10C04608;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;46;Menores de 7 años y tienen información en la variable p10c46;10C04608;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;47;Menores de 7 años y tiene información en la variable;10C04706;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;47;Menores de 7 años y tiene información en la variable;10C04706;;;0
+3107.0;5.0;2.0;7717.0;129.0;111.0;9.0;6.0;10;C;50;Valores perdidos en p10c50a ;10C05001;;;0
+3020.0;1.0;28.0;2457.0;8.0;7.0;1.0;1.0;10;C;50;Valores perdidos en p10c50a ;10C05001;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;50;Valores perdidos en p10c50a ;10C05001;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;C;50;Valores perdidos en p10c50a ;10C05001;;;0
+3059.0;7.0;19.0;9923.0;75.0;46.0;6.0;2.0;10;C;50;La variable P10C50A tiene información y no has ganancia agrícola o no agrícola;10C05022;;;0
+3059.0;7.0;19.0;9923.0;75.0;46.0;6.0;2.0;10;C;50;La variable P10C50A tiene información y no has ganancia agrícola o no agrícola;10C05022;;;0
+3065.0;19.0;4.0;23180.0;111.0;96.0;9.0;1.0;10;C;50;Indico no en variable número de empleados (p10c50a) y hay información en variable cuántos empleados (p10c50b);10C05003;;;0
+3020.0;1.0;24.0;1968.0;148.0;117.0;8.0;1.0;10;C;51;Hay información en la variable número de empleados y no debe tener porque son asalariados;10C05104;;;0
+3072.0;7.0;19.0;9958.0;220.0;149.0;8.0;2.0;10;C;51;Hay información en la variable número de empleados y no debe tener porque son asalariados;10C05104;;;0
+3061.0;14.0;20.0;18707.0;6.0;6.0;1.0;1.0;10;C;52;Revisar cuenta propia e indica que han tenido empleado remunerado p10c52a;10C05204;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;D;1;Personas menores a 7 años no responden esta sección, verifique sección D pregunta 1.;10D00103;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;10;D;1;Personas menores a 7 años no responden esta sección, verifique sección D pregunta 1.;10D00103;;;0
+3052.0;13.0;20.0;16805.0;116.0;68.0;6.0;1.0;10;D;14;Verfique sección D pregunta 14. No se respeto el salto según el dinero en concepto de aguinaldo, existe información sobre la ganancia de la empresa.;10D01405;;;0
+3052.0;13.0;20.0;16805.0;116.0;68.0;6.0;1.0;10;D;15;Códigos no validos para continuar, no se respeto el salto;10D01502;;;0
+3157.0;22.0;3.0;25142.0;107.0;74.0;8.0;1.0;10;E;1;Buscando valores fuera de rango en p10e02;1E+102;;;0
+3050.0;3.0;14.0;6315.0;31.0;34.0;2.0;1.0;10;E;1;Buscando valores fuera de rango en p10e02;1E+102;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;10;E;1;Buscando valores fuera de rango en p10e02;1E+102;;;0
+3067.0;17.0;5.0;21553.0;111.0;77.0;6.0;1.0;10;E;1;Buscando valores fuera de rango en p10e02;1E+102;;;0
+3028.0;2.0;3.0;5603.0;96.0;72.0;7.0;2.0;10;E;1;Buscando valores fuera de rango en p10e02;1E+102;;;0
+3024.0;13.0;4.0;15868.0;69.0;34.0;4.0;3.0;10;E;1;Buscando valores fuera de rango en p10e02;1E+102;;;0
+3029.0;1.0;28.0;2457.0;62.0;61.0;4.0;2.0;10;E;1;Buscando valores fuera de rango en p10e02;1E+102;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;1.0;10;E;1;Buscando valores fuera de rango en p10e02;1E+102;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;2.0;10;E;1;Buscando valores fuera de rango en p10e02;1E+102;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;1.0;10;E;1;Buscando valores fuera de rango en p10e02;1E+102;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;4.0;10;E;1;Buscando valores fuera de rango en p10e02;1E+102;;;0
+3044.0;1.0;37.0;5025.0;172.0;179.0;9.0;1.0;10;E;5;Pasaron a la variable deseo de trabajar (P10E02) hay información y No hay información  variable instalar negocio (P10E06);10E00501;;;0
+3044.0;1.0;37.0;5025.0;172.0;179.0;9.0;1.0;10;E;8;Pasaron a la variable deseo de trabajar (P10E02) y no hay información en la variable cambio de trabajo (P10E08);10E00801;;;0
+3067.0;17.0;5.0;21433.0;133.0;96.0;6.0;2.0;10;E;9;Respondió no en la variable cambio de trabajo (p10e08=2) y hay información en la variables motivos para cambiar de trabajo (P10E09);10E00902;;;0
+3067.0;17.0;5.0;21433.0;90.0;63.0;4.0;2.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3086.0;1.0;36.0;4914.0;122.0;133.0;7.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3086.0;1.0;36.0;4914.0;179.0;196.0;10.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3086.0;1.0;36.0;4914.0;9.0;7.0;1.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3026.0;18.0;3.0;22531.0;33.0;30.0;2.0;2.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3064.0;16.0;8.0;20171.0;96.0;85.0;7.0;4.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3020.0;1.0;28.0;2457.0;26.0;25.0;2.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3074.0;12.0;12.0;14491.0;71.0;54.0;1.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3074.0;12.0;12.0;14491.0;71.0;54.0;1.0;4.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3076.0;12.0;15.0;14759.0;137.0;77.0;1.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3125.0;3.0;14.0;6315.0;221.0;210.0;10.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3070.0;10.0;21.0;12324.0;97.0;55.0;5.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3045.0;1.0;37.0;5025.0;9.0;9.0;1.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3032.0;1.0;29.0;2656.0;166.0;163.0;10.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3155.0;21.0;1.0;24417.0;7.0;7.0;1.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3155.0;21.0;1.0;24417.0;7.0;7.0;1.0;5.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3041.0;1.0;29.0;2811.0;133.0;132.0;7.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3041.0;1.0;29.0;2811.0;151.0;153.0;8.0;5.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3041.0;1.0;29.0;2656.0;47.0;44.0;3.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3029.0;1.0;24.0;2027.0;138.0;93.0;4.0;2.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3029.0;1.0;24.0;2027.0;69.0;46.0;2.0;3.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3030.0;1.0;24.0;2027.0;280.0;212.0;9.0;3.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3066.0;15.0;4.0;19163.0;120.0;81.0;10.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3041.0;1.0;29.0;2656.0;80.0;78.0;5.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3047.0;2.0;1.0;5514.0;141.0;101.0;7.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3020.0;1.0;24.0;1968.0;148.0;117.0;8.0;2.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3020.0;1.0;24.0;1968.0;148.0;117.0;8.0;3.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3020.0;1.0;24.0;1968.0;128.0;102.0;7.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3020.0;1.0;24.0;1968.0;128.0;102.0;7.0;2.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3131.0;4.0;4.0;6751.0;150.0;116.0;2.0;2.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3015.0;14.0;13.0;18253.0;35.0;22.0;2.0;5.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3050.0;3.0;14.0;6315.0;103.0;100.0;5.0;2.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3050.0;3.0;14.0;6315.0;103.0;100.0;5.0;4.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3081.0;8.0;6.0;10615.0;76.0;54.0;6.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3038.0;3.0;1.0;5845.0;103.0;77.0;6.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3102.0;1.0;30.0;3369.0;20.0;21.0;2.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3044.0;1.0;36.0;4914.0;23.0;28.0;2.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3044.0;1.0;36.0;4914.0;39.0;49.0;3.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3027.0;1.0;28.0;2457.0;143.0;134.0;8.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3133.0;9.0;11.0;11414.0;145.0;105.0;10.0;1.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3013.0;14.0;13.0;18161.0;180.0;119.0;8.0;2.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3013.0;14.0;13.0;18161.0;180.0;119.0;8.0;7.0;10;E;10G;Respondieron básicos y el grado es mayor a 3 o menores de 1;10E010G01;;;0
+3060.0;12.0;1.0;13569.0;103.0;53.0;6.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3060.0;12.0;1.0;13569.0;103.0;53.0;6.0;3.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3060.0;12.0;1.0;13569.0;124.0;63.0;7.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3060.0;12.0;1.0;13569.0;124.0;63.0;7.0;4.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3060.0;12.0;1.0;13569.0;124.0;63.0;7.0;5.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3000.0;12.0;1.0;13569.0;140.0;73.0;8.0;5.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3031.0;10.0;15.0;12867.0;51.0;44.0;3.0;2.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3130.0;14.0;13.0;18161.0;113.0;74.0;4.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3044.0;1.0;37.0;5025.0;172.0;179.0;9.0;2.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3051.0;20.0;3.0;23667.0;12.0;2.0;1.0;3.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3049.0;15.0;4.0;19076.0;90.0;41.0;4.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3039.0;1.0;37.0;5025.0;68.0;73.0;4.0;3.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3061.0;16.0;14.0;20965.0;58.0;46.0;5.0;4.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3086.0;1.0;37.0;5025.0;51.0;52.0;3.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3045.0;1.0;37.0;5025.0;9.0;9.0;1.0;3.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3152.0;19.0;1.0;23052.0;54.0;36.0;1.0;3.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3152.0;19.0;1.0;23052.0;54.0;36.0;1.0;4.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3041.0;1.0;29.0;2811.0;151.0;153.0;8.0;3.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3041.0;1.0;29.0;2811.0;151.0;153.0;8.0;4.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3041.0;1.0;29.0;2811.0;92.0;90.0;5.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3041.0;1.0;29.0;2811.0;92.0;90.0;5.0;3.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3041.0;1.0;29.0;2811.0;73.0;69.0;4.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3029.0;1.0;24.0;2027.0;100.0;70.0;3.0;2.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3029.0;1.0;24.0;2027.0;164.0;117.0;5.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3030.0;1.0;28.0;2457.0;103.0;98.0;6.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3124.0;2.0;3.0;5558.0;152.0;139.0;8.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3124.0;2.0;3.0;5558.0;118.0;101.0;6.0;3.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3124.0;2.0;3.0;5558.0;118.0;101.0;6.0;4.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3000.0;12.0;1.0;13569.0;65.0;32.0;3.0;4.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3047.0;2.0;1.0;5514.0;141.0;101.0;7.0;3.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3121.0;5.0;9.0;8284.0;82.0;47.0;4.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3154.0;21.0;1.0;24417.0;123.0;101.0;10.0;4.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3066.0;15.0;4.0;19163.0;54.0;40.0;5.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3025.0;20.0;3.0;23674.0;58.0;32.0;4.0;3.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3082.0;15.0;4.0;19076.0;170.0;97.0;9.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3018.0;18.0;1.0;22323.0;33.0;24.0;2.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3125.0;3.0;14.0;6315.0;198.0;188.0;9.0;4.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3050.0;3.0;14.0;6315.0;103.0;100.0;5.0;3.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3114.0;11.0;9.0;13539.0;7.0;5.0;1.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3114.0;11.0;9.0;13539.0;121.0;80.0;6.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3037.0;3.0;1.0;5862.0;18.0;7.0;6.0;2.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;2.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3014.0;1.0;30.0;3369.0;31.0;34.0;3.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3014.0;1.0;30.0;3369.0;31.0;34.0;3.0;2.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3138.0;17.0;11.0;22042.0;212.0;137.0;10.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3138.0;17.0;11.0;22042.0;212.0;137.0;10.0;3.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3006.0;1.0;18.0;1394.0;195.0;228.0;10.0;3.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3109.0;3.0;4.0;5995.0;3.0;3.0;1.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3117.0;9.0;20.0;11811.0;137.0;127.0;7.0;2.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3038.0;3.0;1.0;5845.0;103.0;77.0;6.0;5.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3038.0;3.0;1.0;5845.0;103.0;77.0;6.0;6.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3040.0;3.0;1.0;5907.0;129.0;94.0;1.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3075.0;9.0;20.0;11811.0;155.0;144.0;8.0;2.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3075.0;9.0;20.0;11811.0;155.0;144.0;8.0;3.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3075.0;9.0;20.0;11811.0;155.0;144.0;8.0;4.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3039.0;1.0;36.0;4756.0;83.0;86.0;5.0;2.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3119.0;1.0;18.0;1206.0;7.0;4.0;1.0;3.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3119.0;1.0;18.0;1206.0;7.0;4.0;1.0;4.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3119.0;1.0;18.0;1206.0;7.0;4.0;1.0;5.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3044.0;1.0;36.0;4756.0;62.0;65.0;4.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3141.0;22.0;5.0;25226.0;128.0;73.0;7.0;3.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3046.0;22.0;14.0;25600.0;16.0;9.0;1.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3027.0;1.0;28.0;2457.0;143.0;134.0;8.0;3.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3019.0;10.0;2.0;12279.0;21.0;20.0;2.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3019.0;10.0;2.0;12279.0;21.0;20.0;2.0;3.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3019.0;10.0;2.0;12279.0;21.0;20.0;2.0;4.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3091.0;22.0;15.0;25643.0;214.0;132.0;8.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3091.0;22.0;15.0;25643.0;214.0;132.0;8.0;2.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3091.0;22.0;15.0;25643.0;130.0;78.0;5.0;2.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3091.0;22.0;15.0;25643.0;16.0;7.0;1.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3091.0;22.0;15.0;25643.0;16.0;7.0;1.0;2.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3084.0;14.0;13.0;18253.0;144.0;87.0;7.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3087.0;18.0;1.0;22276.0;236.0;197.0;10.0;3.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3013.0;14.0;13.0;18161.0;113.0;74.0;4.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3013.0;14.0;13.0;18161.0;21.0;15.0;1.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3013.0;14.0;13.0;18161.0;21.0;15.0;1.0;4.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3019.0;10.0;2.0;12279.0;79.0;64.0;5.0;1.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3160.0;18.0;5.0;22865.0;67.0;40.0;5.0;5.0;10;E;10H;Nivel diversificado y grado menor a 4 o mayor a 6;10E010H01;;;0
+3110.0;13.0;11.0;16336.0;21.0;14.0;2.0;2.0;11;C;5;Se reportó problemas con remesas en pregunta 6 pero en pregunta 5 es diferente de 1.;11C00502;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;12;A;1;Secc A - P01  Hay respuestas en el Capítulo XII sección A cuando la persona es menor a 7 años revise todas las variables del Capítulo XII, deben estar vacías.;12A00101;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;12;A;1;Secc A - P01  Hay respuestas en el Capítulo XII sección A cuando la persona es menor a 7 años revise todas las variables del Capítulo XII, deben estar vacías.;12A00101;;;0
+3152.0;19.0;1.0;23052.0;54.0;36.0;1.0;3.0;12;A;2;La persona dice que NO ha utilizado celular (P12A01) e indica que usa Smartphone (P12A02);12A00201;;;0
+3105.0;12.0;12.0;14491.0;194.0;134.0;7.0;3.0;12;A;2;La persona dice que NO ha utilizado celular (P12A01) e indica que usa Smartphone (P12A02);12A00201;;;0
+3060.0;12.0;1.0;13569.0;124.0;63.0;7.0;1.0;12;A;2;Los valores deben ser Si o No (P12A02);12A00202;;;0
+3152.0;19.0;1.0;23052.0;54.0;36.0;1.0;3.0;12;A;3;No usa celular (P12A01) o no usa Smartphone (P12A02) y aparecen respuestas en lo usa para llamadas (P12A03A) o para aplicaciones (P12A03B), revise respuestas A01, A02,A03A y A03B;12A00302;;;0
+3030.0;1.0;24.0;2027.0;253.0;188.0;8.0;1.0;12;A;3;No usa celular (P12A01) o no usa Smartphone (P12A02) y aparecen respuestas en lo usa para llamadas (P12A03A) o para aplicaciones (P12A03B), revise respuestas A01, A02,A03A y A03B;12A00302;;;0
+3105.0;12.0;12.0;14491.0;194.0;134.0;7.0;3.0;12;A;3;No usa celular (P12A01) o no usa Smartphone (P12A02) y aparecen respuestas en lo usa para llamadas (P12A03A) o para aplicaciones (P12A03B), revise respuestas A01, A02,A03A y A03B;12A00302;;;0
+3105.0;12.0;12.0;14491.0;194.0;134.0;7.0;3.0;12;A;5;La respuesta en si tiene celular (P12A04) es No y el valor en tiene Smartphone (P12A05) debe ser Si o No;12A00502;;;0
+3110.0;13.0;11.0;16336.0;21.0;14.0;2.0;3.0;12;A;5;La respuesta en si tiene celular (P12A04) es No y el valor en tiene Smartphone (P12A05) debe ser Si o No;12A00502;;;0
+3091.0;22.0;15.0;25643.0;130.0;78.0;5.0;5.0;12;A;5;La respuesta en si tiene celular (P12A04) es No y el valor en tiene Smartphone (P12A05) debe ser Si o No;12A00502;;;0
+3060.0;12.0;1.0;13569.0;124.0;63.0;7.0;1.0;12;A;6;En uso de TICS, las variables que cumplen condición para salto a pregunta 8 (P12A02, P12A06A, P12A06B, P12A06BC) todas las variables de la pregunta P12A07(A..J) deben estar vacías ;12A00602;;;0
+3015.0;14.0;13.0;18253.0;74.0;48.0;4.0;4.0;12;A;6;En uso de TICS, las variables que cumplen condición para salto a pregunta 8 (P12A02, P12A06A, P12A06B, P12A06BC) todas las variables de la pregunta P12A07(A..J) deben estar vacías ;12A00602;;;0
+3110.0;13.0;11.0;16336.0;21.0;14.0;2.0;3.0;12;A;6;En uso de TICS, las variables que cumplen condición para salto a pregunta 8 (P12A02, P12A06A, P12A06B, P12A06BC) todas las variables de la pregunta P12A07(A..J) deben estar vacías ;12A00602;;;0
+3159.0;18.0;3.0;22531.0;184.0;156.0;9.0;3.0;12;A;6;En uso de TICS, las variables P12A03B, P12A06A, P12A06B, P12A06BC cumplen condición para salto a Capítulo XIII, deben tener como respuesta No (2).  El resto de variables deben estar vacías P07 - P12;12A00603;;;0
+3152.0;19.0;1.0;23052.0;54.0;36.0;1.0;3.0;12;A;6;En uso de TICS, las variables P12A03B, P12A06A, P12A06B, P12A06BC cumplen condición para salto a Capítulo XIII, deben tener como respuesta No (2).  El resto de variables deben estar vacías P07 - P12;12A00603;;;0
+3061.0;14.0;20.0;18707.0;131.0;107.0;7.0;1.0;12;A;12;El valor de la Pregunta no es 1 o 2 no necesita Internet porque no le es útil o no le es interesante;12A01201;;;0
+3130.0;14.0;13.0;18161.0;210.0;134.0;9.0;2.0;12;A;12;El valor de la Pregunta no es 1 o 2 no necesita Internet porque no le es útil o no le es interesante;12A01201;;;0
+3015.0;14.0;13.0;18253.0;223.0;126.0;10.0;1.0;12;A;12;El valor de la Pregunta no es 1 o 2 no necesita Internet porque no le es útil o no le es interesante;12A01201;;;0
+3160.0;18.0;5.0;22865.0;78.0;50.0;6.0;4.0;12;A;12;El valor de la Pregunta no es 1 o 2 no necesita Internet porque no le es útil o no le es interesante;12A01201;;;0
+3072.0;7.0;19.0;9958.0;220.0;149.0;8.0;0.0;13;B;4;si no hizo algun gasto que no indique ningun monto ;13B00401;;;0
+3150.0;21.0;6.0;24686.0;194.0;123.0;10.0;0.0;13;B;4;si no hizo algun gasto que no indique ningun monto ;13B00401;;;0
+3062.0;16.0;14.0;20965.0;35.0;27.0;3.0;0.0;13;B;4;si no hizo algun gasto que no indique ningun monto ;13B00401;;;0
+3020.0;1.0;24.0;1968.0;148.0;117.0;8.0;0.0;13;B;4;si no hizo algun gasto que no indique ningun monto ;13B00401;;;0
+3028.0;2.0;1.0;5514.0;167.0;117.0;8.0;0.0;13;B;4;si no hizo algun gasto que no indique ningun monto ;13B00401;;;0
+3138.0;17.0;11.0;22042.0;193.0;123.0;9.0;0.0;13;B;7;si hizo algun gasto que indique cuanto fue el monto del gasto ;13B00701;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;0.0;14;B;15;Se indico No en la pregunta P14A14 y P14A15 no es vacia;14B01501;;;0
+3020.0;1.0;28.0;2457.0;8.0;7.0;1.0;0.0;14;B;15;Se indico No en la pregunta P14A14 y P14A15 no es vacia;14B01501;;;0
+3028.0;2.0;1.0;5514.0;106.0;84.0;6.0;0.0;15;A;1;validar que las personas que no tengan algun terreno o parcela no contesten nada de este capitulo  ;15A00102;;;0
+3028.0;2.0;1.0;5514.0;1.0;1.0;1.0;0.0;15;A;1;validar que las personas que no tengan algun terreno o parcela no contesten nada de este capitulo  ;15A00102;;;0
+3028.0;2.0;1.0;5514.0;61.0;51.0;4.0;0.0;15;A;1;validar que las personas que no tengan algun terreno o parcela no contesten nada de este capitulo  ;15A00102;;;0
+3028.0;2.0;1.0;5514.0;207.0;151.0;10.0;0.0;15;A;1;validar que las personas que no tengan algun terreno o parcela no contesten nada de este capitulo  ;15A00102;;;0
+3067.0;17.0;5.0;21433.0;154.0;113.0;7.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3106.0;17.0;5.0;21492.0;220.0;151.0;8.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3099.0;14.0;20.0;18774.0;14.0;9.0;2.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3078.0;13.0;25.0;16972.0;28.0;9.0;1.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3056.0;1.0;18.0;1394.0;17.0;15.0;1.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3150.0;21.0;6.0;24686.0;145.0;97.0;8.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3146.0;22.0;5.0;25226.0;56.0;31.0;3.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3061.0;16.0;14.0;20965.0;58.0;46.0;5.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3111.0;7.0;19.0;9923.0;28.0;15.0;2.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3138.0;17.0;11.0;22042.0;193.0;123.0;9.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3062.0;16.0;14.0;20965.0;91.0;73.0;8.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3062.0;16.0;14.0;20965.0;35.0;27.0;3.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3078.0;13.0;25.0;16972.0;63.0;21.0;2.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3021.0;4.0;4.0;6710.0;75.0;55.0;7.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3142.0;19.0;1.0;23018.0;11.0;13.0;5.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3028.0;2.0;1.0;5514.0;106.0;84.0;6.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3028.0;2.0;1.0;5514.0;1.0;1.0;1.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3028.0;2.0;1.0;5514.0;61.0;51.0;4.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3028.0;2.0;1.0;5514.0;207.0;151.0;10.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3068.0;18.0;5.0;22865.0;14.0;11.0;1.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3068.0;19.0;9.0;23395.0;147.0;134.0;10.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3127.0;3.0;4.0;6028.0;70.0;56.0;3.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3064.0;16.0;8.0;20171.0;96.0;85.0;7.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3064.0;16.0;8.0;20171.0;42.0;35.0;3.0;0.0;15;A;4;si el regimen no es la opcion otro no debe estar especificado ningun dato ;15A00403;;;0
+3067.0;17.0;5.0;21433.0;154.0;113.0;7.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3106.0;17.0;5.0;21492.0;220.0;151.0;8.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3099.0;14.0;20.0;18774.0;14.0;9.0;2.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3078.0;13.0;25.0;16972.0;28.0;9.0;1.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3056.0;1.0;18.0;1394.0;17.0;15.0;1.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3150.0;21.0;6.0;24686.0;145.0;97.0;8.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3146.0;22.0;5.0;25226.0;56.0;31.0;3.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3061.0;16.0;14.0;20965.0;58.0;46.0;5.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3111.0;7.0;19.0;9923.0;28.0;15.0;2.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3138.0;17.0;11.0;22042.0;193.0;123.0;9.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3062.0;16.0;14.0;20965.0;91.0;73.0;8.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3062.0;16.0;14.0;20965.0;35.0;27.0;3.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3078.0;13.0;25.0;16972.0;63.0;21.0;2.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3021.0;4.0;4.0;6710.0;75.0;55.0;7.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3142.0;19.0;1.0;23018.0;11.0;13.0;5.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3028.0;2.0;1.0;5514.0;106.0;84.0;6.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3028.0;2.0;1.0;5514.0;1.0;1.0;1.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3028.0;2.0;1.0;5514.0;61.0;51.0;4.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3028.0;2.0;1.0;5514.0;207.0;151.0;10.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3068.0;18.0;5.0;22865.0;14.0;11.0;1.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3068.0;19.0;9.0;23395.0;147.0;134.0;10.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3127.0;3.0;4.0;6028.0;70.0;56.0;3.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3064.0;16.0;8.0;20171.0;96.0;85.0;7.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3064.0;16.0;8.0;20171.0;42.0;35.0;3.0;0.0;15;A;5;si indica que el uso principal no es otro no debe especificar nada ;15A00503;;;0
+3144.0;19.0;1.0;23018.0;68.0;68.0;1.0;0.0;16;A;1;si no hay algun productor dentro de los miembros del hogar que pase al siguiente capitulo ;16A00102;;;0
+3067.0;17.0;5.0;21433.0;154.0;113.0;7.0;0.0;16;F;1;Valores que no forman parte del rango (1,2) de la variable P16F01;16F00101;;;0
+3106.0;17.0;5.0;21492.0;220.0;151.0;8.0;0.0;16;F;1;Valores que no forman parte del rango (1,2) de la variable P16F01;16F00101;;;0
+3149.0;22.0;13.0;25540.0;36.0;36.0;2.0;0.0;16;F;1;Valores que no forman parte del rango (1,2) de la variable P16F01;16F00101;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;0.0;16;F;1;Valores que no forman parte del rango (1,2) de la variable P16F01;16F00101;;;0
+3156.0;22.0;5.0;25270.0;5.0;1.0;1.0;0.0;16;F;1;Valores que no forman parte del rango (1,2) de la variable P16F01;16F00101;;;0
+3141.0;22.0;5.0;25226.0;147.0;83.0;8.0;0.0;16;F;1;Valores que no forman parte del rango (1,2) de la variable P16F01;16F00101;;;0
+3146.0;22.0;5.0;25226.0;56.0;31.0;3.0;0.0;16;F;1;Valores que no forman parte del rango (1,2) de la variable P16F01;16F00101;;;0
+3142.0;19.0;1.0;23018.0;11.0;13.0;5.0;0.0;16;F;1;Valores que no forman parte del rango (1,2) de la variable P16F01;16F00101;;;0
+3080.0;13.0;9.0;16201.0;79.0;45.0;5.0;0.0;16;F;1;Valores que no forman parte del rango (1,2) de la variable P16F01;16F00101;;;0
+3144.0;19.0;1.0;23018.0;68.0;68.0;1.0;0.0;16;F;1;Valores que no forman parte del rango (1,2) de la variable P16F01;16F00101;;;0
+3110.0;13.0;9.0;16201.0;169.0;91.0;8.0;0.0;16;F;1;Valores que no forman parte del rango (1,2) de la variable P16F01;16F00101;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;0.0;16;F;1;Valores que no forman parte del rango (1,2) de la variable P16F01;16F00101;;;0
+3028.0;2.0;1.0;5514.0;61.0;51.0;4.0;0.0;16;F;1;Valores que no forman parte del rango (1,2) de la variable P16F01;16F00101;;;0
+3090.0;17.0;5.0;21492.0;48.0;35.0;2.0;0.0;16;F;1;Valores que no forman parte del rango (1,2) de la variable P16F01;16F00101;;;0
+3068.0;18.0;5.0;22865.0;14.0;11.0;1.0;0.0;16;F;1;Valores que no forman parte del rango (1,2) de la variable P16F01;16F00101;;;0
+3127.0;3.0;4.0;6028.0;70.0;56.0;3.0;0.0;16;F;1;Valores que no forman parte del rango (1,2) de la variable P16F01;16F00101;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;0.0;16;F;2;"Se indico ""No"" en la pregunta P16F01 y P16F02 no es vacia";16F00201;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;0.0;16;F;3;"Se indico ""No"" en la pregunta P16F01 y P16F03 no es vacia";16F00301;;;0
+3067.0;17.0;5.0;21433.0;154.0;113.0;7.0;0.0;16;G;1;Valores que no forman parte del rango (1,2) de la variable P16G01;16G00101;;;0
+3106.0;17.0;5.0;21492.0;220.0;151.0;8.0;0.0;16;G;1;Valores que no forman parte del rango (1,2) de la variable P16G01;16G00101;;;0
+3149.0;22.0;13.0;25540.0;36.0;36.0;2.0;0.0;16;G;1;Valores que no forman parte del rango (1,2) de la variable P16G01;16G00101;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;0.0;16;G;1;Valores que no forman parte del rango (1,2) de la variable P16G01;16G00101;;;0
+3156.0;22.0;5.0;25270.0;5.0;1.0;1.0;0.0;16;G;1;Valores que no forman parte del rango (1,2) de la variable P16G01;16G00101;;;0
+3141.0;22.0;5.0;25226.0;147.0;83.0;8.0;0.0;16;G;1;Valores que no forman parte del rango (1,2) de la variable P16G01;16G00101;;;0
+3146.0;22.0;5.0;25226.0;56.0;31.0;3.0;0.0;16;G;1;Valores que no forman parte del rango (1,2) de la variable P16G01;16G00101;;;0
+3142.0;19.0;1.0;23018.0;11.0;13.0;5.0;0.0;16;G;1;Valores que no forman parte del rango (1,2) de la variable P16G01;16G00101;;;0
+3080.0;13.0;9.0;16201.0;79.0;45.0;5.0;0.0;16;G;1;Valores que no forman parte del rango (1,2) de la variable P16G01;16G00101;;;0
+3144.0;19.0;1.0;23018.0;68.0;68.0;1.0;0.0;16;G;1;Valores que no forman parte del rango (1,2) de la variable P16G01;16G00101;;;0
+3110.0;13.0;9.0;16201.0;169.0;91.0;8.0;0.0;16;G;1;Valores que no forman parte del rango (1,2) de la variable P16G01;16G00101;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;0.0;16;G;1;Valores que no forman parte del rango (1,2) de la variable P16G01;16G00101;;;0
+3028.0;2.0;1.0;5514.0;61.0;51.0;4.0;0.0;16;G;1;Valores que no forman parte del rango (1,2) de la variable P16G01;16G00101;;;0
+3090.0;17.0;5.0;21492.0;48.0;35.0;2.0;0.0;16;G;1;Valores que no forman parte del rango (1,2) de la variable P16G01;16G00101;;;0
+3068.0;18.0;5.0;22865.0;14.0;11.0;1.0;0.0;16;G;1;Valores que no forman parte del rango (1,2) de la variable P16G01;16G00101;;;0
+3127.0;3.0;4.0;6028.0;70.0;56.0;3.0;0.0;16;G;1;Valores que no forman parte del rango (1,2) de la variable P16G01;16G00101;;;0
+3067.0;17.0;5.0;21433.0;154.0;113.0;7.0;0.0;16;H;1;Valores que no forman parte del rango (1,2) de la variable P16H01;16H00101;;;0
+3106.0;17.0;5.0;21492.0;220.0;151.0;8.0;0.0;16;H;1;Valores que no forman parte del rango (1,2) de la variable P16H01;16H00101;;;0
+3149.0;22.0;13.0;25540.0;36.0;36.0;2.0;0.0;16;H;1;Valores que no forman parte del rango (1,2) de la variable P16H01;16H00101;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;0.0;16;H;1;Valores que no forman parte del rango (1,2) de la variable P16H01;16H00101;;;0
+3156.0;22.0;5.0;25270.0;5.0;1.0;1.0;0.0;16;H;1;Valores que no forman parte del rango (1,2) de la variable P16H01;16H00101;;;0
+3141.0;22.0;5.0;25226.0;147.0;83.0;8.0;0.0;16;H;1;Valores que no forman parte del rango (1,2) de la variable P16H01;16H00101;;;0
+3146.0;22.0;5.0;25226.0;56.0;31.0;3.0;0.0;16;H;1;Valores que no forman parte del rango (1,2) de la variable P16H01;16H00101;;;0
+3142.0;19.0;1.0;23018.0;11.0;13.0;5.0;0.0;16;H;1;Valores que no forman parte del rango (1,2) de la variable P16H01;16H00101;;;0
+3080.0;13.0;9.0;16201.0;79.0;45.0;5.0;0.0;16;H;1;Valores que no forman parte del rango (1,2) de la variable P16H01;16H00101;;;0
+3144.0;19.0;1.0;23018.0;68.0;68.0;1.0;0.0;16;H;1;Valores que no forman parte del rango (1,2) de la variable P16H01;16H00101;;;0
+3110.0;13.0;9.0;16201.0;169.0;91.0;8.0;0.0;16;H;1;Valores que no forman parte del rango (1,2) de la variable P16H01;16H00101;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;0.0;16;H;1;Valores que no forman parte del rango (1,2) de la variable P16H01;16H00101;;;0
+3028.0;2.0;1.0;5514.0;61.0;51.0;4.0;0.0;16;H;1;Valores que no forman parte del rango (1,2) de la variable P16H01;16H00101;;;0
+3090.0;17.0;5.0;21492.0;48.0;35.0;2.0;0.0;16;H;1;Valores que no forman parte del rango (1,2) de la variable P16H01;16H00101;;;0
+3068.0;18.0;5.0;22865.0;14.0;11.0;1.0;0.0;16;H;1;Valores que no forman parte del rango (1,2) de la variable P16H01;16H00101;;;0
+3127.0;3.0;4.0;6028.0;70.0;56.0;3.0;0.0;16;H;1;Valores que no forman parte del rango (1,2) de la variable P16H01;16H00101;;;0
+3067.0;17.0;5.0;21433.0;154.0;113.0;7.0;0.0;16;I;1;Valores que no forman parte del rango (1,2) de la variable de la asistencia tecnica;16I0101;;;0
+3106.0;17.0;5.0;21492.0;220.0;151.0;8.0;0.0;16;I;1;Valores que no forman parte del rango (1,2) de la variable de la asistencia tecnica;16I0101;;;0
+3149.0;22.0;13.0;25540.0;36.0;36.0;2.0;0.0;16;I;1;Valores que no forman parte del rango (1,2) de la variable de la asistencia tecnica;16I0101;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;0.0;16;I;1;Valores que no forman parte del rango (1,2) de la variable de la asistencia tecnica;16I0101;;;0
+3156.0;22.0;5.0;25270.0;5.0;1.0;1.0;0.0;16;I;1;Valores que no forman parte del rango (1,2) de la variable de la asistencia tecnica;16I0101;;;0
+3141.0;22.0;5.0;25226.0;147.0;83.0;8.0;0.0;16;I;1;Valores que no forman parte del rango (1,2) de la variable de la asistencia tecnica;16I0101;;;0
+3146.0;22.0;5.0;25226.0;56.0;31.0;3.0;0.0;16;I;1;Valores que no forman parte del rango (1,2) de la variable de la asistencia tecnica;16I0101;;;0
+3142.0;19.0;1.0;23018.0;11.0;13.0;5.0;0.0;16;I;1;Valores que no forman parte del rango (1,2) de la variable de la asistencia tecnica;16I0101;;;0
+3080.0;13.0;9.0;16201.0;79.0;45.0;5.0;0.0;16;I;1;Valores que no forman parte del rango (1,2) de la variable de la asistencia tecnica;16I0101;;;0
+3144.0;19.0;1.0;23018.0;68.0;68.0;1.0;0.0;16;I;1;Valores que no forman parte del rango (1,2) de la variable de la asistencia tecnica;16I0101;;;0
+3110.0;13.0;9.0;16201.0;169.0;91.0;8.0;0.0;16;I;1;Valores que no forman parte del rango (1,2) de la variable de la asistencia tecnica;16I0101;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;0.0;16;I;1;Valores que no forman parte del rango (1,2) de la variable de la asistencia tecnica;16I0101;;;0
+3028.0;2.0;1.0;5514.0;61.0;51.0;4.0;0.0;16;I;1;Valores que no forman parte del rango (1,2) de la variable de la asistencia tecnica;16I0101;;;0
+3090.0;17.0;5.0;21492.0;48.0;35.0;2.0;0.0;16;I;1;Valores que no forman parte del rango (1,2) de la variable de la asistencia tecnica;16I0101;;;0
+3068.0;18.0;5.0;22865.0;14.0;11.0;1.0;0.0;16;I;1;Valores que no forman parte del rango (1,2) de la variable de la asistencia tecnica;16I0101;;;0
+3127.0;3.0;4.0;6028.0;70.0;56.0;3.0;0.0;16;I;1;Valores que no forman parte del rango (1,2) de la variable de la asistencia tecnica;16I0101;;;0
+3030.0;1.0;28.0;2457.0;103.0;98.0;6.0;0.0;17;A;1;si solicitud prestamos en dinero que no indique nada en la pregunta por que no solicitud ninguno;17A00101;;;0
+3151.0;22.0;13.0;25540.0;70.0;55.0;3.0;0.0;17;A;1;si solicitud prestamos en dinero que no indique nada en la pregunta por que no solicitud ninguno;17A00101;;;0
+3131.0;4.0;4.0;6751.0;150.0;116.0;2.0;0.0;17;A;1;si solicitud prestamos en dinero que no indique nada en la pregunta por que no solicitud ninguno;17A00101;;;0
+3062.0;16.0;14.0;20965.0;35.0;27.0;3.0;0.0;17;A;1;si solicitud prestamos en dinero que no indique nada en la pregunta por que no solicitud ninguno;17A00101;;;0
+3020.0;1.0;24.0;1968.0;148.0;117.0;8.0;0.0;17;A;1;si solicitud prestamos en dinero que no indique nada en la pregunta por que no solicitud ninguno;17A00101;;;0
+3015.0;14.0;13.0;18253.0;223.0;126.0;10.0;0.0;17;A;1;si solicitud prestamos en dinero que no indique nada en la pregunta por que no solicitud ninguno;17A00101;;;0
+3027.0;1.0;28.0;2457.0;185.0;170.0;10.0;0.0;17;A;1;si solicitud prestamos en dinero que no indique nada en la pregunta por que no solicitud ninguno;17A00101;;;0
+3124.0;2.0;1.0;5490.0;46.0;23.0;2.0;0.0;17;A;1;si solicitud prestamos en dinero que no indique nada en la pregunta por que no solicitud ninguno;17A00101;;;0
+3030.0;1.0;28.0;2457.0;123.0;116.0;7.0;0.0;17;A;1;si solicitud prestamos en dinero que no indique nada en la pregunta por que no solicitud ninguno;17A00101;;;0
+3037.0;3.0;1.0;5862.0;18.0;7.0;6.0;0.0;17;A;1;si solicitud prestamos en dinero que no indique nada en la pregunta por que no solicitud ninguno;17A00101;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;0.0;17;A;1;si solicitud prestamos en dinero que no indique nada en la pregunta por que no solicitud ninguno;17A00101;;;0
+3028.0;2.0;3.0;5603.0;37.0;26.0;3.0;0.0;17;A;1;si solicitud prestamos en dinero que no indique nada en la pregunta por que no solicitud ninguno;17A00101;;;0
+3120.0;10.0;21.0;12324.0;111.0;68.0;6.0;0.0;17;A;1;si solicitud prestamos en dinero que no indique nada en la pregunta por que no solicitud ninguno;17A00101;;;0
+3039.0;1.0;36.0;4914.0;159.0;175.0;9.0;0.0;17;A;1;si solicitud prestamos en dinero que no indique nada en la pregunta por que no solicitud ninguno;17A00101;;;0
+3067.0;17.0;5.0;21433.0;154.0;113.0;7.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3136.0;14.0;12.0;18113.0;184.0;104.0;9.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3099.0;14.0;20.0;18774.0;14.0;9.0;2.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3094.0;17.0;11.0;22042.0;155.0;95.0;7.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3078.0;13.0;25.0;16972.0;28.0;9.0;1.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3103.0;6.0;4.0;8811.0;18.0;13.0;1.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3044.0;1.0;37.0;5025.0;172.0;179.0;9.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3111.0;7.0;19.0;9923.0;47.0;30.0;4.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3111.0;7.0;19.0;9923.0;39.0;21.0;3.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3056.0;1.0;18.0;1394.0;17.0;15.0;1.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3020.0;1.0;28.0;2457.0;26.0;25.0;2.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3055.0;21.0;6.0;24686.0;165.0;110.0;9.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3149.0;22.0;13.0;25540.0;36.0;36.0;2.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3039.0;1.0;37.0;5025.0;68.0;73.0;4.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3040.0;3.0;1.0;5907.0;129.0;94.0;1.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3156.0;22.0;5.0;25270.0;5.0;1.0;1.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3045.0;1.0;37.0;5025.0;9.0;9.0;1.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3043.0;7.0;19.0;9958.0;93.0;67.0;4.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3103.0;6.0;4.0;8811.0;45.0;32.0;3.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3033.0;13.0;25.0;16972.0;205.0;93.0;8.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3141.0;22.0;5.0;25226.0;147.0;83.0;8.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3146.0;22.0;5.0;25226.0;56.0;31.0;3.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3061.0;16.0;14.0;20965.0;58.0;46.0;5.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3111.0;7.0;19.0;9923.0;28.0;15.0;2.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3072.0;7.0;19.0;9958.0;220.0;149.0;8.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3143.0;13.0;25.0;16972.0;240.0;117.0;10.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3138.0;17.0;11.0;22042.0;193.0;123.0;9.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3086.0;1.0;37.0;5025.0;88.0;94.0;5.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3151.0;22.0;13.0;25540.0;17.0;17.0;1.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3062.0;16.0;14.0;20965.0;91.0;73.0;8.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3078.0;13.0;25.0;16972.0;63.0;21.0;2.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3021.0;4.0;4.0;6710.0;75.0;55.0;7.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3101.0;6.0;14.0;9295.0;295.0;196.0;10.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3142.0;19.0;1.0;23018.0;11.0;13.0;5.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3080.0;13.0;9.0;16201.0;79.0;45.0;5.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3161.0;20.0;3.0;23667.0;19.0;8.0;11.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3020.0;1.0;28.0;2457.0;8.0;7.0;1.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3056.0;1.0;18.0;1394.0;156.0;181.0;8.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3144.0;19.0;1.0;23018.0;68.0;68.0;1.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3144.0;19.0;1.0;23018.0;40.0;41.0;2.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3018.0;18.0;1.0;22323.0;96.0;72.0;5.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3110.0;13.0;9.0;16201.0;130.0;73.0;9.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3110.0;13.0;9.0;16201.0;89.0;54.0;7.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3110.0;13.0;9.0;16201.0;169.0;91.0;8.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3080.0;13.0;9.0;16201.0;14.0;9.0;1.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3028.0;2.0;1.0;5514.0;167.0;117.0;8.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3028.0;2.0;1.0;5514.0;106.0;84.0;6.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3028.0;2.0;1.0;5514.0;1.0;1.0;1.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3028.0;2.0;1.0;5514.0;61.0;51.0;4.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3028.0;2.0;1.0;5514.0;207.0;151.0;10.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3039.0;1.0;37.0;5025.0;31.0;31.0;2.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3043.0;7.0;19.0;9958.0;281.0;189.0;10.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3090.0;17.0;5.0;21492.0;48.0;35.0;2.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3120.0;10.0;21.0;12324.0;183.0;120.0;10.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3068.0;18.0;5.0;22865.0;14.0;11.0;1.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3068.0;19.0;9.0;23395.0;147.0;134.0;10.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3127.0;3.0;4.0;6028.0;70.0;56.0;3.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3042.0;13.0;25.0;16972.0;175.0;81.0;7.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3042.0;13.0;25.0;16972.0;225.0;105.0;9.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3042.0;13.0;25.0;16972.0;80.0;33.0;3.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3033.0;13.0;25.0;16972.0;128.0;57.0;5.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3064.0;16.0;8.0;20171.0;96.0;85.0;7.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3064.0;16.0;8.0;20171.0;42.0;35.0;3.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3121.0;5.0;9.0;8284.0;56.0;35.0;3.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3124.0;2.0;3.0;5558.0;136.0;120.0;7.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3023.0;3.0;4.0;6028.0;154.0;123.0;6.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3023.0;3.0;4.0;6028.0;234.0;189.0;9.0;0.0;17;A;2;si la respuesta no es otro cual debe estar vacio el especifique ;17A00201;;;0
+3078.0;13.0;25.0;16972.0;28.0;9.0;1.0;0.0;17;A;3;si le autorizaron algun prestamo que no indique la razon por que no lo autorizaron;17A00301;;;0
+3030.0;1.0;28.0;2457.0;103.0;98.0;6.0;0.0;17;A;3;si le autorizaron algun prestamo que no indique la razon por que no lo autorizaron;17A00301;;;0
+3151.0;22.0;13.0;25540.0;70.0;55.0;3.0;0.0;17;A;3;si le autorizaron algun prestamo que no indique la razon por que no lo autorizaron;17A00301;;;0
+3131.0;4.0;4.0;6751.0;150.0;116.0;2.0;0.0;17;A;3;si le autorizaron algun prestamo que no indique la razon por que no lo autorizaron;17A00301;;;0
+3062.0;16.0;14.0;20965.0;35.0;27.0;3.0;0.0;17;A;3;si le autorizaron algun prestamo que no indique la razon por que no lo autorizaron;17A00301;;;0
+3020.0;1.0;24.0;1968.0;148.0;117.0;8.0;0.0;17;A;3;si le autorizaron algun prestamo que no indique la razon por que no lo autorizaron;17A00301;;;0
+3027.0;1.0;28.0;2457.0;185.0;170.0;10.0;0.0;17;A;3;si le autorizaron algun prestamo que no indique la razon por que no lo autorizaron;17A00301;;;0
+3030.0;1.0;28.0;2457.0;123.0;116.0;7.0;0.0;17;A;3;si le autorizaron algun prestamo que no indique la razon por que no lo autorizaron;17A00301;;;0
+3037.0;3.0;1.0;5862.0;18.0;7.0;6.0;0.0;17;A;3;si le autorizaron algun prestamo que no indique la razon por que no lo autorizaron;17A00301;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;0.0;17;A;3;si le autorizaron algun prestamo que no indique la razon por que no lo autorizaron;17A00301;;;0
+3028.0;2.0;3.0;5603.0;37.0;26.0;3.0;0.0;17;A;3;si le autorizaron algun prestamo que no indique la razon por que no lo autorizaron;17A00301;;;0
+3120.0;10.0;21.0;12324.0;111.0;68.0;6.0;0.0;17;A;3;si le autorizaron algun prestamo que no indique la razon por que no lo autorizaron;17A00301;;;0
+3039.0;1.0;36.0;4914.0;159.0;175.0;9.0;0.0;17;A;3;si le autorizaron algun prestamo que no indique la razon por que no lo autorizaron;17A00301;;;0
+3015.0;14.0;13.0;18253.0;223.0;126.0;10.0;0.0;17;A;4;si la razon fue diferente a otro cual no debe especificar nada mas ;17A00401;;;0
+3124.0;2.0;1.0;5490.0;46.0;23.0;2.0;0.0;17;A;4;si la razon fue diferente a otro cual no debe especificar nada mas ;17A00401;;;0
+3030.0;1.0;28.0;2457.0;103.0;98.0;6.0;0.0;17;A;9;si no fue otro cual el que realizo el prestamo no debe especificar nada ;17A00901;;;0
+3151.0;22.0;13.0;25540.0;70.0;55.0;3.0;0.0;17;A;9;si no fue otro cual el que realizo el prestamo no debe especificar nada ;17A00901;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;0.0;17;A;9;si no fue otro cual el que realizo el prestamo no debe especificar nada ;17A00901;;;0
+3131.0;4.0;4.0;6751.0;150.0;116.0;2.0;0.0;17;A;9;si no fue otro cual el que realizo el prestamo no debe especificar nada ;17A00901;;;0
+3062.0;16.0;14.0;20965.0;35.0;27.0;3.0;0.0;17;A;9;si no fue otro cual el que realizo el prestamo no debe especificar nada ;17A00901;;;0
+3020.0;1.0;24.0;1968.0;148.0;117.0;8.0;0.0;17;A;9;si no fue otro cual el que realizo el prestamo no debe especificar nada ;17A00901;;;0
+3027.0;1.0;28.0;2457.0;185.0;170.0;10.0;0.0;17;A;9;si no fue otro cual el que realizo el prestamo no debe especificar nada ;17A00901;;;0
+3030.0;1.0;28.0;2457.0;123.0;116.0;7.0;0.0;17;A;9;si no fue otro cual el que realizo el prestamo no debe especificar nada ;17A00901;;;0
+3037.0;3.0;1.0;5862.0;18.0;7.0;6.0;0.0;17;A;9;si no fue otro cual el que realizo el prestamo no debe especificar nada ;17A00901;;;0
+3110.0;13.0;9.0;16201.0;130.0;73.0;9.0;0.0;17;A;9;si no fue otro cual el que realizo el prestamo no debe especificar nada ;17A00901;;;0
+3110.0;13.0;9.0;16201.0;89.0;54.0;7.0;0.0;17;A;9;si no fue otro cual el que realizo el prestamo no debe especificar nada ;17A00901;;;0
+3039.0;1.0;36.0;4914.0;159.0;175.0;9.0;0.0;17;A;9;si no fue otro cual el que realizo el prestamo no debe especificar nada ;17A00901;;;0
+3030.0;1.0;28.0;2457.0;103.0;98.0;6.0;0.0;17;A;11;si la opcion que dejo de garantia no es otro cual no debe especificar nada ;17A01101;;;0
+3151.0;22.0;13.0;25540.0;70.0;55.0;3.0;0.0;17;A;11;si la opcion que dejo de garantia no es otro cual no debe especificar nada ;17A01101;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;0.0;17;A;11;si la opcion que dejo de garantia no es otro cual no debe especificar nada ;17A01101;;;0
+3131.0;4.0;4.0;6751.0;150.0;116.0;2.0;0.0;17;A;11;si la opcion que dejo de garantia no es otro cual no debe especificar nada ;17A01101;;;0
+3062.0;16.0;14.0;20965.0;35.0;27.0;3.0;0.0;17;A;11;si la opcion que dejo de garantia no es otro cual no debe especificar nada ;17A01101;;;0
+3020.0;1.0;24.0;1968.0;148.0;117.0;8.0;0.0;17;A;11;si la opcion que dejo de garantia no es otro cual no debe especificar nada ;17A01101;;;0
+3027.0;1.0;28.0;2457.0;185.0;170.0;10.0;0.0;17;A;11;si la opcion que dejo de garantia no es otro cual no debe especificar nada ;17A01101;;;0
+3030.0;1.0;28.0;2457.0;123.0;116.0;7.0;0.0;17;A;11;si la opcion que dejo de garantia no es otro cual no debe especificar nada ;17A01101;;;0
+3037.0;3.0;1.0;5862.0;18.0;7.0;6.0;0.0;17;A;11;si la opcion que dejo de garantia no es otro cual no debe especificar nada ;17A01101;;;0
+3110.0;13.0;9.0;16201.0;130.0;73.0;9.0;0.0;17;A;11;si la opcion que dejo de garantia no es otro cual no debe especificar nada ;17A01101;;;0
+3110.0;13.0;9.0;16201.0;89.0;54.0;7.0;0.0;17;A;11;si la opcion que dejo de garantia no es otro cual no debe especificar nada ;17A01101;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;0.0;17;A;11;si la opcion que dejo de garantia no es otro cual no debe especificar nada ;17A01101;;;0
+3030.0;1.0;28.0;2457.0;103.0;98.0;6.0;0.0;17;A;12;si indico algun documento que firmo por el prestamo debe indicar que tiempo le dieron para cancelarlo ;17A01201;;;0
+3151.0;22.0;13.0;25540.0;70.0;55.0;3.0;0.0;17;A;12;si indico algun documento que firmo por el prestamo debe indicar que tiempo le dieron para cancelarlo ;17A01201;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;0.0;17;A;12;si indico algun documento que firmo por el prestamo debe indicar que tiempo le dieron para cancelarlo ;17A01201;;;0
+3131.0;4.0;4.0;6751.0;150.0;116.0;2.0;0.0;17;A;12;si indico algun documento que firmo por el prestamo debe indicar que tiempo le dieron para cancelarlo ;17A01201;;;0
+3062.0;16.0;14.0;20965.0;35.0;27.0;3.0;0.0;17;A;12;si indico algun documento que firmo por el prestamo debe indicar que tiempo le dieron para cancelarlo ;17A01201;;;0
+3020.0;1.0;24.0;1968.0;148.0;117.0;8.0;0.0;17;A;12;si indico algun documento que firmo por el prestamo debe indicar que tiempo le dieron para cancelarlo ;17A01201;;;0
+3027.0;1.0;28.0;2457.0;185.0;170.0;10.0;0.0;17;A;12;si indico algun documento que firmo por el prestamo debe indicar que tiempo le dieron para cancelarlo ;17A01201;;;0
+3030.0;1.0;28.0;2457.0;123.0;116.0;7.0;0.0;17;A;12;si indico algun documento que firmo por el prestamo debe indicar que tiempo le dieron para cancelarlo ;17A01201;;;0
+3037.0;3.0;1.0;5862.0;18.0;7.0;6.0;0.0;17;A;12;si indico algun documento que firmo por el prestamo debe indicar que tiempo le dieron para cancelarlo ;17A01201;;;0
+3110.0;13.0;9.0;16201.0;130.0;73.0;9.0;0.0;17;A;12;si indico algun documento que firmo por el prestamo debe indicar que tiempo le dieron para cancelarlo ;17A01201;;;0
+3110.0;13.0;9.0;16201.0;89.0;54.0;7.0;0.0;17;A;12;si indico algun documento que firmo por el prestamo debe indicar que tiempo le dieron para cancelarlo ;17A01201;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;0.0;17;A;12;si indico algun documento que firmo por el prestamo debe indicar que tiempo le dieron para cancelarlo ;17A01201;;;0
+3120.0;10.0;21.0;12324.0;111.0;68.0;6.0;0.0;17;A;12;si indico algun documento que firmo por el prestamo debe indicar que tiempo le dieron para cancelarlo ;17A01201;;;0
+3039.0;1.0;36.0;4914.0;159.0;175.0;9.0;0.0;17;A;12;si indico algun documento que firmo por el prestamo debe indicar que tiempo le dieron para cancelarlo ;17A01201;;;0
+3030.0;1.0;28.0;2457.0;103.0;98.0;6.0;0.0;17;A;14;validar si no indico otro cual que no haya especificado nada mas ;17A01403;;;0
+3151.0;22.0;13.0;25540.0;70.0;55.0;3.0;0.0;17;A;14;validar si no indico otro cual que no haya especificado nada mas ;17A01403;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;0.0;17;A;14;validar si no indico otro cual que no haya especificado nada mas ;17A01403;;;0
+3131.0;4.0;4.0;6751.0;150.0;116.0;2.0;0.0;17;A;14;validar si no indico otro cual que no haya especificado nada mas ;17A01403;;;0
+3062.0;16.0;14.0;20965.0;35.0;27.0;3.0;0.0;17;A;14;validar si no indico otro cual que no haya especificado nada mas ;17A01403;;;0
+3020.0;1.0;24.0;1968.0;148.0;117.0;8.0;0.0;17;A;14;validar si no indico otro cual que no haya especificado nada mas ;17A01403;;;0
+3027.0;1.0;28.0;2457.0;185.0;170.0;10.0;0.0;17;A;14;validar si no indico otro cual que no haya especificado nada mas ;17A01403;;;0
+3030.0;1.0;28.0;2457.0;123.0;116.0;7.0;0.0;17;A;14;validar si no indico otro cual que no haya especificado nada mas ;17A01403;;;0
+3037.0;3.0;1.0;5862.0;18.0;7.0;6.0;0.0;17;A;14;validar si no indico otro cual que no haya especificado nada mas ;17A01403;;;0
+3110.0;13.0;9.0;16201.0;130.0;73.0;9.0;0.0;17;A;14;validar si no indico otro cual que no haya especificado nada mas ;17A01403;;;0
+3110.0;13.0;9.0;16201.0;89.0;54.0;7.0;0.0;17;A;14;validar si no indico otro cual que no haya especificado nada mas ;17A01403;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;0.0;17;A;14;validar si no indico otro cual que no haya especificado nada mas ;17A01403;;;0
+3120.0;10.0;21.0;12324.0;111.0;68.0;6.0;0.0;17;A;14;validar si no indico otro cual que no haya especificado nada mas ;17A01403;;;0
+3039.0;1.0;36.0;4914.0;159.0;175.0;9.0;0.0;17;A;14;validar si no indico otro cual que no haya especificado nada mas ;17A01403;;;0
+3030.0;1.0;28.0;2457.0;103.0;98.0;6.0;0.0;17;A;17;validar si el motivo fue diferente a otro cual que no indique especificaciones ;17A01701;;;0
+3151.0;22.0;13.0;25540.0;70.0;55.0;3.0;0.0;17;A;17;validar si el motivo fue diferente a otro cual que no indique especificaciones ;17A01701;;;0
+3037.0;3.0;1.0;5907.0;94.0;67.0;6.0;0.0;17;A;17;validar si el motivo fue diferente a otro cual que no indique especificaciones ;17A01701;;;0
+3131.0;4.0;4.0;6751.0;150.0;116.0;2.0;0.0;17;A;17;validar si el motivo fue diferente a otro cual que no indique especificaciones ;17A01701;;;0
+3062.0;16.0;14.0;20965.0;35.0;27.0;3.0;0.0;17;A;17;validar si el motivo fue diferente a otro cual que no indique especificaciones ;17A01701;;;0
+3020.0;1.0;24.0;1968.0;148.0;117.0;8.0;0.0;17;A;17;validar si el motivo fue diferente a otro cual que no indique especificaciones ;17A01701;;;0
+3027.0;1.0;28.0;2457.0;185.0;170.0;10.0;0.0;17;A;17;validar si el motivo fue diferente a otro cual que no indique especificaciones ;17A01701;;;0
+3030.0;1.0;28.0;2457.0;123.0;116.0;7.0;0.0;17;A;17;validar si el motivo fue diferente a otro cual que no indique especificaciones ;17A01701;;;0
+3037.0;3.0;1.0;5862.0;18.0;7.0;6.0;0.0;17;A;17;validar si el motivo fue diferente a otro cual que no indique especificaciones ;17A01701;;;0
+3110.0;13.0;9.0;16201.0;130.0;73.0;9.0;0.0;17;A;17;validar si el motivo fue diferente a otro cual que no indique especificaciones ;17A01701;;;0
+3110.0;13.0;9.0;16201.0;89.0;54.0;7.0;0.0;17;A;17;validar si el motivo fue diferente a otro cual que no indique especificaciones ;17A01701;;;0
+3080.0;13.0;9.0;16201.0;47.0;27.0;3.0;0.0;17;A;17;validar si el motivo fue diferente a otro cual que no indique especificaciones ;17A01701;;;0
+3039.0;1.0;36.0;4914.0;159.0;175.0;9.0;0.0;17;A;17;validar si el motivo fue diferente a otro cual que no indique especificaciones ;17A01701;;;0
+3059.0;7.0;19.0;9923.0;107.0;70.0;9.0;0.0;C;B;1;Los hogares en la vivienda tienen otra opción diferente a 1 o 2;CCB00101;;;0
+3059.0;7.0;19.0;9923.0;96.0;62.0;8.0;0.0;C;B;1;Los hogares en la vivienda tienen otra opción diferente a 1 o 2;CCB00101;;;0
+3121.0;5.0;9.0;8284.0;161.0;103.0;9.0;0.0;C;B;1;Los hogares en la vivienda tienen otra opción diferente a 1 o 2;CCB00101;;;0
+3135.0;3.0;1.0;5845.0;14.0;12.0;1.0;0.0;C;B;1;Los hogares en la vivienda tienen otra opción diferente a 1 o 2;CCB00101;;;0
+3135.0;3.0;1.0;5845.0;85.0;64.0;5.0;0.0;C;B;1;Los hogares en la vivienda tienen otra opción diferente a 1 o 2;CCB00101;;;0
+3135.0;3.0;1.0;5845.0;45.0;38.0;3.0;0.0;C;B;1;Los hogares en la vivienda tienen otra opción diferente a 1 o 2;CCB00101;;;0
+3122.0;9.0;14.0;11544.0;60.0;39.0;1.0;0.0;C;B;1;Los hogares en la vivienda tienen otra opción diferente a 1 o 2;CCB00101;;;0
+3002.0;3.0;4.0;5995.0;166.0;126.0;10.0;0.0;C;B;1;Los hogares en la vivienda tienen otra opción diferente a 1 o 2;CCB00101;;;0
+3059.0;7.0;19.0;9923.0;116.0;78.0;10.0;0.0;C;B;1;Los hogares en la vivienda tienen otra opción diferente a 1 o 2;CCB00101;;;0
+3116.0;5.0;2.0;7717.0;64.0;59.0;5.0;0.0;C;B;1;Los hogares en la vivienda tienen otra opción diferente a 1 o 2;CCB00101;;;0
+3159.0;18.0;1.0;22276.0;120.0;98.0;5.0;0.0;C;B;1;Los hogares en la vivienda tienen otra opción diferente a 1 o 2;CCB00101;;;0
+3096.0;5.0;2.0;7633.0;33.0;31.0;3.0;0.0;C;B;1;Los hogares en la vivienda tienen otra opción diferente a 1 o 2;CCB00101;;;0
+3037.0;3.0;1.0;5907.0;44.0;27.0;8.0;0.0;C;B;1;Los hogares en la vivienda tienen otra opción diferente a 1 o 2;CCB00101;;;0
+3038.0;3.0;1.0;5845.0;174.0;129.0;10.0;0.0;C;B;1;Los hogares en la vivienda tienen otra opción diferente a 1 o 2;CCB00101;;;0
+3038.0;3.0;1.0;5845.0;157.0;116.0;9.0;0.0;C;B;1;Los hogares en la vivienda tienen otra opción diferente a 1 o 2;CCB00101;;;0
+3038.0;3.0;1.0;5845.0;143.0;103.0;8.0;0.0;C;B;1;Los hogares en la vivienda tienen otra opción diferente a 1 o 2;CCB00101;;;0
+3087.0;18.0;1.0;22276.0;52.0;39.0;2.0;0.0;C;B;1;Los hogares en la vivienda tienen otra opción diferente a 1 o 2;CCB00101;;;0
+3087.0;18.0;1.0;22276.0;177.0;157.0;8.0;0.0;C;B;1;Los hogares en la vivienda tienen otra opción diferente a 1 o 2;CCB00101;;;0
+3037.0;3.0;1.0;5907.0;65.0;40.0;8.0;0.0;C;B;2;En la vivienda hay más de un hogar y en el total está vacío;CCB00205;;;0
+3037.0;3.0;1.0;5907.0;65.0;40.0;8.0;0.0;C;B;3;En la vivienda hay más de un hogar y en el total está vacío;CCB00305;;;0
+3059.0;7.0;19.0;9923.0;107.0;70.0;9.0;0.0;C;C;2;El teléfono no tiene datos;CCC00201;;;0
+3059.0;7.0;19.0;9923.0;96.0;62.0;8.0;0.0;C;C;2;El teléfono no tiene datos;CCC00201;;;0
+3121.0;5.0;9.0;8284.0;161.0;103.0;9.0;0.0;C;C;2;El teléfono no tiene datos;CCC00201;;;0
+3135.0;3.0;1.0;5845.0;14.0;12.0;1.0;0.0;C;C;2;El teléfono no tiene datos;CCC00201;;;0
+3135.0;3.0;1.0;5845.0;85.0;64.0;5.0;0.0;C;C;2;El teléfono no tiene datos;CCC00201;;;0
+3135.0;3.0;1.0;5845.0;45.0;38.0;3.0;0.0;C;C;2;El teléfono no tiene datos;CCC00201;;;0
+3122.0;9.0;14.0;11544.0;60.0;39.0;1.0;0.0;C;C;2;El teléfono no tiene datos;CCC00201;;;0
+3002.0;3.0;4.0;5995.0;166.0;126.0;10.0;0.0;C;C;2;El teléfono no tiene datos;CCC00201;;;0
+3059.0;7.0;19.0;9923.0;116.0;78.0;10.0;0.0;C;C;2;El teléfono no tiene datos;CCC00201;;;0
+3080.0;13.0;11.0;16336.0;111.0;63.0;9.0;0.0;C;C;2;El teléfono no tiene datos;CCC00201;;;0
+3116.0;5.0;2.0;7717.0;64.0;59.0;5.0;0.0;C;C;2;El teléfono no tiene datos;CCC00201;;;0
+3159.0;18.0;1.0;22276.0;120.0;98.0;5.0;0.0;C;C;2;El teléfono no tiene datos;CCC00201;;;0
+3096.0;5.0;2.0;7633.0;33.0;31.0;3.0;0.0;C;C;2;El teléfono no tiene datos;CCC00201;;;0
+3037.0;3.0;1.0;5907.0;65.0;40.0;8.0;0.0;C;C;2;El teléfono no tiene datos;CCC00201;;;0
+3037.0;3.0;1.0;5907.0;44.0;27.0;8.0;0.0;C;C;2;El teléfono no tiene datos;CCC00201;;;0
+3038.0;3.0;1.0;5845.0;174.0;129.0;10.0;0.0;C;C;2;El teléfono no tiene datos;CCC00201;;;0
+3038.0;3.0;1.0;5845.0;157.0;116.0;9.0;0.0;C;C;2;El teléfono no tiene datos;CCC00201;;;0
+3038.0;3.0;1.0;5845.0;143.0;103.0;8.0;0.0;C;C;2;El teléfono no tiene datos;CCC00201;;;0
+3087.0;18.0;1.0;22276.0;52.0;39.0;2.0;0.0;C;C;2;El teléfono no tiene datos;CCC00201;;;0
+3087.0;18.0;1.0;22276.0;177.0;157.0;8.0;0.0;C;C;2;El teléfono no tiene datos;CCC00201;;;0
+3106.0;17.0;5.0;21492.0;220.0;151.0;8.0;0.0;C;D;6;La sección de idioma no muestra datos;CCD00601;;;0
+3011.0;4.0;4.0;6710.0;40.0;27.0;3.0;0.0;C;D;6;La sección de idioma no muestra datos;CCD00601;;;0
+3030.0;1.0;28.0;2457.0;103.0;98.0;6.0;0.0;C;D;6;La sección de idioma no muestra datos;CCD00601;;;0
+3039.0;1.0;37.0;5025.0;68.0;73.0;4.0;0.0;C;D;6;La sección de idioma no muestra datos;CCD00601;;;0
+3040.0;3.0;1.0;5907.0;129.0;94.0;1.0;0.0;C;D;6;La sección de idioma no muestra datos;CCD00601;;;0
+3018.0;18.0;1.0;22323.0;96.0;72.0;5.0;0.0;C;D;6;La sección de idioma no muestra datos;CCD00601;;;0
+3030.0;1.0;28.0;2457.0;123.0;116.0;7.0;0.0;C;D;6;La sección de idioma no muestra datos;CCD00601;;;0
+3037.0;3.0;1.0;5862.0;91.0;63.0;8.0;0.0;C;D;6;La sección de idioma no muestra datos;CCD00601;;;0
+3037.0;3.0;1.0;5862.0;68.0;36.0;7.0;0.0;C;D;6;La sección de idioma no muestra datos;CCD00601;;;0
+3068.0;19.0;9.0;23395.0;147.0;134.0;10.0;0.0;C;D;6;La sección de idioma no muestra datos;CCD00601;;;0
+3106.0;17.0;5.0;21492.0;220.0;151.0;8.0;0.0;C;D;7;Sección de idioma de entrevista está vacío;CCD00701;;;0
+3011.0;4.0;4.0;6710.0;40.0;27.0;3.0;0.0;C;D;7;Sección de idioma de entrevista está vacío;CCD00701;;;0
+3030.0;1.0;28.0;2457.0;103.0;98.0;6.0;0.0;C;D;7;Sección de idioma de entrevista está vacío;CCD00701;;;0
+3039.0;1.0;37.0;5025.0;68.0;73.0;4.0;0.0;C;D;7;Sección de idioma de entrevista está vacío;CCD00701;;;0
+3040.0;3.0;1.0;5907.0;129.0;94.0;1.0;0.0;C;D;7;Sección de idioma de entrevista está vacío;CCD00701;;;0
+3018.0;18.0;1.0;22323.0;96.0;72.0;5.0;0.0;C;D;7;Sección de idioma de entrevista está vacío;CCD00701;;;0
+3030.0;1.0;28.0;2457.0;123.0;116.0;7.0;0.0;C;D;7;Sección de idioma de entrevista está vacío;CCD00701;;;0
+3037.0;3.0;1.0;5862.0;91.0;63.0;8.0;0.0;C;D;7;Sección de idioma de entrevista está vacío;CCD00701;;;0
+3037.0;3.0;1.0;5862.0;68.0;36.0;7.0;0.0;C;D;7;Sección de idioma de entrevista está vacío;CCD00701;;;0
+3068.0;19.0;9.0;23395.0;147.0;134.0;10.0;0.0;C;D;7;Sección de idioma de entrevista está vacío;CCD00701;;;0
+3106.0;17.0;5.0;21492.0;220.0;151.0;8.0;0.0;C;D;8;Sección de traductor está vacío;CCD00801;;;0
+3011.0;4.0;4.0;6710.0;40.0;27.0;3.0;0.0;C;D;8;Sección de traductor está vacío;CCD00801;;;0
+3030.0;1.0;28.0;2457.0;103.0;98.0;6.0;0.0;C;D;8;Sección de traductor está vacío;CCD00801;;;0
+3039.0;1.0;37.0;5025.0;68.0;73.0;4.0;0.0;C;D;8;Sección de traductor está vacío;CCD00801;;;0
+3040.0;3.0;1.0;5907.0;129.0;94.0;1.0;0.0;C;D;8;Sección de traductor está vacío;CCD00801;;;0
+3018.0;18.0;1.0;22323.0;96.0;72.0;5.0;0.0;C;D;8;Sección de traductor está vacío;CCD00801;;;0
+3030.0;1.0;28.0;2457.0;123.0;116.0;7.0;0.0;C;D;8;Sección de traductor está vacío;CCD00801;;;0
+3037.0;3.0;1.0;5862.0;91.0;63.0;8.0;0.0;C;D;8;Sección de traductor está vacío;CCD00801;;;0
+3037.0;3.0;1.0;5862.0;68.0;36.0;7.0;0.0;C;D;8;Sección de traductor está vacío;CCD00801;;;0
+3068.0;19.0;9.0;23395.0;147.0;134.0;10.0;0.0;C;D;8;Sección de traductor está vacío;CCD00801;;;0
+3088.0;16.0;8.0;20171.0;9.0;9.0;1.0;4.0;P;A;4;"Verifique seccion: A, pregunta: 4. El valor de la variable año en la pregunta ""cual es la fecha de nacimiento"" fecha de nacimiento es menor a 1900";CPA00403;;;0
+3080.0;13.0;9.0;16201.0;79.0;45.0;5.0;6.0;P;A;4;"Verifique seccion: A, pregunta: 4. El valor de la variable año en la pregunta ""cual es la fecha de nacimiento"" fecha de nacimiento es menor a 1900";CPA00403;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;P;A;5;Verifique seccion: A, pregunta: 5. relación de parentesco es 1 y la edad esta por debajo de 12 años;CPA00507;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;P;A;5;Verifique seccion: A, pregunta: 5. relación de parentesco es 1 y la edad esta por debajo de 12 años;CPA00507;;;0
+3085.0;5.0;5.0;7877.0;163.0;126.0;10.0;2.0;P;A;5;Verifique seccion: A, pregunta: 5. La relación de parentesco es esposo o esposa y la edad es menor de 18 años;CPA00509;;;0
+3008.0;14.0;2.0;17456.0;65.0;46.0;4.0;2.0;P;A;5;Verifique seccion: A, pregunta: 5. La relación de parentesco es esposo o esposa y la edad es menor de 18 años;CPA00509;;;0
+3023.0;3.0;4.0;6028.0;154.0;123.0;6.0;11.0;P;A;7;Menor de cuatro años y con valores en dificultad para ver;CPA00701;;;0
+3023.0;3.0;4.0;6028.0;154.0;123.0;6.0;11.0;P;A;7;Menor de cuatro años y con valores en dificultas para oír;CPA00702;;;0
+3023.0;3.0;4.0;6028.0;154.0;123.0;6.0;11.0;P;A;7;Menor de cuatro años y con valores en dificultad física;CPA00706;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;P;A;8;"Verifique seccion: A, pregunta: 8. La edad de la persona es menor de 12 años y el valor asignado en la variable de estado conyugal es distinta de ""menor a 12 años""";CPA00803;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;P;A;8;"Verifique seccion: A, pregunta: 8. La edad de la persona es menor de 12 años y el valor asignado en la variable de estado conyugal es distinta de ""menor a 12 años""";CPA00803;;;0
+3136.0;14.0;12.0;18113.0;163.0;91.0;8.0;2.0;P;A;8;Verifique seccion: A, pregunta: 8. Se asigno un valor de respuesta para su relacion de parentesco de esposo(a) o compañero(a) y la respuesta asignada en estado conyugal es distinta de unido(a) o casado(a);CPA00805;;;0
+3020.0;1.0;28.0;2457.0;8.0;7.0;1.0;2.0;P;A;8;Verifique seccion: A, pregunta: 8. Se asigno un valor de respuesta para su relacion de parentesco de esposo(a) o compañero(a) y la respuesta asignada en estado conyugal es distinta de unido(a) o casado(a);CPA00805;;;0
+3081.0;8.0;3.0;10306.0;211.0;122.0;9.0;2.0;P;A;8;Verifique seccion: A, pregunta: 8. Se asigno un valor de respuesta para su relacion de parentesco de esposo(a) o compañero(a) y la respuesta asignada en estado conyugal es distinta de unido(a) o casado(a);CPA00805;;;0
+3023.0;3.0;4.0;6028.0;154.0;123.0;6.0;11.0;P;A;9;Verifique seccion: A, pregunta: 9. Se asigno un valor de edad el cual es menor de 18 años y se asignaron valores en las variables de nacionalidad pricipal o secundaria;CPA00902;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;P;A;9;Verifique seccion: A, pregunta: 9. Se asigno un valor de edad el cual es menor de 18 años y se asignaron valores en las variables de nacionalidad pricipal o secundaria;CPA00902;;;0
+3148.0;3.0;6.0;6100.0;30.0;19.0;2.0;1.0;P;A;9;Verifique seccion: A, pregunta: 9. Se asigno un valor de edad el cual es menor de 18 años y se asignaron valores en las variables de nacionalidad pricipal o secundaria;CPA00902;;;0

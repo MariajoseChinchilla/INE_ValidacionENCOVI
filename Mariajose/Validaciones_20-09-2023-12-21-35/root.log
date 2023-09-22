@@ -1,0 +1,17 @@
+INFO - Log de condiciones convertidas a formato pandas
+INFO - Inicio del proceso de validación de datos.
+INFO - Se encontraron 1 condiciones.
+ERROR - Error general: No objects to concatenate
+WARNING - R[write to console]: Loading required package: DBI
+
+WARNING - R[write to console]: Total de inconsistencias: 113
+
+WARNING - R[write to console]: >> InconsistenciasGRUPONA.xlsx -> 0
+
+INFO - Log de condiciones convertidas a formato pandas
+INFO - Inicio del proceso de validación de datos.
+INFO - Se encontraron 1 condiciones.
+WARNING - R[write to console]: Total de inconsistencias: 113
+
+WARNING - R[write to console]: >> InconsistenciasGRUPONA.xlsx -> 0
+
