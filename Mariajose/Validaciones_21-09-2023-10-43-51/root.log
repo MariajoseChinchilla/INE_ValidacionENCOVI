@@ -1,0 +1,51 @@
+INFO - Log de condiciones convertidas a formato pandas
+INFO - Inicio del proceso de validación de datos.
+INFO - Se encontraron 53 condiciones.
+WARNING - R[write to console]: Loading required package: DBI
+
+WARNING - R[write to console]: Total de inconsistencias: 94
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO6.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO30.xlsx -> 8
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO4.xlsx -> 5
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO38.xlsx -> 10
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO25.xlsx -> 8
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO2.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO15.xlsx -> 6
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO11.xlsx -> 3
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO24.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO5.xlsx -> 8
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO31.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO19.xlsx -> 7
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO37.xlsx -> 2
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO32.xlsx -> 3
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO29.xlsx -> 1
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO18.xlsx -> 3
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO23.xlsx -> 3
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO34.xlsx -> 4
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO27.xlsx -> 3
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO20.xlsx -> 2
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO8.xlsx -> 1
+
+WARNING - R[write to console]: >> InconsistenciasGRUPO14.xlsx -> 1
+

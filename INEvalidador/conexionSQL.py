@@ -82,7 +82,7 @@ class baseSQL:
             caratula_pr_df = pd.read_feather('db/caratula_PR.feather')
             caratula_pr_df = columnas_a_mayuscula(caratula_pr_df)
             # Agregar dataframe con las fechas
-            tiempo_pr_df = pd.read_feather("db/registro_de_visitas_pr_PR.feather")
+            tiempo_pr_df = pd.read_feather("db/tiempo_control_PR.feather")
             tiempo_pr_df = columnas_a_mayuscula(tiempo_pr_df)
             # Unir a base raiz
             df_base = pd.merge(df_base, tiempo_pr_df, on="LEVEL-1-ID", how="inner")
@@ -95,7 +95,7 @@ class baseSQL:
             estado_boleta_df = pd.read_feather('db/estado_de_boleta_SR.feather')
             estado_boleta_df = columnas_a_mayuscula(estado_boleta_df)
             # Agregar dataframe de control de tiempo
-            tiempo_sr_df = pd.read_feather("db/registro_de_visitas_sr_SR.feather")
+            tiempo_sr_df = pd.read_feather("db/control_tiempo_SR.feather")
             tiempo_sr_df = columnas_a_mayuscula(tiempo_sr_df)
             # Unir a base raiz
             df_base = pd.merge(df_base, tiempo_sr_df, on="LEVEL-1-ID", how="inner")
@@ -108,7 +108,7 @@ class baseSQL:
             estado_boleta_df = pd.read_feather('db/estado_de_boleta_SR.feather')
             estado_boleta_df = columnas_a_mayuscula(estado_boleta_df)
             # Agregar dataframe de control de tiempo
-            tiempo_sr_df = pd.read_feather("db/registro_de_visitas_sr_SR.feather")
+            tiempo_sr_df = pd.read_feather("db/tiempo_control_PR.feather")
             tiempo_sr_df = columnas_a_mayuscula(tiempo_sr_df)
             # Unir a base raiz
             df_base = pd.merge(df_base, tiempo_sr_df, on="LEVEL-1-ID", how="inner")
@@ -118,11 +118,12 @@ class baseSQL:
             caratula_pr_df = pd.read_feather('db/caratula_PR.feather')
             caratula_pr_df = columnas_a_mayuscula(caratula_pr_df)
             # Agregar dataframe con las fechas
-            tiempo_pr_df = pd.read_feather("db/registro_de_visitas_pr_PR.feather")
+            tiempo_pr_df = pd.read_feather("db/tiempo_control_PR.feather")
             tiempo_pr_df = columnas_a_mayuscula(tiempo_pr_df)
             # Unir a base raiz
             df_base = pd.merge(df_base, tiempo_pr_df, on="LEVEL-1-ID", how="inner")
             df_base = df_base.drop("INDEX_y",axis=1)
+            df_base = df_base.drop("INDEX_x",axis=1)
             df_base = pd.merge(df_base, caratula_pr_df, on='LEVEL-1-ID', how='inner')  # Unión por 'LEVEL-1-ID'
 
         # Validar solo las encuestas terminadas
@@ -141,15 +142,15 @@ class baseSQL:
             df_base["CP"] = 0
 
         # Agregar filtrado por fecha tomando el capítulo 1 como inicio de la encuesta
-        if "R1_FECHA_INICIAL" in df_base.columns:
-            df_base["R1_FECHA_INICIAL"] = pd.to_datetime(df_base["R1_FECHA_INICIAL"], format="%d/%m/%y")
-            df_base = df_base[(df_base["R1_FECHA_INICIAL"] >= fecha_inicio) & (df_base["R1_FECHA_INICIAL"] <= fecha_final)]
-            # df_base["FECHA"] = df_base["R1_FECHA_INICIAL"]
+        if "FECHA_INICIO_CAP_1" in df_base.columns:
+            df_base["FECHA_INICIO_CAP_1"] = pd.to_datetime(df_base["FECHA_INICIO_CAP_1"], format="%d/%m/%y")
+            df_base = df_base[(df_base["FECHA_INICIO_CAP_1"] >= fecha_inicio) & (df_base["FECHA_INICIO_CAP_1"] <= fecha_final)]
+            df_base["FECHA"] = df_base["FECHA_INICIO_CAP_1"]
             
-        if "FECHA_INICIAL" in df_base.columns:
-            df_base["FECHA_INICIAL"] = pd.to_datetime(df_base["FECHA_INICIAL"], format="%d/%m/%y")
-            df_base = df_base[(df_base["FECHA_INICIAL"] >= fecha_inicio) & (df_base["FECHA_INICIAL"] <= fecha_final)]
-            # df_base["FECHA"] = df_base["FECHA_INICIAL"]
+        if "FECHA_INICIO_CAPXIIIA" in df_base.columns:
+            df_base["FECHA_INICIO_CAPXIIIA"] = pd.to_datetime(df_base["FECHA_INICIO_CAPXIIIA"], format="%d/%m/%y")
+            df_base = df_base[(df_base["FECHA_INICIO_CAPXIIIA"] >= fecha_inicio) & (df_base["FECHA_INICIO_CAPXIIIA"] <= fecha_final)]
+            df_base["FECHA"] = df_base["FECHA_INICIO_CAPXIIIA"]
             
 
         for columna in df_base.columns:
