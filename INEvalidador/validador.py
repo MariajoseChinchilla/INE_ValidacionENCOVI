@@ -22,7 +22,7 @@ from .conexionSQL import baseSQL
 
 
 class Validador:
-    def __init__(self, ruta_expresiones: str="Expresiones (1).xlsx", descargar: bool=True):
+    def __init__(self, ruta_expresiones: str="Expresiones.xlsx", descargar: bool=True):
         self.df_ = pd.DataFrame
         # nuevo
         self.sql = baseSQL(descargar)
@@ -336,7 +336,7 @@ class Validador:
                 creds = pickle.load(token)
 
         if not creds or not creds.valid:
-            flow = InstalledAppFlow.from_client_secrets_file('client_secret_915678628628-e8vekd1kcmhi008jphhrs6dsaflmfia2.apps.googleusercontent.com.json', SCOPES)
+            flow = InstalledAppFlow.from_client_secrets_file("CredencialesCompartido.json", SCOPES)
             creds = flow.run_local_server(port=0)
             with open('token.pickle', 'wb') as token:
                 pickle.dump(creds, token)
