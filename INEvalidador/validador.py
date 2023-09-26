@@ -232,6 +232,19 @@ class Validador:
 
             self.df_ = dfs
             df_power = pd.concat(dfs) # Hacer copia de los dfs para exportar por supervisor luego
+            # Agregar validaciones de biyección entre CPs para actividad económica
+            # Validación para capítulo 14
+            expresion1 = "PPA03 >= 18 & CP no es vacio & (P10C21 está en (5,6) o P10D07 está en (5,6) o P10C47 > 0) y (P14A01 = 2 o P14A01 es vacío)"
+            cap141 = self.filter_base(expresion1,["LEVEL-1-ID", "CP"], fecha_inicio, fecha_final)
+            agrupado14 = cap141.groupby(["LEVEL-1-ID"])["CP"].unique().reset_index()
+            expresion2 = "P14A04 no es vacio y P14A03A no es vacio"
+            cap142 = self.filter_base(expresion2, ["P14A04", "P14A03A", "LEVEL-1-ID"], fecha_inicio, fecha_final)
+            agrupado142 = cap142.groupby(["LEVEL-1-ID"])["P14A04"].unique().reset_index()
+            final14 = agrupado14.merge(agrupado142, how="inner", on="LEVEL-1-ID")
+            final14 = agrupado14.merge(agrupado142, how="inner", on="LEVEL-1-ID")
+            final14["COINCIDENCIA"] = final14["CP"].astype(str) == final14["P14A04"].astype(str)
+
+            # Validación para capítulo 16
             df_power = df_power.drop_duplicates(keep="first")
             df_power.to_csv(os.path.join(carpeta_padre, f'InconsistenciasPowerBi_{dia}-{mes}-{año}.csv'), index=False)
             reporte_codigo = df_power.groupby(["CODIGO ERROR", "DEFINICION DE INCONSISTENCIA"]).size().reset_index(name="FRECUENCIA")
@@ -297,7 +310,7 @@ class Validador:
 
                 # Guardar el DataFrame en output_folder
                 output_file = f"{self.ruta_salida_final}/InconsistenciasGRUPO{group_number}_{date_str}.xlsx"
-                df2.to_excel(output_file, index=False)
+                df2.sort_values(by=["UPM", "CODIGO ERROR"]).to_excel(output_file, index=False)
         else:
             for folder1_file in folder1_files:
                 group_number = folder1_file.split("GRUPO")[1].split("_")[0]
@@ -319,7 +332,7 @@ class Validador:
 
                 # Guardar el DataFrame combinado en output_folder
                 output_file = f"{self.ruta_salida_final}/InconsistenciasGRUPO{group_number}_{date_str}.xlsx"
-                df_concatenated.to_excel(output_file, index=False)
+                df_concatenated.sort_values(by=["UPM", "CODIGO ERROR"]).to_excel(output_file, index=False)
 
     def subir_a_drive(self, ruta):
         dia = datetime.now().day
