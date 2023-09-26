@@ -5,6 +5,7 @@ import openpyxl
 import os
 from datetime import datetime
 import glob
+import pkg_resources
 
 # Función para convertirlas todas las columnas de la base a mayuscula
 def columnas_a_mayuscula(df: pd.DataFrame):
@@ -27,9 +28,12 @@ def extract_number(s):
     # Extraer el número deseado de la cadena
     return int(s[7:-2])
 
-def extraer_UPMS():
+def extraer_UPMS(ruta: str="") -> dict:
     # Crear un diccionario vacío para almacenar los resultados
-    df = pd.read_excel('UPMS.xlsx')
+    # si no se pasa una ruta, se usa el archivo que viene en el paquete
+    if not ruta:
+        ruta = pkg_resources.resource_filename(__name__, 'archivos/UPMS.xlsx')
+    df = pd.read_excel(ruta)
     dic_upms = {}
 
     # Agrupar por 'GRUPO' y recorrer cada grupo
