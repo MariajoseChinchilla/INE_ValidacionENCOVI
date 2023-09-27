@@ -30,7 +30,7 @@ class Validador:
             os.mkdir(os.path.join(self.ruta_escritorio, "Validador"))
         # carpeta de salida principal
         self.marca_temp = datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
-        self.salida_principal = os.path.join(self.ruta_escritorio, f"Validador/output_{self.marca_temp}")
+        self.salida_principal = os.path.join(self.ruta_escritorio, f"Validador\output_{self.marca_temp}")
         os.mkdir(self.salida_principal)
         # demas atributos
         self.df_ = pd.DataFrame
@@ -39,7 +39,7 @@ class Validador:
         self.df = pd.DataFrame
         # si no se pasa la ruta de expresiones, se usa la ruta por defecto
         if not ruta_expresiones:
-            ruta_expresiones = pkg_resources.resource_filename(__name__, "archivos/Expresiones.xlsx")
+            ruta_expresiones = pkg_resources.resource_filename(__name__, "archivos\Expresiones.xlsx")
         self.expresiones = pd.read_excel(ruta_expresiones)
         self.columnas = ["FECHA", "DEPTO", "MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR", "CP","ENCUESTADOR"]
         self._capturar_converciones = False
@@ -301,10 +301,10 @@ class Validador:
         date_str = now.strftime("%d-%m-%H-%M-%S")
 
         # Buscar todos los archivos Excel en folder1
-        folder1_files = glob.glob(f"{folder1}/InconsistenciasGRUPO*.xlsx")
+        folder1_files = glob.glob(f"{folder1}\InconsistenciasGRUPO*.xlsx")
 
         # Crear carpeta de salidas finales dentro de la carpeta de salidas
-        self.ruta_salida_final = f"{output_folder}/Salidas{date_str}"
+        self.ruta_salida_final = f"{output_folder}\Salidas{date_str}"
         if not os.path.exists(self.ruta_salida_final):
             os.makedirs(self.ruta_salida_final)
             print(f"Se ha creado la carpeta: {self.ruta_salida_final}")
