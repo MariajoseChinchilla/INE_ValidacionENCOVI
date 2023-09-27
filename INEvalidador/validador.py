@@ -162,6 +162,11 @@ class Validador:
         self.df = self.sql.df_para_condicion(condicion, fecha_inicio, fecha_final)
         filtered_df = self.df.query(self.leer_condicion(condicion))[columnas]
         return copy.deepcopy(filtered_df)
+    
+    def filtrar_base_limpieza(self, condicion: str, columnas: list, fecha_inicio, fecha_final) -> pd.DataFrame:
+        self.df = self.sql.df_para_limpieza(condicion, columnas)
+        filtered_df = self.df.query(self.leer_condicion(condicion))[columnas]
+        return copy.deepcopy(filtered_df)
 
 
     # Función para leer todos los criterios y exportar un solo excel con las columnas DEPTO, MUPIO, HOGAR, CP, CAPITULO, SECCION
@@ -382,13 +387,13 @@ class Validador:
                 df_concatenated.sort_values(by=["DEPTO", "CODIGO ERROR"]).to_excel(output_file, index=False)
 
     # Método para generar archivos para limpieza de datos
-    
+
+
     def archivos_limpieza(self):
         try:
                 # Calcular el total de condiciones
                 total_conditions = self.criterios_limpieza.shape[0]
                 self.criterios_limpieza["VARIABLES A EXPORTAR"] = self.criterios_limpieza["VARIABLES A EXPORTAR"].str.replace(r'\s*,\s*', ',').str.split(r'\s+|,')
-                    
                 # Crear carpeta para guardar los archivos de inconsistencias generales y guardar el log de errores
                 marca_temp = datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
                 carpeta_padre = f"Limpieza/DatosLimpieza{marca_temp}"
@@ -417,12 +422,11 @@ class Validador:
 
                 cuadruplas_exportacion = list(zip(nombre_arch, definicion, condicion, variables))
 
-                print(cuadruplas_exportacion)
                 # Leer filtros y tomar subconjuntos de la base e ir uniendo las bases hasta generar una sola con las columnas solicitadas
                 for nombre, defini, cond, var in cuadruplas_exportacion:
                     try:
                         # Aplicar filtro a la base de datos
-                        Validacion = self.filter_base(cond, var, "2023-1-1", "2023-12-31")
+                        Validacion = self.filtrar_base_limpieza(cond, var, "2023-1-1", "2023-12-31")
                         if Validacion.shape[0] == 0:
                             continue 
                         Validacion.to_excel(os.path.join(carpeta_padre, f'{nombre}.xlsx'), index=False)

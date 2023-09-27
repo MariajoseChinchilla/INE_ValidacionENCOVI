@@ -1,4 +1,0 @@
-INFO - Log de condiciones convertidas a formato pandas
-INFO - Inicio del proceso de exportación de inconsistencias
-INFO - Se encontraron 1 condiciones.
-ERROR - P01A01 = 2 y PPB02 > 1: "['PPA03'] not in index".
