@@ -22,12 +22,13 @@ from .conexionSQL import baseSQL
 
 
 class Validador:
-    def __init__(self, ruta_expresiones: str="Expresiones.xlsx", descargar: bool=True):
+    def __init__(self, ruta_expresiones: str="Expresiones.xlsx", descargar: bool=True, criterios_limpieza: str="Limpieza.xlsx"):
         self.df_ = pd.DataFrame
         # nuevo
         self.sql = baseSQL(descargar)
         self.df = pd.DataFrame
         self.expresiones = pd.read_excel(ruta_expresiones)
+        self.criterios_limpieza = pd.read_excel(criterios_limpieza)
         self.columnas = ["FECHA", "DEPTO", "MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR", "CP","ENCUESTADOR"]
         self._capturar_converciones = False
         self.__replacements = {
@@ -230,21 +231,67 @@ class Validador:
             mes = datetime.now().month
             año = datetime.now().year
 
-            self.df_ = dfs
-            df_power = pd.concat(dfs) # Hacer copia de los dfs para exportar por supervisor luego
+
             # Agregar validaciones de biyección entre CPs para actividad económica
             # Validación para capítulo 14
-            expresion1 = "PPA03 >= 18 & CP no es vacio & (P10C21 está en (5,6) o P10D07 está en (5,6) o P10C47 > 0) y (P14A01 = 2 o P14A01 es vacío)"
-            cap141 = self.filter_base(expresion1,["LEVEL-1-ID", "CP"], fecha_inicio, fecha_final)
-            agrupado14 = cap141.groupby(["LEVEL-1-ID"])["CP"].unique().reset_index()
+            expresion1 = "PPA03 >= 18 & CP no es vacio & (P10C21 está en (5,6) o P10D07 está en (5,6) o P10C47 > 0)"
+            cap141 = self.filter_base(expresion1,["LEVEL-1-ID", "FECHA", "DEPTO", "CP", "ENCUESTADOR", "MUPIO", "SECTOR", "ESTRUCTURA", "VIVIENDA", "HOGAR"], fecha_inicio, fecha_final)
             expresion2 = "P14A04 no es vacio y P14A03A no es vacio"
-            cap142 = self.filter_base(expresion2, ["P14A04", "P14A03A", "LEVEL-1-ID"], fecha_inicio, fecha_final)
-            agrupado142 = cap142.groupby(["LEVEL-1-ID"])["P14A04"].unique().reset_index()
-            final14 = agrupado14.merge(agrupado142, how="inner", on="LEVEL-1-ID")
-            final14 = agrupado14.merge(agrupado142, how="inner", on="LEVEL-1-ID")
+            cap142 = self.filter_base(expresion2, ["P14A04", "P14A03A", "FECHA", "LEVEL-1-ID", "ENCUESTADOR", "DEPTO", "CP", "MUPIO", "SECTOR", "ESTRUCTURA", "VIVIENDA", "HOGAR"], fecha_inicio, fecha_final)
+            # Agrupación conservando columnas adicionales
+            agrupado14 = cap141.groupby(["LEVEL-1-ID"]).agg({
+                'CP': lambda x: list(set(x)),
+                'FECHA': 'first',
+                'DEPTO': 'first',
+                'MUPIO': 'first',
+                'SECTOR': 'first',
+                'ESTRUCTURA': 'first',
+                'VIVIENDA': 'first',
+                'HOGAR': 'first',
+                "ENCUESTADOR": "first",
+            }).reset_index()
+
+            agrupado142 = cap142.groupby(["LEVEL-1-ID"]).agg({
+                'P14A04': lambda x: list(set(x)),
+                'FECHA': 'first',
+                'DEPTO': 'first',
+                'MUPIO': 'first',
+                'SECTOR': 'first',
+                'ESTRUCTURA': 'first',
+                'VIVIENDA': 'first',
+                "ENCUESTADOR": "first",
+                'HOGAR': 'first',
+            }).reset_index()
+
+            # Fusión de dataframes
+            final14 = agrupado14.merge(agrupado142, how="inner", on=["LEVEL-1-ID"], suffixes=('_x', '_y'))
+
+            for columna in final14.columns:
+                if columna[-2:] == "_x":
+                    final14.rename(columns={columna: columna[:-2]}, inplace=True)
+                if columna[-2:] == "_y":
+                    final14.drop(columna, axis=1, inplace=True)
+
+            # Comparar y añadir columna "COINCIDENCIA"
             final14["COINCIDENCIA"] = final14["CP"].astype(str) == final14["P14A04"].astype(str)
 
-            # Validación para capítulo 16
+            final14["CAPITULO"] = 14
+            final14["SECCION"] = "A"
+            final14["PREGUNTA"] = 3
+            final14["DEFINICION DE INCONSISTENCIA"] = "No está registrando los mismos CPs en actividad agrícola en el capítulo 10 y el 14. No es coincidente la información de los CPs registrados. Verifique sección C o D capítulo 10, persona ingresada como actividad económica no agrícola y no está siendo registrada en el capítulo 14 o bien, está registrando información en el capítulo 14 de una persona pero no la categorizó como actividad económica no agrícola en el capítulo 10."
+            final14["CODIGO ERROR"] = "ACECO14"
+            final14["COMENTARIOS"] = None
+
+            final14 = final14[final14["COINCIDENCIA"] == False]
+            final14['CPs'] = final14.apply(lambda row: list(set(row['CP']).symmetric_difference(set(row['P14A04']))), axis=1)
+            final14 = final14[["FECHA", "ENCUESTADOR", "DEPTO", "MUPIO", "SECTOR","ESTRUCTURA", "VIVIENDA", "HOGAR", "CPs", "CAPITULO", "SECCION", "PREGUNTA", "DEFINICION DE INCONSISTENCIA", "CODIGO ERROR", "COMENTARIOS"]]
+            final14.rename(columns={"CPs": "CP"}, inplace=True)
+
+            # Unir esto al csv acumulado
+            dfs.append(final14)
+            self.df_ = dfs
+            df_power = pd.concat(dfs) # Hacer copia de los dfs para exportar por supervisor luego
+
             df_power = df_power.drop_duplicates(keep="first")
             df_power.to_csv(os.path.join(carpeta_padre, f'InconsistenciasPowerBi_{dia}-{mes}-{año}.csv'), index=False)
             reporte_codigo = df_power.groupby(["CODIGO ERROR", "DEFINICION DE INCONSISTENCIA"]).size().reset_index(name="FRECUENCIA")
@@ -310,7 +357,7 @@ class Validador:
 
                 # Guardar el DataFrame en output_folder
                 output_file = f"{self.ruta_salida_final}/InconsistenciasGRUPO{group_number}_{date_str}.xlsx"
-                df2.sort_values(by=["UPM", "CODIGO ERROR"]).to_excel(output_file, index=False)
+                df2.sort_values(by=["DEPTO", "CODIGO ERROR"]).to_excel(output_file, index=False)
         else:
             for folder1_file in folder1_files:
                 group_number = folder1_file.split("GRUPO")[1].split("_")[0]
@@ -332,7 +379,66 @@ class Validador:
 
                 # Guardar el DataFrame combinado en output_folder
                 output_file = f"{self.ruta_salida_final}/InconsistenciasGRUPO{group_number}_{date_str}.xlsx"
-                df_concatenated.sort_values(by=["UPM", "CODIGO ERROR"]).to_excel(output_file, index=False)
+                df_concatenated.sort_values(by=["DEPTO", "CODIGO ERROR"]).to_excel(output_file, index=False)
+
+    # Método para generar archivos para limpieza de datos
+    
+    def archivos_limpieza(self):
+        try:
+                # Calcular el total de condiciones
+                total_conditions = self.criterios_limpieza.shape[0]
+                self.criterios_limpieza["VARIABLES A EXPORTAR"] = self.criterios_limpieza["VARIABLES A EXPORTAR"].str.replace(r'\s*,\s*', ',').str.split(r'\s+|,')
+                    
+                # Crear carpeta para guardar los archivos de inconsistencias generales y guardar el log de errores
+                marca_temp = datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
+                carpeta_padre = f"Limpieza/DatosLimpieza{marca_temp}"
+
+                if not os.path.exists("Limpieza"):
+                    os.mkdir("Limpieza")
+
+                self.ruta_carpeta_padre = f"Limpieza/DatosLimpieza{marca_temp}"
+
+                if not os.path.exists(self.ruta_carpeta_padre):
+                    os.mkdir(self.ruta_carpeta_padre)
+
+                # Configurar logging
+                self.__configurar_logs(carpeta_padre)
+                logging.info("Inicio del proceso de exportación de inconsistencias")
+                logging.info("Se encontraron {} condiciones.".format(total_conditions))
+
+                # Inicializar la barra de progreso
+                pbar = tqdm(total=total_conditions, unit='condicion')
+
+                # Hacer cuadruplas con condicion, capitulo, seccion, etc
+                nombre_arch = list(self.criterios_limpieza["NOMBRE ARCHIVO"]) 
+                definicion = list(self.criterios_limpieza["DEFINICION DE LA VALIDACION"])
+                condicion = list(self.criterios_limpieza["CONDICION O CRITERIO"])
+                variables = list(self.criterios_limpieza["VARIABLES A EXPORTAR"]) 
+
+                cuadruplas_exportacion = list(zip(nombre_arch, definicion, condicion, variables))
+
+                print(cuadruplas_exportacion)
+                # Leer filtros y tomar subconjuntos de la base e ir uniendo las bases hasta generar una sola con las columnas solicitadas
+                for nombre, defini, cond, var in cuadruplas_exportacion:
+                    try:
+                        # Aplicar filtro a la base de datos
+                        Validacion = self.filter_base(cond, var, "2023-1-1", "2023-12-31")
+                        if Validacion.shape[0] == 0:
+                            continue 
+                        Validacion.to_excel(os.path.join(carpeta_padre, f'{nombre}.xlsx'), index=False)
+                    except Exception as e:
+                        # Manejar error específico de una expresión
+                        logging.error(f"{cond}: {e}.")
+                        continue 
+                    finally:
+                        # Actualizar barra de progreso
+                        pbar.update()
+
+        except Exception as e:
+                    # Manejar error general en caso de problemas durante el proceso
+                    logging.error(f"Error general: {e}")
+
+
 
     def subir_a_drive(self, ruta):
         dia = datetime.now().day
