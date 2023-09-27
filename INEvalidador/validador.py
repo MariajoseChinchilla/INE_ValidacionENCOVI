@@ -15,15 +15,15 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaFileUpload
 import os
-import rpy2.robjects as robjects
 
 from .utils import extraer_UPMS
 from .conexionSQL import baseSQL
-
-
+from .scripR import ScripR
 
 class Validador:
     def __init__(self, ruta_expresiones: str="", descargar: bool=True):
+        # atributos de rutas de archivos
+        self.archivo_grupos = ""
         self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
         # crea carpeta ValidadorINE en el escritorio en caso no exista
         if not os.path.exists(os.path.join(self.ruta_escritorio, "Validador")):
@@ -187,7 +187,7 @@ class Validador:
             if not os.path.exists("Inconsistencias"):
                 os.mkdir("Inconsistencias")
 
-            self.ruta_carpeta_padre = os.join.path(self.salida_principal, f"Mariajose/Validaciones_{self.marca_temp}")
+            self.ruta_carpeta_padre = os.path.join(self.salida_principal, f"Mariajose\Validaciones_{self.marca_temp}")
 
             if not os.path.exists(self.ruta_carpeta_padre):
                 os.mkdir(self.ruta_carpeta_padre)
@@ -283,13 +283,13 @@ class Validador:
         # Procesar datos para validar con validaciones originales
         self.process_to_export(fecha_inicio, fecha_final)
         # Ejecutar el scrip de Mario
-        robjects.r.source(ruta_expresiones = pkg_resources.resource_filename(__name__, "archivos/InconsistenciasOP.R"))
+        ScripR().procesar_datos(self.salida_principal, self.archivo_grupos)
 
         # Obtener la ruta a la carpeta más reciente
-        ruta_externa = self.obtener_carpeta_mas_reciente("Mario")
+        ruta_externa = self.obtener_carpeta_mas_reciente(os.path.join(self.salida_principal, "Mario"))
 
         # Concatenar los Exceles para generar la salida a reportar
-        self.concatenar_exceles(self.ruta_carpeta_padre, ruta_externa, "Salidas_Finales")
+        self.concatenar_exceles(self.salida_principal, ruta_externa, os.path.join(self.salida_principal, "Salidas_Finales"))
 
     def concatenar_exceles(self, folder1, folder2, output_folder):
         # Crear el directorio de salida si no existe
