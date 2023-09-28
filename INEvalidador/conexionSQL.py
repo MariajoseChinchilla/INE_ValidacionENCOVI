@@ -8,7 +8,7 @@ from .utils import columnas_a_mayuscula, condicion_a_variables
 class baseSQL:
     def __init__(self, descargar: bool=True):
         self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
-        self.dir_salida = os.path.join(self.ruta_escritorio, 'Validador/db')
+        self.dir_salida = os.path.join(self.ruta_escritorio, 'Validador\db')
         if descargar:
             # Parámetros de conexión
             usuario = 'mchinchilla'
