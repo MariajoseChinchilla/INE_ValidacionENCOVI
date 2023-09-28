@@ -181,16 +181,11 @@ class Validador:
         try:
             # Calcular el total de condiciones
             total_conditions = self.expresiones.shape[0]
-            
-            # Crear carpeta para guardar los archivos de inconsistencias generales y guardar el log de errores
-
-            if not os.path.exists("Inconsistencias"):
-                os.mkdir("Inconsistencias")
 
             self.ruta_carpeta_padre = os.path.join(self.salida_principal, f"Mariajose\Validaciones_{self.marca_temp}")
 
-            if not os.path.exists(self.ruta_carpeta_padre):
-                os.mkdir(self.ruta_carpeta_padre)
+            os.mkdir(os.path.join(self.salida_principal, "Mariajose"))
+            os.mkdir(self.ruta_carpeta_padre)
 
             # Configurar logging
             self.__configurar_logs(self.ruta_carpeta_padre)
@@ -321,7 +316,7 @@ class Validador:
 
                 # Guardar el DataFrame en output_folder
                 output_file = f"{self.ruta_salida_final}/InconsistenciasGRUPO{group_number}_{date_str}.xlsx"
-                df2.sort_values(by=["UPM", "CODIGO ERROR"]).to_excel(output_file, index=False)
+                df2.sort_values(by=["DEPTO", "CODIGO ERROR"]).to_excel(output_file, index=False)
         else:
             for folder1_file in folder1_files:
                 group_number = folder1_file.split("GRUPO")[1].split("_")[0]
@@ -343,7 +338,7 @@ class Validador:
 
                 # Guardar el DataFrame combinado en output_folder
                 output_file = f"{self.ruta_salida_final}/InconsistenciasGRUPO{group_number}_{date_str}.xlsx"
-                df_concatenated.sort_values(by=["UPM", "CODIGO ERROR"]).to_excel(output_file, index=False)
+                df_concatenated.sort_values(by=["DEPTO", "CODIGO ERROR"]).to_excel(output_file, index=False)
 
     def subir_a_drive(self, ruta):
         dia = datetime.now().day
