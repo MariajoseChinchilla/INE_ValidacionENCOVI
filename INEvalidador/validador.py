@@ -183,7 +183,6 @@ class Validador:
                 os.mkdir("Inconsistencias")
 
             self.ruta_carpeta_padre = f"Mariajose/Validaciones_{marca_temp}"
-
             if not os.path.exists(self.ruta_carpeta_padre):
                 os.mkdir(self.ruta_carpeta_padre)
 
@@ -287,17 +286,16 @@ class Validador:
             final14["CODIGO ERROR"] = "ACECO14"
             final14["COMENTARIOS"] = None
 
-            final14 = final14[final14["COINCIDENCIA"] == False]
-            final14['CPs'] = final14.apply(lambda row: list(set(row['CP']).symmetric_difference(set(row['P14A04']))), axis=1)
-            final14 = final14[["FECHA", "ENCUESTADOR", "DEPTO", "MUPIO", "SECTOR","ESTRUCTURA", "VIVIENDA", "HOGAR", "CPs", "CAPITULO", "SECCION", "PREGUNTA", "DEFINICION DE INCONSISTENCIA", "CODIGO ERROR", "COMENTARIOS"]]
-            final14.rename(columns={"CPs": "CP"}, inplace=True)
+            final14 = final14[(final14["COINCIDENCIA"] == False) & (final14["CP"].notna()) & (final14["P14A04"].notna())]
+            if not final14.empty:
+                final14['CPs'] = final14.apply(lambda row: list(set(tuple(row['CP'])).symmetric_difference(set(tuple(row['P14A04'])))), axis=1)
+                final14 = final14[["FECHA", "ENCUESTADOR", "DEPTO", "MUPIO", "SECTOR","ESTRUCTURA", "VIVIENDA", "HOGAR", "CPs", "CAPITULO", "SECCION", "PREGUNTA", "DEFINICION DE INCONSISTENCIA", "CODIGO ERROR", "COMENTARIOS"]]
+                final14.rename(columns={"CPs": "CP"}, inplace=True)
 
             # Unir esto al csv acumulado
             dfs.append(final14)
             self.df_ = dfs
             df_power = pd.concat(dfs) # Hacer copia de los dfs para exportar por supervisor luego
-
-            df_power = df_power.drop_duplicates(keep="first")
             df_power.to_csv(os.path.join(carpeta_padre, f'InconsistenciasPowerBi_{dia}-{mes}-{año}.csv'), index=False)
             reporte_codigo = df_power.groupby(["CODIGO ERROR", "DEFINICION DE INCONSISTENCIA"]).size().reset_index(name="FRECUENCIA")
             reporte_encuestador = df_power.groupby(["ENCUESTADOR"]).size().reset_index(name="FRECUENCIA")
@@ -442,7 +440,12 @@ class Validador:
                     # Manejar error general en caso de problemas durante el proceso
                     logging.error(f"Error general: {e}")
 
-
+    # Generar archivos de limpieza de datos ingresando valores por campos de texto
+    def limpieza_por_query(self, condicion: str, columnas: list, fecha_inicio: datetime= "2023-1-1", fecha_final: datetime = "2023-12-31" ):
+        Validacion = self.filtrar_base_limpieza(condicion, columnas, fecha_inicio, fecha_final)
+        marca_temp = datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
+        carpeta_padre = f"Limpieza/DatosLimpieza{marca_temp}"
+        Validacion.to_excel(os.path.join(carpeta_padre, f'{condicion}.xlsx'), index=False)
 
     def subir_a_drive(self, ruta):
         dia = datetime.now().day
