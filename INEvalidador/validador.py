@@ -18,6 +18,7 @@ import rpy2.robjects as robjects
 
 from .utils import extraer_UPMS
 from .conexionSQL import baseSQL
+sql = baseSQL(False)
 
 
 
@@ -387,7 +388,7 @@ class Validador:
     # Método para generar archivos para limpieza de datos
 
 
-    def archivos_limpieza(self):
+    def archivos_limpieza(self, fecha_inicio: datetime="2023-1-1", fecha_final: datetime="2023-12-31"):
         try:
                 # Calcular el total de condiciones
                 total_conditions = self.criterios_limpieza.shape[0]
@@ -414,17 +415,19 @@ class Validador:
 
                 # Hacer cuadruplas con condicion, capitulo, seccion, etc
                 nombre_arch = list(self.criterios_limpieza["NOMBRE ARCHIVO"]) 
-                definicion = list(self.criterios_limpieza["DEFINICION DE LA VALIDACION"])
                 condicion = list(self.criterios_limpieza["CONDICION O CRITERIO"])
                 variables = list(self.criterios_limpieza["VARIABLES A EXPORTAR"]) 
 
-                cuadruplas_exportacion = list(zip(nombre_arch, definicion, condicion, variables))
+                cuadruplas_exportacion = list(zip(nombre_arch, condicion, variables))
 
                 # Leer filtros y tomar subconjuntos de la base e ir uniendo las bases hasta generar una sola con las columnas solicitadas
-                for nombre, defini, cond, var in cuadruplas_exportacion:
+                for nombre, cond, var in cuadruplas_exportacion:
                     try:
                         # Aplicar filtro a la base de datos
-                        Validacion = self.filtrar_base_limpieza(cond, var, "2023-1-1", "2023-12-31")
+                        Validacion = self.filtrar_base_limpieza(cond, var, fecha_inicio, fecha_final)
+                        for i in Validacion.columns:
+                            Validacion.rename(columns={i: i.lower()}, inplace=True)
+                        Validacion["Queries"] = None
                         if Validacion.shape[0] == 0:
                             continue 
                         Validacion.to_excel(os.path.join(carpeta_padre, f'{nombre}.xlsx'), index=False)
@@ -441,11 +444,25 @@ class Validador:
                     logging.error(f"Error general: {e}")
 
     # Generar archivos de limpieza de datos ingresando valores por campos de texto
-    def limpieza_por_query(self, condicion: str, columnas: list, fecha_inicio: datetime= "2023-1-1", fecha_final: datetime = "2023-12-31" ):
+    def limpieza_por_query(self, nombre, condicion: str, columnas: list, fecha_inicio: datetime= "2023-1-1", fecha_final: datetime = "2023-12-31" ):
         Validacion = self.filtrar_base_limpieza(condicion, columnas, fecha_inicio, fecha_final)
-        marca_temp = datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
+        marca_temp = datetime.now().strftime("%d-%m-%Y")
         carpeta_padre = f"Limpieza/DatosLimpieza{marca_temp}"
-        Validacion.to_excel(os.path.join(carpeta_padre, f'{condicion}.xlsx'), index=False)
+
+        if not os.path.exists("Limpieza"):
+            os.mkdir("Limpieza")
+
+        self.ruta_carpeta_padre = f"Limpieza/DatosLimpieza{marca_temp}"
+
+        if not os.path.exists(self.ruta_carpeta_padre):
+            os.mkdir(self.ruta_carpeta_padre)
+
+        # Configurar logging
+        self.__configurar_logs(carpeta_padre)
+        for i in Validacion.columns:
+            Validacion.rename(columns={i: i.lower()}, inplace=True)
+        Validacion["Queries"] = None
+        Validacion.to_excel(os.path.join(carpeta_padre, f'{nombre}.xlsx'), index=False)
 
     def subir_a_drive(self, ruta):
         dia = datetime.now().day
@@ -472,9 +489,12 @@ class Validador:
         # Función para subir un archivo a una carpeta específica
         def upload_to_folder(folder_id, filename):
             df = pd.read_excel(filename)
-            if df.empty:
-                # print(f"El archivo {filename} está vacío y no se subirá.")
-                pass
+            if len(df) <= 1:  # Si tiene encabezado pero no registros
+                match = re.search(r'GRUPO(\d+)', filename)
+                if match:
+                    group_number = int(match.group(1))
+                    print(f"Archivo vacío en el grupo {group_number}.")
+                return  # No continuamos con la subida
 
             media = MediaFileUpload(filename)
             request = service.files().create(media_body=media, body={
@@ -488,7 +508,7 @@ class Validador:
             except HttpError as error:
                 print(f'Ha ocurrido un error al subir el archivo {filename}: {str(error)}')
 
-         # Lista de archivos sin ordenar
+        # Lista de archivos sin ordenar
         files = [os.path.join(ruta, f) for f in os.listdir(ruta) if os.path.isfile(os.path.join(ruta, f))]
 
         # Ordenar la lista de archivos
@@ -503,27 +523,26 @@ class Validador:
                 files_dict[group_number] = f
 
         folder_ids = ["1PVrC64OpF4lLUTn7GB78NDk4tVHKt_9p","1BCUo3eRu4keGA1BxRaDQz7MpD-9Kybam","124JJ2lqUViTPccSSDmX5BaCnwSh0VTTL","1SaOktnsV36R_zUB-_i3LBTmZVhwcVsps",
-                "1cL7VHAHUwsRymHoRS35uqfkSAY443yG_","1uKxCkBWQUrhsYi3TPJvDsGgOpbjPG7iS","19mX4lM2KpJH4BtxOgux9C3OcmyfBbTPX",
-                "1JoxWGL90fxwvIUXOJNs7X6X4qJwt2xML","1cUSFdi2Iy1_8NG7MSqwLThkjJqhZG3Lh","1r8v7-7QuD7I7M31cPimxM6UvKRuHWIue",
-                "1MlXNuRpvZ-uZVToix0rA8_COvIV_sz41",
-                "190oc3i_n1SdB1WEBwDTjs7kKr-NGftou","1FZmN3LKUnCEDKJBeRAa8ass5DYjmQeKH","1Pe-P-RYDR8LaKZxdJmXAerhOe4JcJLVf",
-                "1QtWFQfRHUSn7F3cqJOkEJtIERl7Sfe-N","1oqRunCgEdN9EAmaUrwwXck18GjQL9hSW","1c_t2TkrO6iXo583ePsHDGNco7dNZ1-3v",
-                "1I6mmP-kx456tSofwOg5YG5HGE93EGams","1KtGdixpy-p8JEj45NfoEb8JtZ29xYpFS","1kQVlHOIBO-p1bmsk-rgxCVjG6P_V2TGr",
-                "1my1uG69TEZba7xSLbdaHphYyb9lOLFtg","1K921NLXIqY5oRyxxivqdL5D7CIFwPjm-","1CnfCG1zkXcHGjvS3GeHMb13_tzOooWn4",
-                "1Sm-YBHKldQ8epDdqDUVfGCo0lQ1v0sCp","1yO0qyfXWg9Y0lVXWGWB4lTIeYkIGtY9I","11z9lGtsWFWgotd05xK-0VHHd-kVYNAGV",
-                "1m92ZurDG-J4_aqPnCub88HsYnWtaEaUI","1-sKuqlI8uTdgJ20PsF0_OwPAF84ZxDPH",
-                "1OKlNUxasy5eXpmqLJIZCXK5PoOoMoGVC","1b4Ya2RjwkmymD0IhI81Lq36KhTh5aTXw","11KOYySNg6CCDNEA_8UawUuU45wplZbO5",
-                "1uWIq6hM3BNjtXOFQ2g4ifwufZGBDvHUf","1vSyw6zjJ3iMBNealEETEaOvmFKfo6OA0","15NVXVv5LFQ7vs-d-YmVptUBnx3ZxrxKx",
-                "1qB5f-R2XEyfiEwpJH_9U3gTQfJRUwf5N","1NmLZNNgnZA3jaXx4td0tITiPaMlvD_3m","1DvvWSgpLFmLnpH4Yv074gPqebKjyaBo3",
-                "1FRz1FK4ogxvzcFSQUjIiMaBPjUqH7lvA","1IdZdQ6Y8ExDs4XhdQmDJjnyp1JrnrRFW"]
-        
+                    "1cL7VHAHUwsRymHoRS35uqfkSAY443yG_","1uKxCkBWQUrhsYi3TPJvDsGgOpbjPG7iS","19mX4lM2KpJH4BtxOgux9C3OcmyfBbTPX",
+                    "1JoxWGL90fxwvIUXOJNs7X6X4qJwt2xML","1cUSFdi2Iy1_8NG7MSqwLThkjJqhZG3Lh","1r8v7-7QuD7I7M31cPimxM6UvKRuHWIue",
+                    "1MlXNuRpvZ-uZVToix0rA8_COvIV_sz41",
+                    "190oc3i_n1SdB1WEBwDTjs7kKr-NGftou","1FZmN3LKUnCEDKJBeRAa8ass5DYjmQeKH","1Pe-P-RYDR8LaKZxdJmXAerhOe4JcJLVf",
+                    "1QtWFQfRHUSn7F3cqJOkEJtIERl7Sfe-N","1oqRunCgEdN9EAmaUrwwXck18GjQL9hSW","1c_t2TkrO6iXo583ePsHDGNco7dNZ1-3v",
+                    "1I6mmP-kx456tSofwOg5YG5HGE93EGams","1KtGdixpy-p8JEj45NfoEb8JtZ29xYpFS","1kQVlHOIBO-p1bmsk-rgxCVjG6P_V2TGr",
+                    "1my1uG69TEZba7xSLbdaHphYyb9lOLFtg","1K921NLXIqY5oRyxxivqdL5D7CIFwPjm-","1CnfCG1zkXcHGjvS3GeHMb13_tzOooWn4",
+                    "1Sm-YBHKldQ8epDdqDUVfGCo0lQ1v0sCp","1yO0qyfXWg9Y0lVXWGWB4lTIeYkIGtY9I","11z9lGtsWFWgotd05xK-0VHHd-kVYNAGV",
+                    "1m92ZurDG-J4_aqPnCub88HsYnWtaEaUI","1-sKuqlI8uTdgJ20PsF0_OwPAF84ZxDPH",
+                    "1OKlNUxasy5eXpmqLJIZCXK5PoOoMoGVC","1b4Ya2RjwkmymD0IhI81Lq36KhTh5aTXw","11KOYySNg6CCDNEA_8UawUuU45wplZbO5",
+                    "1uWIq6hM3BNjtXOFQ2g4ifwufZGBDvHUf","1vSyw6zjJ3iMBNealEETEaOvmFKfo6OA0","15NVXVv5LFQ7vs-d-YmVptUBnx3ZxrxKx",
+                    "1qB5f-R2XEyfiEwpJH_9U3gTQfJRUwf5N","1NmLZNNgnZA3jaXx4td0tITiPaMlvD_3m","1DvvWSgpLFmLnpH4Yv074gPqebKjyaBo3",
+                    "1FRz1FK4ogxvzcFSQUjIiMaBPjUqH7lvA","1IdZdQ6Y8ExDs4XhdQmDJjnyp1JrnrRFW"]
 
-            # Recorremos la lista de IDs de carpeta
+        # Recorremos la lista de IDs de carpeta
         for i, folder_id in enumerate(folder_ids):
-                # Buscamos si hay un archivo que corresponde al número de grupo actual (i + 1)
-                filename = files_dict.get(i + 1)
-                
-                if filename:  # Si hay un archivo, lo subimos
-                    upload_to_folder(folder_id, os.path.join(ruta, filename))
-                else:
-                    print(f"No se encontró archivo para el grupo {i + 1}. Pasando al siguiente grupo.")
+            # Buscamos si hay un archivo que corresponde al número de grupo actual (i + 1)
+            filename = files_dict.get(i + 1)
+            
+            if filename:  # Si hay un archivo, lo subimos
+                upload_to_folder(folder_id, os.path.join(ruta, filename))
+            else:
+                print(f"No se encontró archivo para el grupo {i + 1}. Pasando al siguiente grupo.")
