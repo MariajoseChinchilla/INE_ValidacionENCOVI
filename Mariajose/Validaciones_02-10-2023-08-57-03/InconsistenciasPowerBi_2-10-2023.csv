@@ -1,0 +1,4 @@
+FECHA,ENCUESTADOR,DEPTO,MUPIO,SECTOR,ESTRUCTURA,VIVIENDA,HOGAR,CP,CAPITULO,SECCION,PREGUNTA,DEFINICION DE INCONSISTENCIA,CODIGO ERROR,COMENTARIOS
+2023-09-30,3038.0,3.0,12.0,6267.0,133.0,101.0,9.0,0,1,A,1,"Si vive en un cuarto en casa de vecindad, no debería preguntar cuantos cuartos tiene ese hogar, ya que no hay mas cuartos disponibles",01A00104,
+2023-09-29,3110.0,13.0,1.0,15445.0,60.0,41.0,3.0,0,1,A,1,"Si vive en un cuarto de vecindad no podría vivir en una casa propia y pagada, propia y pagándola a
+plazos y otro, ¿cuál?",01A00105,

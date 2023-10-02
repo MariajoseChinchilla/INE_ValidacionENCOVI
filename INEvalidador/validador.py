@@ -23,7 +23,7 @@ sql = baseSQL(False)
 
 
 class Validador:
-    def __init__(self, ruta_expresiones: str="Expresiones.xlsx", descargar: bool=True, criterios_limpieza: str="Limpieza.xlsx"):
+    def __init__(self, ruta_expresiones: str="Expresiones_prueba.xlsx", descargar: bool=True, criterios_limpieza: str="Limpieza.xlsx"):
         self.df_ = pd.DataFrame
         # nuevo
         self.sql = baseSQL(descargar)
@@ -159,14 +159,17 @@ class Validador:
                     condicion_convertida = condicion_convertida.replace(f'{col} {tipo} ""', f'~{col}.isna() & {col} != ""')  
         return condicion_convertida
 
-    def filter_base(self, condicion: str, columnas: list, fecha_inicio, fecha_final) -> pd.DataFrame:
+    def filter_base(self, condicion: str, columnas: list, fecha_inicio: datetime="2023-1-1", fecha_final: datetime="2023-12-31") -> pd.DataFrame:
         self.df = self.sql.df_para_condicion(condicion, fecha_inicio, fecha_final)
         filtered_df = self.df.query(self.leer_condicion(condicion))[columnas]
         return copy.deepcopy(filtered_df)
     
     def filtrar_base_limpieza(self, condicion: str, columnas: list, fecha_inicio, fecha_final) -> pd.DataFrame:
+        # var = columnas + ["FECHA", "ENCUESTADOR", "DEPTO", "MUPIO", "SECTOR","ESTRUCTURA", "VIVIENDA", "HOGAR", "CP", "CAPITULO", "SECCION", "PREGUNTA", "DEFINICION DE INCONSISTENCIA", "CODIGO ERROR", "COMENTARIOS"]
         self.df = self.sql.df_para_limpieza(condicion, columnas)
-        filtered_df = self.df.query(self.leer_condicion(condicion))[columnas]
+        self.df["VARIABLE"] = None
+        self.df["VALOR NUEVO"] = None
+        filtered_df = self.df.query(self.leer_condicion(condicion))[["DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP"] + columnas + ["VARIABLE", "VALOR NUEVO"]]
         return copy.deepcopy(filtered_df)
 
 
@@ -292,6 +295,15 @@ class Validador:
                 final14['CPs'] = final14.apply(lambda row: list(set(tuple(row['CP'])).symmetric_difference(set(tuple(row['P14A04'])))), axis=1)
                 final14 = final14[["FECHA", "ENCUESTADOR", "DEPTO", "MUPIO", "SECTOR","ESTRUCTURA", "VIVIENDA", "HOGAR", "CPs", "CAPITULO", "SECCION", "PREGUNTA", "DEFINICION DE INCONSISTENCIA", "CODIGO ERROR", "COMENTARIOS"]]
                 final14.rename(columns={"CPs": "CP"}, inplace=True)
+                final14.drop("LEVEL-1-ID", axis=1, inplace=True)
+                final14.drop("P14A04", axis=1, inplace=True)
+                final14.drop("COINCIDENCIA", axis=1, inplace=True)
+
+            if final14.empty:
+                final14.rename(columns={"CPs": "CP"}, inplace=True)
+                final14.drop("LEVEL-1-ID", axis=1, inplace=True)
+                final14.drop("P14A04", axis=1, inplace=True)
+                final14.drop("COINCIDENCIA", axis=1, inplace=True)
 
             # Unir esto al csv acumulado
             dfs.append(final14)
@@ -394,7 +406,7 @@ class Validador:
                 total_conditions = self.criterios_limpieza.shape[0]
                 self.criterios_limpieza["VARIABLES A EXPORTAR"] = self.criterios_limpieza["VARIABLES A EXPORTAR"].str.replace(r'\s*,\s*', ',').str.split(r'\s+|,')
                 # Crear carpeta para guardar los archivos de inconsistencias generales y guardar el log de errores
-                marca_temp = datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
+                marca_temp = datetime.now().strftime("%d-%m-%Y")
                 carpeta_padre = f"Limpieza/DatosLimpieza{marca_temp}"
 
                 if not os.path.exists("Limpieza"):
@@ -417,7 +429,6 @@ class Validador:
                 nombre_arch = list(self.criterios_limpieza["NOMBRE ARCHIVO"]) 
                 condicion = list(self.criterios_limpieza["CONDICION O CRITERIO"])
                 variables = list(self.criterios_limpieza["VARIABLES A EXPORTAR"]) 
-
                 cuadruplas_exportacion = list(zip(nombre_arch, condicion, variables))
 
                 # Leer filtros y tomar subconjuntos de la base e ir uniendo las bases hasta generar una sola con las columnas solicitadas
@@ -425,9 +436,11 @@ class Validador:
                     try:
                         # Aplicar filtro a la base de datos
                         Validacion = self.filtrar_base_limpieza(cond, var, fecha_inicio, fecha_final)
-                        for i in Validacion.columns:
-                            Validacion.rename(columns={i: i.lower()}, inplace=True)
-                        Validacion["Queries"] = None
+                        carto = set(["DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP","VARIABLE", "VALOR NUEVO"])
+                        diff = list(set(Validacion.columns) - carto)
+                        for i in diff:
+                            Validacion.rename(columns={i: f"{sql.base_col[i][:-3]}.{i}".lower() for i in diff}, inplace=True)
+                            Validacion.rename(columns={i: i.lower() for i in carto}, inplace=True)
                         if Validacion.shape[0] == 0:
                             continue 
                         Validacion.to_excel(os.path.join(carpeta_padre, f'{nombre}.xlsx'), index=False)
@@ -461,7 +474,7 @@ class Validador:
         self.__configurar_logs(carpeta_padre)
         for i in Validacion.columns:
             Validacion.rename(columns={i: i.lower()}, inplace=True)
-        Validacion["Queries"] = None
+        
         Validacion.to_excel(os.path.join(carpeta_padre, f'{nombre}.xlsx'), index=False)
 
     def subir_a_drive(self, ruta):
