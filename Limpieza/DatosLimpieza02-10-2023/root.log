@@ -1,0 +1,4 @@
+INFO - Log de condiciones convertidas a formato pandas
+INFO - Inicio del proceso de exportación de inconsistencias
+INFO - Se encontraron 10 condiciones.
+ERROR -  P03A01A = 2 Y (P03A02 no es vacio O P03A03A no es vacio O P03A03B no es vacio O P03A04 no es vacio O P03A05 no es vacio O P03A05A no es vacio O P03A06 no es vacio) .: 'NoneType' object is not subscriptable.
