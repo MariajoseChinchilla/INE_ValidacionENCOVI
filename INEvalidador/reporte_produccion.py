@@ -114,4 +114,4 @@ class GestorConteos:
         plt.savefig(ruta_imagen)
 
         # Mostrar el histograma (opcional)
-        # plt.show()
+        plt.show()

@@ -23,7 +23,7 @@ sql = baseSQL(False)
 
 
 class Validador:
-    def __init__(self, ruta_expresiones: str="Expresiones_prueba.xlsx", descargar: bool=True, criterios_limpieza: str="Limpieza.xlsx"):
+    def __init__(self, ruta_expresiones: str="Expresiones.xlsx", descargar: bool=True, criterios_limpieza: str="Limpieza.xlsx"):
         self.df_ = pd.DataFrame
         # nuevo
         self.sql = baseSQL(descargar)
