@@ -7,6 +7,8 @@ from .utils import columnas_a_mayuscula, condicion_a_variables
 
 class baseSQL:
     def __init__(self, descargar: bool=True):
+        self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
+        self.dir_salida = os.path.join(self.ruta_escritorio, 'Validador\db')
         if descargar:
             # Parámetros de conexión
             usuario = 'mchinchilla'
@@ -24,9 +26,9 @@ class baseSQL:
         self.base_col = {}  # Diciconario que asocia variable con el nombre del df
 
         # Recorre todos los archivos en el directorio especificado
-        for archivo in os.listdir('db'):
+        for archivo in os.listdir(self.dir_salida):
             if archivo.endswith('.feather'):  # Verifica si el archivo es un archivo Feather
-                ruta_completa = os.path.join('db', archivo)
+                ruta_completa = os.path.join(self.dir_salida, archivo)
                 # Lee el archivo Feather
                 df = pd.read_feather(ruta_completa)
                 df = columnas_a_mayuscula(df)
@@ -79,10 +81,10 @@ class baseSQL:
         # Si tipo es "PR", agregamos el dataframe "caratula_PR.feather"
         if len(tipos) == 1 and tipos[0] == 'PR':
             # Agregar dataframe con la caratula
-            caratula_pr_df = pd.read_feather('db/caratula_PR.feather')
+            caratula_pr_df = pd.read_feather(os.path.join(self.dir_salida, 'caratula_PR.feather'))
             caratula_pr_df = columnas_a_mayuscula(caratula_pr_df)
             # Agregar dataframe con las fechas
-            tiempo_pr_df = pd.read_feather("db/tiempo_control_PR.feather")
+            tiempo_pr_df = pd.read_feather(os.path.join(self.dir_salida, "tiempo_control_PR.feather"))
             tiempo_pr_df = columnas_a_mayuscula(tiempo_pr_df)
             # Unir a base raiz
             df_base = pd.merge(df_base, tiempo_pr_df, on="LEVEL-1-ID", how="inner")
@@ -92,10 +94,10 @@ class baseSQL:
         # Si tipo es "SR", agregamos el dataframe "estado_de_boleta_SR.feather"
         elif len(tipos) == 1 and tipos[0] == 'SR':
             # Agregar dataframe estado boleta
-            estado_boleta_df = pd.read_feather('db/estado_de_boleta_SR.feather')
+            estado_boleta_df = pd.read_feather(os.path.join(self.dir_salida, 'estado_de_boleta_SR.feather'))
             estado_boleta_df = columnas_a_mayuscula(estado_boleta_df)
             # Agregar dataframe de control de tiempo
-            tiempo_sr_df = pd.read_feather("db/control_tiempo_SR.feather")
+            tiempo_sr_df = pd.read_feather(os.path.join(self.dir_salida, "control_tiempo_SR.feather"))
             tiempo_sr_df = columnas_a_mayuscula(tiempo_sr_df)
             # Unir a base raiz
             df_base = pd.merge(df_base, tiempo_sr_df, on="LEVEL-1-ID", how="inner")
@@ -105,20 +107,20 @@ class baseSQL:
         # Si es validacion entre rondas, agregar tablas pertinentes
         elif len(tipos) == 2:
             # Agregar dataframe estado boleta
-            estado_boleta_df = pd.read_feather('db/estado_de_boleta_SR.feather')
+            estado_boleta_df = pd.read_feather(os.path.join(self.dir_salida, 'estado_de_boleta_SR.feather'))
             estado_boleta_df = columnas_a_mayuscula(estado_boleta_df)
             # Agregar dataframe de control de tiempo
-            tiempo_sr_df = pd.read_feather("db/tiempo_control_PR.feather")
+            tiempo_sr_df = pd.read_feather(os.path.join(self.dir_salida, "tiempo_control_PR.feather"))
             tiempo_sr_df = columnas_a_mayuscula(tiempo_sr_df)
             # Unir a base raiz
             df_base = pd.merge(df_base, tiempo_sr_df, on="LEVEL-1-ID", how="inner")
             df_base = df_base.drop("INDEX_x",axis=1)
             df_base = pd.merge(df_base, estado_boleta_df, on='LEVEL-1-ID', how='inner')  # Unión por 'LEVEL-1-ID'
             # Agregar dataframe con la caratula
-            caratula_pr_df = pd.read_feather('db/caratula_PR.feather')
+            caratula_pr_df = pd.read_feather(os.path.join(self.dir_salida, 'caratula_PR.feather'))
             caratula_pr_df = columnas_a_mayuscula(caratula_pr_df)
             # Agregar dataframe con las fechas
-            tiempo_pr_df = pd.read_feather("db/tiempo_control_PR.feather")
+            tiempo_pr_df = pd.read_feather(os.path.join(self.dir_salida, "tiempo_control_PR.feather"))
             tiempo_pr_df = columnas_a_mayuscula(tiempo_pr_df)
             # Unir a base raiz
             df_base = pd.merge(df_base, tiempo_pr_df, on="LEVEL-1-ID", how="inner")
@@ -295,7 +297,7 @@ class baseSQL:
                 except Exception as e:
                     print(f'> Error "{e}" al obtener la forma de la tabla {tabla_nombre}')
 
-    def tablas_a_feather(self, tipo: str = 'PR', dir_salida: str = 'output'):
+    def tablas_a_feather(self, tipo: str = 'PR'):
         conexion = self.__conexion_PR if tipo == 'PR' else self.__conexion_SR
 
         resultado = conexion.execute(text("SHOW TABLES"))
@@ -308,18 +310,18 @@ class baseSQL:
                 tabla_con_comillas = f'`{tabla_nombre}`'
                 df = pd.read_sql(text(f'SELECT * FROM {tabla_con_comillas}'), con=conexion)
 
-
+                
                 # Crear el directorio de salida si no existe 
-                if not os.path.exists(dir_salida):
-                    os.makedirs(dir_salida)
+                if not os.path.exists(self.dir_salida):
+                    os.makedirs(self.dir_salida)
                 df.reset_index(inplace=True)
                 # Exportar el DataFrame en formato feather
                 tabla_nombre = f"{tabla_nombre}_{tipo}"
-                df.to_feather(os.path.join(dir_salida, f'{tabla_nombre}.feather'))
+                df.to_feather(os.path.join(self.dir_salida, f'{tabla_nombre}.feather'))
 
             except Exception as e:
                 print(f'> Error al convertir la tabla {tabla_nombre} en un DataFrame y exportarlo: {str(e)}')
         
     def extraer_base(self):
-        self.tablas_a_feather('PR', 'db')
-        self.tablas_a_feather('SR', 'db')
+        self.tablas_a_feather('PR')
+        self.tablas_a_feather('SR')

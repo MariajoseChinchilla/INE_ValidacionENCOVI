@@ -1,5 +1,6 @@
 from typing import List, Tuple
 from datetime import datetime
+import pkg_resources
 from tqdm import tqdm
 import pandas as pd
 import numpy as np
@@ -14,20 +15,34 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaFileUpload
 import os
-import rpy2.robjects as robjects
 
 from .utils import extraer_UPMS
 from .conexionSQL import baseSQL
-sql = baseSQL(False)
+from .scripR import ScripR
+
 
 
 
 class Validador:
     def __init__(self, ruta_expresiones: str="Expresiones.xlsx", descargar: bool=True, criterios_limpieza: str="Limpieza.xlsx"):
+        # atributos de rutas de archivos
+        self.archivo_grupos = ""
+        self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
+        # crea carpeta ValidadorINE en el escritorio en caso no exista
+        if not os.path.exists(os.path.join(self.ruta_escritorio, "Validador")):
+            os.mkdir(os.path.join(self.ruta_escritorio, "Validador"))
+        # carpeta de salida principal
+        self.marca_temp = datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
+        self.salida_principal = os.path.join(self.ruta_escritorio, f"Validador\output_{self.marca_temp}")
+        os.mkdir(self.salida_principal)
+        # demas atributos
         self.df_ = pd.DataFrame
         # nuevo
         self.sql = baseSQL(descargar)
         self.df = pd.DataFrame
+        # si no se pasa la ruta de expresiones, se usa la ruta por defecto
+        if not ruta_expresiones:
+            ruta_expresiones = pkg_resources.resource_filename(__name__, "archivos\Expresiones.xlsx")
         self.expresiones = pd.read_excel(ruta_expresiones)
         self.criterios_limpieza = pd.read_excel(criterios_limpieza)
         self.columnas = ["FECHA", "DEPTO", "MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR", "CP","ENCUESTADOR"]
@@ -178,20 +193,14 @@ class Validador:
         try:
             # Calcular el total de condiciones
             total_conditions = self.expresiones.shape[0]
-            
-            # Crear carpeta para guardar los archivos de inconsistencias generales y guardar el log de errores
-            marca_temp = datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
-            carpeta_padre = f"Mariajose/Validaciones_{marca_temp}"
 
-            if not os.path.exists("Inconsistencias"):
-                os.mkdir("Inconsistencias")
+            self.ruta_carpeta_padre = os.path.join(self.salida_principal, f"Mariajose\Validaciones_{self.marca_temp}")
 
-            self.ruta_carpeta_padre = f"Mariajose/Validaciones_{marca_temp}"
-            if not os.path.exists(self.ruta_carpeta_padre):
-                os.mkdir(self.ruta_carpeta_padre)
+            os.mkdir(os.path.join(self.salida_principal, "Mariajose"))
+            os.mkdir(self.ruta_carpeta_padre)
 
             # Configurar logging
-            self.__configurar_logs(carpeta_padre)
+            self.__configurar_logs(self.ruta_carpeta_padre)
             logging.info("Inicio del proceso de validación de datos.")
             logging.info("Se encontraron {} condiciones.".format(total_conditions))
 
@@ -309,18 +318,18 @@ class Validador:
             dfs.append(final14)
             self.df_ = dfs
             df_power = pd.concat(dfs) # Hacer copia de los dfs para exportar por supervisor luego
-            df_power.to_csv(os.path.join(carpeta_padre, f'InconsistenciasPowerBi_{dia}-{mes}-{año}.csv'), index=False)
+            df_power.to_csv(os.path.join(self.ruta_carpeta_padre, f'InconsistenciasPowerBi_{dia}-{mes}-{año}.csv'), index=False)
             reporte_codigo = df_power.groupby(["CODIGO ERROR", "DEFINICION DE INCONSISTENCIA"]).size().reset_index(name="FRECUENCIA")
             reporte_encuestador = df_power.groupby(["ENCUESTADOR"]).size().reset_index(name="FRECUENCIA")
-            reporte_codigo.to_excel(os.path.join(carpeta_padre, f'Frecuencias_por_codigo_{dia}-{mes}-{año}.xlsx'), index=False)
-            reporte_encuestador.to_excel(os.path.join(carpeta_padre, f'Frecuencias_por_encuestador_{dia}-{mes}-{año}.xlsx'), index=False)
+            reporte_codigo.to_excel(os.path.join(self.ruta_carpeta_padre, f'Frecuencias_por_codigo_{dia}-{mes}-{año}.xlsx'), index=False)
+            reporte_encuestador.to_excel(os.path.join(self.ruta_carpeta_padre, f'Frecuencias_por_encuestador_{dia}-{mes}-{año}.xlsx'), index=False)
 
             for upm, sectors in self.dic_upms.items():
                 # Filtra las filas donde la columna "SECTOR" está en los valores de la UPM actual
                 filtered_df = df_power[df_power["SECTOR"].isin(sectors)]
 
                 # Exporta el DataFrame filtrado a un archivo Excel
-                filtered_df.to_excel(os.path.join(carpeta_padre, f'Inconsistencias{upm}_{dia}-{mes}-{año}.xlsx'), index=False)
+                filtered_df.to_excel(os.path.join(self.ruta_carpeta_padre, f'Inconsistencias{upm}_{dia}-{mes}-{año}.xlsx'), index=False)
 
             # Cerrar la barra de progreso
             pbar.close()
@@ -335,13 +344,13 @@ class Validador:
         # Procesar datos para validar con validaciones originales
         self.process_to_export(fecha_inicio, fecha_final)
         # Ejecutar el scrip de Mario
-        robjects.r.source("InconsistenciasOP.R")
+        ScripR().procesar_datos(self.salida_principal, self.archivo_grupos)
 
         # Obtener la ruta a la carpeta más reciente
-        ruta_externa = self.obtener_carpeta_mas_reciente("Mario")
+        ruta_externa = self.obtener_carpeta_mas_reciente(os.path.join(self.salida_principal, "Mario"))
 
         # Concatenar los Exceles para generar la salida a reportar
-        self.concatenar_exceles(self.ruta_carpeta_padre, ruta_externa, "Salidas_Finales")
+        self.concatenar_exceles(self.salida_principal, ruta_externa, os.path.join(self.salida_principal, "Salidas_Finales"))
 
     def concatenar_exceles(self, folder1, folder2, output_folder):
         # Crear el directorio de salida si no existe
@@ -353,10 +362,10 @@ class Validador:
         date_str = now.strftime("%d-%m-%H-%M-%S")
 
         # Buscar todos los archivos Excel en folder1
-        folder1_files = glob.glob(f"{folder1}/InconsistenciasGRUPO*.xlsx")
+        folder1_files = glob.glob(f"{folder1}\InconsistenciasGRUPO*.xlsx")
 
         # Crear carpeta de salidas finales dentro de la carpeta de salidas
-        self.ruta_salida_final = f"{output_folder}/Salidas{date_str}"
+        self.ruta_salida_final = f"{output_folder}\Salidas{date_str}"
         if not os.path.exists(self.ruta_salida_final):
             os.makedirs(self.ruta_salida_final)
             print(f"Se ha creado la carpeta: {self.ruta_salida_final}")
@@ -439,7 +448,7 @@ class Validador:
                         carto = set(["DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP","VARIABLE", "VALOR NUEVO"])
                         diff = list(set(Validacion.columns) - carto)
                         for i in diff:
-                            Validacion.rename(columns={i: f"{sql.base_col[i][:-3]}.{i}".lower() for i in diff}, inplace=True)
+                            Validacion.rename(columns={i: f"{self.sql.base_col[i][:-3]}.{i}".lower() for i in diff}, inplace=True)
                             Validacion.rename(columns={i: i.lower() for i in carto}, inplace=True)
                         if Validacion.shape[0] == 0:
                             continue 
@@ -486,15 +495,18 @@ class Validador:
 
         ruta_archivos_exportar = self.obtener_carpeta_mas_reciente("Salidas_Finales")
         # Autenticación
+
+        ruta_token = pkg_resources.resource_filename(__name__, "archivos/token.pickle")
         creds = None
-        if os.path.exists('token.pickle'):
-            with open('token.pickle', 'rb') as token:
+        if os.path.exists(ruta_token):
+            with open(ruta_token, 'rb') as token:
                 creds = pickle.load(token)
 
         if not creds or not creds.valid:
-            flow = InstalledAppFlow.from_client_secrets_file("CredencialesCompartido.json", SCOPES)
+            ruta_credencial = pkg_resources.resource_filename(__name__, "archivos/CredencialesCompartido.json")
+            flow = InstalledAppFlow.from_client_secrets_file(ruta_credencial, SCOPES)
             creds = flow.run_local_server(port=0)
-            with open('token.pickle', 'wb') as token:
+            with open(ruta_token, 'wb') as token:
                 pickle.dump(creds, token)
 
         service = build('drive', 'v3', credentials=creds)
