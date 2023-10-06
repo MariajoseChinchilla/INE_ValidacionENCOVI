@@ -193,10 +193,10 @@ class baseSQL:
         # Si tipo es "PR", agregamos el dataframe "caratula_PR.feather"
         if len(tipos) == 1 and tipos[0] == 'PR':
             # Agregar dataframe con la caratula
-            caratula_pr_df = pd.read_feather('db/caratula_PR.feather')
+            caratula_pr_df = pd.read_feather(os.path.join(self.ruta_escritorio, "Validador", "db", 'caratula_PR.feather'))
             caratula_pr_df = columnas_a_mayuscula(caratula_pr_df)
             # Agregar dataframe con las fechas
-            tiempo_pr_df = pd.read_feather("db/tiempo_control_PR.feather")
+            tiempo_pr_df = pd.read_feather(os.path.join(self.ruta_escritorio, "Validador", "db", "tiempo_control_PR.feather"))
             tiempo_pr_df = columnas_a_mayuscula(tiempo_pr_df)
             # Unir a base raiz
             df_base = pd.merge(df_base, tiempo_pr_df, on="LEVEL-1-ID", how="inner")
@@ -206,10 +206,10 @@ class baseSQL:
         # Si tipo es "SR", agregamos el dataframe "estado_de_boleta_SR.feather"
         elif len(tipos) == 1 and tipos[0] == 'SR':
             # Agregar dataframe estado boleta
-            estado_boleta_df = pd.read_feather('db/estado_de_boleta_SR.feather')
+            estado_boleta_df = pd.read_feather(os.path.join(self.ruta_escritorio, "Validador", "db", 'estado_de_boleta_SR.feather'))
             estado_boleta_df = columnas_a_mayuscula(estado_boleta_df)
             # Agregar dataframe de control de tiempo
-            tiempo_sr_df = pd.read_feather("db/control_tiempo_SR.feather")
+            tiempo_sr_df = pd.read_feather(os.path.join(self.ruta_escritorio, "Validador", "db", "control_tiempo_SR.feather"))
             tiempo_sr_df = columnas_a_mayuscula(tiempo_sr_df)
             # Unir a base raiz
             df_base = pd.merge(df_base, tiempo_sr_df, on="LEVEL-1-ID", how="inner")
@@ -219,20 +219,20 @@ class baseSQL:
         # Si es validacion entre rondas, agregar tablas pertinentes
         elif len(tipos) == 2:
             # Agregar dataframe estado boleta
-            estado_boleta_df = pd.read_feather('db/estado_de_boleta_SR.feather')
+            estado_boleta_df = pd.read_feather(os.path.join(self.ruta_escritorio, "Validador", "db", 'estado_de_boleta_SR.feather'))
             estado_boleta_df = columnas_a_mayuscula(estado_boleta_df)
             # Agregar dataframe de control de tiempo
-            tiempo_sr_df = pd.read_feather("db/tiempo_control_PR.feather")
+            tiempo_sr_df = pd.read_feather(os.path.join(self.ruta_escritorio, "Validador", "db", "tiempo_control_PR.feather"))
             tiempo_sr_df = columnas_a_mayuscula(tiempo_sr_df)
             # Unir a base raiz
             df_base = pd.merge(df_base, tiempo_sr_df, on="LEVEL-1-ID", how="inner")
             df_base = df_base.drop("INDEX_x",axis=1)
             df_base = pd.merge(df_base, estado_boleta_df, on='LEVEL-1-ID', how='inner')  # Unión por 'LEVEL-1-ID'
             # Agregar dataframe con la caratula
-            caratula_pr_df = pd.read_feather('db/caratula_PR.feather')
+            caratula_pr_df = pd.read_feather(os.path.join(self.ruta_escritorio, "Validador", "db", 'caratula_PR.feather'))
             caratula_pr_df = columnas_a_mayuscula(caratula_pr_df)
             # Agregar dataframe con las fechas
-            tiempo_pr_df = pd.read_feather("db/tiempo_control_PR.feather")
+            tiempo_pr_df = pd.read_feather(os.path.join(self.ruta_escritorio, "Validador", "db", "tiempo_control_PR.feather"))
             tiempo_pr_df = columnas_a_mayuscula(tiempo_pr_df)
             # Unir a base raiz
             df_base = pd.merge(df_base, tiempo_pr_df, on="LEVEL-1-ID", how="inner")

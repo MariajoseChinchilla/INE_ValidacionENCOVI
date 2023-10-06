@@ -88,14 +88,12 @@ class ScripR:
         
         print(f"Total de inconsistencias: {data.shape[0]}")
         
-        ruta = os.path.join(ruta_salida, "Mario")
         # Crear carpeta si no existe
-        if not os.path.exists(ruta):
-            os.mkdir(ruta)
+        if not os.path.exists(ruta_salida):
+            os.mkdir(ruta_salida)
             
         # Crear carpeta con marca temporal
-        timestamp = pd.Timestamp.now().strftime("%d-%m-%H-%M")
-        timestamp_folder = os.path.join(ruta, f"Inconsistencias_{timestamp}")
+        timestamp_folder = os.path.join(ruta_salida, f"Inconsistencias_R")
         os.mkdir(timestamp_folder)
         
         # Guardar el archivo Excel de inconsistencias totales

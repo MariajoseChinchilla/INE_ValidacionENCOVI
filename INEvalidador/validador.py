@@ -20,11 +20,8 @@ from .utils import extraer_UPMS
 from .conexionSQL import baseSQL
 from .scripR import ScripR
 
-
-
-
 class Validador:
-    def __init__(self, ruta_expresiones: str="Expresiones.xlsx", descargar: bool=True, criterios_limpieza: str="Limpieza.xlsx"):
+    def __init__(self, ruta_expresiones: str="", descargar: bool=True, ruta_criterios_limpieza: str=""):
         # atributos de rutas de archivos
         self.archivo_grupos = ""
         self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
@@ -33,8 +30,12 @@ class Validador:
             os.mkdir(os.path.join(self.ruta_escritorio, "Validador"))
         # carpeta de salida principal
         self.marca_temp = datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
-        self.salida_principal = os.path.join(self.ruta_escritorio, f"Validador\output_{self.marca_temp}")
-        os.mkdir(self.salida_principal)
+        self.salida_validaciones = os.path.join(self.ruta_escritorio, f"Validador\output_{self.marca_temp}")
+        if not os.path.exists(self.salida_validaciones):
+            os.makedirs(self.salida_validaciones)
+        self.salida_principal = os.path.join(self.ruta_escritorio, f"Limpieza\Datos para Revisión\output_{self.marca_temp}")
+        if not os.path.exists(self.salida_principal):
+            os.makedirs(self.salida_principal)
         # demas atributos
         self.df_ = pd.DataFrame
         # nuevo
@@ -43,8 +44,10 @@ class Validador:
         # si no se pasa la ruta de expresiones, se usa la ruta por defecto
         if not ruta_expresiones:
             ruta_expresiones = pkg_resources.resource_filename(__name__, "archivos\Expresiones.xlsx")
+        if not ruta_criterios_limpieza:
+            ruta_criterios_limpieza = pkg_resources.resource_filename(__name__, "archivos\Limpieza.xlsx")
         self.expresiones = pd.read_excel(ruta_expresiones)
-        self.criterios_limpieza = pd.read_excel(criterios_limpieza)
+        self.criterios_limpieza = pd.read_excel(ruta_criterios_limpieza)
         self.columnas = ["FECHA", "DEPTO", "MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR", "CP","ENCUESTADOR"]
         self._capturar_converciones = False
         self.__replacements = {
@@ -194,9 +197,7 @@ class Validador:
             # Calcular el total de condiciones
             total_conditions = self.expresiones.shape[0]
 
-            self.ruta_carpeta_padre = os.path.join(self.salida_principal, f"Mariajose\Validaciones_{self.marca_temp}")
-
-            os.mkdir(os.path.join(self.salida_principal, "Mariajose"))
+            self.ruta_carpeta_padre = os.path.join(self.salida_validaciones, "Validaciones_py")
             os.mkdir(self.ruta_carpeta_padre)
 
             # Configurar logging
@@ -304,9 +305,12 @@ class Validador:
                 final14['CPs'] = final14.apply(lambda row: list(set(tuple(row['CP'])).symmetric_difference(set(tuple(row['P14A04'])))), axis=1)
                 final14 = final14[["FECHA", "ENCUESTADOR", "DEPTO", "MUPIO", "SECTOR","ESTRUCTURA", "VIVIENDA", "HOGAR", "CPs", "CAPITULO", "SECCION", "PREGUNTA", "DEFINICION DE INCONSISTENCIA", "CODIGO ERROR", "COMENTARIOS"]]
                 final14.rename(columns={"CPs": "CP"}, inplace=True)
-                final14.drop("LEVEL-1-ID", axis=1, inplace=True)
-                final14.drop("P14A04", axis=1, inplace=True)
-                final14.drop("COINCIDENCIA", axis=1, inplace=True)
+                if "LEVEL-1-ID" in final14.columns:
+                    final14.drop("LEVEL-1-ID", axis=1, inplace=True)
+                if "P14A04" in final14.columns:
+                    final14.drop("P14A04", axis=1, inplace=True)
+                if "COINCIDENCIA" in final14.columns:
+                    final14.drop("COINCIDENCIA", axis=1, inplace=True)
 
             if final14.empty:
                 final14.rename(columns={"CPs": "CP"}, inplace=True)
@@ -317,7 +321,7 @@ class Validador:
             # Unir esto al csv acumulado
             dfs.append(final14)
             self.df_ = dfs
-            df_power = pd.concat(dfs) # Hacer copia de los dfs para exportar por supervisor luego
+            df_power = pd.concat(self.df_) # Hacer copia de los dfs para exportar por supervisor luego
             df_power.to_csv(os.path.join(self.ruta_carpeta_padre, f'InconsistenciasPowerBi_{dia}-{mes}-{año}.csv'), index=False)
             reporte_codigo = df_power.groupby(["CODIGO ERROR", "DEFINICION DE INCONSISTENCIA"]).size().reset_index(name="FRECUENCIA")
             reporte_encuestador = df_power.groupby(["ENCUESTADOR"]).size().reset_index(name="FRECUENCIA")
@@ -344,28 +348,24 @@ class Validador:
         # Procesar datos para validar con validaciones originales
         self.process_to_export(fecha_inicio, fecha_final)
         # Ejecutar el scrip de Mario
-        ScripR().procesar_datos(self.salida_principal, self.archivo_grupos)
+        ScripR().procesar_datos(self.salida_validaciones, self.archivo_grupos)
 
         # Obtener la ruta a la carpeta más reciente
-        ruta_externa = self.obtener_carpeta_mas_reciente(os.path.join(self.salida_principal, "Mario"))
+        # ruta_externa = self.obtener_carpeta_mas_reciente(self.salida_principal)
 
         # Concatenar los Exceles para generar la salida a reportar
-        self.concatenar_exceles(self.salida_principal, ruta_externa, os.path.join(self.salida_principal, "Salidas_Finales"))
+        ruta_py = os.path.join(self.salida_validaciones, "Validaciones_py")
+        ruta_r = os.path.join(self.salida_validaciones, "Inconsistencias_R")
+        ruta_salida = os.path.join(self.salida_validaciones, "Salidas Finales")
+        self.concatenar_exceles(ruta_py, ruta_r, ruta_salida)
 
     def concatenar_exceles(self, folder1, folder2, output_folder):
-        # Crear el directorio de salida si no existe
-        if not os.path.exists(output_folder):
-            os.makedirs(output_folder)
-
-        # Fecha actual
-        now = datetime.now()
-        date_str = now.strftime("%d-%m-%H-%M-%S")
 
         # Buscar todos los archivos Excel en folder1
         folder1_files = glob.glob(f"{folder1}\InconsistenciasGRUPO*.xlsx")
 
         # Crear carpeta de salidas finales dentro de la carpeta de salidas
-        self.ruta_salida_final = f"{output_folder}\Salidas{date_str}"
+        self.ruta_salida_final = os.path.join(output_folder, "Salidas Finales")
         if not os.path.exists(self.ruta_salida_final):
             os.makedirs(self.ruta_salida_final)
             print(f"Se ha creado la carpeta: {self.ruta_salida_final}")
@@ -381,7 +381,7 @@ class Validador:
                 df2 = pd.read_excel(folder2_file)
 
                 # Guardar el DataFrame en output_folder
-                output_file = f"{self.ruta_salida_final}/InconsistenciasGRUPO{group_number}_{date_str}.xlsx"
+                output_file = f"{self.ruta_salida_final}/InconsistenciasGRUPO{group_number}_{self.marca_temp}.xlsx"
                 df2.sort_values(by=["DEPTO", "CODIGO ERROR"]).to_excel(output_file, index=False)
         else:
             for folder1_file in folder1_files:
@@ -403,67 +403,67 @@ class Validador:
                     df_concatenated = df1
 
                 # Guardar el DataFrame combinado en output_folder
-                output_file = f"{self.ruta_salida_final}/InconsistenciasGRUPO{group_number}_{date_str}.xlsx"
+                output_file = f"{self.ruta_salida_final}/InconsistenciasGRUPO{group_number}_{self.marca_temp}.xlsx"
                 df_concatenated.sort_values(by=["DEPTO", "CODIGO ERROR"]).to_excel(output_file, index=False)
 
     # Método para generar archivos para limpieza de datos
 
-
+    # Busca el archivo limpieza en carpeta de archivos
     def archivos_limpieza(self, fecha_inicio: datetime="2023-1-1", fecha_final: datetime="2023-12-31"):
         try:
-                # Calcular el total de condiciones
-                total_conditions = self.criterios_limpieza.shape[0]
-                self.criterios_limpieza["VARIABLES A EXPORTAR"] = self.criterios_limpieza["VARIABLES A EXPORTAR"].str.replace(r'\s*,\s*', ',').str.split(r'\s+|,')
-                # Crear carpeta para guardar los archivos de inconsistencias generales y guardar el log de errores
-                marca_temp = datetime.now().strftime("%d-%m-%Y")
-                carpeta_padre = f"Limpieza/DatosLimpieza{marca_temp}"
+            # Calcular el total de condiciones
+            total_conditions = self.criterios_limpieza.shape[0]
+            self.criterios_limpieza["VARIABLES A EXPORTAR"] = self.criterios_limpieza["VARIABLES A EXPORTAR"].str.replace(r'\s*,\s*', ',').str.split(r'\s+|,')
 
-                if not os.path.exists("Limpieza"):
-                    os.mkdir("Limpieza")
+            # Crear carpeta para guardar los archivos de inconsistencias generales y guardar el log de errores
+            # marca_temp = datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
+            # ruta_validador = os.path.join(self.ruta_escritorio, "Validador")
+            # ruta_output = os.path.join(ruta_validador, f"output_{marca_temp}")
+            # ruta_final = os.path.join(ruta_output, "Datos para Revisión")
 
-                self.ruta_carpeta_padre = f"Limpieza/DatosLimpieza{marca_temp}"
+            # Crear estructura de directorios si no existen
+            """for path in [ruta_validador, ruta_output, ruta_final]:
+                if not os.path.exists(path):
+                    os.mkdir(path)"""
 
-                if not os.path.exists(self.ruta_carpeta_padre):
-                    os.mkdir(self.ruta_carpeta_padre)
+            # Configurar logging
+            self.__configurar_logs(self.salida_principal)
+            logging.info("Inicio del proceso de exportación de inconsistencias")
+            logging.info(f"Se encontraron {total_conditions} condiciones.")
 
-                # Configurar logging
-                self.__configurar_logs(carpeta_padre)
-                logging.info("Inicio del proceso de exportación de inconsistencias")
-                logging.info("Se encontraron {} condiciones.".format(total_conditions))
+            # Inicializar la barra de progreso
+            pbar = tqdm(total=total_conditions, unit='condicion')
 
-                # Inicializar la barra de progreso
-                pbar = tqdm(total=total_conditions, unit='condicion')
+            # Hacer cuadruplas con condicion, capitulo, seccion, etc
+            nombre_arch = list(self.criterios_limpieza["NOMBRE ARCHIVO"])
+            condicion = list(self.criterios_limpieza["CONDICION O CRITERIO"])
+            variables = list(self.criterios_limpieza["VARIABLES A EXPORTAR"])
+            cuadruplas_exportacion = list(zip(nombre_arch, condicion, variables))
 
-                # Hacer cuadruplas con condicion, capitulo, seccion, etc
-                nombre_arch = list(self.criterios_limpieza["NOMBRE ARCHIVO"]) 
-                condicion = list(self.criterios_limpieza["CONDICION O CRITERIO"])
-                variables = list(self.criterios_limpieza["VARIABLES A EXPORTAR"]) 
-                cuadruplas_exportacion = list(zip(nombre_arch, condicion, variables))
-
-                # Leer filtros y tomar subconjuntos de la base e ir uniendo las bases hasta generar una sola con las columnas solicitadas
-                for nombre, cond, var in cuadruplas_exportacion:
-                    try:
-                        # Aplicar filtro a la base de datos
-                        Validacion = self.filtrar_base_limpieza(cond, var, fecha_inicio, fecha_final)
-                        carto = set(["DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP","VARIABLE", "VALOR NUEVO"])
-                        diff = list(set(Validacion.columns) - carto)
-                        for i in diff:
-                            Validacion.rename(columns={i: f"{self.sql.base_col[i][:-3]}.{i}".lower() for i in diff}, inplace=True)
-                            Validacion.rename(columns={i: i.lower() for i in carto}, inplace=True)
-                        if Validacion.shape[0] == 0:
-                            continue 
-                        Validacion.to_excel(os.path.join(carpeta_padre, f'{nombre}.xlsx'), index=False)
-                    except Exception as e:
-                        # Manejar error específico de una expresión
-                        logging.error(f"{cond}: {e}.")
+            # Leer filtros y tomar subconjuntos de la base e ir uniendo las bases hasta generar una sola con las columnas solicitadas
+            for nombre, cond, var in cuadruplas_exportacion:
+                try:
+                    # Aplicar filtro a la base de datos
+                    Validacion = self.filtrar_base_limpieza(cond, var, fecha_inicio, fecha_final)
+                    carto = set(["DEPTO", "MUPIO", "SECTOR", "ESTRUCTURA", "VIVIENDA", "HOGAR", "CP", "VARIABLE", "VALOR NUEVO"])
+                    diff = list(set(Validacion.columns) - carto)
+                    for i in diff:
+                        Validacion.rename(columns={i: f"{self.sql.base_col[i][:-3]}.{i}".lower() for i in diff}, inplace=True)
+                    Validacion.rename(columns={i: i.lower() for i in carto}, inplace=True)
+                    if Validacion.shape[0] == 0:
                         continue 
-                    finally:
-                        # Actualizar barra de progreso
-                        pbar.update()
+                    Validacion.to_excel(os.path.join(self.salida_principal, f'{nombre}.xlsx'), index=False)
+                except Exception as e:
+                    # Manejar error específico de una expresión
+                    logging.error(f"{cond}: {e}.")
+                    continue 
+                finally:
+                    # Actualizar barra de progreso
+                    pbar.update()
 
         except Exception as e:
-                    # Manejar error general en caso de problemas durante el proceso
-                    logging.error(f"Error general: {e}")
+            # Manejar error general en caso de problemas durante el proceso
+            logging.error(f"Error general: {e}")
 
     # Generar archivos de limpieza de datos ingresando valores por campos de texto
     def limpieza_por_query(self, nombre, condicion: str, columnas: list, fecha_inicio: datetime= "2023-1-1", fecha_final: datetime = "2023-12-31" ):
@@ -493,7 +493,7 @@ class Validador:
 
         SCOPES = ['https://www.googleapis.com/auth/drive']
 
-        ruta_archivos_exportar = self.obtener_carpeta_mas_reciente("Salidas_Finales")
+        # ruta_archivos_exportar = self.obtener_carpeta_mas_reciente("Salidas_Finales")
         # Autenticación
 
         ruta_token = pkg_resources.resource_filename(__name__, "archivos/token.pickle")
