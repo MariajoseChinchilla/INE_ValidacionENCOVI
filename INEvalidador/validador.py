@@ -21,9 +21,16 @@ from .conexionSQL import baseSQL
 from .scripR import ScripR
 
 class Validador:
-    def __init__(self, ruta_expresiones: str="", descargar: bool=True):
+    def __init__(
+            self,
+            ruta_expresiones: str="",
+            descargar: bool=True,
+            ruta_criterios_limpieza: str="",
+            ruta_UPM_R: str="",
+            ruta_UPM_py: str=""):
         # atributos de rutas de archivos
-        self.archivo_grupos = ""
+        self.ruta_UPM_R = ruta_UPM_R
+        self.ruta_UPM_py = ruta_UPM_py
         self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
         # crea carpeta ValidadorINE en el escritorio en caso no exista
         if not os.path.exists(os.path.join(self.ruta_escritorio, "Validador")):
@@ -65,7 +72,7 @@ class Validador:
         # Precompile the regular expression for efficiency
         self.__patron = re.compile("|".join(map(re.escape, self.__replacements.keys())), flags=re.IGNORECASE)
 
-        self.dic_upms = extraer_UPMS()
+        self.dic_upms = extraer_UPMS(ruta=self.ruta_UPM_py)
         
     def obtener_carpeta_mas_reciente(self, directorio):
         carpeta_mas_reciente = None
@@ -333,7 +340,7 @@ class Validador:
         # Procesar datos para validar con validaciones originales
         self.process_to_export(fecha_inicio, fecha_final)
         # Ejecutar el scrip de Mario
-        ScripR().procesar_datos(self.salida_validaciones, self.archivo_grupos)
+        ScripR().procesar_datos(self.salida_validaciones, self.ruta_UPM_R)
 
         # Obtener la ruta a la carpeta más reciente
         # ruta_externa = self.obtener_carpeta_mas_reciente(self.salida_principal)
