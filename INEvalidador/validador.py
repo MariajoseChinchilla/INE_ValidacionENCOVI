@@ -21,7 +21,7 @@ from .conexionSQL import baseSQL
 from .scripR import ScripR
 
 class Validador:
-    def __init__(self, ruta_expresiones: str="", descargar: bool=True, ruta_criterios_limpieza: str=""):
+    def __init__(self, ruta_expresiones: str="", descargar: bool=True):
         # atributos de rutas de archivos
         self.archivo_grupos = ""
         self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
@@ -33,9 +33,6 @@ class Validador:
         self.salida_validaciones = os.path.join(self.ruta_escritorio, f"Validador\output_{self.marca_temp}")
         if not os.path.exists(self.salida_validaciones):
             os.makedirs(self.salida_validaciones)
-        self.salida_principal = os.path.join(self.ruta_escritorio, f"Limpieza\Datos para Revisión\output_{self.marca_temp}")
-        if not os.path.exists(self.salida_principal):
-            os.makedirs(self.salida_principal)
         # demas atributos
         self.df_ = pd.DataFrame
         # nuevo
@@ -44,10 +41,7 @@ class Validador:
         # si no se pasa la ruta de expresiones, se usa la ruta por defecto
         if not ruta_expresiones:
             ruta_expresiones = pkg_resources.resource_filename(__name__, "archivos\Expresiones.xlsx")
-        if not ruta_criterios_limpieza:
-            ruta_criterios_limpieza = pkg_resources.resource_filename(__name__, "archivos\Limpieza.xlsx")
         self.expresiones = pd.read_excel(ruta_expresiones)
-        self.criterios_limpieza = pd.read_excel(ruta_criterios_limpieza)
         self.columnas = ["FECHA", "DEPTO", "MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR", "CP","ENCUESTADOR"]
         self._capturar_converciones = False
         self.__replacements = {
@@ -181,15 +175,6 @@ class Validador:
         self.df = self.sql.df_para_condicion(condicion, fecha_inicio, fecha_final)
         filtered_df = self.df.query(self.leer_condicion(condicion))[columnas]
         return copy.deepcopy(filtered_df)
-    
-    def filtrar_base_limpieza(self, condicion: str, columnas: list, fecha_inicio, fecha_final) -> pd.DataFrame:
-        # var = columnas + ["FECHA", "ENCUESTADOR", "DEPTO", "MUPIO", "SECTOR","ESTRUCTURA", "VIVIENDA", "HOGAR", "CP", "CAPITULO", "SECCION", "PREGUNTA", "DEFINICION DE INCONSISTENCIA", "CODIGO ERROR", "COMENTARIOS"]
-        self.df = self.sql.df_para_limpieza(condicion, columnas)
-        self.df["VARIABLE"] = None
-        self.df["VALOR NUEVO"] = None
-        filtered_df = self.df.query(self.leer_condicion(condicion))[["DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP"] + columnas + ["VARIABLE", "VALOR NUEVO"]]
-        return copy.deepcopy(filtered_df)
-
 
     # Función para leer todos los criterios y exportar un solo excel con las columnas DEPTO, MUPIO, HOGAR, CP, CAPITULO, SECCION
     def process_to_export(self, fecha_inicio: datetime, fecha_final: datetime):
@@ -405,74 +390,6 @@ class Validador:
                 # Guardar el DataFrame combinado en output_folder
                 output_file = f"{self.ruta_salida_final}/InconsistenciasGRUPO{group_number}_{self.marca_temp}.xlsx"
                 df_concatenated.sort_values(by=["DEPTO", "CODIGO ERROR"]).to_excel(output_file, index=False)
-
-    # Método para generar archivos para limpieza de datos
-
-    # Busca el archivo limpieza en carpeta de archivos
-    def archivos_limpieza(self, fecha_inicio: datetime="2023-1-1", fecha_final: datetime="2023-12-31"):
-        try:
-            # Calcular el total de condiciones
-            total_conditions = self.criterios_limpieza.shape[0]
-            self.criterios_limpieza["VARIABLES A EXPORTAR"] = self.criterios_limpieza["VARIABLES A EXPORTAR"].str.replace(r'\s*,\s*', ',').str.split(r'\s+|,')
-            # Configurar logging
-            self.__configurar_logs(self.salida_principal)
-            logging.info("Inicio del proceso de exportación de inconsistencias")
-            logging.info(f"Se encontraron {total_conditions} condiciones.")
-
-            # Inicializar la barra de progreso
-            pbar = tqdm(total=total_conditions, unit='condicion')
-
-            # Hacer cuadruplas con condicion, capitulo, seccion, etc
-            nombre_arch = list(self.criterios_limpieza["NOMBRE ARCHIVO"])
-            condicion = list(self.criterios_limpieza["CONDICION O CRITERIO"])
-            variables = list(self.criterios_limpieza["VARIABLES A EXPORTAR"])
-            cuadruplas_exportacion = list(zip(nombre_arch, condicion, variables))
-
-            # Leer filtros y tomar subconjuntos de la base e ir uniendo las bases hasta generar una sola con las columnas solicitadas
-            for nombre, cond, var in cuadruplas_exportacion:
-                try:
-                    # Aplicar filtro a la base de datos
-                    Validacion = self.filtrar_base_limpieza(cond, var, fecha_inicio, fecha_final)
-                    carto = set(["DEPTO", "MUPIO", "SECTOR", "ESTRUCTURA", "VIVIENDA", "HOGAR", "CP", "VARIABLE", "VALOR NUEVO"])
-                    diff = list(set(Validacion.columns) - carto)
-                    for i in diff:
-                        Validacion.rename(columns={i: f"{self.sql.base_col[i][:-3]}.{i}".lower() for i in diff}, inplace=True)
-                    Validacion.rename(columns={i: i.lower() for i in carto}, inplace=True)
-                    if Validacion.shape[0] == 0:
-                        continue 
-                    Validacion.to_excel(os.path.join(self.salida_principal, f'{nombre}.xlsx'), index=False)
-                except Exception as e:
-                    # Manejar error específico de una expresión
-                    logging.error(f"{cond}: {e}.")
-                    continue 
-                finally:
-                    # Actualizar barra de progreso
-                    pbar.update()
-
-        except Exception as e:
-            # Manejar error general en caso de problemas durante el proceso
-            logging.error(f"Error general: {e}")
-
-    # Generar archivos de limpieza de datos ingresando valores por campos de texto
-    def limpieza_por_query(self, nombre, condicion: str, columnas: list, fecha_inicio: datetime= "2023-1-1", fecha_final: datetime = "2023-12-31" ):
-        Validacion = self.filtrar_base_limpieza(condicion, columnas, fecha_inicio, fecha_final)
-        carto = set(["DEPTO", "MUPIO", "SECTOR", "ESTRUCTURA", "VIVIENDA", "HOGAR", "CP", "VARIABLE", "VALOR NUEVO"])
-        diff = list(set(Validacion.columns) - carto)
-        for i in diff:
-            Validacion.rename(columns={i: f"{self.sql.base_col[i][:-3]}.{i}".lower() for i in diff}, inplace=True)
-        Validacion.rename(columns={i: i.lower() for i in carto}, inplace=True)
-        if Validacion.shape[0] == 0:
-            pass 
-        Validacion.to_excel(os.path.join(self.salida_principal, f'{nombre}.xlsx'), index=False)
-        marca_temp = datetime.now().strftime("%d-%m-%Y")
-        # carpeta_padre = f"Limpieza/DatosLimpieza{marca_temp}"
-
-        # Configurar logging
-        self.__configurar_logs(self.salida_principal)
-        for i in Validacion.columns:
-            Validacion.rename(columns={i: i.lower()}, inplace=True)
-        
-        Validacion.to_excel(os.path.join(self.salida_principal, f'{nombre}.xlsx'), index=False)
 
     def subir_a_drive(self, ruta):
         dia = datetime.now().day

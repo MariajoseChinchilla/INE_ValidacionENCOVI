@@ -158,7 +158,7 @@ class GestorConteos:
 
         for dep, mup, sec, estr, viv, hog, cpp in datos_cart:
             filtros.append(f"`level-1`.`depto` = {dep} and `level-1`.`mupio` = {mup} and `level-1`.`sector` = {sec} and `level-1`.`estructura` = {estr} and `level-1`.`vivienda` = {viv} and `level-1`.`hogar` = {hog} and `personas`.`cp` = {cpp}")
-        
+            
         for index, filtro in enumerate(filtros):
             filtros[index] = filtro.replace(" and `personas`.`cp` = 0", "")
             filtros[index] = filtro.replace("and `personas`.`cp` = nan", "")
@@ -167,8 +167,9 @@ class GestorConteos:
 
         for rond, tabla, variable, valor_nuevo, filtro in cuadruplas:
             with open(ruta_archivo, "a") as archivo:
-                archivo.write(f"UPDATE {rond}.{tabla} AS {tabla} JOIN `level-1` ON {tabla}.`level-1-id` = `level-1`.`level-1-id` SET {tabla}.{variable} = {valor_nuevo} WHERE {filtro}; \n")
-
+                # archivo.write(f"UPDATE {rond}.{tabla} AS {tabla} JOIN `level-1` ON {tabla}.`level-1-id` = `level-1`.`level-1-id` SET {tabla}.{variable} = {valor_nuevo} WHERE {filtro}; \n")
+                # archivo.write(f"INSERT INTO {base_datos}.{tabla (bitácora)} SET {tabla}.{variable} = {valor_nuevo} WHERE {filtro}; \n")
+                archivo.write(f"UPDATE {rond}.{tabla} AS {tabla}  WHERE {tabla}.`{tabla}-id` = ; \n")
 
         for rond, tabla, variable, valor_nuevo, filtro in cuadruplas:
             with open(ruta_archivo, "a") as archivo:
