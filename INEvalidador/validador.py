@@ -29,7 +29,7 @@ class Validador:
         if not os.path.exists(os.path.join(self.ruta_escritorio, "Validador")):
             os.mkdir(os.path.join(self.ruta_escritorio, "Validador"))
         # carpeta de salida principal
-        self.marca_temp = datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
+        self.marca_temp = datetime.now().strftime("%d-%m-%Y")
         self.salida_validaciones = os.path.join(self.ruta_escritorio, f"Validador\output_{self.marca_temp}")
         if not os.path.exists(self.salida_validaciones):
             os.makedirs(self.salida_validaciones)
@@ -414,18 +414,6 @@ class Validador:
             # Calcular el total de condiciones
             total_conditions = self.criterios_limpieza.shape[0]
             self.criterios_limpieza["VARIABLES A EXPORTAR"] = self.criterios_limpieza["VARIABLES A EXPORTAR"].str.replace(r'\s*,\s*', ',').str.split(r'\s+|,')
-
-            # Crear carpeta para guardar los archivos de inconsistencias generales y guardar el log de errores
-            # marca_temp = datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
-            # ruta_validador = os.path.join(self.ruta_escritorio, "Validador")
-            # ruta_output = os.path.join(ruta_validador, f"output_{marca_temp}")
-            # ruta_final = os.path.join(ruta_output, "Datos para Revisión")
-
-            # Crear estructura de directorios si no existen
-            """for path in [ruta_validador, ruta_output, ruta_final]:
-                if not os.path.exists(path):
-                    os.mkdir(path)"""
-
             # Configurar logging
             self.__configurar_logs(self.salida_principal)
             logging.info("Inicio del proceso de exportación de inconsistencias")
@@ -468,23 +456,23 @@ class Validador:
     # Generar archivos de limpieza de datos ingresando valores por campos de texto
     def limpieza_por_query(self, nombre, condicion: str, columnas: list, fecha_inicio: datetime= "2023-1-1", fecha_final: datetime = "2023-12-31" ):
         Validacion = self.filtrar_base_limpieza(condicion, columnas, fecha_inicio, fecha_final)
+        carto = set(["DEPTO", "MUPIO", "SECTOR", "ESTRUCTURA", "VIVIENDA", "HOGAR", "CP", "VARIABLE", "VALOR NUEVO"])
+        diff = list(set(Validacion.columns) - carto)
+        for i in diff:
+            Validacion.rename(columns={i: f"{self.sql.base_col[i][:-3]}.{i}".lower() for i in diff}, inplace=True)
+        Validacion.rename(columns={i: i.lower() for i in carto}, inplace=True)
+        if Validacion.shape[0] == 0:
+            pass 
+        Validacion.to_excel(os.path.join(self.salida_principal, f'{nombre}.xlsx'), index=False)
         marca_temp = datetime.now().strftime("%d-%m-%Y")
-        carpeta_padre = f"Limpieza/DatosLimpieza{marca_temp}"
-
-        if not os.path.exists("Limpieza"):
-            os.mkdir("Limpieza")
-
-        self.ruta_carpeta_padre = f"Limpieza/DatosLimpieza{marca_temp}"
-
-        if not os.path.exists(self.ruta_carpeta_padre):
-            os.mkdir(self.ruta_carpeta_padre)
+        # carpeta_padre = f"Limpieza/DatosLimpieza{marca_temp}"
 
         # Configurar logging
-        self.__configurar_logs(carpeta_padre)
+        self.__configurar_logs(self.salida_principal)
         for i in Validacion.columns:
             Validacion.rename(columns={i: i.lower()}, inplace=True)
         
-        Validacion.to_excel(os.path.join(carpeta_padre, f'{nombre}.xlsx'), index=False)
+        Validacion.to_excel(os.path.join(self.salida_principal, f'{nombre}.xlsx'), index=False)
 
     def subir_a_drive(self, ruta):
         dia = datetime.now().day

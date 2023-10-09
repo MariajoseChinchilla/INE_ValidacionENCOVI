@@ -130,14 +130,14 @@ class GestorConteos:
         # Mostrar el histograma (opcional)
         plt.show()
 
-    def escribir_query_sq(self, archivo):
+    def escribir_query_sq(self, archivo, nombre):
         df_queries = pd.read_excel(archivo)
         now = datetime.now()
         date_str = now.strftime("%d-%m-%Y")
         ruta_sintaxis = os.path.join(self.ruta_limpieza, "Sintaxis en SQL", f"output{date_str}")
         if not os.path.exists(ruta_sintaxis):
             os.makedirs(ruta_sintaxis)
-        ruta_archivo = os.path.join(ruta_sintaxis, "Sintaxis.txt")
+        ruta_archivo = os.path.join(ruta_sintaxis, "Sintaxis_{nombre}.txt")
         
         df_queries = df_queries.dropna(subset=["variable"])
         df_queries = df_queries.dropna(subset=["valor nuevo"])
@@ -157,10 +157,11 @@ class GestorConteos:
         filtros = []
 
         for dep, mup, sec, estr, viv, hog, cpp in datos_cart:
-            filtros.append(f"`level-1`.`depto` = {dep} and `level-1`.`mupio` = {mup} and `level-1`.`sector` = {sec} and `level-1`.`estructura` = {estr} and `level-1`.`vivienda` = {viv} and `level-1`.`hogar` = {hog} and `level-1`.`cp` = {cpp}")
+            filtros.append(f"`level-1`.`depto` = {dep} and `level-1`.`mupio` = {mup} and `level-1`.`sector` = {sec} and `level-1`.`estructura` = {estr} and `level-1`.`vivienda` = {viv} and `level-1`.`hogar` = {hog} and `personas`.`cp` = {cpp}")
         
         for index, filtro in enumerate(filtros):
-            filtros[index] = filtro.replace(" and `level-1`.`cp` = 0", "")
+            filtros[index] = filtro.replace(" and `personas`.`cp` = 0", "")
+            filtros[index] = filtro.replace("and `personas`.`cp` = nan", "")
 
         cuadruplas = list(zip(ronda, tablas, vars, valores_nuevos, filtros))
 
