@@ -3,11 +3,12 @@ from datetime import datetime
 import pandas as pd
 import pkg_resources
 import re 
-from .utils import extraer_UPMS
+from .utils import extraer_UPMS, condicion_a_variables
 import numpy as np
 import copy
 import logging
 from tqdm import tqdm
+import unicodedata
 from .conexionSQL import baseSQL
 
 class Limpieza:
@@ -22,6 +23,7 @@ class Limpieza:
             os.makedirs(self.salida_principal)
         self.criterios_limpieza = pd.read_excel(ruta_criterios_limpieza)
         self.columnas = ["FECHA", "DEPTO", "MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR", "CP","ENCUESTADOR"]
+        self._capturar_converciones = False
 
         self.__replacements = {
             '<=': '<=',
@@ -63,6 +65,19 @@ class Limpieza:
         self.logger_conv.addHandler(handler1)
         self.logger_conv.setLevel(logging.DEBUG)
         self.logger_conv.info('Log de condiciones convertidas a formato pandas')
+    
+    def quitar_tildes(self, cadena: str) -> str:
+        nfkd_form = unicodedata.normalize('NFKD', cadena)
+        return "".join([c for c in nfkd_form if not unicodedata.combining(c)])
+
+    # Function to search and replace the matches
+    def __translate(self, match):
+        return self.__replacements[match.group(0)]
+    
+    def columnas_condicion_nula(self, condicion: str):
+        matches = [(m, '==') for m in re.findall(r'\b([A-Z0-9]+) == ""', condicion)]
+        matches.extend([(m, '!=') for m in re.findall(r'\b([A-Z0-9]+) != ""', condicion)])
+        return matches
 
     def leer_condicion(self, condicion: str) -> str:
         # Quitar espacios extras
@@ -111,11 +126,11 @@ class Limpieza:
                     condicion_convertida = condicion_convertida.replace(f'{col} {tipo} ""', f'~{col}.isna() & {col} != ""')  
         return condicion_convertida
 
-    def filtrar_base_limpieza(self, condicion: str, columnas: list, fecha_inicio, fecha_final) -> pd.DataFrame:
+    def filtrar_base_limpieza(self, condicion: str, columnas: list, fecha_inicio: datetime="2023-1-1", fecha_final:datetime="2023-12-31") -> pd.DataFrame:
         # var = columnas + ["FECHA", "ENCUESTADOR", "DEPTO", "MUPIO", "SECTOR","ESTRUCTURA", "VIVIENDA", "HOGAR", "CP", "CAPITULO", "SECCION", "PREGUNTA", "DEFINICION DE INCONSISTENCIA", "CODIGO ERROR", "COMENTARIOS"]
         self.df = self.sql.df_para_limpieza(condicion, columnas)
         self.df["VARIABLE"] = None
-        self.df["VALOR NUEVO"] = None
+        self.df["VALOR NUEVO"] = None  
         filtered_df = self.df.query(self.leer_condicion(condicion))[["DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP"] + columnas + ["VARIABLE", "VALOR NUEVO"]]
         return copy.deepcopy(filtered_df)
 
