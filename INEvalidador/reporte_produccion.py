@@ -188,12 +188,13 @@ class GestorConteos:
         for id, var in ids_y_vars:
             tabla = self.sql.base_col.get(var).replace("_PR","").replace("_SR","") + "-id"
             filtros.append(f"{tabla} = {id}")
+        fecha = datetime.now()
         for rond, tabla, variable, valor_nuevo, filtro, id, comision in cuadruplas:
             with open(ruta_archivo, "a") as archivo:
                 # archivo.write(f"UPDATE {rond}.{tabla} AS {tabla} JOIN `level-1` ON {tabla}.`level-1-id` = `level-1`.`level-1-id` SET {tabla}.{variable} = {valor_nuevo} WHERE {filtro}; \n")
                 # archivo.write(f"INSERT INTO {base_datos}.{tabla (bitácora)} SET {tabla}.{variable} = {valor_nuevo} WHERE {filtro}; \n")
                 archivo.write(f"UPDATE {rond}_COM{comision}.{tabla} AS {tabla}  SET {variable} = {valor_nuevo} WHERE {tabla}.`{tabla}-id` = {id}; \n")
-                archivo.write(f"UPDATE ine_encovi.bitacora AS bitacora  SET usuario = {valor_nuevo} WHERE {tabla}.`{tabla}-id` = {id}; \n")
+                archivo.write(f"UPDATE ine_encovi.bitacora AS bitacora  SET usuario = {tabla} and base_datos = {rond}_COM{comision} and tabla = {tabla} and variable = {variable} and valor_anterior = {tabla} and valor_nuevo = {valor_nuevo} and id_registro = {id} and fecha_creacion = {fecha}; \n")
 
         
 
