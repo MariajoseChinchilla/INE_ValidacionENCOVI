@@ -19,10 +19,16 @@ def columnas_a_mayuscula(df: pd.DataFrame):
     return df
 
 def condicion_a_variables(condicion: str) -> List[str]:
-    # La expresión regular coincide con cualquier cadena que comience con una letra mayúscula seguida de números y letras mayúsculas
+    # La expresión regular coincide con cualquier cadena que comience con una letra mayúscula 
+    # seguida de números y letras mayúsculas.
     pattern = r'\b[A-Z][A-Z0-9]+\b'
-    # Utilizamos la función findall para encontrar todas las coincidencias en el texto
-    return tuple(set(re.findall(pattern, condicion)))
+    matches = set(re.findall(pattern, condicion))
+
+    # Lista negra de palabras para excluir
+    blacklist = {"VACIO", "NO", "ES"}
+
+    # Filtramos las coincidencias para excluir las palabras de la lista negra
+    return tuple(word for word in matches if word not in blacklist)
 
 def extract_number(s):
     # Extraer el número deseado de la cadena
