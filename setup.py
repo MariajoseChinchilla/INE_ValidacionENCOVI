@@ -17,7 +17,8 @@ setup(
         'tqdm==4.65.0',
         'mysql-connector-python==8.1.0',
         'sqlalchemy==2.0.19',
-        'pyarrow'
+        'pyarrow',
+        "PyDrive==1.3.1"
     ],
     package_data={
         'INEvalidador': ['archivos/*'],
