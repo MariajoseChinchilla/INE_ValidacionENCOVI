@@ -6,6 +6,7 @@ from datetime import datetime
 import time
 import matplotlib.pyplot as plt
 from io import StringIO
+from io import BytesIO
 import io
 import pandas as pd
 from datetime import datetime
@@ -196,19 +197,25 @@ class GestorConteos:
                 archivo.write(f"UPDATE {rond}_COM{comision}.{tabla} AS {tabla}  SET {variable} = {valor_nuevo} WHERE {tabla}.`{tabla}-id` = {id}; \n")
                 archivo.write(f"UPDATE ine_encovi.bitacora AS bitacora  SET usuario = {tabla} and base_datos = {rond}_COM{comision} and tabla = {tabla} and variable = {variable} and valor_anterior = {tabla} and valor_nuevo = {valor_nuevo} and id_registro = {id} and fecha_creacion = {fecha}; \n")
 
-        
-
-
     def obtener_lista_analistas(self):
-        """Devuelve una lista con todos los analistas del archivo conteo_analistas.csv en Google Drive."""
-        
         # Buscar el archivo en Google Drive
         file_list = self.drive.ListFile({'q': f"'{self.FOLDER_ID}' in parents"}).GetList()
-        file_data = [f for f in file_list if f['title'] == 'conteo_analistas.xlsx'][0]
         
-        # Obtener contenido del archivo y convertirlo a un DataFrame de pandas
-        content = file_data.GetContentString()
-        df = pd.read_excel(StringIO(content))
+        # Filtrar para obtener el archivo deseado
+        filtered_files = [f for f in file_list if f['title'] == 'conteo_analistas.xlsx']
+        if not filtered_files:
+            raise ValueError("No se encontró el archivo 'conteo_analistas.xlsx' en la carpeta especificada.")
+        file_data = filtered_files[0]
+        
+        # Descargar el archivo temporalmente
+        temp_file_path = "temp_conteo_analistas.xlsx"
+        file_data.GetContentFile(temp_file_path)
+        
+        # Leer el archivo descargado con pandas
+        df = pd.read_excel(temp_file_path)
+        
+        # Eliminar el archivo temporal
+        os.remove(temp_file_path)
         
         # Retornar la columna "Analista" como una lista
         return df["Analista"].tolist()
