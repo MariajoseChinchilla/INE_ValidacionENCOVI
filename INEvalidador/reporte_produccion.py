@@ -132,7 +132,7 @@ class GestorConteos:
         # Mostrar el histograma (opcional)
         plt.show()
 
-    def escribir_query_sq(self, archivo, nombre, fecha_inicio:datetime="2023-1-1", fecha_final:datetime="2023-12-31"):
+    def escribir_query_sq(self, archivo, nombre, comision, fecha_inicio:datetime="2023-1-1", fecha_final:datetime="2023-12-31"):
         now = datetime.now()
         date_str = now.strftime("%d-%m-%Y")
         ruta_sintaxis = os.path.join(self.ruta_limpieza, "Sintaxis en SQL", f"output{date_str}")
@@ -173,6 +173,7 @@ class GestorConteos:
         id_columns = [col for col in df_queries.columns if col.endswith('-ID')]
         ids = list(df_queries[id_columns[0]])
         ids_y_vars = list(zip(ids, variables_a_editar))
+        
 
         tablas = []
         for i in vars:
@@ -180,17 +181,20 @@ class GestorConteos:
                 tablas.append(self.sql.base_col.get(i.split(".", 1)[1].upper()))
         valores_nuevos = list(df_queries["valor nuevo"])
         ronda = [f"ENCOVI_{tablas[0][-2:]}"] * len(tablas)
+        comisiones = [comision] * len(tablas)
         vars = [var.split(".", 1)[1] for var in vars]
         tablas = [tabla[:-3] for tabla in tablas]
-        cuadruplas = list(zip(ronda, tablas, vars, valores_nuevos, filtros, ids))
+        cuadruplas = list(zip(ronda, tablas, vars, valores_nuevos, filtros, ids, comisiones))
         for id, var in ids_y_vars:
             tabla = self.sql.base_col.get(var).replace("_PR","").replace("_SR","") + "-id"
             filtros.append(f"{tabla} = {id}")
-        for rond, tabla, variable, valor_nuevo, filtro, id in cuadruplas:
+        fecha = datetime.now()
+        for rond, tabla, variable, valor_nuevo, filtro, id, comision in cuadruplas:
             with open(ruta_archivo, "a") as archivo:
                 # archivo.write(f"UPDATE {rond}.{tabla} AS {tabla} JOIN `level-1` ON {tabla}.`level-1-id` = `level-1`.`level-1-id` SET {tabla}.{variable} = {valor_nuevo} WHERE {filtro}; \n")
                 # archivo.write(f"INSERT INTO {base_datos}.{tabla (bitácora)} SET {tabla}.{variable} = {valor_nuevo} WHERE {filtro}; \n")
-                archivo.write(f"UPDATE {rond}.{tabla} AS {tabla}  SET {variable} = {valor_nuevo} WHERE {tabla}.`{tabla}-id` = {id}; \n")
+                archivo.write(f"UPDATE {rond}_COM{comision}.{tabla} AS {tabla}  SET {variable} = {valor_nuevo} WHERE {tabla}.`{tabla}-id` = {id}; \n")
+                archivo.write(f"UPDATE ine_encovi.bitacora AS bitacora  SET usuario = {tabla} and base_datos = {rond}_COM{comision} and tabla = {tabla} and variable = {variable} and valor_anterior = {tabla} and valor_nuevo = {valor_nuevo} and id_registro = {id} and fecha_creacion = {fecha}; \n")
 
         
 
@@ -200,11 +204,11 @@ class GestorConteos:
         
         # Buscar el archivo en Google Drive
         file_list = self.drive.ListFile({'q': f"'{self.FOLDER_ID}' in parents"}).GetList()
-        file_data = [f for f in file_list if f['title'] == 'conteo_analistas.csv'][0]
+        file_data = [f for f in file_list if f['title'] == 'conteo_analistas.xlsx'][0]
         
         # Obtener contenido del archivo y convertirlo a un DataFrame de pandas
         content = file_data.GetContentString()
-        df = pd.read_csv(StringIO(content))
+        df = pd.read_excel(StringIO(content))
         
         # Retornar la columna "Analista" como una lista
         return df["Analista"].tolist()

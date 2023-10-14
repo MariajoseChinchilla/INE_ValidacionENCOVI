@@ -57,7 +57,6 @@ class baseSQL:
     def df_para_condicion(self, condicion: str, fecha_inicio, fecha_final):
         # PR, tomar primera ronda
         variables = condicion_a_variables(condicion)
-
         df_a_unir = list(set([self.base_col.get(var) for var in variables]))
         tipos = []
         for i in range(len(df_a_unir)):

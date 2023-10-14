@@ -16,7 +16,7 @@ from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaFileUpload
 import os
 
-from .utils import extraer_UPMS
+from .utils import extraer_UPMS, columnas_a_mayuscula
 from .conexionSQL import baseSQL
 from .scripR import ScripR
 
@@ -32,6 +32,8 @@ class Validador:
         self.ruta_UPM_R = ruta_UPM_R
         self.ruta_UPM_py = ruta_UPM_py
         self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
+        self.dir_salida = os.path.join(self.ruta_escritorio, 'Validador\db')
+        self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
         # crea carpeta ValidadorINE en el escritorio en caso no exista
         if not os.path.exists(os.path.join(self.ruta_escritorio, "Validador")):
             os.mkdir(os.path.join(self.ruta_escritorio, "Validador"))
@@ -42,9 +44,9 @@ class Validador:
             os.makedirs(self.salida_validaciones)
         # demas atributos
         self.df_ = pd.DataFrame
+        self.df = pd.DataFrame
         # nuevo
         self.sql = baseSQL(descargar)
-        self.df = pd.DataFrame
         # si no se pasa la ruta de expresiones, se usa la ruta por defecto
         if not ruta_expresiones:
             ruta_expresiones = pkg_resources.resource_filename(__name__, "archivos\Expresiones.xlsx")
@@ -99,6 +101,7 @@ class Validador:
             if np.issubdtype(self.df[columna].dtype, np.floating):
                 self.df[columna] = self.df[columna].fillna(-1)
                 self.df[columna] = pd.to_numeric(self.df[columna], downcast='integer')
+        
 
     def __configurar_logs(self, carpeta: str):
         # Configurar logging
@@ -123,8 +126,24 @@ class Validador:
         return self.__replacements[match.group(0)]
 
     def columnas_condicion_nula(self, condicion: str) -> List[Tuple[str, str]]:
-        matches = [(m, '==') for m in re.findall(r'\b([A-Z0-9]+) == ""', condicion)]
-        matches.extend([(m, '!=') for m in re.findall(r'\b([A-Z0-9]+) != ""', condicion)])
+        # Elimina espacios extra y realiza reemplazos para convertir la condición al formato correcto
+        condicion = ' '.join(condicion.split())  
+        condicion = condicion.replace(" es vacio", ' == ""').replace(" no es vacio", ' != ""')
+
+        # print(f"Condición tras reemplazo: {condicion}")
+
+        pattern_equal = r'\b([A-Z0-9]+) == ""'
+        matches_equal = re.findall(pattern_equal, condicion)
+        # print(f"Coincidencias para == : {matches_equal}")
+
+        pattern_not_equal = r'\b([A-Z0-9]+) != ""'
+        matches_not_equal = re.findall(pattern_not_equal, condicion)
+        # print(f"Coincidencias para != : {matches_not_equal}")
+
+        matches = [(m, '==') for m in matches_equal]
+        matches.extend([(m, '!=') for m in matches_not_equal])
+        # print(f"Matches resultantes: {matches}")
+
         return matches
     
     def quitar_tildes(self, cadena: str) -> str:
@@ -162,10 +181,13 @@ class Validador:
         # Capturar conversion de cadena
         if self._capturar_converciones:
             self.logger_conv.info('{}  |--->  {}'.format(condicion, condicion_convertida))
-        
+        # print(self.df.columns)
+        # print(condicion_convertida)
         for col, tipo in self.columnas_condicion_nula(condicion_convertida):
             # Verificar si la columna es de tipo int o float
-            if np.issubdtype(self.df[col].dtype, np.integer) or np.issubdtype(self.df[col].dtype, np.floating):
+            # print(col)
+            df = columnas_a_mayuscula(pd.read_feather(os.path.join(self.dir_salida, f"{self.sql.base_col.get(col)}.feather")))
+            if np.issubdtype(df[col].dtype, np.integer) or np.issubdtype(df[col].dtype, np.floating):
                 # Sustituir cuando la columna sea de tipo numérica
                 if tipo == "==":
                     condicion_convertida = condicion_convertida.replace(f'{col} {tipo} ""', f'{col}.isnull()')       #modificaciones para variables tipo numérica
