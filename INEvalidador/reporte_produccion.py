@@ -133,7 +133,7 @@ class GestorConteos:
         # Mostrar el histograma (opcional)
         plt.show()
 
-    def escribir_query_sq(self, archivo, nombre, comision, fecha_inicio:datetime="2023-1-1", fecha_final:datetime="2023-12-31"):
+    def escribir_query_sq(self, archivo, nombre, comision, usuario, fecha_inicio:datetime="2023-1-1", fecha_final:datetime="2023-12-31"):
         now = datetime.now()
         date_str = now.strftime("%d-%m-%Y")
         ruta_sintaxis = os.path.join(self.ruta_limpieza, "Sintaxis en SQL", f"output{date_str}")
@@ -174,7 +174,10 @@ class GestorConteos:
         id_columns = [col for col in df_queries.columns if col.endswith('-ID')]
         ids = list(df_queries[id_columns[0]])
         ids_y_vars = list(zip(ids, variables_a_editar))
-        
+        valores_antiguos = []
+        for i in range(len(df_original) - 1):
+            valores_antiguos.append(df_original.loc[i, vars[i]])
+        print(valores_antiguos)
 
         tablas = []
         for i in vars:
@@ -185,17 +188,17 @@ class GestorConteos:
         comisiones = [comision] * len(tablas)
         vars = [var.split(".", 1)[1] for var in vars]
         tablas = [tabla[:-3] for tabla in tablas]
-        cuadruplas = list(zip(ronda, tablas, vars, valores_nuevos, filtros, ids, comisiones))
+        cuadruplas = list(zip(ronda, tablas, vars, valores_nuevos, filtros, ids, comisiones, valores_antiguos))
         for id, var in ids_y_vars:
             tabla = self.sql.base_col.get(var).replace("_PR","").replace("_SR","") + "-id"
             filtros.append(f"{tabla} = {id}")
         fecha = datetime.now()
-        for rond, tabla, variable, valor_nuevo, filtro, id, comision in cuadruplas:
+        for rond, tabla, variable, valor_nuevo, filtro, id, comision, valor_viejo in cuadruplas:
             with open(ruta_archivo, "a") as archivo:
                 # archivo.write(f"UPDATE {rond}.{tabla} AS {tabla} JOIN `level-1` ON {tabla}.`level-1-id` = `level-1`.`level-1-id` SET {tabla}.{variable} = {valor_nuevo} WHERE {filtro}; \n")
                 # archivo.write(f"INSERT INTO {base_datos}.{tabla (bitácora)} SET {tabla}.{variable} = {valor_nuevo} WHERE {filtro}; \n")
                 archivo.write(f"UPDATE {rond}_COM{comision}.{tabla} AS {tabla}  SET {variable} = {valor_nuevo} WHERE {tabla}.`{tabla}-id` = {id}; \n")
-                archivo.write(f"UPDATE ine_encovi.bitacora AS bitacora  SET usuario = {tabla} and base_datos = {rond}_COM{comision} and tabla = {tabla} and variable = {variable} and valor_anterior = {tabla} and valor_nuevo = {valor_nuevo} and id_registro = {id} and fecha_creacion = {fecha}; \n")
+                archivo.write(f"UPDATE ine_encovi.bitacora AS bitacora  SET usuario = {usuario} and base_datos = {rond}_COM{comision} and tabla = {tabla} and variable = {variable} and valor_anterior = {valor_viejo} and valor_nuevo = {valor_nuevo} and id_registro = {id} and fecha_creacion = {fecha}; \n")
 
     def obtener_lista_analistas(self):
         # Buscar el archivo en Google Drive
