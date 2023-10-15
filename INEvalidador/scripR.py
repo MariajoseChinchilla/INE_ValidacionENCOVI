@@ -1,13 +1,34 @@
+import os
 import mysql.connector
 import pandas as pd
-import os
 from openpyxl import Workbook
 import pkg_resources
 
 class ScripR:
-    def __init__(self) -> None:
-        # SQL query
-        self.sql = """
+    def __init__(self, host: str = '20.10.8.4', port: int = 3307, user: str = 'mchinchilla', 
+                 password: str = 'mchinchilla$2023', database: str = 'ENCOVI_PR') -> None:
+        """
+        Constructor de la clase ScripR. 
+        Se conecta a la base de datos MySQL y recupera datos basados en el SQL proporcionado.
+        
+        Args:
+        - host: dirección del host de la base de datos.
+        - port: puerto para la conexión.
+        - user: nombre de usuario para la base de datos.
+        - password: contraseña del usuario.
+        - database: nombre de la base de datos.
+        """
+        self.sql = self._generate_sql()
+        self.data = self._connect_to_db(host, port, user, password, database)
+        
+    def _generate_sql(self) -> str:
+        """
+        Genera la consulta SQL.
+        
+        Returns:
+        - Consulta SQL.
+        """
+        sql = """
         SELECT encuestador ENCUESTADOR, depto DEPTO, mupio MUPIO, sector SECTOR, estructura ESTRUCTURA, vivienda VIVIENDA, hogar HOGAR, p.cp CP, 
             10 CAPITULO, 'C' SECCION, 2 PREGUNTA,
             'P10C02 Ocupación principal falta o insuficientemente descrita' AS 'DEFINICION DE INCONSISTENCIA',
@@ -56,27 +77,43 @@ class ScripR:
         WHERE c.deleted=0 AND p.p10c01>=1 AND r.estado_pr=1 AND (LENGTH(IFNULL(p.p10c07,''))<=2 OR UPPER(IFNULL(p.p10c07,'')) IN ('NO','NA','N/A','POR','NADA','ESTUDIA','ESTUDIAR') ) AND 
             DATEDIFF(CURDATE(),(SELECT STR_TO_DATE(MAX(v.r1_fecha_inicial),'%d/%m/%y') FROM registro_de_visitas_pr v WHERE v.`level-1-id`=l.`level-1-id`))<=4;
         """
+        return sql
 
-        # Conectar a la base de datos MySQL
+    def _connect_to_db(self, host: str, port: int, user: str, password: str, database: str) -> pd.DataFrame:
+        """
+        Conecta con la base de datos y recupera datos basados en el SQL.
+        
+        Args:
+        - host: dirección del host de la base de datos.
+        - port: puerto para la conexión.
+        - user: nombre de usuario para la base de datos.
+        - password: contraseña del usuario.
+        - database: nombre de la base de datos.
+        
+        Returns:
+        - DataFrame con los datos recuperados.
+        """
         try:
-            cnn = mysql.connector.connect(
-                user='mchinchilla',
-                password='mchinchilla$2023',
-                host='20.10.8.4',
-                port=3307,
-                database='ENCOVI_PR'
-            )
-            cursor = cnn.cursor()
-
-            # Obtener datos de ocupaciones
-            self.data = pd.read_sql(self.sql, cnn)
-            
+            cnn = mysql.connector.connect(user=user, password=password, host=host, port=port, database=database)
+            data = pd.read_sql(self.sql, cnn)
+            return data
         except Exception as e:
             print(e)
+            return pd.DataFrame()
         finally:
             cnn.close()
 
-    def procesar_datos(self, ruta_salida: str="", archivo_grupos: str="") -> pd.DataFrame:
+    def procesar_datos(self, ruta_salida: str = "", archivo_grupos: str = "") -> pd.DataFrame:
+        """
+        Procesa los datos recuperados de la base de datos y los guarda en Excel.
+        
+        Args:
+        - ruta_salida: ruta donde se guardarán los archivos.
+        - archivo_grupos: ruta del archivo de grupos.
+        
+        Returns:
+        - DataFrame con los datos procesados.
+        """
         if not archivo_grupos:
             grupos = pkg_resources.resource_filename(__name__, 'archivos\GruposC2.xlsx')
         
