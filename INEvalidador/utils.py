@@ -8,31 +8,47 @@ import openpyxl # al parecer no se usa
 import pandas as pd
 import pkg_resources
 
-# Función para convertirlas todas las columnas de la base a mayuscula
-def columnas_a_mayuscula(df: pd.DataFrame):
+def columnas_a_mayuscula(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Convertir todas las columnas del DataFrame a mayúsculas.
+
+    Args:
+    - df (pd.DataFrame): DataFrame de entrada.
+
+    Returns:
+    - pd.DataFrame: DataFrame con nombres de columnas en mayúsculas.
+    """
     columnas_originales = df.columns
-    columnas_nuevas = []
-    for columna in columnas_originales:
-        col = columna.upper()
-        columnas_nuevas.append(col)
+    columnas_nuevas = [columna.upper() for columna in columnas_originales]
     diccionario = dict(zip(columnas_originales, columnas_nuevas))
     df = df.rename(columns=diccionario)
     return df
 
 def condicion_a_variables(condicion: str) -> List[str]:
-    # La expresión regular coincide con cualquier cadena que comience con una letra mayúscula 
-    # seguida de números y letras mayúsculas.
+    """
+    Extraer variables de una condición basada en una expresión regular.
+
+    Args:
+    - condicion (str): Cadena de entrada con la condición.
+
+    Returns:
+    - List[str]: Lista de variables extraídas.
+    """
     pattern = r'\b[A-Z][A-Z0-9]+\b'
     matches = set(re.findall(pattern, condicion))
-
-    # Lista negra de palabras para excluir
     blacklist = {"VACIO", "NO", "ES"}
+    return [word for word in matches if word not in blacklist]
 
-    # Filtramos las coincidencias para excluir las palabras de la lista negra
-    return tuple(word for word in matches if word not in blacklist)
+def extract_number(s: str) -> int:
+    """
+    Extraer un número de una cadena.
 
-def extract_number(s):
-    # Extraer el número deseado de la cadena
+    Args:
+    - s (str): Cadena de entrada.
+
+    Returns:
+    - int: Número extraído.
+    """
     return int(s[7:-2])
 
 def extraer_UPMS(ruta: str="") -> dict:
