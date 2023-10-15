@@ -4,7 +4,7 @@ import re
 from datetime import datetime
 from typing import List
 
-import openpyxl
+import openpyxl # al parecer no se usa
 import pandas as pd
 import pkg_resources
 
