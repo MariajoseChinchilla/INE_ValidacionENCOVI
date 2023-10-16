@@ -57,7 +57,7 @@ class LimpiezaSQL:
         for tabla in lista_tablas:
             df = pd.read_sql(tabla, self.engine)
             ruta_archivo_feather = os.path.join(ruta_final, f"{tabla}{sufijo}.feather")
-            df.to_feather(ruta_archivo_feather)
+            columnas_a_mayuscula(df).to_feather(ruta_archivo_feather)
 
         print(f"Tablas guardadas en: {ruta_final}")
         
