@@ -10,7 +10,6 @@ import logging
 from tqdm import tqdm
 import unicodedata
 from .conexionSQL import baseSQL
-from INEvalidador.limpieza_sql import LimpiezaSQL
 
 class Limpieza:
     def __init__(self, ruta_criterios_limpieza: str="", descargar: bool = False, host: str = '20.10.8.4', puerto: str = '3307', usuario: str = 'mchinchilla', 
