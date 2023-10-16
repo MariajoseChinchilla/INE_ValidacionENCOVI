@@ -14,7 +14,7 @@ from datetime import datetime
 class GestorConteos:
     def __init__(self):
         self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
-        self.ruta_limpieza = os.path.join(self.ruta_escritorio, "Limpieza")
+        self.ruta_limpieza = os.path.join(self.ruta_escritorio, "Validador", "Limpieza")
         if not os.path.exists(self.ruta_limpieza):
             os.mkdir(self.ruta_limpieza)
         # Autenticación con Google Drive
