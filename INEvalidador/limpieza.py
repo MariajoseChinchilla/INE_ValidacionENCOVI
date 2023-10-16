@@ -180,7 +180,8 @@ class Limpieza:
             logging.error(f"Error general: {e}")
 
     # Generar archivos de limpieza de datos ingresando valores por campos de texto
-    def limpieza_por_query(self, nombre, condicion: str, columnas: list, fecha_inicio: datetime= "2023-1-1", fecha_final: datetime = "2023-12-31" ):
+    def limpieza_por_query(self, nombre, condicion: str, columnas: str, fecha_inicio: datetime= "2023-1-1", fecha_final: datetime = "2023-12-31" ):
+        columnas = [col.strip() for col in columnas.split(",")]
         Validacion = self.filtrar_base_limpieza(condicion, columnas, fecha_inicio, fecha_final)
         carto = set(["DEPTO", "MUPIO", "SECTOR", "ESTRUCTURA", "VIVIENDA", "HOGAR", "CP", "VARIABLE", "VALOR NUEVO"])
         diff = list(set(Validacion.columns) - carto)
