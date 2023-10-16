@@ -23,7 +23,8 @@ class Limpieza:
         self.salida_principal = os.path.join(self.ruta_escritorio, f"Validador\Datos para Revisión\output_{self.marca_temp}")
         if not os.path.exists(self.salida_principal):
             os.makedirs(self.salida_principal)
-        self.criterios_limpieza = pd.read_excel(ruta_criterios_limpieza)
+        if ruta_criterios_limpieza:
+            self.criterios_limpieza = pd.read_excel(ruta_criterios_limpieza)
         self.columnas = ["FECHA", "DEPTO", "MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR", "CP","ENCUESTADOR"]
         self._capturar_converciones = False
 
