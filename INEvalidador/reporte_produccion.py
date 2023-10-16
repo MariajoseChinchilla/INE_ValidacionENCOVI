@@ -37,7 +37,7 @@ class GestorConteos:
         file_drive.SetContentFile(ruta_conteo_analista)
         file_drive.Upload()
 
-    def obtener_conteo_desde_archivo(self, archivo, ruta):
+    def obtener_conteo_desde_archivo(self, archivo):
         """Devuelve el conteo de líneas desde el archivo del analista del día actual."""
         # fecha_actual = datetime.now().strftime('%Y-%m-%d')
         # ruta_archivo = os.path.join(self.ruta_limpieza, f"{analista}_{fecha_actual}\{analista}.txt")
@@ -47,9 +47,9 @@ class GestorConteos:
         with open(archivo, 'r') as file:
             return sum(1 for _ in file)
 
-    def actualizar_conteo(self, analista):
+    def actualizar_conteo(self, analista, archivo):
         """Actualiza el conteo del analista en el archivo CSV en Google Drive."""
-        lineas = self.obtener_conteo_desde_archivo(analista)
+        lineas = self.obtener_conteo_desde_archivo(archivo)
         file_list = self.drive.ListFile({'q': f"'{self.FOLDER_ID}' in parents"}).GetList()
         file_data = [f for f in file_list if f['title'] == 'conteo_analistas.csv'][0]
         content = file_data.GetContentString()
