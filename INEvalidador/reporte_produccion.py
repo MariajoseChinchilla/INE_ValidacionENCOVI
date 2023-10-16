@@ -10,13 +10,9 @@ from io import BytesIO
 import io
 import pandas as pd
 from datetime import datetime
-from INEvalidador.conexionSQL import baseSQL
-from INEvalidador.limpieza import Limpieza
 
 class GestorConteos:
     def __init__(self):
-        self.sql = baseSQL(False)
-        self.limpieza = Limpieza()
         self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
         self.ruta_limpieza = os.path.join(self.ruta_escritorio, "Limpieza")
         if not os.path.exists(self.ruta_limpieza):
