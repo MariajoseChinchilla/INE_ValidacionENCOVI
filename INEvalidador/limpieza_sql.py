@@ -10,7 +10,7 @@ from INEvalidador.utils import columnas_a_mayuscula, condicion_a_variables
 import os
 import re
 import pandas as pd
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, MetaData
 
 class LimpiezaSQL:
     def __init__(self, usuario, contraseña, host, puerto, comision):
@@ -41,8 +41,10 @@ class LimpiezaSQL:
         self.engine = create_engine(self.url_conexion)
 
     def descargar_tablas(self):
-        # Obtenemos la lista de tablas de la base de datos
-        lista_tablas = self.engine.table_names()
+        # Obtenemos la lista de tablas de la base de datos usando MetaData
+        metadata = MetaData()
+        metadata.reflect(self.engine)
+        lista_tablas = list(metadata.tables.keys())
 
         # Determinamos si el sufijo es PR o SR
         sufijo = "_PR" if "PR" in self.url_conexion else "_SR"
@@ -72,4 +74,3 @@ class LimpiezaSQL:
                     consulta_sql = linea.strip()  # Elimina espacios en blanco al principio y al final
                     if consulta_sql:  # Evita ejecutar líneas vacías
                         conexion.execute(text(consulta_sql))
- 
