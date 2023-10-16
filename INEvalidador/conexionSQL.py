@@ -6,7 +6,7 @@ from datetime import datetime
 from .utils import columnas_a_mayuscula, condicion_a_variables
 
 class baseSQL:
-    def __init__(self,descargar: bool=True, host: str = '20.10.8.4', puerto: str = '3307', usuario: str = 'mchinchilla', 
+    def __init__(self, descargar: bool=True, host: str = '20.10.8.4', puerto: str = '3307', usuario: str = 'mchinchilla', 
                 password: str = 'mchinchilla$2023') -> None:
         self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
         self.dir_salida = os.path.join(self.ruta_escritorio, 'Validador\db')
