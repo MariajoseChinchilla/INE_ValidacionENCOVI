@@ -33,8 +33,8 @@ class LimpiezaSQL:
         ruta_sintaxis = os.path.join(self.ruta_limpieza, "Sintaxis en SQL", f"output{date_str}")
         if not os.path.exists(ruta_sintaxis):
             os.makedirs(ruta_sintaxis)
-        nombre = os.path.basename(archivo).split(".")[0].replace(" ", "_")
-        ruta_archivo = os.path.join(ruta_sintaxis, f"Sintaxis_{nombre}.txt")
+        nombre = os.path.basename(archivo).split(".")[0]
+        ruta_archivo = os.path.join(ruta_sintaxis, f"{nombre}.txt")
         self.ruta_archivo_query = ruta_archivo
         # Tomar el df original subido por el analista y obtener el valor en la llave primaria a editar
         df_original = pd.read_excel(archivo)
