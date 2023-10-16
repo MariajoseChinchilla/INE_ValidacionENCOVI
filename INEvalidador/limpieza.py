@@ -12,10 +12,11 @@ import unicodedata
 from .conexionSQL import baseSQL
 
 class Limpieza:
-    def __init__(self, ruta_criterios_limpieza: str="", descargar: bool = False):
+    def __init__(self, ruta_criterios_limpieza: str="", descargar: bool = False, host: str = '20.10.8.4', puerto: str = '3307', usuario: str = 'mchinchilla', 
+                password: str = 'mchinchilla$2023'):
         self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
         self.marca_temp = datetime.now().strftime("%d-%m-%Y")
-        self.sql = baseSQL(descargar)
+        self.sql = baseSQL(descargar, host, puerto, usuario, password)
 
         self.salida_principal = os.path.join(self.ruta_escritorio, f"Limpieza\Datos para Revisión\output_{self.marca_temp}")
         if not os.path.exists(self.salida_principal):
