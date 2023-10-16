@@ -1,24 +1,24 @@
 import os
 from datetime import datetime
-import pandas as pd
-import pkg_resources
 import re 
-from .utils import extraer_UPMS, condicion_a_variables, columnas_a_mayuscula
-import numpy as np
 import copy
 import logging
 from tqdm import tqdm
-import unicodedata
 
+import unicodedata
+import pandas as pd
+import numpy as np
+
+from .utils import extraer_UPMS, columnas_a_mayuscula
 from INEvalidador.conexionSQL import baseSQL
 
 class Limpieza:
-    def __init__(self, ruta_archivo, comision, ruta_criterios_limpieza: str="", descargar: bool = False, host: str = '10.0.0.170', 
+    def __init__(self, comision, ruta_criterios_limpieza: str="", descargar: bool = False, host: str = '10.0.0.170', 
                 puerto: str = '3307', usuario: str = 'mchinchilla', 
                 password: str = 'mchinchilla$2023'):
         self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
         self.marca_temp = datetime.now().strftime("%d-%m-%Y")
-        self.sql = baseSQL(False)
+        self.sql = baseSQL(descargar, host, puerto, usuario, password, comision)
 
         self.salida_principal = os.path.join(self.ruta_escritorio, f"Validador\Datos para Revisión\output_{self.marca_temp}")
         if not os.path.exists(self.salida_principal):
