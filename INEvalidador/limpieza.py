@@ -10,6 +10,7 @@ import logging
 from tqdm import tqdm
 import unicodedata
 from .conexionSQL import baseSQL
+from INEvalidador.limpieza_sql import LimpiezaSQL
 
 class Limpieza:
     def __init__(self, ruta_criterios_limpieza: str="", descargar: bool = False, host: str = '20.10.8.4', puerto: str = '3307', usuario: str = 'mchinchilla', 
@@ -18,7 +19,7 @@ class Limpieza:
         self.marca_temp = datetime.now().strftime("%d-%m-%Y")
         self.sql = baseSQL(descargar, host, puerto, usuario, password)
 
-        self.salida_principal = os.path.join(self.ruta_escritorio, f"Validador\Limpieza\Datos para Revisión\output_{self.marca_temp}")
+        self.salida_principal = os.path.join(self.ruta_escritorio, f"Validador\Datos para Revisión\output_{self.marca_temp}")
         if not os.path.exists(self.salida_principal):
             os.makedirs(self.salida_principal)
         self.criterios_limpieza = pd.read_excel(ruta_criterios_limpieza)
