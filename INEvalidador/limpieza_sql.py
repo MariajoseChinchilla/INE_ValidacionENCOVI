@@ -14,7 +14,7 @@ from sqlalchemy import create_engine
 
 class LimpiezaSQL:
     def __init__(self, usuario, contraseña, host, puerto, comision):
-        self.limpieza = Limpieza()
+        self.limpieza = Limpieza(comision)
         self.ruta_archivo_query = str
         self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
         self.ruta_limpieza = os.path.join(self.ruta_escritorio, "Sintaxis")
