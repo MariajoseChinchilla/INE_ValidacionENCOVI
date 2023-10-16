@@ -37,14 +37,14 @@ class GestorConteos:
         file_drive.SetContentFile(ruta_conteo_analista)
         file_drive.Upload()
 
-    def obtener_conteo_desde_archivo(self, analista):
+    def obtener_conteo_desde_archivo(self, analista, ruta):
         """Devuelve el conteo de líneas desde el archivo del analista del día actual."""
-        fecha_actual = datetime.now().strftime('%Y-%m-%d')
-        ruta_archivo = os.path.join(self.ruta_limpieza, f"{analista}_{fecha_actual}\{analista}.txt")
-        os.mkdir(os.path.join(self.ruta_limpieza, f"{analista}_{fecha_actual}"))
-        if not os.path.exists(ruta_archivo):
-            return 0
-        with open(ruta_archivo, 'r') as file:
+        # fecha_actual = datetime.now().strftime('%Y-%m-%d')
+        # ruta_archivo = os.path.join(self.ruta_limpieza, f"{analista}_{fecha_actual}\{analista}.txt")
+        # os.mkdir(os.path.join(self.ruta_limpieza, f"{analista}_{fecha_actual}"))
+        # if not os.path.exists(ruta_archivo):
+            # return 0
+        with open(archivo, 'r') as file:
             return sum(1 for _ in file)
 
     def actualizar_conteo(self, analista):
