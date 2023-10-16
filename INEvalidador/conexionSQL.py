@@ -6,18 +6,14 @@ from datetime import datetime
 from .utils import columnas_a_mayuscula, condicion_a_variables
 
 class baseSQL:
-    def __init__(self, descargar: bool=True):
+    def __init__(self,descargar: bool=True, host: str = '20.10.8.4', puerto: str = '3307', usuario: str = 'mchinchilla', 
+                password: str = 'mchinchilla$2023') -> None:
         self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
         self.dir_salida = os.path.join(self.ruta_escritorio, 'Validador\db')
-        if descargar:
-            # Parámetros de conexión
-            usuario = 'mchinchilla'
-            contraseña = 'mchinchilla$2023'
-            host = '20.10.8.4'
-            puerto = '3307'
+        if descargar:            
             # Crear la conexión de SQLAlchemy
-            engine_PR = create_engine(f'mysql+mysqlconnector://{usuario}:{contraseña}@{host}:{puerto}/ENCOVI_PR')
-            engine_SR = create_engine(f'mysql+mysqlconnector://{usuario}:{contraseña}@{host}:{puerto}/ENCOVI_SR')
+            engine_PR = create_engine(f'mysql+mysqlconnector://{usuario}:{password}@{host}:{puerto}/ENCOVI_PR')
+            engine_SR = create_engine(f'mysql+mysqlconnector://{usuario}:{password}@{host}:{puerto}/ENCOVI_SR')
             self.__conexion_PR = engine_PR.connect()
             self.__conexion_SR = engine_SR.connect()
             self.extraer_base()
