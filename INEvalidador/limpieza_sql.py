@@ -4,7 +4,6 @@ import os
 from datetime import datetime
 import re
 
-from INEvalidador.conexionSQL import baseSQL
 from INEvalidador.limpieza import Limpieza
 from INEvalidador.utils import columnas_a_mayuscula, condicion_a_variables
 
@@ -15,7 +14,6 @@ from sqlalchemy import create_engine
 
 class LimpiezaSQL:
     def __init__(self, usuario, contraseña, host, puerto, comision):
-        self.sql = baseSQL(False)
         self.limpieza = Limpieza()
         self.ruta_archivo_query = str
         self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
