@@ -20,7 +20,7 @@ class LimpiezaSQL:
         self.ruta_archivo = ruta_archivo
         self.ruta_archivo_query = str
         self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
-        self.ruta_limpieza = os.path.join(self.ruta_escritorio, "Limpieza")
+        self.ruta_limpieza = os.path.join(self.ruta_escritorio, "Sintaxis")
 
         self.escribir_query_sq(self.ruta_archivo)
         with open(self.ruta_archivo_query, "r", encoding="utf-8") as archivo:
