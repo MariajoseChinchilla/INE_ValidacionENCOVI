@@ -126,8 +126,7 @@ class GestorConteos:
         ruta_imagen = os.path.join(ruta_carpeta, f"Productividad_{fecha_actual}.png")
         plt.savefig(ruta_imagen)
 
-        # Mostrar el histograma (opcional)
-        plt.show()
+        os.system(f'start {ruta_imagen}')
 
     def obtener_lista_analistas(self):
         # Buscar el archivo en Google Drive
