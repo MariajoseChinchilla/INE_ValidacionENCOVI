@@ -9,7 +9,7 @@ import copy
 import logging
 from tqdm import tqdm
 import unicodedata
-from .limpieza_sql import LimpiezaSQL
+from INEvalidador.limpieza_sql import LimpiezaSQL
 
 class Limpieza:
     def __init__(self, ruta_archivo, comision, ruta_criterios_limpieza: str="", descargar: bool = False, host: str = '10.0.0.170', 
