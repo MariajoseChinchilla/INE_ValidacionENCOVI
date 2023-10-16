@@ -27,7 +27,7 @@ class LimpiezaSQL:
                 self.url_conexion = f"mysql+mysqlconnector://{usuario}:{contraseña}@{host}:{puerto}/{base_de_datos}"
         self.engine = create_engine(self.url_conexion)
 
-    def escribir_query_sq(self, archivo, comision, usuario, fecha_inicio:datetime="2023-1-1", fecha_final:datetime="2025-12-31"):
+    def escribir_query_sq(self, archivo, comision, usuario, fecha_inicio:datetime="2023-1-1", fecha_final:datetime="2100-12-31"):
         now = datetime.now()
         date_str = now.strftime("%d-%m-%Y")
         ruta_sintaxis = os.path.join(self.ruta_limpieza, "Sintaxis en SQL", f"output{date_str}")
