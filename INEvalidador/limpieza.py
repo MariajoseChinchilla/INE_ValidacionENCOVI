@@ -12,12 +12,11 @@ import unicodedata
 from .conexionSQL import baseSQL
 
 class Limpieza:
-    def __init__(self, ruta_expresiones: str="", ruta_criterios_limpieza: str="", descargar: bool = False):
+    def __init__(self, ruta_criterios_limpieza: str="", descargar: bool = False):
         self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
         self.marca_temp = datetime.now().strftime("%d-%m-%Y")
         self.sql = baseSQL(descargar)
-        if not ruta_criterios_limpieza:
-            ruta_criterios_limpieza = pkg_resources.resource_filename(__name__, "archivos\Limpieza.xlsx")
+
         self.salida_principal = os.path.join(self.ruta_escritorio, f"Limpieza\Datos para Revisión\output_{self.marca_temp}")
         if not os.path.exists(self.salida_principal):
             os.makedirs(self.salida_principal)
@@ -135,7 +134,7 @@ class Limpieza:
         return copy.deepcopy(filtered_df)
 
     # Busca el archivo limpieza en carpeta de archivos
-    def archivos_limpieza(self, fecha_inicio: datetime="2023-1-1", fecha_final: datetime="2023-12-31"):
+    def archivos_limpieza(self, fecha_inicio: datetime="2023-1-1", fecha_final: datetime="2100-12-31"):
         try:
             # Calcular el total de condiciones
             total_conditions = self.criterios_limpieza.shape[0]
@@ -179,23 +178,23 @@ class Limpieza:
             # Manejar error general en caso de problemas durante el proceso
             logging.error(f"Error general: {e}")
 
-        # Generar archivos de limpieza de datos ingresando valores por campos de texto
-        def limpieza_por_query(self, nombre, condicion: str, columnas: list, fecha_inicio: datetime= "2023-1-1", fecha_final: datetime = "2023-12-31" ):
-            Validacion = self.filtrar_base_limpieza(condicion, columnas, fecha_inicio, fecha_final)
-            carto = set(["DEPTO", "MUPIO", "SECTOR", "ESTRUCTURA", "VIVIENDA", "HOGAR", "CP", "VARIABLE", "VALOR NUEVO"])
-            diff = list(set(Validacion.columns) - carto)
-            for i in diff:
-                Validacion.rename(columns={i: f"{self.sql.base_col[i][:-3]}.{i}".lower() for i in diff}, inplace=True)
-            Validacion.rename(columns={i: i.lower() for i in carto}, inplace=True)
-            if Validacion.shape[0] == 0:
-                pass 
-            Validacion.to_excel(os.path.join(self.salida_principal, f'{nombre}.xlsx'), index=False)
-            marca_temp = datetime.now().strftime("%d-%m-%Y")
-            # carpeta_padre = f"Limpieza/DatosLimpieza{marca_temp}"
+    # Generar archivos de limpieza de datos ingresando valores por campos de texto
+    def limpieza_por_query(self, nombre, condicion: str, columnas: list, fecha_inicio: datetime= "2023-1-1", fecha_final: datetime = "2023-12-31" ):
+        Validacion = self.filtrar_base_limpieza(condicion, columnas, fecha_inicio, fecha_final)
+        carto = set(["DEPTO", "MUPIO", "SECTOR", "ESTRUCTURA", "VIVIENDA", "HOGAR", "CP", "VARIABLE", "VALOR NUEVO"])
+        diff = list(set(Validacion.columns) - carto)
+        for i in diff:
+            Validacion.rename(columns={i: f"{self.sql.base_col[i][:-3]}.{i}".lower() for i in diff}, inplace=True)
+        Validacion.rename(columns={i: i.lower() for i in carto}, inplace=True)
+        if Validacion.shape[0] == 0:
+            pass 
+        Validacion.to_excel(os.path.join(self.salida_principal, f'{nombre}.xlsx'), index=False)
+        marca_temp = datetime.now().strftime("%d-%m-%Y")
+        # carpeta_padre = f"Limpieza/DatosLimpieza{marca_temp}"
 
-            # Configurar logging
-            self.__configurar_logs(self.salida_principal)
-            for i in Validacion.columns:
-                Validacion.rename(columns={i: i.lower()}, inplace=True)
-            
-            Validacion.to_excel(os.path.join(self.salida_principal, f'{nombre}.xlsx'), index=False)
+        # Configurar logging
+        self.__configurar_logs(self.salida_principal)
+        for i in Validacion.columns:
+            Validacion.rename(columns={i: i.lower()}, inplace=True)
+        
+        Validacion.to_excel(os.path.join(self.salida_principal, f'{nombre}.xlsx'), index=False)
