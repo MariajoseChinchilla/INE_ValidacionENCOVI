@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 setup(
     name='INEvalidador',
-    version='1.4.12',
+    version='1.4.13',
     author='Mariajose Chinchilla Moran',
     description='Validador de datos de criterios de encuestas estilo INE.',
     long_description='',

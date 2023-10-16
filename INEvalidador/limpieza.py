@@ -18,7 +18,7 @@ class Limpieza:
         self.marca_temp = datetime.now().strftime("%d-%m-%Y")
         self.sql = baseSQL(descargar, host, puerto, usuario, password)
 
-        self.salida_principal = os.path.join(self.ruta_escritorio, f"Limpieza\Datos para Revisión\output_{self.marca_temp}")
+        self.salida_principal = os.path.join(self.ruta_escritorio, f"Validador\Limpieza\Datos para Revisión\output_{self.marca_temp}")
         if not os.path.exists(self.salida_principal):
             os.makedirs(self.salida_principal)
         self.criterios_limpieza = pd.read_excel(ruta_criterios_limpieza)
