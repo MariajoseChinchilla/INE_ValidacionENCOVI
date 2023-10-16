@@ -206,7 +206,7 @@ class Limpieza:
 
     def df_para_limpieza(self, variables, fecha_inicio: datetime="2023-1-1", fecha_final: datetime="2100-12-31"):
 
-        df_a_unir = list(set([self.base_col.get(var) for var in variables]))
+        df_a_unir = list(set([self.sql.base_col.get(var) for var in variables]))
         tipos = []
         for i in range(len(df_a_unir)):
             tipo = df_a_unir[i][-2:] # devuelve SR o PR
