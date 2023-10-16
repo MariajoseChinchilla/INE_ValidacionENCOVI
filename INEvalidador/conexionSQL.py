@@ -7,13 +7,17 @@ from .utils import columnas_a_mayuscula, condicion_a_variables
 
 class baseSQL:
     def __init__(self, descargar: bool=True, host: str = '20.10.8.4', puerto: str = '3307', usuario: str = 'mchinchilla', 
-                password: str = 'mchinchilla$2023') -> None:
+                password: str = 'mchinchilla$2023', comision: int=0) -> None:
         self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
         self.dir_salida = os.path.join(self.ruta_escritorio, 'Validador\db')
         if descargar:            
             # Crear la conexión de SQLAlchemy
-            engine_PR = create_engine(f'mysql+mysqlconnector://{usuario}:{password}@{host}:{puerto}/ENCOVI_PR')
-            engine_SR = create_engine(f'mysql+mysqlconnector://{usuario}:{password}@{host}:{puerto}/ENCOVI_SR')
+            if not comision:
+                engine_PR = create_engine(f'mysql+mysqlconnector://{usuario}:{password}@{host}:{puerto}/ENCOVI_PR')
+                engine_SR = create_engine(f'mysql+mysqlconnector://{usuario}:{password}@{host}:{puerto}/ENCOVI_SR')
+            else:
+                engine_PR = create_engine(f'mysql+mysqlconnector://{usuario}:{password}@{host}:{puerto}/ENCOVI_PR_COM{comision}')
+                engine_SR = create_engine(f'mysql+mysqlconnector://{usuario}:{password}@{host}:{puerto}/ENCOVI_SR_COM{comision}')
             self.__conexion_PR = engine_PR.connect()
             self.__conexion_SR = engine_SR.connect()
             self.extraer_base()
