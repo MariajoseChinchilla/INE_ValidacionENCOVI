@@ -9,7 +9,8 @@ import copy
 import logging
 from tqdm import tqdm
 import unicodedata
-from INEvalidador.limpieza_sql import LimpiezaSQL
+
+from INEvalidador.conexionSQL import baseSQL
 
 class Limpieza:
     def __init__(self, ruta_archivo, comision, ruta_criterios_limpieza: str="", descargar: bool = False, host: str = '10.0.0.170', 
@@ -17,7 +18,7 @@ class Limpieza:
                 password: str = 'mchinchilla$2023'):
         self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
         self.marca_temp = datetime.now().strftime("%d-%m-%Y")
-        self.sql = LimpiezaSQL(usuario, password, host, puerto, ruta_archivo, comision)
+        self.sql = baseSQL(False)
 
         self.salida_principal = os.path.join(self.ruta_escritorio, f"Validador\Datos para Revisión\output_{self.marca_temp}")
         if not os.path.exists(self.salida_principal):
