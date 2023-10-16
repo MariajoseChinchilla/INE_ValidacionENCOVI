@@ -74,3 +74,4 @@ class LimpiezaSQL:
                     consulta_sql = linea.strip()  # Elimina espacios en blanco al principio y al final
                     if consulta_sql:  # Evita ejecutar líneas vacías
                         conexion.execute(text(consulta_sql))
+ 
