@@ -15,10 +15,11 @@ from INEvalidador.conexionSQL import baseSQL
 class Limpieza:
     def __init__(self, comision, ruta_criterios_limpieza: str="", descargar: bool = False, host: str = '10.0.0.170', 
                 puerto: str = '3307', usuario: str = 'mchinchilla', 
-                password: str = 'mchinchilla$2023'):
+                password: str = 'Mchinchilla2023'):
         self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
         self.marca_temp = datetime.now().strftime("%d-%m-%Y")
         self.sql = baseSQL(descargar, host, puerto, usuario, password, comision)
+        self.comision = comision
 
         self.salida_principal = os.path.join(self.ruta_escritorio, f"Validador\Datos para Revisión\output_{self.marca_temp}")
         if not os.path.exists(self.salida_principal):
@@ -215,15 +216,15 @@ class Limpieza:
         tipo = tipos[0]
 
         
-        df_a_unir = [self.base_df.get(archivo) for archivo in df_a_unir] 
+        df_a_unir = [self.sql.base_df.get(archivo) for archivo in df_a_unir] 
 
-        df_base = self.base_df.get(f'level-1_{tipo}')
+        df_base = self.sql.base_df.get(f'level-1_{tipo}')
         for df in df_a_unir:
             df = df.drop('INDEX', axis=1)
             df_base = pd.merge(df_base, df, on='LEVEL-1-ID', how='inner')
 
-        df_cases = self.base_df.get(f'cases_{tipo}')
-        df_base = pd.merge(df_base, df_cases, left_on='CASE-ID', right_on='ID', how='inner')
+        df_cases = self.sql.base_df.get(f'cases_{tipo}')
+        df_base = pd.merge(df_base, df_cases[["DELETED", "ID"]], left_on='CASE-ID', right_on='ID', how='inner')
         df_base = df_base.query('DELETED == 0')
 
         # Si tipo es "PR", agregamos el dataframe "caratula_PR.feather"
