@@ -98,6 +98,7 @@ class Limpieza:
                 condicion_convertida = condicion_convertida.replace(f'{var} {op} (vacio)', f'{var} != ""')
 
         # Reemplaza los símbolos y frases con su equivalente en Python
+        print(condicion_convertida)
         condicion_convertida = self.__patron.sub(self.__translate, condicion_convertida)
         condicion_convertida = re.sub(r"\s+y\s+", " & ", condicion_convertida, flags=re.IGNORECASE)
         condicion_convertida = re.sub(r"\s+o\s+", " | ", condicion_convertida, flags=re.IGNORECASE)
@@ -341,6 +342,7 @@ class Limpieza:
         estructuras = list(df_original["estructura"])
         viviendas = list(df_original["vivienda"])
         hogares = list(df_original["hogar"])
+        df_original["cp"].fillna(0, inplace=True)
         cps = list(df_original["cp"])
         # Hacer de la identificación cartográfica un filtro
         condiciones = list(zip(variables_a_editar, deptos, mupios, sectores, estructuras, viviendas, hogares, cps))
@@ -393,4 +395,3 @@ class Limpieza:
                 archivo.write(f"UPDATE ine_encovi.bitacora AS bitacora  SET usuario = {usuario} and base_datos = {rond}_COM{comision} and tabla = {tabla} and variable = {variable} and valor_anterior = {valor_viejo} and valor_nuevo = {valor_nuevo} and id_registro = {id} and fecha_creacion = {fecha}; \n")
         
         return ruta_archivo
-    
