@@ -394,16 +394,3 @@ class Limpieza:
         
         return ruta_archivo
     
-from INEvalidador.limpieza_sql import LimpiezaSQL
-usuario = "mchinchilla"
-password = "Mchinchilla2023"
-host = "10.0.0.170"
-puerto = "3307"
-comision = 1
-archivo_sql = r"C:\Users\mchinchilla\Desktop\Validador\Datos para Revisión\output_17-10-2023\Prueba Majo.xlsx"
-limpiezasql = LimpiezaSQL(usuario, password, host, puerto, comision)
-limpieza = Limpieza(comision, archivo_sql)
-limpieza.escribir_query_sq(archivo_sql, comision, usuario)
-# SQL
-limpiezasql.conexion_sintaxis(archivo_sql)
-limpiezasql.ejecutar_consulta_desde_archivo()
