@@ -9,7 +9,7 @@ import unicodedata
 import pandas as pd
 import numpy as np
 
-from .utils import extraer_UPMS, columnas_a_mayuscula, condicion_a_variables
+from INEvalidador.utils import extraer_UPMS, columnas_a_mayuscula, condicion_a_variables
 from INEvalidador.conexionSQL import baseSQL
 
 class Limpieza:
@@ -227,7 +227,8 @@ class Limpieza:
         for df in df_a_unir:
             if "INDEX" in df.columns:
                 df = df.drop('INDEX', axis=1)
-            df_base = pd.merge(df_base, df, on='LEVEL-1-ID', how='inner')
+            df_base = pd.merge(df_base, df, on='LEVEL-1-ID', how='inner', suffixes=(None, "_y"))
+
 
         df_cases = self.sql.base_df.get(f'cases_{tipo}')
         df_base = pd.merge(df_base, df_cases[["DELETED", "ID"]], left_on='CASE-ID', right_on='ID', how='inner')
@@ -392,3 +393,17 @@ class Limpieza:
                 archivo.write(f"UPDATE ine_encovi.bitacora AS bitacora  SET usuario = {usuario} and base_datos = {rond}_COM{comision} and tabla = {tabla} and variable = {variable} and valor_anterior = {valor_viejo} and valor_nuevo = {valor_nuevo} and id_registro = {id} and fecha_creacion = {fecha}; \n")
         
         return ruta_archivo
+    
+from INEvalidador.limpieza_sql import LimpiezaSQL
+usuario = "mchinchilla"
+password = "Mchinchilla2023"
+host = "10.0.0.170"
+puerto = "3307"
+comision = 1
+archivo_sql = r"C:\Users\mchinchilla\Desktop\Validador\Datos para Revisión\output_17-10-2023\Prueba Majo.xlsx"
+limpiezasql = LimpiezaSQL(usuario, password, host, puerto, comision)
+limpieza = Limpieza(comision, archivo_sql)
+limpieza.escribir_query_sq(archivo_sql, comision, usuario)
+# SQL
+limpiezasql.conexion_sintaxis(archivo_sql)
+limpiezasql.ejecutar_consulta_desde_archivo()
