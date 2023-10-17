@@ -1,4 +1,4 @@
 INFO - Log de condiciones convertidas a formato pandas
 INFO - Inicio del proceso de exportación de inconsistencias
-INFO - Se encontraron 1 condiciones.
-ERROR - P05C06 = 98 Y P05C06A es vacio: 'baseSQL' object has no attribute 'df_para_limpieza'.
+INFO - Se encontraron 2 condiciones.
+ERROR - PPA03 es vacio: "[''] not in index".

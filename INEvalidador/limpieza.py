@@ -13,7 +13,7 @@ from .utils import extraer_UPMS, columnas_a_mayuscula, condicion_a_variables
 from INEvalidador.conexionSQL import baseSQL
 
 class Limpieza:
-    def __init__(self, comision, ruta_criterios_limpieza: str="", descargar: bool = False, host: str = '10.0.0.170', 
+    def __init__(self, comision, ruta_criterios_limpieza: str=r"C:\Users\mchinchilla\Documents\GitHub\INE_ValidacionENCOVI\INEvalidador\archivos\Limpieza.xlsx", descargar: bool = False, host: str = '10.0.0.170', 
                 puerto: str = '3307', usuario: str = 'mchinchilla', 
                 password: str = 'Mchinchilla2023'):
         self.ruta_escritorio = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
@@ -143,7 +143,7 @@ class Limpieza:
         try:
             # Calcular el total de condiciones
             total_conditions = self.criterios_limpieza.shape[0]
-            self.criterios_limpieza["VARIABLES A EXPORTAR"] = self.criterios_limpieza["VARIABLES A EXPORTAR"].str.replace(r'\s*,\s*', ',').str.split(r'\s+|,')
+            self.criterios_limpieza["VARIABLES A EXPORTAR"] = self.criterios_limpieza["VARIABLES A EXPORTAR"].str.replace(r'\s*,\s*', ',').str.split(',').apply(lambda x: [i.strip() for i in x if i.strip()])
             # Configurar logging
             self.__configurar_logs(self.salida_principal)
             logging.info("Inicio del proceso de exportación de inconsistencias")
@@ -163,6 +163,7 @@ class Limpieza:
                 try:
                     # Aplicar filtro a la base de datos
                     Validacion = self.filtrar_base_limpieza(cond, var, fecha_inicio, fecha_final)
+                    print(Validacion)
                     carto = set(["DEPTO", "MUPIO", "SECTOR", "ESTRUCTURA", "VIVIENDA", "HOGAR", "CP", "VARIABLE", "VALOR NUEVO"])
                     diff = list(set(Validacion.columns) - carto)
                     for i in diff:
