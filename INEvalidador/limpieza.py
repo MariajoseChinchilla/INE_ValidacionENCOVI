@@ -9,7 +9,7 @@ import unicodedata
 import pandas as pd
 import numpy as np
 
-from .utils import extraer_UPMS, columnas_a_mayuscula
+from .utils import extraer_UPMS, columnas_a_mayuscula, condicion_a_variables
 from INEvalidador.conexionSQL import baseSQL
 
 class Limpieza:
@@ -132,7 +132,7 @@ class Limpieza:
 
     def filtrar_base_limpieza(self, condicion: str, columnas: list, fecha_inicio: datetime="2023-1-1", fecha_final:datetime="2023-12-31") -> pd.DataFrame:
         # var = columnas + ["FECHA", "ENCUESTADOR", "DEPTO", "MUPIO", "SECTOR","ESTRUCTURA", "VIVIENDA", "HOGAR", "CP", "CAPITULO", "SECCION", "PREGUNTA", "DEFINICION DE INCONSISTENCIA", "CODIGO ERROR", "COMENTARIOS"]
-        self.df = self.df_para_limpieza(condicion, columnas)
+        self.df = self.df_para_limpieza(condicion)
         self.df["VARIABLE"] = None
         self.df["VALOR NUEVO"] = None  
         filtered_df = self.df.query(self.leer_condicion(condicion))[["DEPTO","MUPIO","SECTOR","ESTRUCTURA","VIVIENDA","HOGAR","CP"] + columnas + ["VARIABLE", "VALOR NUEVO"]]
@@ -195,7 +195,7 @@ class Limpieza:
         if Validacion.shape[0] == 0:
             pass 
         Validacion.to_excel(os.path.join(self.salida_principal, f'{nombre}.xlsx'), index=False)
-        marca_temp = datetime.now().strftime("%d-%m-%Y")
+        # marca_temp = datetime.now().strftime("%d-%m-%Y")
         # carpeta_padre = f"Limpieza/DatosLimpieza{marca_temp}"
 
         # Configurar logging
@@ -205,22 +205,28 @@ class Limpieza:
         
         Validacion.to_excel(os.path.join(self.salida_principal, f'{nombre}.xlsx'), index=False)
 
-    def df_para_limpieza(self, variables, fecha_inicio: datetime="2023-1-1", fecha_final: datetime="2100-12-31"):
+    def df_para_limpieza(self, condicion, fecha_inicio: datetime="2023-1-1", fecha_final: datetime="2100-12-31"):
 
+        variables = condicion_a_variables(condicion)
         df_a_unir = list(set([self.sql.base_col.get(var) for var in variables]))
         tipos = []
         for i in range(len(df_a_unir)):
-            tipo = df_a_unir[i][-2:] # devuelve SR o PR
-            tipos.append(tipo)
+            try:
+                if isinstance(df_a_unir[i], str) and len(df_a_unir[i]) >= 2:
+                    tipo = df_a_unir[i][-2:] # devuelve SR o PR
+                    tipos.append(tipo)
+            except Exception as e:
+                print(f"Error con el ítem {i}: {df_a_unir[i]}. Detalle del error: {e}")
         tipos = list(set(tipos))
-        tipo = tipos[0]
+        tipo = tipos[0] if tipos else None
 
         
         df_a_unir = [self.sql.base_df.get(archivo) for archivo in df_a_unir] 
 
         df_base = self.sql.base_df.get(f'level-1_{tipo}')
         for df in df_a_unir:
-            df = df.drop('INDEX', axis=1)
+            if "INDEX" in df.columns:
+                df = df.drop('INDEX', axis=1)
             df_base = pd.merge(df_base, df, on='LEVEL-1-ID', how='inner')
 
         df_cases = self.sql.base_df.get(f'cases_{tipo}')
