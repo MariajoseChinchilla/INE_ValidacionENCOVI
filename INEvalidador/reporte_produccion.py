@@ -90,7 +90,7 @@ class GestorConteos:
         finally:
             self.remove_lockfile()
 
-    def generar_histograma(self):
+    def generar_histograma(self) -> str:
         """Genera un histograma con la productividad de cada analista y lo guarda en el escritorio."""
         # Obtener datos del archivo en Google Drive
         file_list = self.drive.ListFile({'q': f"'{self.FOLDER_ID}' in parents"}).GetList()
@@ -126,7 +126,8 @@ class GestorConteos:
         ruta_imagen = os.path.join(ruta_carpeta, f"Productividad_{fecha_actual}.png")
         plt.savefig(ruta_imagen)
 
-        os.system(f'start {ruta_imagen}')
+        #os.system(f'start {ruta_imagen}')
+        return ruta_imagen
 
     def obtener_lista_analistas(self):
         # Buscar el archivo en Google Drive
