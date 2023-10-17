@@ -349,7 +349,7 @@ class Limpieza:
             filtro = f"DEPTO = {depto} & MUPIO = {mupio} & SECTOR = {sec} & ESTRUCTURA = {estru} & VIVIENDA = {vivi} & HOGAR = {hog} & CP = {cp}"
             filtro.replace("& CP = 0","").replace("& CP = nan","")
             llave_primaria = self.sql.base_col.get(var).replace("_PR","").replace("_SR","").upper() + "-ID"
-            df_query = self.limpieza.filtrar_base_limpieza(filtro, [llave_primaria], fecha_inicio, fecha_final)
+            df_query = self.filtrar_base_limpieza(filtro, [llave_primaria], fecha_inicio, fecha_final)
             filtros.append(filtro)
             # Agregar columnas "variable" y "valor_nuevo" a df_query
             df_query["variable"] = df_original.at[idx, "variable"]
