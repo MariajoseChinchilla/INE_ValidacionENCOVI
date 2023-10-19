@@ -1,6 +1,6 @@
 import re
 import pandas as pd
-from typing import List
+from typing import List, Tuple
 import openpyxl
 import os
 from datetime import datetime
@@ -8,6 +8,29 @@ import glob
 import pkg_resources
 
 # Función para convertirlas todas las columnas de la base a mayuscula
+def condicion_a_variables(condicion: str) -> Tuple[str]:
+    pattern = r'\b[A-Z][A-Z0-9]*(-ID)?\b(?=\s*=)'
+    matches = re.findall(pattern, condicion)
+
+    # Si match es una tupla, toma el primer elemento; de lo contrario, toma la cadena completa
+    coincidencias = tuple(match[0] if isinstance(match, tuple) else match for match in matches)
+
+    # Lista negra de palabras para excluir
+    blacklist = {"VACIO", "NO", "ES"}
+    return tuple(word for word in coincidencias if word not in blacklist)
+
+def condicion_a_variables(condicion: str) -> Tuple[str]:
+    pattern = r'\b([A-Z][A-Z0-9]*)(-ID)?\b(?=\s*=)'
+    matches = re.findall(pattern, condicion)
+
+    # Dado que todas las coincidencias serán tuplas (debido al grupo de captura),
+    # combinaremos el primer y segundo valor de la tupla, si el segundo valor no está vacío.
+    coincidencias = tuple(match[0] + match[1] for match in matches)
+
+    # Lista negra de palabras para excluir
+    blacklist = {"VACIO", "NO", "ES"}
+    return tuple(word for word in coincidencias if word not in blacklist)
+
 def columnas_a_mayuscula(df: pd.DataFrame):
     columnas_originales = df.columns
     columnas_nuevas = []
@@ -17,18 +40,6 @@ def columnas_a_mayuscula(df: pd.DataFrame):
     diccionario = dict(zip(columnas_originales, columnas_nuevas))
     df = df.rename(columns=diccionario)
     return df
-
-def condicion_a_variables(condicion: str) -> List[str]:
-    # La expresión regular coincide con cualquier cadena que comience con una letra mayúscula 
-    # seguida de números y letras mayúsculas.
-    pattern = r'\b[A-Z][A-Z0-9]+\b'
-    matches = set(re.findall(pattern, condicion))
-
-    # Lista negra de palabras para excluir
-    blacklist = {"VACIO", "NO", "ES"}
-
-    # Filtramos las coincidencias para excluir las palabras de la lista negra
-    return tuple(word for word in matches if word not in blacklist)
 
 def extract_number(s):
     # Extraer el número deseado de la cadena
