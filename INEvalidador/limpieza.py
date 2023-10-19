@@ -212,7 +212,7 @@ class Limpieza:
         # print(variables)
         df_a_unir = list(set([self.sql.base_col.get(var) for var in variables]))
         # print(df_a_unir)
-        tipos = []
+        tipos = ["PR"]
         for i in range(len(df_a_unir)):
             try:
                 if isinstance(df_a_unir[i], str) and len(df_a_unir[i]) >= 2:
@@ -229,18 +229,19 @@ class Limpieza:
 
         df_base = self.sql.base_df.get(f'level-1_{tipo}')
         for df in df_a_unir:
-            print(df)
+            # print(df)
             if "INDEX" in df.columns:
                 df = df.drop('INDEX', axis=1)
             df_base = pd.merge(df_base, df, on='LEVEL-1-ID', how='inner', suffixes=(None, "_y"))
 
 
         df_cases = self.sql.base_df.get(f'cases_{tipo}')
+        # print(df_cases)
         df_base = pd.merge(df_base, df_cases[["DELETED", "ID"]], left_on='CASE-ID', right_on='ID', how='inner')
         df_base = df_base.query('DELETED == 0')
 
         # Si tipo es "PR", agregamos el dataframe "caratula_PR.feather"
-        if len(tipos) == 1 and tipos[0] == 'PR':
+        if len(tipos) == 2 and tipos[1] == 'PR':
             # Agregar dataframe con la caratula
             caratula_pr_df = pd.read_feather(os.path.join(self.ruta_escritorio, "Validador", "db_limpieza", str(self.comision), 'caratula_PR.feather'))
             caratula_pr_df = columnas_a_mayuscula(caratula_pr_df)
@@ -253,7 +254,7 @@ class Limpieza:
             df_base = pd.merge(df_base, caratula_pr_df, on='LEVEL-1-ID', how='inner')  # Unión por 'LEVEL-1-ID'
         
         # Si tipo es "SR", agregamos el dataframe "estado_de_boleta_SR.feather"
-        elif len(tipos) == 1 and tipos[0] == 'SR':
+        elif len(tipos) == 2 and tipos[1] == 'SR':
             # Agregar dataframe estado boleta
             estado_boleta_df = pd.read_feather(os.path.join(self.ruta_escritorio, "Validador", "db_limpieza", str(self.comision), 'estado_de_boleta_SR.feather'))
             estado_boleta_df = columnas_a_mayuscula(estado_boleta_df)
@@ -266,7 +267,7 @@ class Limpieza:
             df_base = pd.merge(df_base, estado_boleta_df, on='LEVEL-1-ID', how='inner')  # Unión por 'LEVEL-1-ID'
 
         # Si es validacion entre rondas, agregar tablas pertinentes
-        elif len(tipos) == 2:
+        elif len(tipos) == 3:
             # Agregar dataframe estado boleta
             estado_boleta_df = pd.read_feather(os.path.join(self.ruta_escritorio, "Validador", "db_limpieza", str(self.comision), 'estado_de_boleta_SR.feather'))
             estado_boleta_df = columnas_a_mayuscula(estado_boleta_df)
