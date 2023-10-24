@@ -58,12 +58,15 @@ class baseSQL:
         # PR, tomar primera ronda
         variables = condicion_a_variables(condicion)
         df_a_unir = list(set([self.base_col.get(var) for var in variables]))
-        tipos = []
+        tipos = ["PR"]
         for i in range(len(df_a_unir)):
             tipo = df_a_unir[i][-2:] # devuelve SR o PR
             tipos.append(tipo)
         tipos = list(set(tipos))
-        tipo = tipos[0]
+        if len(tipos) > 1:
+            tipo = tipos[1]
+        else:
+            tipo = "PR"
 
         
         df_a_unir = [self.base_df.get(archivo) for archivo in df_a_unir] 

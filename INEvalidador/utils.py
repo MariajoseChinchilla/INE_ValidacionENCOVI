@@ -20,7 +20,7 @@ def condicion_a_variables(condicion: str) -> Tuple[str]:
     return tuple(word for word in coincidencias if word not in blacklist)
 
 def condicion_a_variables(condicion: str) -> Tuple[str]:
-    pattern = r'\b([A-Z][A-Z0-9]*)(-ID)?\b(?=\s*=)'
+    pattern = r'\b([A-Z][A-Z0-9]*)(-ID)?\b(?=\s*(<|<=|>|>=|=))'
     matches = re.findall(pattern, condicion)
 
     # Dado que todas las coincidencias serán tuplas (debido al grupo de captura),
