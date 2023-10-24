@@ -332,6 +332,7 @@ class Validador:
             # Unir esto al csv acumulado
             dfs.append(final14)
             self.df_ = dfs
+            print(dfs.head(6))
             df_power = pd.concat(self.df_) # Hacer copia de los dfs para exportar por supervisor luego
             df_power.to_csv(os.path.join(self.ruta_carpeta_padre, f'InconsistenciasPowerBi_{dia}-{mes}-{año}.csv'), index=False)
             reporte_codigo = df_power.groupby(["CODIGO ERROR", "DEFINICION DE INCONSISTENCIA"]).size().reset_index(name="FRECUENCIA")
