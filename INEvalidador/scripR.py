@@ -79,6 +79,8 @@ class ScripR:
     def procesar_datos(self, ruta_salida: str="", archivo_grupos: str="") -> pd.DataFrame:
         if not archivo_grupos:
             grupos = pkg_resources.resource_filename(__name__, 'archivos\GruposC2.xlsx')
+        else:
+            grupos = archivo_grupos
         
         # Leer el archivo de grupos
         gs = pd.read_excel(grupos)
