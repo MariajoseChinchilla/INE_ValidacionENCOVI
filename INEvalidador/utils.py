@@ -8,28 +8,28 @@ import glob
 import pkg_resources
 
 # Función para convertirlas todas las columnas de la base a mayuscula
+# def condicion_a_variables(condicion: str) -> Tuple[str]:
+#     pattern = r'\b[A-Z][A-Z0-9]*(-ID)?\b(?=\s*=)'
+#     matches = re.findall(pattern, condicion)
+
+#     # Si match es una tupla, toma el primer elemento; de lo contrario, toma la cadena completa
+#     coincidencias = tuple(match[0] if isinstance(match, tuple) else match for match in matches)
+
+#     # Lista negra de palabras para excluir
+#     blacklist = {"VACIO", "NO", "ES"}
+#     return tuple(word for word in coincidencias if word not in blacklist)
+
 def condicion_a_variables(condicion: str) -> Tuple[str]:
-    pattern = r'\b[A-Z][A-Z0-9]*(-ID)?\b(?=\s*=)'
-    matches = re.findall(pattern, condicion)
-
-    # Si match es una tupla, toma el primer elemento; de lo contrario, toma la cadena completa
-    coincidencias = tuple(match[0] if isinstance(match, tuple) else match for match in matches)
-
-    # Lista negra de palabras para excluir
-    blacklist = {"VACIO", "NO", "ES"}
-    return tuple(word for word in coincidencias if word not in blacklist)
-
-def condicion_a_variables(condicion: str) -> Tuple[str]:
-    pattern = r'\b([A-Z][A-Z0-9]*)(-ID)?\b(?=\s*(<|<=|>|>=|=))'
+    pattern = r'\b([A-Z][A-Za-z0-9]+)\b(?=\s*(?:=|<|>|<=|>=|no\s+es|es\b))'
     matches = re.findall(pattern, condicion)
 
     # Dado que todas las coincidencias serán tuplas (debido al grupo de captura),
     # combinaremos el primer y segundo valor de la tupla, si el segundo valor no está vacío.
-    coincidencias = tuple(match[0] + match[1] for match in matches)
+    # coincidencias = tuple(match[0] + match[1] for match in matches)
 
     # Lista negra de palabras para excluir
     blacklist = {"VACIO", "NO", "ES"}
-    return tuple(word for word in coincidencias if word not in blacklist)
+    return tuple(word for word in matches if word not in blacklist)
 
 def columnas_a_mayuscula(df: pd.DataFrame):
     columnas_originales = df.columns

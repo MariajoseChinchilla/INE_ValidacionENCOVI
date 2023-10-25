@@ -54,7 +54,7 @@ class baseSQL:
                 return True
         return False
 
-    def df_para_condicion(self, condicion: str, fecha_inicio, fecha_final):
+    def df_para_condicion(self, condicion: str, fecha_inicio: datetime="2023-1-1", fecha_final: datetime="2023-12-31"):
         # PR, tomar primera ronda
         variables = condicion_a_variables(condicion)
         df_a_unir = list(set([self.base_col.get(var) for var in variables]))
@@ -67,6 +67,8 @@ class baseSQL:
             tipo = tipos[1]
         else:
             tipo = "PR"
+
+        # print(tipos)
 
         
         df_a_unir = [self.base_df.get(archivo) for archivo in df_a_unir] 
@@ -115,9 +117,9 @@ class baseSQL:
             tiempo_sr_df = pd.read_feather(os.path.join(self.dir_salida, "tiempo_control_PR.feather"))
             tiempo_sr_df = columnas_a_mayuscula(tiempo_sr_df)
             # Unir a base raiz
-            df_base = pd.merge(df_base, tiempo_sr_df, on="LEVEL-1-ID", how="inner")
+            df_base = pd.merge(df_base, tiempo_sr_df, on="LEVEL-1-ID", how="inner", suffixes=["","_x"])
             df_base = df_base.drop("INDEX_x",axis=1)
-            df_base = pd.merge(df_base, estado_boleta_df, on='LEVEL-1-ID', how='inner')  # Unión por 'LEVEL-1-ID'
+            df_base = pd.merge(df_base, estado_boleta_df, on='LEVEL-1-ID', how='inner',suffixes=["","_x"])  # Unión por 'LEVEL-1-ID'
             # Agregar dataframe con la caratula
             caratula_pr_df = pd.read_feather(os.path.join(self.dir_salida, 'caratula_PR.feather'))
             caratula_pr_df = columnas_a_mayuscula(caratula_pr_df)
@@ -125,10 +127,11 @@ class baseSQL:
             tiempo_pr_df = pd.read_feather(os.path.join(self.dir_salida, "tiempo_control_PR.feather"))
             tiempo_pr_df = columnas_a_mayuscula(tiempo_pr_df)
             # Unir a base raiz
-            df_base = pd.merge(df_base, tiempo_pr_df, on="LEVEL-1-ID", how="inner")
+            df_base = pd.merge(df_base, tiempo_pr_df, on="LEVEL-1-ID", how="inner",suffixes=["","_x"])
             df_base = df_base.drop("INDEX_y",axis=1)
             df_base = df_base.drop("INDEX_x",axis=1)
-            df_base = pd.merge(df_base, caratula_pr_df, on='LEVEL-1-ID', how='inner')  # Unión por 'LEVEL-1-ID'
+            df_base = pd.merge(df_base, caratula_pr_df, on='LEVEL-1-ID', how='inner',suffixes=["","_x"])  # Unión por 'LEVEL-1-ID'
+            # print(df_base.columns)
 
         # Validar solo las encuestas terminadas
         if "PPA10" in df_base.columns and "ESTADO_PR" in df_base.columns:      
