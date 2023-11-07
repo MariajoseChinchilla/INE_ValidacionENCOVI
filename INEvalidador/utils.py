@@ -20,15 +20,12 @@ import pkg_resources
 #     return tuple(word for word in coincidencias if word not in blacklist)
 
 def condicion_a_variables(condicion: str) -> Tuple[str]:
-    pattern = r'\b([A-Z][A-Za-z0-9]+)\b(?=\s*(?:=|<|>|<=|>=|no\s+es|es\b))'
+    # Modificar el patrón para capturar variables sin operadores
+    pattern = r'\b([A-Z][A-Za-z0-9]+)\b'
     matches = re.findall(pattern, condicion)
 
-    # Dado que todas las coincidencias serán tuplas (debido al grupo de captura),
-    # combinaremos el primer y segundo valor de la tupla, si el segundo valor no está vacío.
-    # coincidencias = tuple(match[0] + match[1] for match in matches)
-
     # Lista negra de palabras para excluir
-    blacklist = {"VACIO", "NO", "ES"}
+    blacklist = {"VACIO", "NO", "ES", "ESTA", "ESTÁ"}
     return tuple(word for word in matches if word not in blacklist)
 
 def columnas_a_mayuscula(df: pd.DataFrame):

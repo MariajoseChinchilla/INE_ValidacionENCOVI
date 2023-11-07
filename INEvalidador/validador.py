@@ -35,7 +35,7 @@ class Validador:
         if not os.path.exists(os.path.join(self.ruta_escritorio, "Validador")):
             os.mkdir(os.path.join(self.ruta_escritorio, "Validador"))
         # carpeta de salida principal
-        self.marca_temp = datetime.now().strftime("%d-%m-%Y")
+        self.marca_temp = datetime.now().strftime("%d-%m-%Y%H")
         self.salida_validaciones = os.path.join(self.ruta_escritorio, f"Validador\Validaciones Encuestadores\output_{self.marca_temp}")
         if not os.path.exists(self.salida_validaciones):
             os.makedirs(self.salida_validaciones)
